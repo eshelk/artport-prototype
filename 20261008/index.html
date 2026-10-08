@@ -1652,7 +1652,7 @@ function render(){
   if(base!==PREV_BASE&&!s.modal) window.scrollTo(0,0);
   PREV_BASE=base;LAST_HASH=location.hash;
   renderPT();afterRender();
-  document.title=`${CUR} ${s.name} · ARTPORT, GUNSAN 프로토타입 (10.9 수정본)`;
+  document.title=`${CUR} ${s.name} · ARTPORT, GUNSAN 프로토타입 (10.8 수정본)`;
 }
 window.addEventListener('hashchange',navGuard);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){const s=SC(CUR);if(s&&s.modal)closeModal();else if(Q.w)go(CUR);else if(Object.keys(S.popClosed).length<3&&CUR==='H-01'){S.popClosed={L:1,C:1,R:1};render()}}});
@@ -2547,12 +2547,12 @@ document.addEventListener('click',e=>{
 function renderPT(){
   const s=SC(CUR);const i=FLAT.findIndex(x=>x.id===CUR);
   document.getElementById('pt').innerHTML=`${S.ptOpen?`<div class="pt-panel" role="dialog" aria-label="프로토타입 도구">
-   <div class="pt-date">최종 수정 <b>2026. 10. 9.</b> · <a href="../">다른 날짜 보기</a></div><h4>현재 화면</h4><div class="pt-cur"><b>${s.id}</b> ${s.name}<br><span style="color:#8F9AB0">${s.g}${s.modal?' · 모달/레이어':''}</span><div class="pt-nav"><button onclick="go('${FLAT[(i-1+FLAT.length)%FLAT.length].id}')">← 이전 화면</button><button onclick="go('${FLAT[(i+1)%FLAT.length].id}')">다음 화면 →</button></div></div>
+   <div class="pt-date">최종 수정 <b>2026. 10. 8.</b> · <a href="../">다른 날짜 보기</a></div><h4>현재 화면</h4><div class="pt-cur"><b>${s.id}</b> ${s.name}<br><span style="color:#8F9AB0">${s.g}${s.modal?' · 모달/레이어':''}</span><div class="pt-nav"><button onclick="go('${FLAT[(i-1+FLAT.length)%FLAT.length].id}')">← 이전 화면</button><button onclick="go('${FLAT[(i+1)%FLAT.length].id}')">다음 화면 →</button></div></div>
    <h4>보기 권한 (로그인 상태)</h4><div class="pt-seg">${L(Object.keys(ROLES),r=>`<button class="${S.role===r?'on':''}" onclick="setRole('${r}')">${ROLES[r]}</button>`)}</div>
    <h4>시나리오</h4><div class="pt-seg"><button class="${S.maint?'on':''}" onclick="S.maint=!S.maint;render()">점검 띠배너</button><button onclick="S.popClosed={};try{['L','C','R'].forEach(k=>localStorage.removeItem('ga_pop_today_'+k))}catch(e){};go('H-01');render()">팝업 다시 보기</button><button onclick="go('C-14')">자동 로그아웃 알림</button><button class="${S.ref?'on':''}" onclick="S.ref=!S.ref;store.set('ref',S.ref);applyA11y();renderPT()">제작참고 메모</button></div>
    <h4>화면 목록 (총 ${FLAT.length}개)</h4><div class="pt-list">${L(SCREENS,([g,list])=>`<details ${list.some(x=>x[0]===CUR)?'open':''}><summary>${g} (${list.length})</summary>${L(list,([id,n,m])=>`<a href="#/${id}" class="${id===CUR?'on':''}"><span>${id}</span><span>${n}</span>${m?'<em>모달</em>':''}</a>`)}</details>`)}</div>
    <p style="color:#8F9AB0;font-size:11px;margin-top:12px">※ 프로토타입 확인용 도구로, 실제 서비스에는 포함되지 않습니다. 모든 인명·작품·수치는 더미 데이터입니다.</p></div>`:''}
-   <button class="pt-btn" onclick="S.ptOpen=!S.ptOpen;renderPT()" aria-expanded="${S.ptOpen}"><span class="id">${s.id}</span>${s.name.length>16?s.name.slice(0,16)+'…':s.name} · ${ROLES[S.role]} <span class="pt-ver">10.9 수정본</span> ${S.ptOpen?'▼':'▲'}</button>`;
+   <button class="pt-btn" onclick="S.ptOpen=!S.ptOpen;renderPT()" aria-expanded="${S.ptOpen}"><span class="id">${s.id}</span>${s.name.length>16?s.name.slice(0,16)+'…':s.name} · ${ROLES[S.role]} <span class="pt-ver">10.8 수정본</span> ${S.ptOpen?'▼':'▲'}</button>`;
 }
 render();
 </script>
