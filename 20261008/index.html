@@ -1628,6 +1628,26 @@ a.tag{padding-block:6px}
 }
 .stepper.reg{counter-reset:s -1}
 .stepper.reg li:first-child::after,.stepper.reg li:last-child::after{content:'';width:14px;height:14px;top:6px}
+/* ===== 포트폴리오 상세 상단 — 배치·간격 정리 ===== */
+.pf-card{grid-template-columns:200px minmax(0,1fr) 340px;gap:32px;padding:32px;align-items:start}
+.pf-main{gap:16px}
+.pf-major{margin-top:8px}
+.pf-major h2{margin-bottom:10px}
+ul.yr{gap:8px}
+.pf-main .tags{margin-top:8px}
+.pf-info{gap:16px;padding:24px}
+.pf-info dl{gap:12px 16px}
+.pf-info .pf-acts{margin-top:4px}
+.pf-acts>*{white-space:nowrap;min-height:44px}
+.pf-info .btn{margin-top:0}
+.pf-note{display:flex;align-items:center;justify-content:center;gap:6px;margin:-4px 0 0}
+.pf-note .ic{width:14px;height:14px;flex:none}
+.pp-auto{animation:ppauto 1.2s ease-out 1}
+@keyframes ppauto{0%{background:var(--accent-weak);border-color:var(--accent)}100%{background:var(--bg)}}
+@media (prefers-reduced-motion:reduce){.pp-auto{animation:none}}
+@media (max-width:1100px){.pf-card{grid-template-columns:160px minmax(0,1fr)}.pf-info{grid-column:1/-1}}
+html[data-fs="2"] .pf-card{grid-template-columns:160px minmax(0,1fr)}
+html[data-fs="1"] .pf-card{grid-template-columns:180px minmax(0,1fr) 380px}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -2045,7 +2065,7 @@ function portfolioBody(a,preview){const works=WORKS.filter(w=>w.aid===a.id&&(!w.
   ${a.dis?`<dt>${I('info')}장애예술인</dt><dd>해당 (공개 동의)</dd>`:''}</dl>
   ${pfTools(a,preview)}
   ${preview?`<span class="btn btn-pri btn-block" aria-disabled="true">${I('mail')} 예술인에게 문의하기</span>`:`<a class="btn btn-pri btn-block" href="#/A3-04?back=id=${a.id}">${I('mail')} 예술인에게 문의하기</a>`}
-  <p class="tiny muted" style="text-align:center">예술인의 연락처와 이메일은 공개되지 않습니다.</p>
+  <p class="tiny muted pf-note">${I('lock')}예술인의 연락처와 이메일은 공개되지 않습니다.</p>
  </div>
  </section>
  <div class="pf-tabs" role="tablist" aria-label="포트폴리오 내용">${L([['소개',''],['작품·활동',works.length]],([t,n],i)=>`<button type="button" role="tab" class="${i===0?'on':''}" aria-selected="${i===0}" onclick="pfTab(${i},this,'${id}')">${t}${n!==''?` <span>${n}</span>`:''}</button>`)}</div>
@@ -2145,8 +2165,8 @@ PAGES['A3-01']=()=>{const list=ARTISTS.filter(a=>(!a.priv||isAdmin())&&(!S.q||(a
  ${searchBlock('예술인명(예명), 단체명, 기관명으로 검색',[['type','등록 유형',['개인','단체','기관']],['field','활동분야',Object.keys(FIELDS)],['genre','세부장르',genreOpts()],['dong','지역',DONG_NAMES],['dis','장애예술인',['장애예술인(공개 동의)']]])}
  <div class="listhd"><p class="small">총 <b>${list.length}</b>명의 예술인 ${isAdmin()?badge('비공개 포함 (관리자 보기)','b-dark'):''}</p><div class="row wrapf">${myShortcuts()}<div class="seg"><button class="${S.sortNew?'':'on'}" onclick="S.sortNew=false;render()">가나다순</button><button class="${S.sortNew?'on':''}" onclick="S.sortNew=true;render()">최신등록순</button></div></div></div>
  ${list.length?`<div class="grid4">${L(list.slice(0,20),artistCard)}</div>${pager(Math.max(1,Math.ceil(list.length/20)))}`:fEmpty('조건에 맞는 예술인이 없습니다')}</div></section>`)};
-const pfTools=(a,preview)=>preview?`<div class="pf-acts" aria-hidden="true">${L([['heart','관심 예술인'],['share','공유'],['dl','공개명함'],['print','인쇄·PDF']],([i,t])=>`<span>${I(i)}${t}</span>`)}</div>`:`<div class="pf-acts" role="group" aria-label="포트폴리오 도구"><button type="button" class="${S.scrap['a:'+a.id]?'on':''}" aria-pressed="${!!S.scrap['a:'+a.id]}" onclick="toggleScrap('a:${a.id}',this);this.setAttribute('aria-pressed',this.classList.contains('on'))">${I('heart')}관심 예술인</button><button type="button" onclick="toast('포트폴리오 주소를 복사했습니다')">${I('share')}공유</button><a href="#/A3-03?back=id=${a.id}">${I('dl')}공개명함 다운로드</a><button type="button" onclick="window.print()">${I('print')}인쇄·PDF 저장</button></div>`;
-const wdTools=w=>`<div class="pf-acts wd-acts" role="group" aria-label="${w.kind} 도구"><button type="button" class="${S.scrap['w:'+w.id]?'on':''}" aria-pressed="${!!S.scrap['w:'+w.id]}" onclick="toggleScrap('w:${w.id}',this);this.setAttribute('aria-pressed',this.classList.contains('on'))">${I('heart')}관심 ${w.kind}</button><button type="button" onclick="toast('주소를 복사했습니다')">${I('share')}공유</button><button type="button" onclick="window.print()">${I('print')}인쇄·PDF 저장</button></div>`;
+const pfTools=(a,preview)=>preview?`<div class="pf-acts" aria-hidden="true">${L([['heart','관심 예술인'],['share','공유'],['dl','명함 다운로드'],['print','인쇄·PDF']],([i,t])=>`<span>${I(i)}${t}</span>`)}</div>`:`<div class="pf-acts" role="group" aria-label="포트폴리오 도구"><button type="button" class="${S.scrap['a:'+a.id]?'on':''}" aria-pressed="${!!S.scrap['a:'+a.id]}" onclick="toggleScrap('a:${a.id}',this);this.setAttribute('aria-pressed',this.classList.contains('on'))">${I('heart')}관심 예술인</button><button type="button" onclick="toast('포트폴리오 주소를 복사했습니다')">${I('share')}공유</button><a href="#/A3-03?back=id=${a.id}" aria-label="공개명함 다운로드">${I('dl')}명함 다운로드</a><button type="button" onclick="window.print()" aria-label="인쇄·PDF 저장">${I('print')}인쇄·PDF</button></div>`;
+const wdTools=w=>`<div class="pf-acts wd-acts" role="group" aria-label="${w.kind} 도구"><button type="button" class="${S.scrap['w:'+w.id]?'on':''}" aria-pressed="${!!S.scrap['w:'+w.id]}" onclick="toggleScrap('w:${w.id}',this);this.setAttribute('aria-pressed',this.classList.contains('on'))">${I('heart')}관심 ${w.kind}</button><button type="button" onclick="toast('주소를 복사했습니다')">${I('share')}공유</button><button type="button" onclick="window.print()" aria-label="인쇄·PDF 저장">${I('print')}인쇄·PDF</button></div>`;
 const pfActs=a=>`<button type="button" class="btn btn-line btn-sm" onclick="toast('링크를 복사했습니다')">${I('share')} 공유</button><a class="btn btn-line btn-sm" href="#/A3-03?back=id=${a.id}">${I('dl')} 공개명함 다운로드</a><button type="button" class="btn btn-line btn-sm ${S.scrap['a:'+a.id]?'on':''}" onclick="toggleScrap('a:${a.id}',this)">${I('heart')} 관심 예술인</button><button type="button" class="btn btn-ghost btn-sm" onclick="window.print()" aria-label="인쇄·PDF 저장">${I('print')}</button>`;
 PAGES['A3-02']=()=>{const a=A(Q.id||'a1');const idx=ARTISTS.indexOf(a);const pv=ARTISTS[(idx-1+ARTISTS.length)%ARTISTS.length],nx=ARTISTS[(idx+1)%ARTISTS.length];return pub(kv('예술창고','군산의 예술인과 작품·활동을 만나보세요','예술창고 › 예술인 포트폴리오 › 예술인 상세')+subtabs(T3,'A3-01')+`${portfolioBody(a)}
  <nav class="prevnext"><a href="#/A3-02?id=${pv.id}">${I('l')} 이전 예술인 · ${pv.name}</a><a href="#/A3-01" class="btn btn-line btn-sm" style="align-self:center">목록</a><a href="#/A3-02?id=${nx.id}">다음 예술인 · ${nx.name} ${I('r')}</a></nav><div style="height:64px"></div>`)};
@@ -2592,6 +2612,7 @@ function popDateChk(){const f=document.getElementById('ppf'),t=document.getEleme
  else if(t.value&&t.value<T){m=`종료일은 오늘(${fd(T)}) 이후로 선택해 주세요.`;bad=t}
  else if(rc&&rc.checked&&rv){if(!rv.value){m='예약 게시 일시를 입력해 주세요.';bad=rv}else if(rv.value.slice(0,10)<T){m='예약 게시 일시는 지금 이후로 설정해 주세요.';bad=rv}else if(t.value&&rv.value.slice(0,10)>t.value){m='예약 게시 일시는 노출 종료일 이전이어야 합니다.';bad=rv}else if(f.value&&rv.value.slice(0,10)<f.value){m='예약 게시 일시는 노출 시작일 이후로 설정해 주세요.';bad=rv}}
  [f,t,rv].forEach(x=>x&&x.removeAttribute('aria-invalid'));if(bad)bad.setAttribute('aria-invalid','true');if(e){e.textContent=m;e.hidden=!m}return!m}
+function ppRsv(el){const f=document.getElementById('ppf'),t=document.getElementById('ppt');if(el.value&&f){const d=el.value.slice(0,10);if(f.value!==d){f.value=d;f.classList.remove('pp-auto');void f.offsetWidth;f.classList.add('pp-auto')}if(t&&t.value&&t.value<d)t.value=''}popDateChk()}
 function popSave(msg,next){if(!popDateChk()){toast('노출 기간·예약 일시를 확인해 주세요');const b=document.querySelector('[aria-invalid="true"]');b&&b.focus();return}toast(msg);if(next)go(next)}
 function hlPrep(){if(!Q.hl||!document.querySelector('.adm-body'))return;const key=location.hash;if(S.hlDone===key)return;S.hlDone=key;const t=Q.hl;const r=[...document.querySelectorAll('.adm-body tbody tr,.adm-body li')].find(x=>x.innerText.includes(t));if(!r)return;r.classList.add('row-hl');const f=r.querySelector('a,button')||r;if(f===r)r.tabIndex=-1;setTimeout(()=>{r.scrollIntoView({block:'center'});f.focus({preventScroll:true})},150)}
 function delPop(i){const p=POPS[i];document.getElementById('modal').innerHTML=`<div class="dim" onclick="if(event.target===this)this.remove()"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="dmt"><div class="modal-h"><h2 id="dmt">팝업 삭제</h2><button class="icon-btn" onclick="this.closest('.dim').remove()" aria-label="닫기">${I('x')}</button></div><div class="modal-b"><div class="row" style="gap:16px;align-items:flex-start"><div style="width:96px;flex:none">${PH(p.t,'')}</div><div><p class="h4">${p.title}</p><p class="small muted mt8">${p.pos} 창 · ${p.pages.map(popPg).join(', ')} · ${p.from.replaceAll('-','.')} ~ ${p.to.replaceAll('-','.')}</p></div></div><div class="mt16">${callout('<b>삭제하면 홈 화면에서 바로 사라지며 되돌릴 수 없습니다.</b> 잠시 내리려면 삭제 대신 [활성]을 끄고 저장해 주세요.','warn')}</div></div><div class="modal-f"><button class="btn btn-line" onclick="this.closest('.dim').remove()">취소</button><button class="btn" style="background:var(--bad-solid);color:#fff" onclick="POPS.splice(${i},1);this.closest('.dim').remove();toast('팝업을 삭제했습니다');history.replaceState(null,'','#/B-16');render()">삭제하기</button></div></div></div>`}
@@ -2607,7 +2628,7 @@ PAGES['B-16']=()=>{const ei=Q.e!=null&&POPS[+Q.e]?+Q.e:null;const p=ei!=null?POP
  ${F('링크',`${inp('https://',p.link)}<div class="mt8">${chk('새 창으로 열기',!p.link.startsWith('/'))}</div>`)}
  ${(()=>{const has=x=>p.pages.includes(x);const all=has('전체');return F('노출 페이지',`<div class="pp-tree">${chk('<b>전체 페이지</b>',all,'onchange="ppTreeAll(this)"')}${POP_TREE.map(([m,subs])=>`<div class="pp-g">${chk(`<b>${m}</b>${subs.length?' <span class="tiny muted">하위 메뉴 전체</span>':''}`,has(m),`data-m="${m}" onchange="ppTreeM(this)" ${all?'disabled':''}`)}${subs.length?`<div class="pp-s">${subs.map(x=>chk(x,has(m)||has(m+'>'+x),`data-s="${m}" ${all||has(m)?'disabled':''}`)).join('')}</div>`:''}</div>`).join('')}</div>`,{help:'여러 개를 고를 수 있습니다. 메뉴 이름을 고르면 그 메뉴의 모든 하위 화면에, 하위 메뉴를 고르면 그 화면에만 같은 창 형식으로 노출됩니다.'})})()}
  ${F('노출 기간',`<div class="row"><label class="sr" for="ppf">노출 시작일</label><input class="inp" type="date" id="ppf" value="${p.from}" data-orig="${p.from}" min="${p.from&&p.from<TODAY?p.from:TODAY}" onchange="popDateChk()"><span aria-hidden="true">~</span><label class="sr" for="ppt">노출 종료일</label><input class="inp" type="date" id="ppt" value="${p.to}" min="${p.from>TODAY?p.from:TODAY}" onchange="popDateChk()"></div><p class="pp-err" id="pperr" role="alert" hidden></p>`,{req:1,help:'오늘 이후 날짜만 고를 수 있고, 종료일은 시작일과 같거나 이후여야 합니다. 잘못 고르면 바로 안내합니다.'})}
- ${F('예약 게시',`${chk('예약 게시 사용',!!p.reserve,'id="pprc" onchange="this.closest(\'.f-c\').querySelector(\'.pp-rsv\').hidden=!this.checked;popDateChk()"')}<div class="pp-rsv mt8" ${p.reserve?'':'hidden'}><label class="small" for="pprsv">게시 시작 일시</label> <input class="inp" type="datetime-local" id="pprsv" value="${p.rsv||''}" min="${TODAY}T00:00" step="600" onchange="popDateChk()" style="width:auto"></div>`,{help:'예약 일시가 되면 자동으로 노출되고, 그 전까지는 목록에 [예약]으로 표시됩니다.'})}
+ ${F('예약 게시',`${chk('예약 게시 사용',!!p.reserve,'id="pprc" onchange="this.closest(\'.f-c\').querySelector(\'.pp-rsv\').hidden=!this.checked;popDateChk()"')}<div class="pp-rsv mt8" ${p.reserve?'':'hidden'}><label class="small" for="pprsv">게시 시작 일시</label> <input class="inp" type="datetime-local" id="pprsv" value="${p.rsv||''}" min="${TODAY}T00:00" step="600" onchange="ppRsv(this)" style="width:auto"></div>`,{help:'예약 일시를 고르면 노출 기간 시작일이 같은 날짜로 자동 입력됩니다. 예약 일시가 되면 자동으로 노출되고, 그 전까지는 목록에 [예약]으로 표시됩니다.'})}
  ${F('활성',`<span class="switch ${p.on?'on':''}" role="switch" aria-checked="${p.on}" tabindex="0" onclick="this.classList.toggle('on')"></span>`,{help:'아래 [저장]을 눌러야 적용됩니다.'})}
  ${F('오늘 하루 보지 않기',chk('쿠키 사용',p.cookie))}
  ${ei!=null?`<div class="row mt16"><button class="btn btn-ghost btn-sm" style="color:var(--bad)" onclick="delPop(${ei})">${I('trash')} 삭제</button><span class="grow"></span><a class="btn btn-line" href="#/B-16">취소</a><button class="btn btn-pri" onclick="popSave('팝업을 수정했습니다','B-16')">저장</button></div>`:`<button class="btn btn-pri btn-block mt16" onclick="popSave('팝업을 등록했습니다')">저장</button>`}</div></div>`)};
