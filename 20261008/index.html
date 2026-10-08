@@ -1513,6 +1513,34 @@ html[data-hc="1"] .amap-isl{background:#000}
   .map-g{grid-template-rows:repeat(6,64px)}
 }
 @media print{.util,.hd,.subtabs,.ft,.pt,.noprint{display:none!important}}
+/* ===== 알림 팝업 창 · 홈 바로가기 묶음 ===== */
+.popups{align-items:start;padding-top:max(24px,calc((100vh - 620px) / 2))}
+.popup{display:flex;flex-direction:column}
+.popup .pp-h{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 8px 0 18px;border-bottom:1px solid var(--line);font-size:.833rem}
+.popup .pp-h b{color:var(--accent)}
+.popup .pp-nav{display:flex;gap:4px}
+.popup .pp-nav button{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:var(--r);background:var(--bg);color:var(--ink)}
+.popup .pp-nav .ic{width:18px;height:18px}
+.popup .pp-img{display:block}
+.popup .pp-dots{display:flex;justify-content:center;gap:4px;padding:8px 0 2px}
+.popup .pp-dots button{width:24px;height:24px;display:grid;place-items:center;padding:0;border:0;background:transparent}
+.popup .pp-dots button::before{content:'';width:8px;height:8px;border-radius:var(--p-radius-pill);background:var(--line-2);transition:width .2s var(--ease-out,ease-out)}
+.popup .pp-dots button.on::before{width:22px;background:var(--accent)}
+.popup .pf{align-items:center;padding:0 8px 0 4px;min-height:52px}
+.popup .pf .pp-x{min-height:40px;padding:0 18px;border-radius:var(--r);background:var(--ink);color:var(--bg);font-weight:700}
+.popup .pf .pp-x:hover{text-decoration:none;opacity:.9}
+@media (prefers-reduced-motion:reduce){.popup .pp-dots button::before{transition:none}}
+.hc-q .tx{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px}
+.hc-q .tx b{flex:none;white-space:nowrap}
+.hc-q .tx small{font-size:.722rem;font-weight:700;opacity:.82;line-height:1.3}
+.hc-q .tx .d{font-size:clamp(.778rem,1.8vh,.833rem);font-weight:500;line-height:1.35;color:var(--ink-2)}
+.hc-q.pri .tx .d{color:inherit;opacity:.88}
+.hc-q.pri{position:relative;margin-right:clamp(8px,1.2vw,16px)}
+.hc-q.pri::after{content:'';position:absolute;top:14%;bottom:14%;right:calc(-1 * (clamp(12px,1.4vw,20px) + clamp(8px,1.2vw,16px)) / 2 - .5px);width:1px;background:var(--line-2)}
+html[data-fs="2"] .hc-q.pri{margin-right:0}
+html[data-fs="2"] .hc-q.pri::after{display:none}
+@media (max-width:1100px){.hc-q.pri{margin-right:0}.hc-q.pri::after{display:none}}
+html[data-hc="1"] .hc-q .tx .d{color:inherit}
 /* ===== 디테일 다듬기 — 터치 영역 · 태블릿 헤더 · 선택색 · 스크롤바 ===== */
 ::selection{background:color-mix(in srgb,var(--accent) 26%,transparent);color:var(--ink)}
 html{scrollbar-color:var(--line-2) transparent}
@@ -1797,7 +1825,8 @@ let phT;
 PAGES['H-01']=()=>{
   let today='';try{today=localStorage.getItem('ga_pop_today')}catch(e){}
   const popToday=k=>{try{return localStorage.getItem('ga_pop_today_'+k)===new Date().toDateString()}catch(e){return false}};
-  const pops=[['L','2027 지원사업 공모 사전 안내',1,'A4-02?i=1'],['C','예술인 등록 신청 OPEN',4,'A1-03'],['R','10월 예술캘린더',2,'A2-01']].filter(p=>!S.popClosed[p[0]]&&!popToday(p[0]));
+  const pops=['L','C','R'].map(k=>[k,POPS.filter(p=>POS_K[p.pos]===k&&p.on&&!p.reserve&&p.page!=='없음').sort((a,b)=>a.ord-b.ord)]).filter(([k,a])=>a.length&&!S.popClosed[k]&&!popToday(k));
+  if(!S.popIdx)S.popIdx={};S.popN={};pops.forEach(([k,a])=>{S.popN[k]=a.length;if((S.popIdx[k]||0)>=a.length)S.popIdx[k]=0});
   const ev=allEvents0().filter(e=>e.end>=TODAY).sort((x,y)=>x.start.localeCompare(y.start)).slice(0,2);
   const nt=NOTICES.slice(0,2);
   const md=d=>d.slice(5).replace('-','.');
@@ -1816,10 +1845,10 @@ PAGES['H-01']=()=>{
     </div>
    </div>
    <nav class="hc-cta" aria-label="바로가기">
-    <a class="hc-q pri" href="#/A1-03"><span class="ico">${I('user')}</span><b>예술인 등록/수정</b></a>
-    <a class="hc-q" href="#/A2-01"><span class="ico">${I('cal')}</span><b>예술캘린더</b></a>
-    <a class="hc-q" href="#/A3-01"><span class="ico">${I('search')}</span><b>예술인 찾아보기</b></a>
-    <a class="hc-q" href="#/A3-06"><span class="ico">${I('img')}</span><b>작품·활동 보기</b></a>
+    <a class="hc-q pri" href="#/A1-03"><span class="ico">${I('user')}</span><span class="tx"><small>예술인이라면</small><b>예술인 등록/수정</b><span class="d">심사 후 포트폴리오 공개</span></span></a>
+    <a class="hc-q" href="#/A2-01"><span class="ico">${I('cal')}</span><span class="tx"><b>예술캘린더</b><span class="d">전시·공연·교육 일정</span></span></a>
+    <a class="hc-q" href="#/A3-01"><span class="ico">${I('search')}</span><span class="tx"><b>예술인 찾아보기</b><span class="d">분야·지역별 예술인</span></span></a>
+    <a class="hc-q" href="#/A3-06"><span class="ico">${I('img')}</span><span class="tx"><b>작품·활동 보기</b><span class="d">작품과 활동 기록</span></span></a>
    </nav>
    <div class="hc-sub">
     <section class="hc-mini cal" aria-labelledby="hc-cal"><h2 id="hc-cal">이달의 일정</h2><ul>${ev.length?L(ev,e=>`<li><a ${evLink(e)}><b>${md(e.start)}</b>${e.title}</a></li>`):'<li class="muted">예정된 일정이 없습니다</li>'}</ul><a class="more" href="#/A2-01" aria-label="예술캘린더 전체 보기">${I('r')}</a></section>
@@ -1827,8 +1856,8 @@ PAGES['H-01']=()=>{
    </div>
   </div>
   </section>
-  ${pops.length?`<div class="popups" role="dialog" aria-label="공지 팝업">${L(['L','C','R'],pos=>{const p=pops.find(x=>x[0]===pos);return p?`<div class="popup"><a href="#/${p[3]}" aria-label="${p[1]} 바로가기">${PH(p[2],p[1])}</a><div class="pf"><button onclick="try{localStorage.setItem('ga_pop_today_${pos}',new Date().toDateString())}catch(e){};S.popClosed['${pos}']=1;render()">오늘 하루 보지 않기</button><button onclick="S.popClosed['${pos}']=1;render()">닫기</button></div></div>`:'<div></div>'})}</div>`:''}
-  ${REF(`키비주얼 1 · 홈 화면 히어로 — 남색 띠 전체 배경 이미지 자리. 표시 크기 약 1200×(화면 높이에 따라 380~620)px · 원본 2560×1320px · WebP 400KB 이하 · 남색 반투명 덮개(투명도 80% 이상)를 얹어 흰 글자 대비 4.5:1 유지 · 장식 이미지(alt="")`).replace('class="ref"','class="ref wrap" style="margin:16px auto"')}${REF('검색창 안내 문구는 예술인 → 작품 → 활동 → 지역 → 해시태그 순서로 3.2초마다 바뀜. 검색창을 누르거나 글자를 입력하면 멈춤').replace('class="ref"','class="ref wrap" style="margin:16px auto"')}${REF('헤더 아래 한 화면에 카피 전체·통합 검색·바로가기 4종·이달의 일정·공지 2건이 모두 보임. 푸터는 스크롤 시 노출 · 화면 높이에 맞춰 글자·간격 자동 조정(1366×768 포함), 글자 크게 설정 시에는 내용 길이만큼 늘어남').replace('class="ref"','class="ref wrap" style="margin:16px auto"')}`);
+  ${pops.length?`<div class="popups" role="dialog" aria-label="알림 팝업">${L(['L','C','R'],k=>{const g=pops.find(x=>x[0]===k);if(!g)return'<div></div>';const a=g[1],n=a.length,i=S.popIdx[k]||0,p=a[i];return `<div class="popup" data-k="${k}">${n>1?`<div class="pp-h"><span>알림 <b>${i+1}</b><span class="muted"> / ${n}</span></span><span class="pp-nav"><button type="button" onclick="popStep('${k}',-1)" aria-label="이전 알림">${I('l')}</button><button type="button" onclick="popStep('${k}',1)" aria-label="다음 알림">${I('r')}</button></span></div>`:''}<a class="pp-img" href="#/${p.go}" aria-label="${p.title} 바로가기">${PH(p.t,p.title)}</a>${n>1?`<div class="pp-dots">${L(a,(x,j)=>`<button type="button" class="${j===i?'on':''}" onclick="popGo('${k}',${j})" aria-label="${j+1}번째 알림 보기"${j===i?' aria-current="true"':''}></button>`)}</div>`:''}<div class="pf"><button type="button" onclick="try{localStorage.setItem('ga_pop_today_${k}',new Date().toDateString())}catch(e){};S.popClosed['${k}']=1;render()">오늘 하루 보지 않기</button><button type="button" class="pp-x" onclick="S.popClosed['${k}']=1;render()">닫기</button></div></div>`})}</div>`:''}
+  ${REF(`키비주얼 1 · 홈 화면 히어로 — 남색 띠 전체 배경 이미지 자리. 표시 크기 약 1200×(화면 높이에 따라 380~620)px · 원본 2560×1320px · WebP 400KB 이하 · 남색 반투명 덮개(투명도 80% 이상)를 얹어 흰 글자 대비 4.5:1 유지 · 장식 이미지(alt="")`).replace('class="ref"','class="ref wrap" style="margin:16px auto"')}${REF('검색창 안내 문구는 예술인 → 작품 → 활동 → 지역 → 해시태그 순서로 3.2초마다 바뀜. 검색창을 누르거나 글자를 입력하면 멈춤').replace('class="ref"','class="ref wrap" style="margin:16px auto"')}${REF('바로가기 4종 = 예술인용 1개(등록/수정, 강조색)와 둘러보기 3개를 구분선으로 나눔 · 각 버튼에 한 줄 설명. 알림 팝업 = 좌·중·우 창 최대 3개를 처음부터 함께 노출(관리자 팝업 관리의 위치별) · 한 창에 여러 장을 등록하면 ‹ ›·점으로 넘겨 보기(위치당 최대 5장) · [오늘 하루 보지 않기]는 창별로 적용').replace('class="ref"','class="ref wrap" style="margin:16px auto"')}${REF('헤더 아래 한 화면에 카피 전체·통합 검색·바로가기 4종·이달의 일정·공지 2건이 모두 보임. 푸터는 스크롤 시 노출 · 화면 높이에 맞춰 글자·간격 자동 조정(1366×768 포함), 글자 크게 설정 시에는 내용 길이만큼 늘어남').replace('class="ref"','class="ref wrap" style="margin:16px auto"')}`);
 };
 
 /* ---------- A1 예술인등록 ---------- */
@@ -2431,15 +2460,19 @@ PAGES['B-15']=()=>{const tot=POP.length;const byField=Object.keys(FIELDS).map(f=
  <div class="kpi mt16">${L([['누적 등록(완료)',tot],['유효',tot-12],['탈퇴',12],['장애예술인(전체)',23],['포트폴리오 조회수(월)','8,412']],([k,v])=>`<div class="stat"><p class="k">${k}</p><p class="v">${v}</p></div>`)}</div>
  <div class="grid3 mt16" style="gap:20px">${L([['유형별',[['개인',Math.round(tot*.72)],['단체',Math.round(tot*.18)],['기관',Math.round(tot*.1)]]],['활동분야별',byField],['성별·연령',[['여성',Math.round(tot*.54)],['남성',Math.round(tot*.46)],['20대',41],['30대',88],['40대',97],['50대 이상',tot-226]]]],([t,rows])=>`<div class="panel" style="margin:0"><div class="panel-h"><h2>${t}</h2></div>${tbl(['구분',{t:'인원',c:'num'},{t:'비율',c:'num'}],rows.map(([k,v])=>tr([k,{v,c:'num'},{v:(v/tot*100).toFixed(1)+'%',c:'num'}])))}</div>`)}</div>
  <div class="panel mt16"><div class="panel-h"><h2>읍면동 비교</h2><div class="row">${chips(['전체 vs 읍면동','복수 읍면동','유형','장애 여부'],['전체 vs 읍면동'],'chip-sm')}</div></div>${tbl(['읍면동',{t:'전체',c:'num'},{t:'개인',c:'num'},{t:'단체',c:'num'},{t:'기관',c:'num'},{t:'장애',c:'num'},{t:'작품·활동 등록',c:'num'}],DONGS.slice(0,10).map(d=>{const n=dongCount(d.n);return tr([d.n,{v:n,c:'num'},{v:Math.round(n*.72),c:'num'},{v:Math.round(n*.18),c:'num'},{v:Math.max(0,n-Math.round(n*.72)-Math.round(n*.18)),c:'num'},{v:Math.round(n*.06),c:'num'},{v:n*3,c:'num'}])}))}${REF('실제 화면은 27개 읍면동 전체 표시 · 예술인 활동기록 통계(작품·활동 등록 건수: 연도·분야·읍면동별) 포함')}</div>`)};
-const POPS=[{pos:'좌',title:'2027 지원사업 공모 사전 안내',page:'홈',from:'2026-10-01',to:'2026-10-31',cookie:true,on:true,link:'https://gunsancf.or.kr/notice/2027-support',t:1},{pos:'중',title:'예술인 등록 신청 OPEN',page:'홈',from:'2026-10-01',to:'2026-11-30',cookie:true,on:true,link:'/artist/apply',t:4},{pos:'우',title:'10월 예술캘린더',page:'홈',from:'2026-10-01',to:'2026-10-31',cookie:true,on:true,link:'/calendar',t:2},{pos:'좌',title:'시스템 점검 안내',page:'홈',from:'2026-10-10',to:'2026-10-12',cookie:false,on:false,reserve:true,link:'/notice/12',t:5}];
+const POPS=[{pos:'좌',ord:1,title:'2027 지원사업 공모 사전 안내',page:'홈',from:'2026-10-01',to:'2026-10-31',cookie:true,on:true,link:'https://gunsancf.or.kr/notice/2027-support',go:'A4-02?i=1',t:1},{pos:'좌',ord:2,title:'예술인 공개명함 서비스 안내',page:'홈',from:'2026-10-01',to:'2026-10-31',cookie:true,on:true,link:'/artists',go:'A3-01',t:3},{pos:'중',ord:1,title:'예술인 등록 신청 OPEN',page:'홈',from:'2026-10-01',to:'2026-11-30',cookie:true,on:true,link:'/artist/apply',go:'A1-03',t:4},{pos:'우',ord:1,title:'10월 예술캘린더',page:'홈',from:'2026-10-01',to:'2026-10-31',cookie:true,on:true,link:'/calendar',go:'A2-01',t:2},{pos:'우',ord:2,title:'ARTPORT, GUNSAN 홈페이지 오픈 안내',page:'홈',from:'2026-10-01',to:'2026-10-31',cookie:true,on:true,link:'/notice/1',go:'A4-02?i=0',t:5},{pos:'좌',ord:3,title:'시스템 점검 안내',page:'홈',from:'2026-10-10',to:'2026-10-12',cookie:false,on:false,reserve:true,link:'/notice/12',go:'A4-01',t:5}];
+const POS_K={'좌':'L','중':'C','우':'R'};
+function popStep(k,d){const n=S.popN[k]||1;S.popIdx[k]=((S.popIdx[k]||0)+d+n)%n;render();setTimeout(()=>{const b=document.querySelector(`.popup[data-k="${k}"] .pp-h button:${d<0?'first':'last'}-of-type`);b&&b.focus()},0)}
+function popGo(k,i){S.popIdx[k]=i;render()}
 function delPop(i){const p=POPS[i];document.getElementById('modal').innerHTML=`<div class="dim" onclick="if(event.target===this)this.remove()"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="dmt"><div class="modal-h"><h2 id="dmt">팝업 삭제</h2><button class="icon-btn" onclick="this.closest('.dim').remove()" aria-label="닫기">${I('x')}</button></div><div class="modal-b"><div class="row" style="gap:16px;align-items:flex-start"><div style="width:96px;flex:none">${PH(p.t,'')}</div><div><p class="h4">${p.title}</p><p class="small muted mt8">${p.pos} · ${p.page} · ${p.from.replaceAll('-','.')} ~ ${p.to.replaceAll('-','.')}</p></div></div><div class="mt16">${callout('<b>삭제하면 홈 화면에서 바로 사라지며 되돌릴 수 없습니다.</b> 잠시 내리려면 삭제 대신 [활성]을 끄고 저장해 주세요.','warn')}</div></div><div class="modal-f"><button class="btn btn-line" onclick="this.closest('.dim').remove()">취소</button><button class="btn" style="background:var(--bad-solid);color:#fff" onclick="POPS.splice(${i},1);this.closest('.dim').remove();toast('팝업을 삭제했습니다');history.replaceState(null,'','#/B-16');render()">삭제하기</button></div></div></div>`}
-PAGES['B-16']=()=>{const ei=Q.e!=null&&POPS[+Q.e]?+Q.e:null;const p=ei!=null?POPS[ei]:{pos:'좌',title:'',page:'홈',from:'',to:'',cookie:true,on:true,link:'',t:3};
+PAGES['B-16']=()=>{const ei=Q.e!=null&&POPS[+Q.e]?+Q.e:null;const p=ei!=null?POPS[ei]:{pos:'좌',ord:1,title:'',page:'홈',from:'',to:'',cookie:true,on:true,link:'',t:3};const PO=POPS.map((r,i)=>[r,i]).sort((a,b)=>'좌중우'.indexOf(a[0].pos)-'좌중우'.indexOf(b[0].pos)||a[0].ord-b[0].ord);
  return adm('B-16','팝업 관리',`<div class="grid2" style="grid-template-columns:1fr 420px;gap:20px;align-items:start"><div class="panel" style="margin:0"><div class="panel-h"><h2>등록된 팝업 <span class="muted small">${POPS.length}건</span></h2><a class="btn btn-pri btn-sm" href="#/B-16">${I('plus')} 새 팝업 등록</a></div>
- ${tbl(['위치','제목','노출 페이지','노출 기간','쿠키','활성',''],POPS.map((r,i)=>tr([badge(r.pos,'b-dark'),`<a href="#/B-16?e=${i}"><b>${r.title}</b></a>${r.reserve?' '+badge('예약','b-warn'):''}`,r.page,`${r.from.slice(5).replace('-','.')} ~ ${r.to.slice(5).replace('-','.')}`,r.cookie?'사용':'미사용',`<span class="switch ${r.on?'on':''}" data-orig="${r.on?1:0}" data-pop="${i}" role="switch" aria-checked="${r.on}" tabindex="0" onclick="pendToggle(this)"></span>`,`<div class="row" style="gap:4px;flex-wrap:nowrap"><a class="btn btn-line btn-xs" href="#/B-16?e=${i}">수정</a><button class="btn btn-ghost btn-xs" onclick="delPop(${i})">삭제</button></div>`],{cls:ei===i?'pin':''})))}
+ ${tbl(['위치','순서','제목','노출 페이지','노출 기간','쿠키','활성',''],PO.map(([r,i])=>tr([badge(r.pos+' 창','b-dark'),`${r.ord}`,`<a href="#/B-16?e=${i}"><b>${r.title}</b></a>${r.reserve?' '+badge('예약','b-warn'):''}`,r.page,`${r.from.slice(5).replace('-','.')} ~ ${r.to.slice(5).replace('-','.')}`,r.cookie?'사용':'미사용',`<span class="switch ${r.on?'on':''}" data-orig="${r.on?1:0}" data-pop="${i}" role="switch" aria-checked="${r.on}" tabindex="0" onclick="pendToggle(this)"></span>`,`<div class="row" style="gap:4px;flex-wrap:nowrap"><a class="btn btn-line btn-xs" href="#/B-16?e=${i}">수정</a><button class="btn btn-ghost btn-xs" onclick="delPop(${i})">삭제</button></div>`],{cls:ei===i?'pin':''})))}
  ${saveBar()}
- ${REF('활성 토글은 [저장]을 눌러야 적용 · 제목·[수정] 클릭 시 오른쪽에서 상세 수정, [삭제]는 확인 창 후 삭제 · 같은 위치에 활성 팝업이 2개 이상이면 저장 시 안내(위치당 1개)')}</div>
+ ${REF('활성 토글은 [저장]을 눌러야 적용 · 제목·[수정] 클릭 시 오른쪽에서 상세 수정, [삭제]는 확인 창 후 삭제 · 좌·중·우 창은 각각 따로 처음부터 노출 · 같은 위치에 여러 장을 등록하면 [순서]대로 한 창에서 넘겨 보기 · 위치당 활성 최대 5장, 넘으면 저장 시 안내')}</div>
  <div class="panel" style="margin:0;position:sticky;top:84px"><div class="panel-h"><h2>${ei!=null?'팝업 수정':'새 팝업 등록'}</h2>${ei!=null?`<a class="btn btn-ghost btn-xs" href="#/B-16">새 팝업 등록으로</a>`:''}</div>
- ${F('위치',`<div class="row">${L(['좌','중','우'],x=>rad('pp',x,p.pos===x))}</div>`,{help:'홈 화면 왼쪽·가운데·오른쪽에 하나씩, 최대 3개까지 노출됩니다.'})}
+ ${F('위치',`<div class="row">${L(['좌','중','우'],x=>rad('pp',x,p.pos===x))}</div>`,{help:'홈 화면 왼쪽·가운데·오른쪽 창에 노출됩니다. 창 3개는 처음부터 함께 보입니다.'})}
+ ${F('창 안 순서',sel(['1','2','3','4','5'],String(p.ord||1)),{help:'같은 위치에 여러 장을 등록하면 이 순서대로 한 창에서 넘겨 볼 수 있습니다(위치당 최대 5장).'})}
  ${F('제목',inp('관리용 제목',p.title),{req:1})}
  ${F('이미지',ei!=null?`<div class="row" style="align-items:flex-end"><div style="width:120px">${PH(p.t,'현재 이미지')}</div><button class="btn btn-line btn-xs">이미지 변경</button></div>`:`<div class="upl">${I('up')}<p class="tiny">팝업 크기에 맞춰 자동으로 맞춰집니다</p></div>`,{req:1})}
  ${F('링크',`${inp('https://',p.link)}<div class="mt8">${chk('새 창으로 열기',!p.link.startsWith('/'))}</div>`)}
