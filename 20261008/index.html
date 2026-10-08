@@ -1649,6 +1649,10 @@ ul.yr{gap:8px}
 html[data-fs="2"] .pf-card{grid-template-columns:160px minmax(0,1fr)}
 html[data-fs="1"] .pf-card{grid-template-columns:180px minmax(0,1fr) 380px}
 .callout:not(:has(> .ic)){display:block}
+/* ===== 예술캘린더 일정 칸 — 분류 색 점을 첫 줄에 맞춤 ===== */
+.ev{padding:5px 6px 5px 16px}
+.ev::before{left:6px;top:calc(5px + .66em);width:0;height:0;border-width:3px;transform:translateY(-50%)}
+html[data-hc="1"] .ev::before{border-color:currentColor}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
