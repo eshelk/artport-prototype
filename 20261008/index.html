@@ -538,7 +538,7 @@ html[data-hc="1"] .hero{background:var(--color-bg-page)}
 body{font-family:var(--p-font-family-sans);color:var(--ink);background:var(--bg);line-height:var(--p-font-leading-normal);word-break:keep-all;-webkit-font-smoothing:antialiased;min-width:320px}
 a{color:inherit;text-decoration:none;cursor:pointer} button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
 img,svg{display:block} ul{list-style:none}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:var(--p-radius-sm)}
 .hero :focus-visible,.kv :focus-visible,.ft :focus-visible,.adm-side :focus-visible,.banner-q :focus-visible,.cta4 :focus-visible{outline-color:var(--focus-dark)}
 .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
 .serif{font-family:var(--p-font-family-serif)}
@@ -555,8 +555,8 @@ img,svg{display:block} ul{list-style:none}
 html[data-hc="1"] .btn-dark{border-color:var(--color-text-heading)}
 .btn-line{border-color:var(--line-2);background:var(--bg)} .btn-line:hover{border-color:var(--ink)}
 .btn-ghost{color:var(--ink-2)} .btn-ghost:hover{background:var(--paper)}
-.btn-sm{height:36px;padding:0 16px;font-size:.778rem;border-radius:10px}
-.btn-xs{height:30px;padding:0 12px;font-size:.778rem;border-radius:6px}
+.btn-sm{height:36px;padding:0 16px;font-size:.778rem;border-radius:var(--r)}
+.btn-xs{height:30px;padding:0 12px;font-size:.778rem;border-radius:var(--p-radius-sm)}
 .btn-block{width:100%}
 .btn[disabled]{opacity:.45;pointer-events:none}
 .icon-btn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%}
@@ -576,7 +576,7 @@ select.inp{appearance:none;background-image:linear-gradient(45deg,transparent 50
 .f-l{font-weight:700;font-size:.889rem;padding-top:12px}
 .f.stack .f-l{padding-top:0}
 .req{color:var(--accent);font-style:normal;margin-left:4px}
-.opt{font-size:.667rem;font-weight:500;color:var(--ink-3);border:1px solid var(--line-2);border-radius:16px;padding:1px 8px;margin-left:8px;vertical-align:2px}
+.opt{font-size:.667rem;font-weight:500;color:var(--ink-3);border:1px solid var(--line-2);border-radius:var(--r-lg);padding:1px 8px;margin-left:8px;vertical-align:2px}
 .help{font-size:.778rem;color:var(--ink-3);margin-top:8px}
 .err{font-size:.778rem;color:var(--bad);margin-top:8px;font-weight:500}
 .okmsg{font-size:.778rem;color:var(--ok);margin-top:8px;font-weight:500}
@@ -594,7 +594,7 @@ html[data-hc="1"] .chip.on{background:var(--accent);color:var(--color-bg-page);b
 .tags{display:flex;flex-wrap:wrap;gap:4px 12px}
 
 /* ===== 배지 ===== */
-.badge{display:inline-flex;align-items:center;height:26px;padding:0 12px;border-radius:6px;font-size:.778rem;font-weight:700;white-space:nowrap;background:var(--paper);color:var(--ink-2)}
+.badge{display:inline-flex;align-items:center;height:26px;padding:0 12px;border-radius:var(--p-radius-sm);font-size:.778rem;font-weight:700;white-space:nowrap;background:var(--paper);color:var(--ink-2)}
 .badge{color:var(--color-status-neutral-fg)} .b-ok{background:var(--ok-weak);color:var(--ok)} .b-warn,.b-acc{background:var(--warn-weak);color:var(--warn)} .b-bad{background:var(--bad-weak);color:var(--bad)} .b-info{background:var(--info-weak);color:var(--info)} .b-sec{background:var(--ok-weak);color:var(--sea)} .b-dark{background:var(--navy);color:var(--color-text-inverse)}
 .b-perf{background:var(--c-perf-w);color:var(--color-category-perf-fg)} .b-exhi{background:var(--c-exhi-w);color:var(--color-category-exhi-fg)} .b-edu{background:var(--c-edu-w);color:var(--color-category-edu-fg)} .b-etc{background:var(--c-etc-w);color:var(--color-category-etc-fg)}
 html[data-hc="1"] .badge{border:1px solid currentColor}
@@ -605,7 +605,7 @@ html[data-hc="1"] .maint-band{color:var(--color-bg-page)}
 .util{background:var(--paper);border-bottom:1px solid var(--line);font-size:.778rem}
 .util-in{display:flex;justify-content:flex-end;align-items:center;gap:8px;height:38px}
 .util-in .lbl{color:var(--ink-3);margin-right:4px}
-.util button{height:26px;padding:0 12px;border-radius:6px;border:1px solid var(--line-2);background:var(--bg);font-size:.778rem}
+.util button{height:26px;padding:0 12px;border-radius:var(--p-radius-sm);border:1px solid var(--line-2);background:var(--bg);font-size:.778rem}
 .util button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .util .sep{width:1px;height:14px;background:var(--line-2);margin:0 8px}
 .hd{position:sticky;top:0;z-index:var(--p-z-header);background:var(--bg);border-bottom:1px solid var(--line)}
@@ -620,10 +620,10 @@ html[data-hc="1"] .logo{color:var(--color-text-heading)}
 html[data-hc="1"] .gnb-item>a.on,html[data-hc="1"] .gnb-item:hover>a{color:var(--accent)}
 .gnb-sub{position:absolute;top:84px;left:50%;transform:translateX(-50%);min-width:220px;background:var(--bg);border:1px solid var(--line);border-radius:0 0 10px 10px;box-shadow:var(--shadow);padding:12px;display:none}
 .gnb-item:hover .gnb-sub,.gnb-item:focus-within .gnb-sub{display:block}
-.gnb-sub a{display:block;padding:12px 16px;border-radius:10px;font-size:.889rem;white-space:nowrap}
+.gnb-sub a{display:block;padding:12px 16px;border-radius:var(--r);font-size:.889rem;white-space:nowrap}
 .gnb-sub a:hover{background:var(--paper)}
 .hd-r{display:flex;align-items:center;gap:8px;font-size:.889rem;font-weight:500}
-.hd-r>a.t{padding:8px 12px;border-radius:10px} .hd-r>a.t:hover{background:var(--paper)}
+.hd-r>a.t{padding:8px 12px;border-radius:var(--r)} .hd-r>a.t:hover{background:var(--paper)}
 
 /* ===== 서브 키비주얼 & 탭 ===== */
 .kv{background:var(--navy-2);color:var(--color-text-inverse);position:relative;overflow:hidden}
@@ -652,10 +652,10 @@ html[data-hc="1"] .kv.sky,html[data-hc="1"] .kv.dusk{background:var(--color-bg-p
 html[data-hc="1"] .kv.sky p,html[data-hc="1"] .kv.sky .crumb,html[data-hc="1"] .kv.dusk p,html[data-hc="1"] .kv.dusk .crumb{color:var(--color-text-heading)}
 .subtabs{background:var(--paper);border-bottom:1px solid var(--line);position:relative;z-index:var(--p-z-raised);padding:16px 0}
 .subtabs .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.subtabs a{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;height:60px;padding:0 16px;border-radius:10px;background:var(--bg);border:1.5px solid var(--line-2);font-weight:700;font-size:1rem;color:var(--ink-2);text-align:center;transition:var(--motion-color),box-shadow var(--p-duration-fast) ease}
+.subtabs a{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;height:60px;padding:0 16px;border-radius:var(--r);background:var(--bg);border:1.5px solid var(--line-2);font-weight:700;font-size:1rem;color:var(--ink-2);text-align:center;transition:var(--motion-color),box-shadow var(--p-duration-fast) ease}
 .subtabs a:hover{border-color:var(--accent);color:var(--accent-2);background:var(--accent-weak)}
 .subtabs a.on{background:var(--accent);border-color:var(--accent);color:var(--color-text-inverse);box-shadow:var(--elevation-raised)}
-.subtabs a.on::after{content:'';position:absolute;left:50%;bottom:-7px;width:12px;height:12px;background:var(--accent);transform:translateX(-50%) rotate(45deg);border-radius:6px}
+.subtabs a.on::after{content:'';position:absolute;left:50%;bottom:-7px;width:12px;height:12px;background:var(--accent);transform:translateX(-50%) rotate(45deg);border-radius:var(--p-radius-sm)}
 html[data-hc="1"] .subtabs a.on{color:var(--color-bg-page)}
 .sec{padding:56px 0}
 .sec-t{font-family:var(--type-h1-family);font-size:1.778rem;font-weight:var(--type-h1-weight);letter-spacing:var(--p-font-tracking-tight)}
@@ -690,18 +690,18 @@ html[data-hc="1"] .card .heart{background:var(--color-bg-page);border:1px solid 
 .box-p{background:var(--paper);border-radius:var(--r-lg);padding:24px}
 .callout{display:flex;gap:12px;align-items:flex-start;background:var(--info-weak);color:var(--ink);border-radius:var(--r);padding:16px 20px;font-size:.889rem}
 .callout .ic{color:var(--info);margin-top:4px}
-.callout.warn,.callout.bad{background:var(--bad-weak);border-left:5px solid var(--bad-solid);border-radius:4px var(--r) var(--r) 4px;font-weight:500}
+.callout.warn,.callout.bad{background:var(--bad-weak);border:1px solid color-mix(in srgb,var(--bad-solid) 30%,transparent);border-radius:var(--r);font-weight:500}
 .callout.warn .ic,.callout.bad .ic{color:var(--bad-solid);width:1.3em;height:1.3em;margin-top:1px}
 .callout.warn b,.callout.bad b{color:var(--bad)}
 html[data-hc="1"] .callout.warn,html[data-hc="1"] .callout.bad{border-left-color:var(--color-status-error-fg)}
 /* 제작참고 메모 — 실제 화면 아님(프로토타입 전용) */
-.ref{display:flex;gap:8px;align-items:flex-start;margin-top:12px;padding:8px 12px;border:1.5px dashed #8B5CF6;border-radius:10px;background:#F5F3FF;color:#4C1D95;font-size:.778rem;line-height:var(--p-font-leading-normal);text-align:left;font-weight:500}
-.ref-tag{flex:none;background:#7C3AED;color:var(--color-text-inverse);font-weight:700;border-radius:6px;padding:1px 8px;font-size:.667rem;letter-spacing:var(--p-font-tracking-wide)}
+.ref{display:flex;gap:8px;align-items:flex-start;margin-top:12px;padding:8px 12px;border:1.5px dashed #8B5CF6;border-radius:var(--r);background:#F5F3FF;color:#4C1D95;font-size:.778rem;line-height:var(--p-font-leading-normal);text-align:left;font-weight:500}
+.ref-tag{flex:none;background:#7C3AED;color:var(--color-text-inverse);font-weight:700;border-radius:var(--p-radius-sm);padding:1px 8px;font-size:.667rem;letter-spacing:var(--p-font-tracking-wide)}
 .ref .link{color:#5B21B6}
 html.noref .ref{display:none!important}
 .fb-step{display:inline-flex;align-items:baseline;gap:2px;margin-right:12px;font-weight:900;font-size:1.111rem;color:var(--accent-2);font-variant-numeric:tabular-nums}
 .fb-step small{font-size:.778rem;font-weight:500;color:var(--ink-3)}
-.savebar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px;padding:12px 16px;border-radius:10px;background:var(--paper);font-size:.778rem;transition:var(--motion-color)}
+.savebar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px;padding:12px 16px;border-radius:var(--r);background:var(--paper);font-size:.778rem;transition:var(--motion-color)}
 .savebar .sb-msg{flex:1;color:var(--ink-2)}
 .savebar.dirty{background:var(--warn-weak);box-shadow:inset 0 0 0 2px var(--warn)}
 .savebar.dirty .sb-msg{color:var(--warn);font-weight:700}
@@ -716,26 +716,26 @@ html.noref .ref{display:none!important}
 .adm .grid2>.panel:last-child .f-l{padding-top:0}
 .adm .f-c .row{flex-wrap:wrap} .adm .f-c .row>.inp{flex:1;min-width:140px}
 .f-c .row>.inp{min-width:0;flex:1 1 140px} .f-c .row{flex-wrap:wrap}
-.tpl-prev{overflow:hidden;border-radius:10px}
+.tpl-prev{overflow:hidden;border-radius:var(--r)}
 .btn.is-off{opacity:.45;cursor:not-allowed}
 .qcard{border:2px solid var(--navy-2)!important}
 .qcard.need{border-color:var(--bad-solid)!important;box-shadow:0 0 0 4px var(--bad-weak)}
-.inq{border:1px solid var(--line-2);border-radius:10px;background:var(--bg)} .inq+.inq{margin-top:12px}
+.inq{border:1px solid var(--line-2);border-radius:var(--r);background:var(--bg)} .inq+.inq{margin-top:12px}
 .inq summary{display:flex;gap:12px;align-items:center;padding:16px 20px;cursor:pointer;list-style:none;font-size:.889rem}
 .inq summary::-webkit-details-marker{display:none}
 .inq summary::after{content:'';width:8px;height:8px;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:rotate(45deg);margin-left:4px}
 .inq[open] summary::after{transform:rotate(-135deg)}
 .inq[open] summary{border-bottom:1px solid var(--line)}
 .inq-b{padding:20px 20px}
-.inq-a{margin-top:16px;padding:16px 20px;border-radius:10px;background:var(--accent-weak);border-left:4px solid var(--accent);color:var(--ink)}
+.inq-a{margin-top:16px;padding:16px 20px;border-radius:var(--r);background:var(--accent-weak);border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);color:var(--ink)}
 html[data-hc="1"] .callout{border:1px solid var(--color-text-heading)}
 
 /* 검색 바 & 필터 */
 .sbar{display:flex;gap:12px}
 .sbar .inpw{position:relative;flex:1}
 .sbar .inpw .ic{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--ink-3);width:22px;height:22px}
-.sbar .inp{padding-left:48px;height:58px;font-size:1rem;border-radius:10px}
-.sbar .btn{height:58px;border-radius:10px}
+.sbar .inp{padding-left:48px;height:58px;font-size:1rem;border-radius:var(--r)}
+.sbar .btn{height:58px;border-radius:var(--r)}
 .filters{border:1px solid var(--line);border-radius:var(--r-lg);padding:8px 24px;margin-top:16px;background:var(--bg)}
 .frow{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:16px 0;border-bottom:1px dashed var(--line);align-items:center}
 .frow:last-of-type{border-bottom:0}
@@ -743,12 +743,12 @@ html[data-hc="1"] .callout{border:1px solid var(--color-text-heading)}
 .selbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:16px 0 8px;font-size:.778rem}
 .selbar .chip{height:30px;font-size:.778rem;background:var(--paper);border-color:transparent}
 .listhd{display:flex;justify-content:space-between;align-items:center;margin:32px 0 20px;gap:16px;flex-wrap:wrap}
-.seg{display:inline-flex;border:1.5px solid var(--field);border-radius:10px;overflow:hidden}
+.seg{display:inline-flex;border:1.5px solid var(--field);border-radius:var(--r);overflow:hidden}
 .seg button{height:40px;padding:0 16px;font-size:.778rem;font-weight:500}
 .seg button+button{border-left:1.5px solid var(--field)}
 .seg button.on{background:var(--accent);color:var(--color-text-inverse);font-weight:700}
 .pager{display:flex;justify-content:center;gap:8px;margin-top:48px}
-.pager a{min-width:42px;height:42px;display:grid;place-items:center;border-radius:10px;font-size:.889rem}
+.pager a{min-width:42px;height:42px;display:grid;place-items:center;border-radius:var(--r);font-size:.889rem}
 .pager a.on{background:var(--accent);color:var(--color-text-inverse);font-weight:700}
 .pager a:hover:not(.on){background:var(--paper)}
 
@@ -786,11 +786,11 @@ html[data-hc="1"] .stepper li.done::before,html[data-hc="1"] .stepper li.done::a
 .upl{border:2px dashed var(--field);border-radius:var(--r);padding:24px;text-align:center;color:var(--ink-3);font-size:.778rem;background:var(--paper)}
 .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .thumbs .ph{aspect-ratio:1}
-.edtbl input{border:1px solid var(--line);border-radius:6px;height:38px;padding:0 12px;width:100%;font:inherit;font-size:.778rem;background:var(--bg);color:var(--ink)}
+.edtbl input{border:1px solid var(--line);border-radius:var(--p-radius-sm);height:38px;padding:0 12px;width:100%;font:inherit;font-size:.778rem;background:var(--bg);color:var(--ink)}
 
 /* ===== 모달 ===== */
 .dim{position:fixed;inset:0;background:rgba(10,16,28,.55);z-index:var(--p-z-overlay);display:grid;place-items:center;padding:24px;overflow-y:auto;animation:fade .15s}
-.modal{background:var(--bg);border-radius:16px;width:min(560px,100%);box-shadow:var(--elevation-modal);position:relative;max-height:calc(100vh - 48px);overflow-y:auto;animation:pop .18s}
+.modal{background:var(--bg);border-radius:var(--r-lg);width:min(560px,100%);box-shadow:var(--elevation-modal);position:relative;max-height:calc(100vh - 48px);overflow-y:auto;animation:pop .18s}
 html[data-hc="1"] .modal{border:2px solid var(--color-text-heading)}
 .modal.lg{width:min(760px,100%)} .modal.xl{width:min(1080px,100%)}
 .modal-h{display:flex;justify-content:space-between;align-items:center;padding:24px 24px 0}
@@ -799,12 +799,12 @@ html[data-hc="1"] .modal{border:2px solid var(--color-text-heading)}
 .modal-f{display:flex;gap:8px;padding:0 24px 24px}
 .modal-f .btn{flex:1}
 .mstep{display:flex;gap:8px;padding:16px 24px 0}
-.mstep span{flex:1;height:4px;border-radius:6px;background:var(--line)} .mstep span.on{background:var(--accent)}
+.mstep span{flex:1;height:4px;border-radius:var(--p-radius-sm);background:var(--line)} .mstep span.on{background:var(--accent)}
 @keyframes fade{from{opacity:0}} @keyframes pop{from{transform:translateY(12px);opacity:0}}
-.typecard{border:2px solid var(--line);border-radius:16px;padding:20px;text-align:left;display:flex;gap:16px;align-items:flex-start;width:100%}
+.typecard{border:2px solid var(--line);border-radius:var(--r-lg);padding:20px;text-align:left;display:flex;gap:16px;align-items:flex-start;width:100%}
 .typecard:hover{border-color:var(--ink-3)}
 .typecard.on{border-color:var(--accent);background:var(--accent-weak)}
-.typecard .tc-i{width:44px;height:44px;border-radius:10px;background:var(--paper);display:grid;place-items:center;flex:none}
+.typecard .tc-i{width:44px;height:44px;border-radius:var(--r);background:var(--paper);display:grid;place-items:center;flex:none}
 .typecard b{display:block;font-size:1rem} .typecard span{font-size:.778rem;color:var(--ink-2)}
 
 /* ===== 홈 ===== */
@@ -820,7 +820,7 @@ html[data-hc="1"] .modal{border:2px solid var(--color-text-heading)}
 .hero-art{position:relative}
 .hero-art svg{width:100%;height:auto}
 .cta4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-1px;padding:0 40px 64px;position:relative;z-index:var(--p-z-raised)}
-.cta{display:flex;flex-direction:column;justify-content:space-between;min-height:150px;border-radius:16px;padding:24px 24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:var(--color-text-inverse);transition:var(--motion-color),var(--motion-press)}
+.cta{display:flex;flex-direction:column;justify-content:space-between;min-height:150px;border-radius:var(--r-lg);padding:24px 24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:var(--color-text-inverse);transition:var(--motion-color),var(--motion-press)}
 .cta:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
 .cta .n{font-size:.667rem;opacity:.6;letter-spacing:var(--p-font-tracking-widest)}
 .cta b{font-size:1.111rem;display:flex;justify-content:space-between;align-items:center}
@@ -842,7 +842,7 @@ html[data-hc="1"] .modal{border:2px solid var(--color-text-heading)}
 @media (prefers-reduced-motion:reduce){.scroll-cue .ic{animation:none}}
 @media (max-width:1100px){.hero-full .hero-in{grid-template-columns:1fr;gap:32px}}
 .popups{position:fixed;inset:0;z-index:var(--p-z-popup);background:rgba(10,16,28,.45);display:grid;grid-template-columns:repeat(3,1fr);align-items:center;justify-items:center;padding:24px}
-.popup{width:min(360px,100%);background:var(--bg);border-radius:16px;overflow:hidden;box-shadow:var(--elevation-modal)}
+.popup{width:min(360px,100%);background:var(--bg);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--elevation-modal)}
 .popup .ph{aspect-ratio:3/4;border-radius:0}
 .popup .pf{display:flex;justify-content:space-between;font-size:.778rem;border-top:1px solid var(--line)}
 .popup .pf button{padding:12px 16px}
@@ -857,7 +857,7 @@ html[data-hc="1"] .ft{background:var(--color-bg-page);border-top:1px solid var(-
 .ft .legal span+span::before{content:'|';margin:0 12px;opacity:.35}
 .ft .cp{margin-top:16px;opacity:.6}
 .ft-r{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
-.ft-r select{height:40px;background:transparent;color:var(--color-text-inverse);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:0 16px;font:inherit;font-size:.778rem;min-width:200px}
+.ft-r select{height:40px;background:transparent;color:var(--color-text-inverse);border:1px solid rgba(255,255,255,.3);border-radius:var(--r);padding:0 16px;font:inherit;font-size:.778rem;min-width:200px}
 .sns{display:flex;gap:8px}
 .sns a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-size:.667rem;font-weight:700}
 .ft-links{display:flex;gap:20px;font-weight:700;color:var(--color-text-inverse)}
@@ -902,12 +902,13 @@ html[data-hc="1"] .ft{background:var(--color-bg-page);border-top:1px solid var(-
 .cal-g .d.out .dn{color:var(--line-2)}
 .cal-g .d.today .dn{background:var(--accent);color:var(--on-accent);border-radius:50%;width:24px;height:24px;display:inline-grid;place-items:center;margin:0 0 4px}
 .cal-g .d.click{cursor:pointer} .cal-g .d.click:hover{background:var(--paper)}
-.ev{display:block;padding:2px 8px;border-radius:6px;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:4px solid;background:var(--paper);font-weight:500;color:var(--ink)}
+.ev{display:block;position:relative;padding:2px 8px 2px 18px;border-radius:var(--p-radius-sm);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:0 solid;background:var(--paper);font-weight:500;color:var(--ink)}
+.ev::before{content:'';position:absolute;left:7px;top:50%;width:0;height:0;border:4px solid;border-color:inherit;border-radius:50%;transform:translateY(-50%)}
 .ev.perf{border-color:var(--c-perf);background:var(--c-perf-w)} .ev.exhi{border-color:var(--c-exhi);background:var(--c-exhi-w)} .ev.edu{border-color:var(--c-edu);background:var(--c-edu-w)} .ev.etc{border-color:var(--c-etc);background:var(--c-etc-w)} .ev.org{border-color:var(--c-org);background:var(--c-org-w)}
 .ev:hover{text-decoration:underline}
 .more{font-size:.667rem;font-weight:700;color:var(--accent-2);padding:2px 8px}
 .legend{display:flex;gap:16px;font-size:.778rem;align-items:center;flex-wrap:wrap}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:6px;margin-right:8px;vertical-align:-1px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:var(--p-radius-sm);margin-right:8px;vertical-align:-1px}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;flex:none}
 .mlist li{display:grid;grid-template-columns:54px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.778rem}
 .mlist .md{font-weight:700;font-size:1rem;line-height:var(--p-font-leading-tight);text-align:center}
@@ -918,7 +919,7 @@ html[data-hc="1"] .ft{background:var(--color-bg-page);border-top:1px solid var(-
 .map{position:relative;background:linear-gradient(180deg,var(--color-brand-primary-weak),#D8EBF8);border-radius:var(--r-lg);padding:24px;border:1px solid var(--line)}
 html[data-hc="1"] .map{background:var(--color-bg-page)}
 .map-g{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));grid-template-rows:repeat(6,82px);gap:8px}
-.dong{border-radius:10px;background:var(--bg);border:1.5px solid var(--line-2);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.667rem;line-height:var(--p-font-leading-tight);text-align:center;padding:4px;transition:var(--motion-press)}
+.dong{border-radius:var(--r);background:var(--bg);border:1.5px solid var(--line-2);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.667rem;line-height:var(--p-font-leading-tight);text-align:center;padding:4px;transition:var(--motion-press)}
 .dong b{font-size:1.111rem;font-variant-numeric:tabular-nums;color:var(--navy-2)}
 html[data-hc="1"] .dong b{color:var(--color-text-heading)}
 .dong:hover{transform:scale(1.04);border-color:var(--ink)}
@@ -933,16 +934,16 @@ html[data-hc="1"] .dong.myeon,html[data-hc="1"] .dong.eup{background:var(--color
 .side{position:sticky;top:110px;align-self:start}
 .side .who{padding:20px;border-radius:var(--r-lg);background:var(--paper);margin-bottom:16px}
 .side .who b{font-size:1rem;display:block}
-.side nav a{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:10px;font-size:.889rem;font-weight:500}
+.side nav a{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:var(--r);font-size:.889rem;font-weight:500}
 .side nav a:hover{background:var(--paper)}
 .side nav a.on{background:var(--accent);color:var(--color-text-inverse);font-weight:700}
 html[data-hc="1"] .side nav a.on{background:var(--accent);color:var(--color-bg-page)}
 .side nav .grp{font-size:.667rem;color:var(--ink-3);font-weight:700;padding:16px 16px 8px;letter-spacing:var(--p-font-tracking-wide)}
-.cnt{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 8px;border-radius:10px;background:var(--accent);color:var(--on-accent);font-size:.667rem;font-weight:700}
+.cnt{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 8px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);font-size:.667rem;font-weight:700}
 .pg-h{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;gap:16px;flex-wrap:wrap}
 .pg-h h1{font-size:1.778rem;font-weight:700;letter-spacing:var(--p-font-tracking-tight)}
 .stat4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.stat{border:1px solid var(--line);border-radius:16px;padding:20px 20px}
+.stat{border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 20px}
 .stat .k{font-size:.778rem;color:var(--ink-2)}
 .stat .v{font-size:1.778rem;font-weight:900;font-variant-numeric:tabular-nums;line-height:var(--p-font-leading-tight)}
 .stat .v small{font-size:.778rem;font-weight:500;color:var(--ink-3);margin-left:2px}
@@ -955,7 +956,7 @@ html[data-hc="1"] .side nav a.on{background:var(--accent);color:var(--color-bg-p
 .noti li.unread b{font-weight:700} .noti li .dot{background:var(--accent)} .noti li.read .dot{background:transparent}
 .banner-q{border-radius:var(--r-lg);background:var(--navy);color:var(--color-text-inverse);padding:32px 40px;display:flex;justify-content:space-between;align-items:center;position:relative;overflow:hidden}
 html[data-hc="1"] .banner-q{border:1px solid var(--color-text-heading)}
-.status-banner{display:flex;gap:16px;align-items:center;padding:20px 24px;border-radius:16px;background:var(--warn-weak);margin-top:16px}
+.status-banner{display:flex;gap:16px;align-items:center;padding:20px 24px;border-radius:var(--r-lg);background:var(--warn-weak);margin-top:16px}
 .timeline li{position:relative;padding:0 0 24px 24px;font-size:.889rem}
 .timeline li::before{content:'';position:absolute;left:6px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--line-2)}
 .timeline li::after{content:'';position:absolute;left:10px;top:20px;bottom:0;width:1px;background:var(--line)}
@@ -970,14 +971,14 @@ html[data-hc="1"] .adm-side{background:var(--color-bg-page);border-right:1px sol
 .adm-side .logo{color:var(--color-text-inverse);font-size:1rem;padding:8px 12px 2px;display:block}
 .adm-side .sub{font-size:.667rem;opacity:.55;padding:0 12px 20px;letter-spacing:var(--p-font-tracking-widest)}
 .adm-side .grp{font-size:.667rem;opacity:.5;padding:16px 12px 8px;font-weight:700;letter-spacing:var(--p-font-tracking-wide)}
-.adm-side a{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:6px}
+.adm-side a{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:var(--p-radius-sm)}
 .adm-side a:hover{background:rgba(255,255,255,.06);color:var(--color-text-inverse)}
 .adm-side a.on{background:rgba(255,255,255,.12);color:var(--color-text-inverse);font-weight:700}
 .adm-main{min-width:0}
 .adm-top{height:64px;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:var(--p-z-sticky);font-size:.778rem;gap:12px}
-.clock{font-variant-numeric:tabular-nums;font-weight:700;background:var(--paper);padding:8px 12px;border-radius:10px;display:inline-flex;align-items:center;gap:8px}
+.clock{font-variant-numeric:tabular-nums;font-weight:700;background:var(--paper);padding:8px 12px;border-radius:var(--r);display:inline-flex;align-items:center;gap:8px}
 .adm-body{padding:24px}
-.panel{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:24px 24px}
+.panel{background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 24px}
 .panel+.panel{margin-top:20px}
 .panel-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:12px;flex-wrap:wrap}
 .panel-h h2{font-size:1rem;font-weight:700}
@@ -993,11 +994,11 @@ html[data-hc="1"] .adm-side{background:var(--color-bg-page);border-right:1px sol
 .adm .btn{height:40px;font-size:.778rem;padding:0 16px}
 .adm .btn-sm{height:32px;font-size:.778rem}
 .adm .btn-xs{height:28px}
-.diff-old{background:var(--bad-weak);text-decoration:line-through;padding:1px 8px;border-radius:6px}
-.diff-new{background:var(--ok-weak);padding:1px 8px;border-radius:6px;font-weight:700}
+.diff-old{background:var(--bad-weak);text-decoration:line-through;padding:1px 8px;border-radius:var(--p-radius-sm)}
+.diff-new{background:var(--ok-weak);padding:1px 8px;border-radius:var(--p-radius-sm);font-weight:700}
 .chg td{background:var(--color-status-warning-bg)}
 html[data-hc="1"] .chg td{background:var(--color-brand-primary-weak)}
-.switch{position:relative;width:44px;height:24px;border-radius:16px;background:var(--field);display:inline-block;vertical-align:middle;cursor:pointer;flex:none}
+.switch{position:relative;width:44px;height:24px;border-radius:var(--r-lg);background:var(--field);display:inline-block;vertical-align:middle;cursor:pointer;flex:none}
 .switch::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--p-color-white);transition:left var(--p-duration-fast) var(--p-easing-out)}
 .switch.on{background:var(--accent)} .switch.on::after{left:23px}
 
@@ -1089,7 +1090,7 @@ html[data-hc="1"] .noti-n{background:var(--color-brand-primary);color:var(--colo
 .my-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;margin-top:24px}
 .my-up,.my-quick{padding:24px}
 .qk{display:flex;flex-direction:column;gap:8px;margin-top:12px}
-.qk a{display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 16px;border-radius:12px;background:var(--paper);font-weight:700;font-size:.889rem;color:var(--ink)}
+.qk a{display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 16px;border-radius:var(--r);background:var(--paper);font-weight:700;font-size:.889rem;color:var(--ink)}
 .qk a span{flex:1 1 auto} .qk a .ic{width:20px;height:20px;color:var(--accent);flex:none} .qk a .ic:last-child{color:var(--ink-3);width:16px;height:16px}
 @media (hover:hover) and (pointer:fine){.qk a:hover{background:var(--accent-weak)}}
 html[data-fs="1"] .kpi2.my4,html[data-fs="2"] .kpi2.my4{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1109,11 +1110,11 @@ html[data-fs="2"] .my-row{grid-template-columns:1fr}
 .rep-img{display:grid;grid-template-columns:180px minmax(0,1fr);gap:20px;align-items:center}.rep-ph .ph{aspect-ratio:4/5}.rep-guide{padding-left:18px;margin:8px 0 0;line-height:1.7}
 .maj-n{margin-left:8px;color:var(--accent-2)}
 .maj-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.maj-i{display:flex;gap:10px;align-items:center;text-align:left;padding:10px 14px;min-height:3em;border:1.5px solid var(--line);border-radius:10px;background:var(--paper,#fff);font:inherit;font-size:.889rem;color:var(--ink);cursor:pointer}
+.maj-i{display:flex;gap:10px;align-items:center;text-align:left;padding:10px 14px;min-height:3em;border:1.5px solid var(--line);border-radius:var(--r);background:var(--paper,#fff);font:inherit;font-size:.889rem;color:var(--ink);cursor:pointer}
 .maj-i:hover{border-color:var(--ink-2)}
 .maj-c{width:1.4em;height:1.4em;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;flex:none;color:transparent}.maj-c .ic{width:.9em;height:.9em}
 .maj-i.on{border-color:var(--accent);background:var(--c-org-w);font-weight:700}.maj-i.on .maj-c{background:var(--accent);border-color:var(--accent);color:#fff}
-.maj-k{font-size:.722rem;font-weight:500;color:var(--ink-2);background:var(--bg);border-radius:6px;padding:2px 8px;flex:none}
+.maj-k{font-size:.722rem;font-weight:500;color:var(--ink-2);background:var(--bg);border-radius:var(--p-radius-sm);padding:2px 8px;flex:none}
 .stepper small{font-size:.8em;opacity:.75}
 [data-fs="2"] .maj-list{grid-template-columns:1fr}
 /* */
@@ -1134,10 +1135,10 @@ html[data-fs="2"] .my-row{grid-template-columns:1fr}
 .tpl-pv{position:sticky;top:84px}
 @media (max-width:1199px){.tpl-g{grid-template-columns:minmax(0,1fr)}.tpl-pv{position:static}}
 [data-fs="2"] .tpl-g,[data-fs="1"] .tpl-g{grid-template-columns:minmax(0,1fr)}[data-fs="2"] .tpl-pv,[data-fs="1"] .tpl-pv{position:static}
-.tpl-prev{border:1px solid var(--line);border-radius:10px;padding:16px;background:var(--paper,#fff)}
+.tpl-prev{border:1px solid var(--line);border-radius:var(--r);padding:16px;background:var(--paper,#fff)}
 .tplv{display:grid;grid-template-columns:1fr;gap:12px;font-size:.833rem}
 .tplv.pf{grid-template-columns:120px minmax(0,1fr)}.tplv.pf .tplv-img .ph{aspect-ratio:4/5}
-.tplv-img .ph{aspect-ratio:4/3;border-radius:8px}
+.tplv-img .ph{aspect-ratio:4/3;border-radius:var(--p-radius-sm)}
 .tplv-m{display:grid;gap:8px;align-content:start;min-width:0}
 .tplv-low{grid-column:1/-1;display:grid;gap:10px;border-top:1px solid var(--line);padding-top:12px}
 .tplv-low:empty{display:none}
@@ -1152,7 +1153,7 @@ html[data-fs="2"] .my-row{grid-template-columns:1fr}
 .chip:focus-visible,.maj-i:focus-visible,.switch:focus-visible,.upl:focus-visible,.typecard:focus-visible,.seg button:focus-visible,.d.click:focus-visible,[role=radio]:focus-visible,[role=tab]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 /* */
 .pf-acts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.pf-acts>*{display:flex;align-items:center;justify-content:center;gap:6px;min-height:2.75em;padding:8px 10px;border:1px solid var(--line-2);border-radius:10px;background:var(--paper,#fff);font:inherit;font-size:.778rem;font-weight:700;color:var(--ink);cursor:pointer;text-decoration:none;text-align:center;line-height:1.3}
+.pf-acts>*{display:flex;align-items:center;justify-content:center;gap:6px;min-height:2.75em;padding:8px 10px;border:1px solid var(--line-2);border-radius:var(--r);background:var(--paper,#fff);font:inherit;font-size:.778rem;font-weight:700;color:var(--ink);cursor:pointer;text-decoration:none;text-align:center;line-height:1.3}
 .pf-acts>* .ic{width:1.1em;height:1.1em;flex:none}
 .pf-acts>a:hover,.pf-acts>button:hover{border-color:var(--accent);color:var(--accent-2)}
 .pf-acts>.on{border-color:var(--accent);background:var(--c-org-w);color:var(--accent-2)}
@@ -1163,10 +1164,10 @@ html[data-fs="2"] .my-row{grid-template-columns:1fr}
 .tplbig{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;flex-direction:column}
 .tplbig-h{display:flex;align-items:center;gap:16px;padding:12px 24px;background:var(--navy);color:#fff}.tplbig-h b{font-size:1rem}.tplbig-h .tiny{opacity:.8;flex:1}
 .tplbig-b{overflow:auto;flex:1;background:var(--paper,#fff)}
-.map-sbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.map-sbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding:12px 16px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg)}
 .map-sbar p{margin:0}
 .upd-go{display:grid;gap:8px}
-.upd-b{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1.5px solid var(--line-2);border-radius:12px;background:var(--paper,#fff);color:var(--ink);text-decoration:none;font-weight:700;transition:border-color .15s ease}
+.upd-b{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1.5px solid var(--line-2);border-radius:var(--r);background:var(--paper,#fff);color:var(--ink);text-decoration:none;font-weight:700;transition:border-color .15s ease}
 .upd-b:hover,.upd-b:focus-visible{border-color:var(--accent)}
 .upd-i{width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;background:var(--c-org-w);color:var(--accent-2);flex:none}.upd-i .ic{width:1.1em;height:1.1em}
 .upd-t{flex:1}
@@ -1231,7 +1232,7 @@ html[data-hc="1"] .lnb-side nav a.on{background:var(--color-brand-primary);color
 .side nav a.on{background:var(--navy)}
 @media (max-width:1100px){.lnb{grid-template-columns:1fr;gap:20px}.lnb-side nav{flex-direction:row;flex-wrap:wrap;border-top:0;gap:8px}.lnb-side nav a{border:1px solid var(--line-2);border-radius:999px;min-height:44px}.lnb-side nav a span{display:none}}
 .pf-card{display:grid;grid-template-columns:168px minmax(0,1fr) 300px;gap:28px;padding:28px;border-radius:var(--r-lg);background:var(--paper);border:1px solid var(--line)}
-.pf-img .ph{aspect-ratio:4/5;border-radius:12px}
+.pf-img .ph{aspect-ratio:4/5;border-radius:var(--r)}
 .pf-main{min-width:0;display:flex;flex-direction:column;gap:14px}
 .pf-nm{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .pf-card .pf-name{font-size:1.889rem;line-height:1.2;margin:0}
@@ -1241,13 +1242,13 @@ ul.yr{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:
 ul.yr li{display:flex;gap:12px;font-size:.889rem;color:var(--ink)}
 ul.yr li b{flex:none;min-width:2.6em;color:var(--accent);font-variant-numeric:tabular-nums}
 .pf-main .tags{margin-top:auto}
-.pf-info{display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.pf-info{display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:var(--r);background:var(--bg);border:1px solid var(--line)}
 .pf-info dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 12px;font-size:.833rem}
 .pf-info dt{color:var(--ink-3);display:flex;align-items:center;gap:6px;white-space:nowrap}
 .pf-info dt .ic{width:16px;height:16px}
 .pf-info dd{margin:0;min-width:0;overflow-wrap:anywhere}
 .pf-info .btn{margin-top:auto}
-.pf-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--line-2);border-radius:12px;overflow:hidden;margin-top:24px}
+.pf-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--line-2);border-radius:var(--r);overflow:hidden;margin-top:24px}
 .pf-tabs button{min-height:52px;border:0;border-left:1px solid var(--line-2);background:var(--bg);color:var(--ink-2);font-size:.944rem;font-weight:500}
 .pf-tabs button:first-child{border-left:0}
 .pf-tabs button span{color:var(--ink-3);font-weight:500;margin-left:4px}
@@ -1270,7 +1271,7 @@ html[data-hc="1"] .pf-tabs button.on{background:var(--color-brand-primary);color
 .wd-info .pf-name{font-size:1.778rem;line-height:1.25;margin:0}
 .wd-dl{margin:6px 0 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px 12px;font-size:.889rem}
 .wd-dl dt{color:var(--ink-3)} .wd-dl dd{margin:0}
-.wd-artist{margin-top:auto;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:var(--paper);color:var(--ink)}
+.wd-artist{margin-top:auto;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:var(--r);background:var(--paper);color:var(--ink)}
 .wd-artist .ph{width:48px;height:48px;flex:none;border-radius:50%}
 .wd-artist b{display:block} .wd-artist .grow>span{font-size:.778rem;color:var(--ink-3)}
 .wd-body{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px;align-items:start;margin-top:40px}
@@ -1279,13 +1280,13 @@ html[data-hc="1"] .pf-tabs button.on{background:var(--color-brand-primary);color
 .wd-tabs button.on{border-bottom-color:var(--accent);color:var(--accent-2);font-weight:800}
 html[data-hc="1"] .wd-tabs button.on{color:var(--color-brand-primary);border-bottom-color:var(--color-brand-primary)}
 .wd-steps{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.wd-steps li{padding:18px;border-radius:12px;background:var(--paper)} .wd-steps b{display:block;color:var(--accent-2);font-size:.833rem}
+.wd-steps li{padding:18px;border-radius:var(--r);background:var(--paper)} .wd-steps b{display:block;color:var(--accent-2);font-size:.833rem}
 .wd-vid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;align-items:center;color:var(--ink)}
-.wd-vid .ph{aspect-ratio:16/9;border-radius:12px} .wd-vid b{display:block}
-.wd-files{list-style:none;margin:0;padding:0} .wd-files li{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:12px;border:1px solid var(--line)} .wd-files b{display:block}
+.wd-vid .ph{aspect-ratio:16/9;border-radius:var(--r)} .wd-vid b{display:block}
+.wd-files{list-style:none;margin:0;padding:0} .wd-files li{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:var(--r);border:1px solid var(--line)} .wd-files b{display:block}
 .wd-same{padding:22px;border-radius:var(--r-lg);border:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
 .wd-same h3{margin:0;font-size:.944rem;font-weight:800}
-.wd-o{display:flex;gap:12px;align-items:center;color:var(--ink)} .wd-o .ph{width:88px;height:66px;flex:none;border-radius:8px} .wd-o b{display:block;font-size:.889rem}
+.wd-o{display:flex;gap:12px;align-items:center;color:var(--ink)} .wd-o .ph{width:88px;height:66px;flex:none;border-radius:var(--p-radius-sm)} .wd-o b{display:block;font-size:.889rem}
 .wd-all{padding-top:12px;border-top:1px solid var(--line)}
 @media (max-width:1100px){.pf-card{grid-template-columns:140px minmax(0,1fr)}.pf-info{grid-column:1/-1}.wd-top,.wd-body{grid-template-columns:1fr}.pf-hist{grid-template-columns:1fr}}
 html[data-fs="2"] .pf-card{grid-template-columns:140px minmax(0,1fr)} html[data-fs="2"] .pf-info{grid-column:1/-1}
@@ -1295,7 +1296,7 @@ html[data-fs="2"] .wd-tabs{grid-template-columns:repeat(3,minmax(0,1fr))} html[d
 .adm-side{background:var(--navy);padding:16px 12px 24px;font-size:.833rem}
 .adm-side .sub{padding:0 12px 14px;opacity:.75;letter-spacing:0}
 .adm-side nav{display:flex;flex-direction:column;gap:2px}
-.adm-side nav a{display:flex;align-items:center;gap:10px;border-radius:10px;color:var(--p-color-blue-100)}
+.adm-side nav a{display:flex;align-items:center;gap:10px;border-radius:var(--r);color:var(--p-color-blue-100)}
 .adm-side nav .ic{width:19px;height:19px;flex:none}
 .adm-side nav a.g1,.adm-side nav a.gh{min-height:40px;padding:4px 12px;color:var(--color-text-inverse);font-weight:700;font-size:.833rem}
 .adm-side nav a.it{min-height:32px;padding:4px 12px 4px 41px;font-size:.778rem;justify-content:space-between}
@@ -1306,7 +1307,7 @@ html[data-hc="1"] .adm-side nav a.on{background:var(--color-brand-primary);color
 @media (hover:hover) and (pointer:fine){.adm-side nav a:not(.on):hover{background:rgba(255,255,255,.08)}}
 .adm-home{border:1.5px solid var(--accent);background:var(--accent-weak);color:var(--accent-2)}
 .adm-sep{width:1px;height:20px;background:var(--line);margin:0 4px}
-.adm-body .pg-h .clock{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;border:1px solid var(--line-2);background:var(--bg);font-size:.833rem;font-weight:700}
+.adm-body .pg-h .clock{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:var(--r);border:1px solid var(--line-2);background:var(--bg);font-size:.833rem;font-weight:700}
 .adm-body .pg-h .clock .ic{width:18px;height:18px;color:var(--accent)}
 .todo{border-radius:var(--r-lg);background:var(--bg);border:1.5px solid var(--color-emphasis-orange-bg);overflow:hidden}
 .todo-h{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--color-emphasis-orange-weak-bg)}
@@ -1322,18 +1323,18 @@ html[data-hc="1"] .todo-h{background:#000}
 .kpi2{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:20px}
 .kc{display:flex;flex-direction:column;gap:8px;padding:18px;border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--line);color:var(--ink)}
 .kh{display:flex;align-items:center;gap:10px;font-size:.833rem;font-weight:700;color:var(--ink-2)}
-.ki{width:36px;height:36px;flex:none;border-radius:10px;display:grid;place-items:center} .ki .ic{width:19px;height:19px}
+.ki{width:36px;height:36px;flex:none;border-radius:var(--r);display:grid;place-items:center} .ki .ic{width:19px;height:19px}
 .ki.k1{background:var(--p-color-blue-50);color:var(--p-color-blue-600)} .ki.k2{background:var(--p-color-orange-50);color:var(--p-color-orange-700)} .ki.k3{background:var(--p-color-green-50);color:var(--p-color-green-800)} .ki.k4{background:var(--p-color-gray-100);color:var(--p-color-gray-700)} .ki.k5{background:var(--p-color-yellow-50);color:var(--p-color-yellow-700)}
 html[data-hc="1"] .ki{background:#000!important;color:#FFF!important;border:1px solid #FFF}
 .kv2{font-size:1.667rem;font-weight:800;line-height:1.2} .kv2 small{font-size:.889rem;margin-left:2px}
 .ks{font-size:.778rem;color:var(--ink-3)} .ks b{color:var(--accent-2)} .ks b.acc{color:var(--color-emphasis-orange-weak-fg)}
 .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.flow li,.flow2>div{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;border-radius:12px;background:var(--paper)}
+.flow li,.flow2>div{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;border-radius:var(--r);background:var(--paper)}
 .flow b,.flow2 b{font-size:1.333rem;font-weight:800}
 .flow2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line-2)}
 .flow2>div{background:var(--bg);border:1px solid var(--line)}
 .quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.quick a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:12px;background:var(--paper);color:var(--ink);font-size:.778rem;font-weight:700;text-align:center}
+.quick a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:var(--r);background:var(--paper);color:var(--ink);font-size:.778rem;font-weight:700;text-align:center}
 .quick .ic{width:22px;height:22px;color:var(--accent)}
 html[data-fs="1"] .kpi2,html[data-fs="2"] .kpi2{grid-template-columns:repeat(3,minmax(0,1fr))} html[data-fs="2"] .todo ul{grid-template-columns:1fr}
 /* */
@@ -1401,7 +1402,7 @@ html[data-hc="1"] .hd-r>a.t.login{background:var(--color-brand-primary);color:va
 :root{--map-water:#E9F1F7;--map-land:#FFFFFF;--map-b0:var(--p-color-gray-100);--map-b1:var(--p-color-blue-50);--map-b2:var(--p-color-blue-100);--map-b3:var(--p-color-blue-200);--map-b4:var(--p-color-blue-300);--map-sel:var(--p-color-blue-600);--map-ink:var(--p-color-blue-900);--map-ink-sel:#FFFFFF}
 html[data-hc="1"]{--map-water:#000;--map-land:#FFF;--map-b0:#000;--map-b1:#1A1A1A;--map-b2:#2E2E2E;--map-b3:#444;--map-b4:#5A5A5A;--map-sel:var(--color-text-tag);--map-ink:#FFF;--map-ink-sel:#000}
 .map{background:var(--bg)}
-.amap{position:relative;width:100%;aspect-ratio:1000/670;background:var(--map-water);border-radius:12px;overflow:hidden}
+.amap{position:relative;width:100%;aspect-ratio:1000/670;background:var(--map-water);border-radius:var(--r);overflow:hidden}
 .amap-l{position:absolute;inset:0;transform-origin:0 0;transition:transform 320ms var(--ease-out)}
 .amap.zoom .amap-l{transform:scale(2.05) translate(0%,-29.4%)}
 .amap-land{position:absolute;inset:0;background:var(--map-land)}
@@ -1416,7 +1417,7 @@ html[data-hc="1"]{--map-water:#000;--map-land:#FFF;--map-b0:#000;--map-b1:#1A1A1
 .amap.zoom .amap-t.d b{font-size:6.4px}
 .amap-w{position:absolute;font-size:.778rem;font-style:italic;letter-spacing:.3em;color:var(--ink-3);pointer-events:none}
 .amap.zoom .amap-w{display:none}
-.amap-isl{position:absolute;left:2%;top:4%;width:21%;height:27%;box-sizing:border-box;border:1.5px dashed var(--line-2);border-radius:12px;background:rgba(255,255,255,.6);padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;cursor:pointer;color:var(--map-ink);font-size:.722rem;line-height:1.25}
+.amap-isl{position:absolute;left:2%;top:4%;width:21%;height:27%;box-sizing:border-box;border:1.5px dashed var(--line-2);border-radius:var(--r);background:rgba(255,255,255,.6);padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;cursor:pointer;color:var(--map-ink);font-size:.722rem;line-height:1.25}
 .amap-isl b{font-size:.778rem}
 .amap-isl .isl{display:flex;gap:6px;align-items:flex-end}
 .amap-isl .isl i{display:block;background:var(--map-b4);border-radius:48% 52% 40% 60%}
@@ -1434,9 +1435,9 @@ html[data-hc="1"] .amap-isl{background:#000}
 .amap-lg i.b0{background:var(--map-b0)}.amap-lg i.b1{background:var(--map-b1)}.amap-lg i.b2{background:var(--map-b2)}.amap-lg i.b3{background:var(--map-b3)}.amap-lg i.b4{background:var(--map-b4)}.amap-lg i.on{background:var(--map-sel)}
 .pickbox{border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;background:var(--paper);display:flex;flex-direction:column;gap:12px}
 .pickrow{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
-.pk-h{flex:0 0 120px;min-height:var(--control-h);display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--accent);color:var(--on-accent);font-weight:700}
+.pk-h{flex:0 0 120px;min-height:var(--control-h);display:flex;align-items:center;justify-content:center;border-radius:var(--r);background:var(--accent);color:var(--on-accent);font-weight:700}
 .pk-g{flex:1 1 600px;display:grid;grid-template-columns:repeat(auto-fill,minmax(7em,1fr));gap:8px}
-.pk{min-height:var(--control-h);padding:4px 10px;border-radius:10px;border:1.5px solid var(--line-2);background:var(--bg);color:var(--ink-2);font-size:.889rem;cursor:pointer;transition:background 150ms ease,border-color 150ms ease,color 150ms ease,transform 120ms var(--ease-out)}
+.pk{min-height:var(--control-h);padding:4px 10px;border-radius:var(--r);border:1.5px solid var(--line-2);background:var(--bg);color:var(--ink-2);font-size:.889rem;cursor:pointer;transition:background 150ms ease,border-color 150ms ease,color 150ms ease,transform 120ms var(--ease-out)}
 .pk span{font-size:.778rem;color:var(--ink-3)}
 .pk.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700}.pk.on span{color:var(--on-accent)}
 .pk.zero{opacity:.55}
@@ -1475,25 +1476,25 @@ html[data-hc="1"] .amap-isl{background:#000}
 .card .heart{box-shadow:var(--elevation-raised)}
 /* 프로토타입 도구 (실서비스 미포함) */
 .pt{position:fixed;left:16px;bottom:16px;z-index:200;font-family:var(--p-font-family-sans);font-size:13px;line-height:1.5}
-.pt-btn{background:#0B1220;color:#fff;border-radius:40px;height:42px;padding:0 16px;display:flex;align-items:center;gap:8px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:13px}
+.pt-btn{background:#0B1220;color:#fff;border-radius:var(--p-radius-pill);height:42px;padding:0 16px;display:flex;align-items:center;gap:8px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.25);font-size:13px}
 .pt-btn .id{background:#FFE14D;color:#000;border-radius:20px;padding:1px 9px;font-size:12px}
-.pt-panel{position:absolute;left:0;bottom:52px;width:360px;max-height:min(78vh,720px);overflow:auto;background:#0B1220;color:#E6E9EF;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.4);padding:16px}
+.pt-panel{position:absolute;left:0;bottom:52px;width:360px;max-height:min(78vh,720px);overflow:auto;background:#0B1220;color:#E6E9EF;border-radius:var(--r-lg);box-shadow:0 20px 60px rgba(0,0,0,.4);padding:16px}
 .pt-panel h4{font-size:12px;color:#8F9AB0;margin:14px 0 6px;font-weight:700;letter-spacing:.04em}
 .pt-panel h4:first-child{margin-top:0}
 .pt-seg{display:flex;flex-wrap:wrap;gap:4px}
-.pt-seg button{font-size:12px;padding:5px 10px;border-radius:6px;background:#1A2336;color:#C8CFDB}
+.pt-seg button{font-size:12px;padding:5px 10px;border-radius:var(--p-radius-sm);background:#1A2336;color:#C8CFDB}
 .pt-seg button.on{background:#FFE14D;color:#000;font-weight:700}
-.pt-cur{background:#1A2336;border-radius:10px;padding:10px 12px;font-size:12px}
+.pt-cur{background:#1A2336;border-radius:var(--r);padding:10px 12px;font-size:12px}
 .pt-cur b{color:#FFE14D}
 .pt-nav{display:flex;gap:6px;margin-top:8px}
-.pt-nav button{flex:1;background:#1A2336;border-radius:6px;padding:6px;font-size:12px;color:#fff}
-.pt-list a{display:flex;gap:8px;padding:4px 8px;border-radius:6px;font-size:12px;color:#C8CFDB}
+.pt-nav button{flex:1;background:#1A2336;border-radius:var(--p-radius-sm);padding:6px;font-size:12px;color:#fff}
+.pt-list a{display:flex;gap:8px;padding:4px 8px;border-radius:var(--p-radius-sm);font-size:12px;color:#C8CFDB}
 .pt-list a:hover{background:#1A2336}
 .pt-list a.on{background:#2A3550;color:#fff}
 .pt-list a span:first-child{font-family:ui-monospace,monospace;color:#8F9AB0;min-width:42px}
 .pt-list a em{font-style:normal;color:#8F9AB0;margin-left:auto;font-size:11px}
 .pt-list details{margin-bottom:4px} .pt-list summary{cursor:pointer;font-weight:700;padding:5px 4px;font-size:12px;color:#fff}
-.toast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);background:#0B1220;color:#fff;padding:12px 22px;border-radius:30px;z-index:300;font-size:.778rem;box-shadow:0 10px 30px rgba(0,0,0,.25);animation:pop .2s}
+.toast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);background:#0B1220;color:#fff;padding:12px 22px;border-radius:var(--p-radius-pill);z-index:300;font-size:.778rem;box-shadow:0 10px 30px rgba(0,0,0,.25);animation:pop .2s}
 
 @media (max-width:1100px){
   .grid4{grid-template-columns:repeat(3,1fr)} .kpi{grid-template-columns:repeat(3,1fr)}
@@ -1512,6 +1513,40 @@ html[data-hc="1"] .amap-isl{background:#000}
   .map-g{grid-template-rows:repeat(6,64px)}
 }
 @media print{.util,.hd,.subtabs,.ft,.pt,.noprint{display:none!important}}
+/* ===== 디테일 다듬기 — 터치 영역 · 태블릿 헤더 · 선택색 · 스크롤바 ===== */
+::selection{background:color-mix(in srgb,var(--accent) 26%,transparent);color:var(--ink)}
+html{scrollbar-color:var(--line-2) transparent}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:var(--p-radius-pill);border:3px solid var(--bg)}
+::-webkit-scrollbar-thumb:hover{background:var(--ink-3)}
+a,button{text-underline-offset:.2em}
+.btn-sm{min-height:max(36px,2.1em)}
+.btn-xs{min-height:max(32px,1.8em)}
+.adm .btn-xs{min-height:max(30px,1.8em)}
+.adm .btn-sm{min-height:max(34px,2.1em)}
+.util button{min-height:max(32px,1.75em)}
+.crumb2 a{min-width:32px;min-height:32px;border-radius:var(--p-radius-sm)}
+.cal-g .more{display:inline-flex;align-items:center;min-height:28px;font-size:.722rem}
+a.tag{padding-block:6px}
+.ft-links a{display:inline-block;padding-block:6px}
+.cal-g .dw{font-size:.833rem}
+.todo li{padding-block:8px}
+.todo li .t{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.45}
+.chev{display:inline-grid;place-items:center;margin-left:2px}
+.chev .ic{width:1em;height:1em;transition:transform .2s var(--ease-out,ease-out)}
+.chev.up .ic{transform:rotate(180deg)}
+@media (prefers-reduced-motion:reduce){.chev .ic{transition:none}}
+@media (max-width:1100px){
+ .hd-in{height:auto;flex-wrap:wrap;column-gap:24px;row-gap:0;padding-top:12px}
+ .hd-in .logo{order:1}
+ .hd-in .hd-r{order:2;margin-left:auto}
+ .hd-in .gnb{order:3;flex:1 1 100%;justify-content:flex-start;border-top:1px solid var(--line);margin-top:12px}
+ .gnb-item>a{height:56px;padding:0 14px;white-space:nowrap}
+ .gnb-sub{top:56px}
+}
+.stepper.reg{counter-reset:s -1}
+.stepper.reg li:first-child::after,.stepper.reg li:last-child::after{content:'';width:14px;height:14px;top:6px}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -1523,7 +1558,7 @@ html[data-hc="1"] .amap-isl{background:#000}
 /* */
 
 /* ---------- 아이콘 (자체 제작 라인 아이콘) ---------- */
-const P={folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',mega:'<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',monitor:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',chart:'<path d="M5 20V12M12 20V6M19 20v-9"/>',msg:'<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>',heart:'<path d="M12 20s-7-4.4-9-8.6C1.6 8.3 3.6 5 7 5c2 0 3.3 1.1 5 3 1.7-1.9 3-3 5-3 3.4 0 5.4 3.3 4 6.4C19 15.6 12 20 12 20z"/>',share:'<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',dl:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',l:'<path d="M15 5l-7 7 7 7"/>',r:'<path d="M9 5l7 7-7 7"/>',plus:'<path d="M12 5v14M5 12h14"/>',bell:'<path d="M6 16v-5a6 6 0 1112 0v5l2 2H4l2-2zM10 20a2 2 0 004 0"/>',print:'<path d="M7 9V4h10v5M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="7" y="14" width="10" height="6"/>',check:'<path d="M5 12l5 5 9-10"/>',play:'<path d="M8 5l11 7-11 7z"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5"/><circle cx="17" cy="7" r="3"/><path d="M17 13c2.6 0 4.5 1.6 5 4.5"/>',build:'<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M3 21h18"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',file:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',up:'<path d="M12 16V5M7 10l5-5 5 5M5 20h14"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',grid:'<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>',map:'<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>',logout:'<path d="M15 4h4a1 1 0 011 1v14a1 1 0 01-1 1h-4M10 16l-4-4 4-4M6 12h11"/>',ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',refresh:'<path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',drag:'<path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/>'};
+const P={chev:'<path d="M6 9l6 6 6-6"/>',folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',mega:'<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',monitor:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',chart:'<path d="M5 20V12M12 20V6M19 20v-9"/>',msg:'<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>',heart:'<path d="M12 20s-7-4.4-9-8.6C1.6 8.3 3.6 5 7 5c2 0 3.3 1.1 5 3 1.7-1.9 3-3 5-3 3.4 0 5.4 3.3 4 6.4C19 15.6 12 20 12 20z"/>',share:'<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',dl:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',l:'<path d="M15 5l-7 7 7 7"/>',r:'<path d="M9 5l7 7-7 7"/>',plus:'<path d="M12 5v14M5 12h14"/>',bell:'<path d="M6 16v-5a6 6 0 1112 0v5l2 2H4l2-2zM10 20a2 2 0 004 0"/>',print:'<path d="M7 9V4h10v5M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="7" y="14" width="10" height="6"/>',check:'<path d="M5 12l5 5 9-10"/>',play:'<path d="M8 5l11 7-11 7z"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5"/><circle cx="17" cy="7" r="3"/><path d="M17 13c2.6 0 4.5 1.6 5 4.5"/>',build:'<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M3 21h18"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',file:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',up:'<path d="M12 16V5M7 10l5-5 5 5M5 20h14"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',grid:'<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>',map:'<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>',logout:'<path d="M15 4h4a1 1 0 011 1v14a1 1 0 01-1 1h-4M10 16l-4-4 4-4M6 12h11"/>',ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',refresh:'<path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',drag:'<path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/>'};
 const I=k=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${P[k]}</svg>`;
 const L=(a,f)=>a.map(f).join('');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1676,7 +1711,9 @@ document.addEventListener('keydown',e=>{const t=e.target;if(!(t instanceof Eleme
 function navGuard(){if(document.querySelector('.pend')&&!confirm('저장하지 않은 변경이 있습니다. 이동하면 변경 내용이 사라집니다. 이동하시겠습니까?')){history.replaceState(null,'',LAST_HASH);return}render()}
 function setHdr(){const m=document.getElementById('main');if(m)document.documentElement.style.setProperty('--hdr',(m.getBoundingClientRect().top+window.scrollY)+'px')}
 window.addEventListener('resize',setHdr);
-function kbdPrep(){document.querySelectorAll('.upl:not([tabindex])').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label',(el.innerText||'파일 업로드').replace(/\s+/g,' ').trim())});document.querySelectorAll('.switch:not([tabindex]):not([aria-disabled])').forEach(el=>{if(el.style.pointerEvents==='none')return;el.tabIndex=0;el.setAttribute('role','switch');el.setAttribute('aria-checked',el.classList.contains('on'))});document.querySelectorAll('.d.click:not([tabindex])').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button')})}
+let LBL_N=0;
+function labelPrep(){document.querySelectorAll('.f').forEach(f=>{const l=f.querySelector(':scope>label.f-l');const c=f.querySelector('.f-c input:not([type=checkbox]):not([type=radio]),.f-c select,.f-c textarea');if(!l||!c||l.htmlFor||c.closest('label'))return;if(!c.id)c.id='fld'+(++LBL_N);l.htmlFor=c.id})}
+function kbdPrep(){labelPrep();document.querySelectorAll('.upl:not([tabindex])').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label',(el.innerText||'파일 업로드').replace(/\s+/g,' ').trim())});document.querySelectorAll('.switch:not([tabindex]):not([aria-disabled])').forEach(el=>{if(el.style.pointerEvents==='none')return;el.tabIndex=0;el.setAttribute('role','switch');el.setAttribute('aria-checked',el.classList.contains('on'))});document.querySelectorAll('.d.click:not([tabindex])').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button')})}
 function afterRender(){setHdr();kbdPrep();if(FOCUS_K){const f=FOCUS_K;FOCUS_K=null;const m=[...document.querySelectorAll(f.tag)].find(x=>(x.textContent||'').trim()===f.txt&&((x.closest('[aria-label]')||{getAttribute:()=>''}).getAttribute('aria-label')||'')===f.grp);if(m)m.focus()}
   clearInterval(clockT);const tick=()=>{document.querySelectorAll('[data-clock]').forEach(el=>{const d=new Date();const w='일월화수목금토'[d.getDay()];const p=n=>String(n).padStart(2,'0');el.textContent=`${d.getFullYear()}.${p(d.getMonth()+1)}.${p(d.getDate())} (${w}) ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`})};tick();clockT=setInterval(tick,1000);
   clearInterval(phT);const ph=document.querySelector('[data-rotate-ph]');if(ph){let i=0;phT=setInterval(()=>{if(!document.body.contains(ph)){clearInterval(phT);return}if(document.activeElement===ph||ph.value)return;i=(i+1)%HOME_PH.length;ph.classList.add('ph-out');setTimeout(()=>{ph.placeholder=HOME_PH[i];ph.classList.remove('ph-out')},180)},3200)}
@@ -1800,12 +1837,12 @@ PAGES['A1-01']=()=>pub(kv('예술인등록','군산의 예술인을 기록하고
   <div class="grid2" style="align-items:center;gap:56px"><div><p class="tag" style="font-size:.889rem">ABOUT</p><h2 class="sec-t mt8">ARTPORT, GUNSAN</h2>
    <p class="mt16" style="color:var(--ink-2)">ARTPORT, GUNSAN은 군산의 예술인·예술단체·문화예술기관과 작품·활동을 하나의 플랫폼에서 기록하고 연결하기 위한 군산 문화예술 통합 플랫폼입니다.</p>
    <p class="mt16" style="color:var(--ink-2)">ARTPORT, GUNSAN의 ART PORT는 군산이라는 항구도시의 정체성과 예술(ART)을 결합한 개념으로, ‘군산의 예술이 모이고 새로운 가능성을 향해 출항하는 문화예술의 항구’를 의미합니다.</p></div>
-   ${PH(1,'브랜드 키비주얼','').replace('class="ph','style="aspect-ratio:16/10;border-radius:16px" class="ph')}</div>
+   ${PH(1,'브랜드 키비주얼','').replace('class="ph','style="aspect-ratio:16/10;border-radius:var(--r-lg)" class="ph')}</div>
  </div></section>
  <section class="sec" style="background:var(--paper)"><div class="wrap">
   <h2 class="sec-t">예술인 등록 사업</h2><p class="sec-d">등록한 예술인 정보는 다음 흐름으로 기록되고 활용됩니다.</p>
-  <ol class="grid4 mt32" style="grid-template-columns:repeat(5,1fr);gap:16px">${L([['등록','plus','회원가입 후 예술인 정보와 포트폴리오를 등록합니다'],['기록','file','작품·활동·이력을 연도별로 기록합니다'],['연결','link','예술캘린더·예술지도와 연결됩니다'],['노출','eye','통합검색과 예술창고에 공개됩니다'],['활용','dl','공유·공개명함·인쇄·PDF 저장으로 활용합니다']],([t,ic,d],i)=>`<li class="box" style="padding:24px;position:relative"><span class="tiny muted">STEP ${i+1}</span><div style="width:48px;height:48px;border-radius:16px;background:var(--accent-weak);color:var(--accent-2);display:grid;place-items:center;margin:12px 0 16px">${I(ic)}</div><b>${t}</b><p class="small muted mt8">${d}</p></li>`)}</ol>
-  <div class="grid3 mt32">${L(['예술인 포트폴리오 구축','작품, 활동 등록','예술캘린더 및 예술지도 연계','통합검색 노출','SNS 및 홈페이지 연계','포트폴리오 공유 및 인쇄·PDF 저장 활용'],t=>`<div class="row" style="background:var(--bg);border-radius:10px;padding:16px 20px"><span style="color:var(--accent)">${I('check')}</span><span class="small" style="font-weight:500">${t}</span></div>`)}</div>
+  <ol class="grid4 mt32" style="grid-template-columns:repeat(5,1fr);gap:16px">${L([['등록','plus','회원가입 후 예술인 정보와 포트폴리오를 등록합니다'],['기록','file','작품·활동·이력을 연도별로 기록합니다'],['연결','link','예술캘린더·예술지도와 연결됩니다'],['노출','eye','통합검색과 예술창고에 공개됩니다'],['활용','dl','공유·공개명함·인쇄·PDF 저장으로 활용합니다']],([t,ic,d],i)=>`<li class="box" style="padding:24px;position:relative"><span class="tiny muted">STEP ${i+1}</span><div style="width:48px;height:48px;border-radius:var(--r-lg);background:var(--accent-weak);color:var(--accent-2);display:grid;place-items:center;margin:12px 0 16px">${I(ic)}</div><b>${t}</b><p class="small muted mt8">${d}</p></li>`)}</ol>
+  <div class="grid3 mt32">${L(['예술인 포트폴리오 구축','작품, 활동 등록','예술캘린더 및 예술지도 연계','통합검색 노출','SNS 및 홈페이지 연계','포트폴리오 공유 및 인쇄·PDF 저장 활용'],t=>`<div class="row" style="background:var(--bg);border-radius:var(--r);padding:16px 20px"><span style="color:var(--accent)">${I('check')}</span><span class="small" style="font-weight:500">${t}</span></div>`)}</div>
  </div></section>
  <section class="sec"><div class="wrap"><h2 class="sec-t">연계 사업</h2>
   <div class="grid2 mt24">${L([['문화예술 DB','군산에서 활동하는 예술인과 작품·활동 정보를 한곳에 모아 기록하고, 누구나 찾아볼 수 있도록 공개합니다.',3],['문화예술진흥 지원사업','군산시 문화예술진흥 지원사업에 선정된 작품과 활동을 “아트포트, 군산”에서 연도별로 모아 소개합니다.',5]],([t,d,c])=>`<div class="box" style="display:grid;grid-template-columns:160px 1fr;gap:24px;align-items:center">${PH(c,'').replace('class="ph','style="aspect-ratio:1" class="ph')}<div><b class="h3">${t}</b><p class="small muted mt8">${d}</p></div></div>`)}</div>
@@ -1836,14 +1873,14 @@ function regShell(n,title,body,o={}){
   const add=!!Q.add||CUR==='M-22';const sq=add?'?add=1':'';const sid=k=>k===1&&add?'M-22':stepId(k);
   if(!isArtist()&&!isAdmin())return add?err403():pub(kv('예술인등록','',`예술인등록 › 예술인등록 신청`)+subtabs(T1,'A1-03')+`<div class="wrap">${gate('예술인(개인·단체·기관) 회원만 등록신청할 수 있습니다',['artist','org','inst'])}</div>`);
   const pct=Math.round((n-1)/7*100);const k=n-1;
-  const inner=`${add?`<p class="tag" style="font-size:.889rem">포트폴리오 추가 등록</p>`:''}<div class="progress"><h2 class="sec-t">${REG_N[n]} ${title}</h2><b>${n===1?'시작':n===8?'완료':k+'/6 단계 · '+pct+'%'}</b></div>
+  const inner=`${add?`<p class="tag" style="font-size:.889rem">포트폴리오 추가 등록</p>`:''}<div class="progress"><h2 class="sec-t">${REG_N[n]} ${title}</h2><b>${n===1?'시작':n===8?'완료':k+'/6 단계'}</b></div>
    <p class="small muted mt8">등록 유형: <b style="color:var(--ink)">${regType()}</b> <span class="lock">${I('lock')}회원가입 시 선택한 유형으로 등록되며 변경할 수 없습니다</span></p>
-   <ol class="stepper mt16">${L(REG_STEPS,(t,i)=>`<li class="${i+1<n?'done':i+1===n?'cur':''}">${REG_N[i+1]?REG_N[i+1]+' ':''}${t}</li>`)}</ol>
+   <ol class="stepper reg mt16">${L(REG_STEPS,(t,i)=>`<li class="${i+1<n?'done':i+1===n?'cur':''}">${REG_N[i+1]?REG_N[i+1]+' ':''}${t}</li>`)}</ol>
    ${add&&n>1&&n<8?`<div class="mb16">${callout('<b>추가 등록 중입니다.</b> 지금 등록된 내용을 불러왔습니다. 새로 추가하거나 바꿀 내용만 입력하세요. 공개 중인 포트폴리오는 심사가 끝날 때까지 그대로 유지됩니다.')}</div>`:''}
    ${body}
    ${o.noBar?'':`<div class="formbar"><div class="l"><button class="btn btn-line btn-sm" onclick="toast('임시저장되었습니다')">임시저장</button><a class="btn btn-ghost btn-sm" href="#/M-20">불러오기</a><span class="autosave">${I('clock')} 작성 내용은 5분마다 자동 저장됩니다 · 마지막 저장 오후 2:32</span></div><div class="r">${n>1&&n<8?`<span class="fb-step" aria-label="6단계 중 ${k}단계">${k}<small>/6</small></span>`:''}${n>1?`<a class="btn btn-line" href="#/${sid(n-1)}${sq}">이전</a>`:''}${n>1&&n<7?`<a class="btn btn-ghost" href="#/A1-13${sq}">미리보기</a>`:''}<a class="btn btn-pri" href="#/${sid(n+1)}${sq}" ${o.guard?`onclick="return ${o.guard}()"`:''}>${o.next||'다음 단계'}</a></div></div>`}`;
   return add?my('M-05',`<a class="small muted" href="#/M-05">← 포트폴리오 관리</a><div class="mt8">${inner}</div>`)
-   :pub(kv('예술인등록','',`예술인등록 › 예술인등록 신청`)+subtabs(T1,'A1-03')+`<section class="sec" style="padding-top:40px"><div class="wrap" style="max-width:1080px">${inner}</div></section>`);
+   :pub(kv('예술인등록','',`예술인등록 › 예술인등록 신청`)+(n===1?subtabs(T1,'A1-03'):'')+`<section class="sec" style="padding-top:40px"><div class="wrap" style="max-width:1080px">${inner}</div></section>`);
 }
 function regSubmit(){return confirm(Q.add?'추가 등록 내용을 제출하시겠습니까?\n\n제출하면 “심사대기” 상태가 되며, 관리자가 심사를 시작하기 전까지 마이페이지 > 등록 현황에서 수정할 수 있습니다. 지금 공개 중인 포트폴리오는 심사가 끝날 때까지 그대로 유지됩니다.':'입력한 내용으로 포트폴리오 등록을 신청하시겠습니까?\n\n제출하면 “심사대기” 상태가 되며, 관리자가 심사를 시작하기 전까지 마이페이지 > 등록 현황에서 내용을 수정할 수 있습니다. 심사가 시작되면(심사중) 수정할 수 없습니다.')}
 PAGES['A1-03']=()=>regShell(1,'포트폴리오 등록 시작',`
@@ -2007,7 +2044,7 @@ PAGES['A2-01']=()=>{
   const ds=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
   const evs=allEvents().sort((a,b)=>a.start.localeCompare(b.start));
   return pub(kv('예술캘린더','군산의 예술 일정을 한눈에','예술캘린더')+`<section class="sec" style="padding-top:40px"><div class="wrap">
-  <form class="sbar" role="search" onsubmit="event.preventDefault();S.calQ=this.q.value.trim();render()"><div class="inpw">${I('search')}<input class="inp" name="q" value="${esc(S.calQ||'')}" placeholder="일정명, 예술인명, 장소로 검색" aria-label="일정 검색"></div><button class="btn btn-dark" type="submit">검색</button><button class="btn btn-line" type="button" aria-expanded="${!!S.calFilter}" onclick="S.calFilter=!S.calFilter;render()">세부 검색 ${S.calFilter?'▲':'▼'}</button>${isAdmin()?`<a class="btn btn-pri" href="#/B-07">${I('plus')} 일정 등록</a>`:''}</form>${S.calQ?`<div class="selbar"><span class="muted">검색어</span><span class="chip">“${esc(S.calQ)}” <a onclick="S.calQ='';render()" aria-label="검색어 지우기">${I('x')}</a></span><span class="muted">일치하는 일정만 표시합니다</span></div>`:''}
+  <form class="sbar" role="search" onsubmit="event.preventDefault();S.calQ=this.q.value.trim();render()"><div class="inpw">${I('search')}<input class="inp" name="q" value="${esc(S.calQ||'')}" placeholder="일정명, 예술인명, 장소로 검색" aria-label="일정 검색"></div><button class="btn btn-dark" type="submit">검색</button><button class="btn btn-line" type="button" aria-expanded="${!!S.calFilter}" onclick="S.calFilter=!S.calFilter;render()">세부 검색 <span class="chev ${S.calFilter?'up':''}">${I('chev')}</span></button>${isAdmin()?`<a class="btn btn-pri" href="#/B-07">${I('plus')} 일정 등록</a>`:''}</form>${S.calQ?`<div class="selbar"><span class="muted">검색어</span><span class="chip">“${esc(S.calQ)}” <a onclick="S.calQ='';render()" aria-label="검색어 지우기">${I('x')}</a></span><span class="muted">일치하는 일정만 표시합니다</span></div>`:''}
   ${S.calFilter?`<div class="filters">${fRows([['evcat','분야',CAT6],['area','지역',['읍','면','동']],['state','상태',['예정','진행중','종료']],['aud','관람대상',['전체관람가','어린이','청소년','성인']],['fee','비용',['무료','유료']],['sec','지원사업 선정 여부',['선정','일반']]])}${fSel()}</div>`:fCount()?fSel():''}
   <div class="cal-wrap"><div>
    <div class="cal"><div class="cal-h"><button class="icon-btn" aria-label="이전 달" onclick="S.calM=Math.max(-1,(S.calM||0)-1);render()" ${(S.calM||0)<=-1?'disabled style="opacity:.3"':''}>${I('l')}</button><h2>${y}. ${String(m+1).padStart(2,'0')}</h2><button class="icon-btn" aria-label="다음 달" onclick="S.calM=Math.min(1,(S.calM||0)+1);render()" ${(S.calM||0)>=1?'disabled style="opacity:.3"':''}>${I('r')}</button></div>
@@ -2024,7 +2061,7 @@ PAGES['A2-01']=()=>{
 PAGES['A2-02']=()=>{const d=Q.d||'2026-10-24';const e=eventsOn(d);return `<div class="dim" onclick="if(event.target===this)closeModal()"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="modal-h"><h2 id="mt">${d.replaceAll('-','. ')} (${'일월화수목금토'[new Date(d).getDay()]}) 일정 <span class="muted small">${e.length}건</span></h2><button class="icon-btn" onclick="closeModal()" aria-label="닫기">${I('x')}</button></div><div class="modal-b"><ul class="mlist">${L(e,x=>`<li style="grid-template-columns:8px 1fr"><span class="dot" style="background:var(--c-${evc(x)});margin-top:8px"></span><div><a ${evLink(x)} style="font-weight:700">${x.admin?'◆ ':''}${x.title}</a><p class="tiny muted">${x.cat} · ${x.place}${x.aid?` · <a class="link" href="#/A3-02?id=${x.aid}">${A(x.aid).name}</a>`:''}</p></div></li>`)}</ul></div></div></div>`};
 
 /* ---------- A3 예술창고 ---------- */
-const searchBlock=(ph,filters)=>`<form class="sbar" role="search" onsubmit="event.preventDefault();S.q=this.q.value.trim();render()"><div class="inpw">${I('search')}<input class="inp" name="q" value="${esc(S.q||'')}" placeholder="${ph}" aria-label="검색어"></div><button class="btn btn-dark" type="submit">검색</button><button class="btn btn-line" type="button" aria-expanded="${S.filterOpen}" onclick="S.filterOpen=!S.filterOpen;render()">세부 검색${fCount()?` <span class="cnt">${fCount()}</span>`:''} ${S.filterOpen?'▲':'▼'}</button></form>${S.q?`<div class="selbar"><span class="muted">검색어</span><span class="chip">“${esc(S.q)}” <a onclick="S.q='';render()" aria-label="검색어 지우기">${I('x')}</a></span></div>`:''}
+const searchBlock=(ph,filters)=>`<form class="sbar" role="search" onsubmit="event.preventDefault();S.q=this.q.value.trim();render()"><div class="inpw">${I('search')}<input class="inp" name="q" value="${esc(S.q||'')}" placeholder="${ph}" aria-label="검색어"></div><button class="btn btn-dark" type="submit">검색</button><button class="btn btn-line" type="button" aria-expanded="${S.filterOpen}" onclick="S.filterOpen=!S.filterOpen;render()">세부 검색${fCount()?` <span class="cnt">${fCount()}</span>`:''} <span class="chev ${S.filterOpen?'up':''}">${I('chev')}</span></button></form>${S.q?`<div class="selbar"><span class="muted">검색어</span><span class="chip">“${esc(S.q)}” <a onclick="S.q='';render()" aria-label="검색어 지우기">${I('x')}</a></span></div>`:''}
  ${S.filterOpen?`<div class="filters">${fRows(filters)}${fSel()}</div>`:fCount()?fSel():''}`;
 const myShortcuts=()=>(isMember()?`<a class="btn btn-line btn-sm" href="#/M-15">${I('heart')} 나의 관심 예술인</a><a class="btn btn-line btn-sm" href="#/M-15?t=1">${I('heart')} 나의 관심 작품/활동</a>`:'');
 PAGES['A3-01']=()=>{const list=ARTISTS.filter(a=>(!a.priv||isAdmin())&&(!S.q||(a.name+a.line+a.field+a.genre+a.tags.join()).includes(S.q))&&fPass('type',a.type)&&fPass('field',a.field)&&fPass('genre',a.genre)&&fPass('dong',a.dong)&&fPass('dis',a.dis?'장애예술인(공개 동의)':'')).sort((a,b)=>a.name.localeCompare(b.name,'ko'));if(S.sortNew)list.reverse();return pub(kv('예술창고','군산의 예술인과 작품·활동을 만나보세요','예술창고 › 예술인 포트폴리오')+subtabs(T3,'A3-01')+`<section class="sec" style="padding-top:40px"><div class="wrap">
@@ -2045,7 +2082,7 @@ async function cardPng(id){const a=A(id);const c=document.createElement('canvas'
  g.fillStyle='rgba(255,255,255,.75)';g.font=`500 22px ${ff}`;g.fillText('지원사업 선정 · 2025 지역 예술인 창작지원',576,560);g.fillText('instagram.com/example',576,598);
  c.toBlob(b=>{const u=URL.createObjectURL(b);const l=document.createElement('a');l.href=u;l.download=`ARTPORT_공개명함_${a.name}.png`;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),2000);toast('공개명함 이미지(PNG)를 내려받았습니다 · 프로토타입 샘플')},'image/png')}
 PAGES['A3-03']=()=>{const a=A((Q.back||'').replace('id=','')||'a1');return `<div class="dim" onclick="if(event.target===this)closeModal()"><div class="modal lg" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="modal-h"><h2 id="mt">공개명함</h2><button class="icon-btn" onclick="closeModal()" aria-label="닫기">${I('x')}</button></div><div class="modal-b">
- <div style="background:var(--navy);color:#fff;border-radius:16px;padding:24px;display:grid;grid-template-columns:170px 1fr;gap:24px;position:relative;overflow:hidden">${PH(a.t,'').replace('class="ph','style="aspect-ratio:4/5" class="ph')}<div><p class="tiny" style="opacity:.6;letter-spacing:var(--p-font-tracking-widest)">ARTPORT, GUNSAN · ARTIST CARD</p><p class="serif" style="font-size:1.778rem;font-weight:700;margin-top:8px">${a.name}</p><p class="small" style="opacity:.85">${a.field} · ${a.genre}</p><p class="mt16 small">${a.line}</p><p class="tiny mt16" style="opacity:.75">지원사업 선정 · 2025 지역 예술인 창작지원</p><p class="tiny" style="opacity:.75">instagram.com/example</p></div></div>
+ <div style="background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:24px;display:grid;grid-template-columns:170px 1fr;gap:24px;position:relative;overflow:hidden">${PH(a.t,'').replace('class="ph','style="aspect-ratio:4/5" class="ph')}<div><p class="tiny" style="opacity:.6;letter-spacing:var(--p-font-tracking-widest)">ARTPORT, GUNSAN · ARTIST CARD</p><p class="serif" style="font-size:1.778rem;font-weight:700;margin-top:8px">${a.name}</p><p class="small" style="opacity:.85">${a.field} · ${a.genre}</p><p class="mt16 small">${a.line}</p><p class="tiny mt16" style="opacity:.75">지원사업 선정 · 2025 지역 예술인 창작지원</p><p class="tiny" style="opacity:.75">instagram.com/example</p></div></div>
  <p class="help mt16">공개명함에는 이메일과 연락처가 표시되지 않습니다. 이미지로 저장해 자유롭게 공유해 보세요.</p>${REF('표시 항목 7개 이하: 대표 이미지·이름·분야·장르·한 줄 소개·지원사업 선정현황·홈페이지 또는 SNS 1개(입력 시) · [이미지 저장]을 누르면 PNG(1200×700) 파일로 내려받음')}</div>
  <div class="modal-f"><button class="btn btn-line" onclick="closeModal()">닫기</button><button class="btn btn-pri" onclick="cardPng('${a.id}')">${I('dl')} 이미지 저장 (PNG)</button></div></div></div>`};
 PAGES['A3-04']=()=>{const a=A((Q.back||'').replace('id=','')||'a1');const ok=isMember()||isAdmin();return `<div class="dim" onclick="if(event.target===this)closeModal()"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="modal-h"><h2 id="mt">${a.name}에게 문의하기</h2><button class="icon-btn" onclick="closeModal()" aria-label="닫기">${I('x')}</button></div>
@@ -2053,7 +2090,7 @@ PAGES['A3-04']=()=>{const a=A((Q.back||'').replace('id=','')||'a1');const ok=isM
  ${F('보내는 사람',inp('','홍길동 (hong***@example.com)','text','readonly'),{cls:'stack'})}${F('제목',inp('문의 제목'),{req:1,cls:'stack'})}${F('내용',ta('문의 내용을 입력하세요'),{req:1,cls:'stack'})}</div><div class="modal-f"><button class="btn btn-line" onclick="closeModal()">취소</button><button class="btn btn-pri" onclick="toast('문의를 발송했습니다');closeModal()">${I('mail')} 보내기</button></div>`
  :`<div class="modal-b" style="text-align:center;padding:32px 24px">${I('lock')}<p class="mt16"><b>로그인한 회원만 문의할 수 있습니다.</b></p><p class="small muted mt8">예술인 보호를 위해 로그인한 회원만 문의할 수 있습니다.</p></div><div class="modal-f"><a class="btn btn-line" href="#/C-02">회원가입</a><a class="btn btn-pri" href="#/C-01">로그인</a></div>`}</div></div>`};
 PAGES['A3-05']=()=>{if(Q.dong){S.selDongs=[Q.dong];S.flt={};history.replaceState(null,'','#/A3-05');LAST_HASH=location.hash}const sd=S.selDongs;const fp=p=>fPass('field',p.field)&&fPass('genre',p.genre)&&fPass('area',dongKind(p.dong));const pool=POP.filter(fp);const list=pool.filter(p=>!sd.length||sd.includes(p.dong)).sort((a,b)=>a.name.localeCompare(b.name,'ko'));if(S.sortNew)list.reverse();const total=pool.length;const dc=n=>pool.filter(p=>p.dong===n).length;const pg=Math.max(1,Math.ceil(list.length/10));return pub(kv('예술창고','읍면동별 등록 예술인 현황','예술창고 › 예술지도')+subtabs(T3,'A3-05')+`<section class="sec" style="padding-top:40px"><div class="wrap">
- <div class="map-sbar"><p class="small muted">활동분야·세부장르·지역 구분으로 예술인을 좁혀 볼 수 있습니다.</p><button class="btn btn-line" type="button" aria-expanded="${!!S.filterOpen}" onclick="S.filterOpen=!S.filterOpen;render()">세부 검색${fCount()?` <span class="cnt">${fCount()}</span>`:''} ${S.filterOpen?'▲':'▼'}</button></div>
+ <div class="map-sbar"><p class="small muted">활동분야·세부장르·지역 구분으로 예술인을 좁혀 볼 수 있습니다.</p><button class="btn btn-line" type="button" aria-expanded="${!!S.filterOpen}" onclick="S.filterOpen=!S.filterOpen;render()">세부 검색${fCount()?` <span class="cnt">${fCount()}</span>`:''} <span class="chev ${S.filterOpen?'up':''}">${I('chev')}</span></button></div>
  ${S.filterOpen?`<div class="filters">${fRows([['field','활동분야',Object.keys(FIELDS)],['genre','세부장르',genreOpts()],['area','지역 구분',['읍','면','동']]])}${fSel()}</div>`:fCount()?fSel():''}
  <div class="mapw"><div class="map"><div class="row between mb16"><p class="small"><b>군산시</b> ${fCount()?'조건에 맞는':'등록'} 예술인 <b style="color:var(--accent-2)">${total}</b>명 · 27개 읍면동</p>${sd.length?`<button class="btn btn-line btn-xs" onclick="S.selDongs=[];render()">${I('refresh')} 선택 초기화</button>`:''}</div>
   <div class="row between wrapf mb16" style="margin-top:-4px"><span class="small muted">지도 범위</span><div class="seg" role="group" aria-label="지도 범위"><button class="${S.mapZoom?'':'on'}" aria-pressed="${!S.mapZoom}" onclick="S.mapZoom=false;render()">군산시 전체</button><button class="${S.mapZoom?'on':''}" aria-pressed="${!!S.mapZoom}" onclick="S.mapZoom=true;render()">도심 확대</button></div></div>
@@ -2071,12 +2108,12 @@ PAGES['A3-06']=()=>{const k=Q.k||'전체';const list=WORKS.filter(w=>(k==='전�
  ${worksList(list)}</div></section>`)};
 PAGES['A3-07']=()=>{const w=W(Q.id||'w1');const n=w.kind==='작품'?4:3;return `<div class="dim" style="background:rgba(5,8,15,.88)" onclick="if(event.target===this)closeModal()"><div class="modal xl viewer" style="background:transparent;box-shadow:none;color:#fff" role="dialog" aria-modal="true" aria-label="미리보기 뷰어">
  <div class="row between" style="padding:0 4px 12px"><div><span class="badge ${w.kind==='작품'?'b-info':'b-sec'}">${w.kind}</span> <b style="font-size:1.111rem;margin-left:8px">${w.title}</b> <span style="opacity:.6" class="small">· ${A(w.aid).name}</span></div><button class="icon-btn" style="color:#fff" onclick="closeModal()" aria-label="닫기">${I('x')}</button></div>
- <div class="vw-stage">${PH(w.t,'사진·영상 1 / '+n).replace('class="ph','style="aspect-ratio:16/9;border-radius:16px" class="ph')}
+ <div class="vw-stage">${PH(w.t,'사진·영상 1 / '+n).replace('class="ph','style="aspect-ratio:16/9;border-radius:var(--r-lg)" class="ph')}
   <button class="icon-btn" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);color:#000;width:52px;height:52px" aria-label="이전">${I('l')}</button><button class="icon-btn" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);color:#000;width:52px;height:52px" aria-label="다음">${I('r')}</button></div>
- <div class="row" style="justify-content:center;gap:8px;margin-top:8px">${L(Array.from({length:n}),(_,i)=>`<span style="width:${i===0?22:8}px;height:8px;border-radius:10px;background:#fff;opacity:${i===0?1:.4}"></span>`)}</div>
+ <div class="row" style="justify-content:center;gap:8px;margin-top:8px">${L(Array.from({length:n}),(_,i)=>`<span style="width:${i===0?22:8}px;height:8px;border-radius:var(--r);background:#fff;opacity:${i===0?1:.4}"></span>`)}</div>
  <div class="row" style="justify-content:center;margin-top:16px"><a class="btn btn-pri" href="#/${w.kind==='작품'?'A3-08':'A3-09'}?id=${w.id}">상세 보기</a><a class="btn btn-line" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)" href="#/A3-02?id=${w.aid}">예술인 소개</a></div></div></div>`};
 function workDetail(w){const a=A(w.aid);const others=WORKS.filter(x=>x.aid===w.aid&&x.id!==w.id&&(!x.priv||isAdmin()));const act=w.kind==='활동';const tabs=['소개','주요내용',act?'활동사진':'작품사진','영상','관련자료'];
- return `<section class="wd-top"><div class="gal"><div class="main">${PH(w.t,'이미지 슬라이드 1/6').replace('class="ph','style="aspect-ratio:16/10;border-radius:16px" class="ph')}</div><div class="th">${L([1,2,3,4,5,1],(t,i)=>`<div class="ph t${t} ${i===0?'on':''}"></div>`)}</div></div>
+ return `<section class="wd-top"><div class="gal"><div class="main">${PH(w.t,'이미지 슬라이드 1/6').replace('class="ph','style="aspect-ratio:16/10;border-radius:var(--r-lg)" class="ph')}</div><div class="th">${L([1,2,3,4,5,1],(t,i)=>`<div class="ph t${t} ${i===0?'on':''}"></div>`)}</div></div>
  <div class="wd-info"><div class="row">${badge(w.kind,act?'b-sec':'b-info')}${act&&w.cat?badge(w.cat,'b-sec'):''}${w.support?badge('지원사업 선정','b-dark'):''}${w.priv?badge('비공개','b-bad'):''}</div><h1 class="pf-name">${w.title}</h1><p class="pf-line">${w.line}</p>
  <dl class="wd-dl">${act?`<dt>기간</dt><dd><b>${w.start.replaceAll('-','.')}${w.end!==w.start?' ~ '+w.end.replaceAll('-','.'):''}</b></dd><dt>장소</dt><dd>${w.place}</dd><dt>분야</dt><dd>${w.field} · ${w.genre}</dd><dt>협력기관</dt><dd>군산문화관광재단</dd><dt>관람대상</dt><dd>${evAud(w.cat).join(' · ')}</dd><dt>관람료</dt><dd>${evFee(w.cat,w.support)}</dd><dt>구분</dt><dd>${w.support?'지원사업 선정':'일반'}</dd>`:`<dt>분야</dt><dd>${w.field} · ${w.genre}</dd><dt>연도</dt><dd>${w.year}</dd><dt>규격·소재</dt><dd>162.2 × 130.3cm, 캔버스에 유채</dd>`}</dl>
  <div class="tags">${L(w.tags,t=>`<a class="tag" href="#/C-10?q=${encodeURIComponent(t)}">${t}</a>`)}</div>
@@ -2085,7 +2122,7 @@ function workDetail(w){const a=A(w.aid);const others=WORKS.filter(x=>x.aid===w.a
  <div class="wd-body"><div style="min-width:0"><div class="wd-tabs" role="tablist" aria-label="작품·활동 내용">${L(tabs,(t,i)=>`<button type="button" role="tab" class="${i===0?'on':''}" aria-selected="${i===0}" onclick="pfTab(${i},this,'wd')">${t}</button>`)}</div>
  <div id="wd0" class="pf-pane"><p class="pf-txt">${w.line}. 군산의 장소와 사람들에게서 출발한 작업으로, 익숙한 동네의 풍경을 새로운 시선으로 다시 보게 합니다.</p></div>
  <div id="wd1" class="pf-pane" hidden><ol class="wd-steps">${L(act?[['기획','지역 주민과 함께 만드는 참여형 프로그램'],['구성','사전 워크숍 2회 + 본 행사 1회'],['참여','회차별 20명 내외']]:[['주제','원도심 골목의 빛과 시간'],['구성','연작 12점 중 대표작'],['전시','2026 개인전 출품']],([k,v])=>`<li><b>${k}</b><span>${v}</span></li>`)}</ol></div>
- <div id="wd2" class="pf-pane" hidden><div class="grid3">${L([1,2,3,4,5,1],t=>PH(t,act?'활동사진':'작품사진').replace('class="ph','style="aspect-ratio:4/3;border-radius:12px" class="ph'))}</div></div>
+ <div id="wd2" class="pf-pane" hidden><div class="grid3">${L([1,2,3,4,5,1],t=>PH(t,act?'활동사진':'작품사진').replace('class="ph','style="aspect-ratio:4/3;border-radius:var(--r)" class="ph'))}</div></div>
  <div id="wd3" class="pf-pane" hidden><a class="wd-vid" href="#" onclick="event.preventDefault();toast('외부 영상 페이지를 새 창으로 엽니다')"><span class="vid">${PH(2,'영상 썸네일')}<span class="play"><span>${I('play')}</span></span></span><span><b>${w.title} 영상</b><span class="small muted">외부 영상 페이지로 이동합니다 (새 창)</span></span></a></div>
  <div id="wd4" class="pf-pane" hidden><ul class="wd-files"><li>${I('file')}<span class="grow"><b>${w.title}_리플릿.pdf</b><span class="tiny muted">PDF · 1.2MB</span></span><button type="button" class="btn btn-line btn-sm" onclick="toast('파일을 내려받았습니다')">${I('dl')} 내려받기</button></li></ul></div>
  ${REF('탭 5종: 소개 · 주요내용 · 사진 · 영상(썸네일 포함 링크) · 관련자료 — 영상·관련자료는 등록할 때 선택 입력, 입력하지 않으면 해당 탭을 표시하지 않음')}</div>
@@ -2142,7 +2179,7 @@ PAGES['C-02']=()=>modal('회원가입',`<p class="small" style="color:var(--ink-
  <div class="grid2 mt16" style="gap:12px">${L(MT,([k,t,d,ic])=>`<button class="typecard ${S.memType===k?'on':''}" onclick="S.memType='${k}';render()" aria-pressed="${S.memType===k}"><span class="tc-i">${I(ic)}</span><span><b>${t}</b><span>${d}</span></span></button>`)}</div>
  ${S.memType==='일반'?callout('일반 회원은 예술인 등록신청 없이 관심 예술인·작품·활동 스크랩, 스크랩 목록 확인·다운로드를 이용할 수 있습니다.'):''}
  <ol class="jflow mt16" aria-label="가입 절차">${L(['시작','① 약관 동의','② 상세정보 입력','③ 아이디·비밀번호','가입 완료'],(t,i)=>`<li class="${i===0?'on':''}">${t}</li>`)}</ol>`,`<a class="btn btn-pri" href="#/C-03">다음</a>`,{steps:[1]});
-PAGES['C-03']=()=>modal('① 약관 동의',`<label class="chk" style="font-weight:700;padding:12px 16px;border-radius:10px;background:var(--paper);width:100%"><input type="checkbox" onclick="document.querySelectorAll('.agr2 input').forEach(x=>x.checked=this.checked)"> 전체 동의</label>
+PAGES['C-03']=()=>modal('① 약관 동의',`<label class="chk" style="font-weight:700;padding:12px 16px;border-radius:var(--r);background:var(--paper);width:100%"><input type="checkbox" onclick="document.querySelectorAll('.agr2 input').forEach(x=>x.checked=this.checked)"> 전체 동의</label>
  <div class="agr2 mt8">${L([['(필수) 이용약관 동의',0],['(필수) 개인정보 수집 및 이용 동의',1],['(필수) 개인정보 제3자 제공 동의',2],['(필수) 서비스 이용 관련 안내 메일 수신 동의 (심사·보완·승인·갱신 안내 등)',-1],['(선택) 군산문화관광재단 소식 수신 동의',-1]],([t,k])=>`<div class="row between" style="padding:8px 0">${chk(t)}${k>=0?`<a class="small link" href="#/C-09?t=${k}">보기</a>`:''}</div>`)}</div>
  <div style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px">${chk('만 14세 미만입니다',S.under14,`onchange="S.under14=this.checked;render()"`)}</div>
  ${S.under14?`<div class="box-p mt8" style="padding:16px"><b class="small">법정대리인 동의</b>${F('법정대리인 성명',inp(''),{cls:'stack',req:1})}${F('법정대리인 연락처',`<div class="inline">${inp('010-0000-0000')}<button class="btn btn-line btn-sm">인증</button></div>`,{cls:'stack',req:1})}${chk('(필수) 법정대리인 동의')}</div>`:''}
@@ -2183,7 +2220,7 @@ function err403(){Q.c='403';return PAGES['C-11']().replace('</main>',`<div class
 PAGES['C-11']=()=>{const c=Q.c||S.errCode;const m={404:['페이지를 찾을 수 없습니다','주소가 바뀌었거나 삭제된 페이지입니다.'],500:['일시적인 오류가 발생했습니다','잠시 후 다시 시도해 주세요. 문제가 계속되면 063-443-4820으로 문의해 주세요.'],403:['접근 권한이 없습니다',(isMember()||isAdmin())?'이 화면을 이용할 권한이 없습니다. 계정 권한을 확인해 주세요.':'로그인 후 이용할 수 있는 화면입니다.']}[c];
  return pub(`<div class="err-pg"><div>${CUR==='C-11'?`<div style="max-width:360px;margin:0 auto 16px">${REF('오류 유형 보기: '+L(['404','500','403'],x=>`<button class="btn btn-xs ${x===c?'btn-dark':'btn-line'}" style="margin:2px" onclick="go('C-11?c=${x}')">${x}</button>`))}</div>`:''}<p class="code">${c}</p><h1 class="sec-t mt16">${m[0]}</h1><p class="mt8 muted">${m[1]}</p><div class="row mt32" style="justify-content:center">${c==='403'&&!(isMember()||isAdmin())?`<a class="btn btn-line" href="#/C-02">회원가입</a><a class="btn btn-pri" href="#/C-01">로그인</a>`:`<button class="btn btn-line" onclick="history.back()">이전 화면</button><a class="btn btn-pri" href="#/H-01">홈으로</a>`}</div></div></div>`)};
 PAGES['C-12']=()=>`<div style="min-height:100vh;display:grid;place-items:center;background:var(--navy);color:#fff;padding:24px;position:relative;overflow:hidden">${waves()}<div style="text-align:center;position:relative;max-width:640px"><p class="logo" style="color:#fff">ARTPORT, GUNSAN</p><div style="margin:40px auto 0;width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center">${I('shield').replace('class="ic"','class="ic" style="width:40px;height:40px"')}</div><h1 class="sec-t mt24" style="font-size:2.222rem">시스템 점검 중입니다</h1><p class="mt16" style="opacity:.85">보다 안정적인 서비스를 위해 시스템 점검을 진행하고 있습니다.<br>이용에 불편을 드려 죄송합니다.</p>
- <dl class="dl" style="background:rgba(255,255,255,.08);border-radius:16px;padding:24px 24px;text-align:left;margin-top:32px"><dt style="color:#fff;opacity:.6">점검 사유</dt><dd>정기 보안 업데이트</dd><dt style="color:#fff;opacity:.6">예상 종료</dt><dd>2026. 10. 12.(월) 04:00</dd><dt style="color:#fff;opacity:.6">문의</dt><dd>063-443-4820</dd></dl>
+ <dl class="dl" style="background:rgba(255,255,255,.08);border-radius:var(--r-lg);padding:24px 24px;text-align:left;margin-top:32px"><dt style="color:#fff;opacity:.6">점검 사유</dt><dd>정기 보안 업데이트</dd><dt style="color:#fff;opacity:.6">예상 종료</dt><dd>2026. 10. 12.(월) 04:00</dd><dt style="color:#fff;opacity:.6">문의</dt><dd>063-443-4820</dd></dl>
  <p class="small mt24" style="opacity:.6">작성 중이던 신청서는 임시저장으로 보존됩니다.</p><div style="max-width:420px;margin:24px auto 0">${REF('점검 화면에는 이동 링크 없음 · <a class="link" href="#/H-01">홈으로 돌아가기</a>'+(isAdmin()?' · <a class="link" href="#/B-21">관리자 점검 설정으로</a>':''))}</div></div></div>`;
 PAGES['C-13']=()=>pub(kv('접근성 안내','누구나 편하게 이용할 수 있도록 돕는 기능입니다','접근성 안내')+`<section class="sec"><div class="wrap" style="max-width:1000px">
  <div class="grid2"><div class="box"><b class="h4">글자 크기 3단계</b><p class="small muted mt8">글자와 버튼 크기를 세 단계로 키울 수 있습니다.</p>${REF('본문 18→21→25px · 버튼 높이 48→52→56px')}<div class="row mt16">${L(['보통','크게','아주 크게'],(t,i)=>`<button class="btn ${S.fs==i?'btn-dark':'btn-line'}" onclick="S.fs=${i};store.set('fs',${i});applyA11y();render()">${t}</button>`)}</div></div>
@@ -2205,7 +2242,7 @@ function my(active,body){
 const myWorks=()=>WORKS.filter(w=>w.aid==='a1'||w.aid==='a5').slice(0,6);
 const pgh=(t,r='')=>`<div class="pg-h"><h1>${t}</h1><div class="row">${r}</div></div>`;
 PAGES['M-22']=()=>regShell(1,'추가 등록 시작',`${callout('<b>포트폴리오 추가 등록</b>은 처음 등록할 때와 같은 순서로 진행됩니다. 각 단계에 지금 등록된 내용이 불러와져 있으니 <b>새로 추가하거나 바꿀 내용만 입력</b>하세요. 지금 공개 중인 포트폴리오는 심사가 끝날 때까지 그대로 유지됩니다.')}
- <div class="box-p mt16"><b>진행 순서</b><div class="grid4 mt16" style="grid-template-columns:repeat(5,1fr);gap:8px">${L(REG_STEPS,(t,i)=>`<div class="small" style="background:var(--bg);border-radius:10px;padding:12px 12px"><b class="muted tiny">${i+1}</b> ${t}</div>`)}</div></div>
+ <div class="box-p mt16"><b>진행 순서</b><div class="grid4 mt16" style="grid-template-columns:repeat(5,1fr);gap:8px">${L(REG_STEPS,(t,i)=>`<div class="small" style="background:var(--bg);border-radius:var(--r);padding:12px 12px"><b class="muted tiny">${i+1}</b> ${t}</div>`)}</div></div>
  <div class="formcard mt24"><h3>현재 포트폴리오</h3>${F('공개 상태',`<div class="row">${sbadge('공개')}${badge('갱신 D-28','b-warn')}</div>`)}${F('최초 등록','2024.11.04 승인')}${F('동의 항목',`<p class="small" style="padding-top:12px">예술인 정보 및 콘텐츠 공개 동의 · 등록 관련 개인정보 추가 수집·이용 동의 — 최초 등록 때 동의를 마쳤습니다 (2024.11.04)</p>`)}</div>
  ${REF('M-22 = 추가 등록 시작. 이후 단계는 최초 등록 화면(A1-04~A1-14)을 “추가 등록 모드”로 공용 사용 — 같은 순서·같은 입력 항목, 기존 값 불러오기, 추가·변경분만 심사, 완료 후 포트폴리오 관리로 복귀')}`,{next:'추가 등록 시작하기'});
 PAGES['M-01']=()=>{const un=myUnread();const sc=Object.values(S.scrap).filter(Boolean).length;return my('M-01',`<div class="pg-h"><h1>마이페이지</h1><a class="btn btn-line btn-sm" href="#/H-01">${I('home')} 홈페이지로 바로가기</a></div>
@@ -2251,7 +2288,7 @@ const WK_STEPS=['시작','기본정보','상세정보','이미지·미디어','�
 const wkIdx={'M-07':1,'M-08':2,'M-09':3,'M-10':3,'M-11':4,'M-12':5,'M-13':6,'M-14':7};
 const wkNext=id=>({'M-07':'M-08','M-08':S.wkKind==='작품'?'M-09':'M-10','M-09':'M-11','M-10':'M-11','M-11':'M-12','M-12':'M-13','M-13':'M-14'})[id];
 const wkPrev=id=>({'M-08':'M-07','M-09':'M-08','M-10':'M-08','M-11':S.wkKind==='작품'?'M-09':'M-10','M-12':'M-11','M-13':'M-12'})[id];
-function wk(id,title,body,o={}){if(isMember()&&!isArtist())return my('M-06',gate('예술인 회원만 등록할 수 있습니다',['artist','org','inst']));const n=wkIdx[id];return my('M-06',`<a class="small muted" href="#/M-06">← 작품·활동 관리</a><div class="progress mt8"><h1 class="sec-t">${title}</h1><b>${n}/7 · ${Math.round((n-1)/6*100)}%</b></div><p class="small muted mt8">1회 제출 = ${S.wkKind} 1건 · 등록 유형: <b style="color:var(--ink)">${S.wkKind}</b></p><ol class="stepper mt16">${L(WK_STEPS,(t,i)=>`<li class="${i+1<n?'done':i+1===n?'cur':''}">${t}</li>`)}</ol>${body}
+function wk(id,title,body,o={}){if(isMember()&&!isArtist())return my('M-06',gate('예술인 회원만 등록할 수 있습니다',['artist','org','inst']));const n=wkIdx[id];return my('M-06',`<a class="small muted" href="#/M-06">← 작품·활동 관리</a><div class="progress mt8"><h1 class="sec-t">${title}</h1><b>${n}/7 단계</b></div><p class="small muted mt8">1회 제출 = ${S.wkKind} 1건 · 등록 유형: <b style="color:var(--ink)">${S.wkKind}</b></p><ol class="stepper mt16">${L(WK_STEPS,(t,i)=>`<li class="${i+1<n?'done':i+1===n?'cur':''}">${t}</li>`)}</ol>${body}
  ${o.noBar?'':`<div class="formbar"><div class="l"><button class="btn btn-line btn-sm" onclick="toast('임시저장되었습니다')">임시저장</button><a class="btn btn-ghost btn-sm" href="#/M-20">불러오기</a><span class="autosave">${I('clock')} 5분마다 자동 저장</span></div><div class="r"><span class="fb-step" aria-label="7단계 중 ${n}단계">${n}<small>/7</small></span>${wkPrev(id)?`<a class="btn btn-line" href="#/${wkPrev(id)}">이전</a>`:''}${id!=='M-13'&&id!=='M-07'?`<a class="btn btn-ghost" href="#/M-13">미리보기</a>`:''}<a class="btn btn-pri ${id==='M-13'?'is-off':''}" ${id==='M-13'?'id="qsubmit" aria-disabled="true" onclick="return qSubmit()"':o.guard?`onclick="return ${o.guard}()"`:''} href="#/${wkNext(id)}">${o.next||'다음 단계'}</a></div></div>`}`)}
 PAGES['M-07']=()=>{if(Q.k==='작품'||Q.k==='활동')S.wkKind=Q.k;return wk('M-07','작품·활동 등록 — 유형 선택',`<div class="grid2">${L([['작품','img','회화·조각·사진·문학 작품 등 결과물'],['활동','cal','공연·전시·교육·체험 등 일정이 있는 활동']],([k,ic,d])=>`<button class="typecard ${S.wkKind===k?'on':''}" style="padding:24px" onclick="S.wkKind='${k}';render()"><span class="tc-i" style="width:56px;height:56px">${I(ic)}</span><span><b style="font-size:1.111rem">${k} 등록</b><span>${d}</span></span></button>`)}</div>${callout('한 번에 1건만 제출합니다. 활동의 일정은 제출 시 예술캘린더 등록 여부를 선택할 수 있습니다.')}`.replace('</div>'+'<div class="callout','</div><div class="mt16"></div><div class="callout'),{next:'시작하기'})};
 PAGES['M-08']=()=>{const f=S.wf||'시각';const w=S.wkKind==='작품';return wk('M-08','② 기본정보',`<div class="formcard">${F('등록 유형',`<div class="row">${badge(S.wkKind,'b-dark')}</div>`,{req:1})}${F(S.wkKind+'명',inp('',w?'월명의 오후':'월명동 드로잉 산책'),{req:1})}${F(w?'작품 부제':'부제',inp(''),{opt:1})}
