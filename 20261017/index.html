@@ -2031,8 +2031,10 @@ html[data-hc="1"] .ev::before{border-color:currentColor}
 .rp-t small{font-size:.778rem;font-weight:700;color:var(--accent-2);margin-left:8px}
 .rp-b{background:var(--color-status-neutral-bg);color:var(--color-status-neutral-fg);border:0;font-size:.778rem;font-weight:700;padding:0 10px;border-radius:6px}
 /* 하단 정보 */
-.ft-legal{background:var(--color-bg-page);border-bottom:1px solid var(--color-border-default);padding:16px 0}
-.ft-legal .wrap{display:flex;gap:24px;font-size:.778rem;color:var(--color-text-body)}
+.ft .ft-in{align-items:start}
+.ft .logo{line-height:1.2}
+.ft-legal{display:flex;gap:20px;font-size:.778rem;color:var(--color-text-inverse);line-height:1.2;min-height:calc(1.111rem*1.2);align-items:center;margin-bottom:4px}
+.ft-legal a{color:inherit}
 .ft-legal a:hover{text-decoration:underline;text-underline-offset:3px}
 .ft-legal a b{font-weight:700}
 .ft .ft-in{padding:48px 40px}
@@ -2047,7 +2049,7 @@ html[data-hc="1"] .ev::before{border-color:currentColor}
 .ft .sns a{width:auto;height:auto;border:0;border-radius:0;font-size:.778rem;font-weight:400;display:inline}
 .ft .sns a+a::before{content:'·';margin:0 8px;opacity:.7}
 .ft .sns a:hover{text-decoration:underline;text-underline-offset:3px}
-html[data-hc="1"] .ft-legal{border-bottom-color:var(--color-text-heading)}
+html[data-hc="1"] .ft-legal{color:var(--color-text-heading)}
 @media (max-width:767px){
  .sp{padding:20px;gap:16px}
  .sp .sbar{flex-wrap:wrap}
@@ -2058,7 +2060,7 @@ html[data-hc="1"] .ft-legal{border-bottom-color:var(--color-text-heading)}
  .rt-cnt{font-size:1.111rem}
  .rt-sort{gap:14px;flex-wrap:wrap}
  .gate.box{padding:32px 20px}
- .ft-legal .wrap{gap:16px;flex-wrap:wrap}
+ .ft-legal{gap:16px;flex-wrap:wrap}
  .pager a{padding:0 12px}
  .ft-r select{text-align:left;width:auto}
  .ft .legal span{display:block;white-space:normal}
@@ -2293,11 +2295,11 @@ function header(){
     </div></div></header>
   ${S.mnav?`<nav id="mnav" class="mnav" aria-label="전체 메뉴"><ul>${L(GNB,m=>`<li><a class="mnav-1 ${base.startsWith(m.g)?'on':''}" href="#/${m.to}">${m.n}</a>${m.sub?`<ul>${L(m.sub,([t,to])=>`<li><a class="${base===to?'on':''}" href="#/${to}" ${base===to?'aria-current="page"':''}>${t}</a></li>`)}</ul>`:''}</li>`)}</ul></nav>`:''}`;
 }
-function footer(){return `<footer class="ft"><nav class="ft-legal" aria-label="약관 및 정책"><div class="wrap"><a href="#/C-09?t=1"><b>개인정보처리방침</b></a><a href="#/C-09">이용약관</a><a href="#/C-09?t=4">이메일무단수집거부</a></div></nav><div class="ft-in wrap">
+function footer(){return `<footer class="ft"><div class="ft-in wrap">
   <div><div class="logo">ARTPORT<b>,</b> GUNSAN</div>
   <p class="legal"><span>재단법인 군산문화관광재단</span><span>이사장 김재준</span><span>개인정보보호책임자 이주환</span><br><span style="white-space:normal">전북특별자치도 군산시 서래로 18, 3층</span><span>전화 063-443-4820</span><br><span>이메일 inmyfilm@gunsancf.or.kr</span><span>사업자등록번호 708-82-00492</span></p>
   <p class="cp">©재단법인 군산문화관광재단</p></div>
-  <div class="ft-r"><select aria-label="패밀리 사이트" onchange="if(this.selectedIndex){window.open('https://gunsancf.or.kr','_blank','noopener');this.selectedIndex=0}"><option>패밀리 사이트</option><option>군산문화관광재단 (gunsancf.or.kr)</option></select><div class="sns"><a href="https://www.instagram.com/gunsan_cf/" target="_blank" rel="noopener" aria-label="인스타그램(새 창)">인스타그램</a><a href="https://www.facebook.com/gunsancf" target="_blank" rel="noopener" aria-label="페이스북(새 창)">페이스북</a><a href="https://blog.naver.com/gunsan_cf" target="_blank" rel="noopener" aria-label="네이버 블로그(새 창)">네이버 블로그</a></div>${REF('푸터 정보는 관리자 > 사이트 기본정보(B-17)에서 수정')}</div>
+  <div class="ft-r"><nav class="ft-legal" aria-label="약관 및 정책"><a href="#/C-09?t=1"><b>개인정보처리방침</b></a><a href="#/C-09">이용약관</a><a href="#/C-09?t=4">이메일무단수집거부</a></nav><select aria-label="패밀리 사이트" onchange="if(this.selectedIndex){window.open('https://gunsancf.or.kr','_blank','noopener');this.selectedIndex=0}"><option>패밀리 사이트</option><option>군산문화관광재단 (gunsancf.or.kr)</option></select><div class="sns"><a href="https://www.instagram.com/gunsan_cf/" target="_blank" rel="noopener" aria-label="인스타그램(새 창)">인스타그램</a><a href="https://www.facebook.com/gunsancf" target="_blank" rel="noopener" aria-label="페이스북(새 창)">페이스북</a><a href="https://blog.naver.com/gunsan_cf" target="_blank" rel="noopener" aria-label="네이버 블로그(새 창)">네이버 블로그</a></div>${REF('푸터 정보는 관리자 > 사이트 기본정보(B-17)에서 수정')}</div>
 </div></footer>`}
 const LNB_T={'A1-01':'예술인등록','A3-05':'예술창고','A4-01':'공지사항','A5-01':'아트포트, 군산'};
 const lnbSide=(arr,on)=>{const title=LNB_T[arr[0][1]]||'';return `<aside class="lnb-side"><h2>${title}</h2><nav aria-label="${title} 메뉴">${L(arr,([t,to])=>`<a href="#/${to}" class="${on===to?'on':''}" ${on===to?'aria-current="page"':''}>${t}<span aria-hidden="true">›</span></a>`)}</nav></aside>`};
