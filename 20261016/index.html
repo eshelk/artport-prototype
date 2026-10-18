@@ -660,15 +660,10 @@ html[data-hc="1"] .toast{border:1px solid var(--color-text-heading)}
 .kv svg.waves{color:var(--color-text-inverse);position:absolute;right:-40px;bottom:-10px;width:720px;height:220px;opacity:.22}
 /* 키비주얼 테마 — 맑은 하늘(예술인등록·예술캘린더·예술창고) / 노을(공지사항·아트포트, 군산) */
 .kv.sky{color:var(--navy);background:
-  radial-gradient(ellipse 160px 46px at 72% 34%,rgba(255,255,255,.85),transparent 70%),
-  radial-gradient(ellipse 230px 60px at 84% 62%,rgba(255,255,255,.7),transparent 70%),
-  radial-gradient(ellipse 120px 34px at 58% 72%,rgba(255,255,255,.55),transparent 70%),
-  radial-gradient(circle at 92% 18%,rgba(255,250,225,.95) 0,rgba(255,244,200,.55) 46px,transparent 120px),
   linear-gradient(100deg,var(--p-color-sky-400) 0%,var(--p-color-sky-300) 45%,var(--p-color-sky-200) 78%,var(--p-color-sky-100) 100%)}
 .kv.sky p{color:var(--navy-2);opacity:1} .kv.sky .crumb{color:var(--navy-2);opacity:.8}
 .kv.sky svg.waves{color:var(--color-text-inverse);opacity:.6}
 .kv.dusk{color:var(--color-text-inverse);background:
-  radial-gradient(circle at 88% 78%,rgba(255,206,140,.75) 0,rgba(240,160,100,.35) 70px,transparent 190px),
   linear-gradient(100deg,var(--p-color-dusk-900) 0%,var(--p-color-dusk-800) 32%,var(--p-color-dusk-700) 58%,var(--p-color-dusk-600) 80%,var(--p-color-dusk-500) 100%)}
 .kv.dusk h1{letter-spacing:var(--p-font-tracking-wide)} .kv.dusk p{color:var(--p-color-dusk-text);opacity:1} .kv.dusk .crumb{color:var(--p-color-dusk-text);opacity:.85}
 .kv.dusk svg.waves{color:var(--p-color-dusk-glow);opacity:.35}
@@ -1144,7 +1139,7 @@ html[data-fs="2"] .my-row{grid-template-columns:1fr}
 [data-fs="2"] .maj-list{grid-template-columns:1fr}
 /* */
 .hist-no{display:inline-grid;place-items:center;width:1.6em;height:1.6em;border-radius:50%;background:var(--navy,#17284D);color:#fff;font-size:.8em;margin-right:10px;vertical-align:.1em}
-.st-track{list-style:none;padding:0;margin:32px auto 0;max-width:760px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;text-align:center;counter-reset:st}
+.st-track{list-style:none;padding:0;margin:32px auto 0;max-width:767px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;text-align:center;counter-reset:st}
 .st-track li{position:relative;padding-top:44px;font-size:.833rem;color:var(--ink-2);counter-increment:st}
 .st-track li::before{content:counter(st);position:absolute;top:0;left:50%;transform:translateX(-50%);width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:2px solid var(--line);font-weight:700;color:var(--ink-2);z-index:1}
 .st-track li::after{content:'';position:absolute;top:15px;left:calc(50% + 18px);width:calc(100% - 28px);height:2px;background:var(--line)}
@@ -1526,7 +1521,7 @@ html[data-hc="1"] .amap-isl{background:#000}
   .hero-in{grid-template-columns:1fr} .hero-art{display:none} .cta4{grid-template-columns:repeat(2,1fr)}
   .cal-wrap,.mapw{grid-template-columns:1fr} .gnb-item>a{padding:0 10px}
 }
-@media (max-width:760px){
+@media (max-width:767px){
   .wrap{padding:0 16px} .kv-in{padding:40px 16px} .hero-in{padding:48px 16px} .cta4{padding:0 16px 48px}
   .grid4,.grid3{grid-template-columns:repeat(2,1fr)} .grid2,.stat4{grid-template-columns:1fr 1fr}
   .gnb{display:none} .hd-in{gap:12px;height:68px} .subtabs{padding:10px 0} .subtabs .wrap{gap:6px} .subtabs a{height:48px;padding:0 6px;font-size:.778rem}
@@ -1768,6 +1763,57 @@ html[data-hc="1"] .ev::before{border-color:currentColor}
 .ms-wt{font-size:.833rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ms-wk{font-size:.722rem;opacity:.75}
 @media (max-width:1099px){.ms-body{grid-template-columns:1fr}.ms-pf{display:grid;grid-template-columns:120px 1fr}.ms-works{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 다듬기 */
+.card a:has(.sup-seal) .ph::after{left:auto;right:10px}
+.hd-menu{display:none}
+.mnav{background:var(--bg);border-bottom:1px solid var(--line);padding:4px 16px 16px}
+.mnav ul{list-style:none;margin:0;padding:0}
+.mnav>ul>li{border-bottom:1px solid var(--line)}
+.mnav>ul>li:last-child{border-bottom:0}
+.mnav a{display:flex;align-items:center;min-height:48px;color:var(--ink)}
+.mnav .mnav-1{font-weight:700;font-size:1rem}
+.mnav li ul{padding:0 0 8px 12px}
+.mnav li ul a{min-height:44px;font-size:.889rem;color:var(--ink-2)}
+.mnav a.on{color:var(--accent-2)}
+.mnav li ul a.on{font-weight:700}
+@media (max-width:767px){
+ .hd-menu{display:inline-grid;width:44px;height:44px}
+ .util-in .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+ .util-in{gap:4px}.util button{white-space:nowrap;padding:0 8px}
+ .util .sep{margin:0 2px}
+}
+@media (max-width:1099px){
+ .hc-full .hc-l{max-width:none;min-width:0;flex:none;width:100%}
+ .hc-full .hc-t{white-space:normal}
+ .hc-full .hc-copy{border-left:0;padding-left:0;border-top:1px solid rgba(176,214,242,.25);padding-top:clamp(20px,3vh,32px)}
+}
+@media (max-width:767px){
+ .hc-full .hc-in{padding-top:40px;padding-bottom:120px;gap:28px}
+ .hc-full .hc-search{flex-wrap:nowrap}
+ .hc-full .hc-search .inpw{flex:1 1 auto;min-width:0}
+ .hc-full .hc-search .btn{flex:none;margin:0}
+ .hc-eb{font-size:.944rem}
+}
+
+.hc-motto{position:absolute;right:max(40px,calc((100% - 1280px)/2 + 40px));bottom:clamp(72px,12vh,128px);margin:0;z-index:1;font-family:var(--p-font-family-serif);font-weight:600;font-size:clamp(1.111rem,2.4vh,1.556rem);letter-spacing:.02em;color:#B0D6F2;white-space:nowrap}
+.hc-eb{display:none}
+@media (min-width:1680px){.hc-motto{right:calc((100% - 1520px)/2 + 40px)}}
+@media (max-width:1099px){.hc-motto{position:static;margin:-72px 16px 48px;text-align:right;white-space:normal}}
+.flow5{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));counter-reset:none;position:relative}
+.flow5::before{content:"";position:absolute;left:20px;right:20px;top:19px;height:2px;background:var(--line-2)}
+.flow5 li{position:relative;padding-right:20px}
+.flow5 .f5-n{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-weight:800;font-size:1rem;box-shadow:0 0 0 6px var(--bg)}
+.flow5 b{display:block;margin-top:16px;font-size:1.111rem}
+.flow5 p{margin:6px 0 0;font-size:.833rem;color:var(--ink-2);word-break:keep-all}
+@media (max-width:1099px){.flow5{grid-template-columns:1fr;gap:20px}.flow5::before{display:none}.flow5 li:not(:last-child)::after{content:"";position:absolute;left:19px;top:40px;bottom:-20px;width:2px;background:var(--line-2)}.flow5 li{display:grid;grid-template-columns:40px 1fr;column-gap:16px;padding:0}.flow5 b{margin-top:8px}.flow5 p{grid-column:2}}
+.feat6{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 32px;border-top:1px solid var(--line)}
+.feat6 li{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:.889rem;font-weight:500}
+.feat6 .ic{color:var(--accent);flex:none}
+@media (max-width:1099px){.feat6{grid-template-columns:1fr 1fr}}
+@media (max-width:767px){.feat6{grid-template-columns:1fr}}
+.ms-h h2{margin:0}
+.ms-d{margin:6px 0 0;font-size:.889rem;color:#D8EBF8}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -1779,7 +1825,7 @@ html[data-hc="1"] .ev::before{border-color:currentColor}
 /* */
 
 /* ---------- 아이콘 (자체 제작 라인 아이콘) ---------- */
-const P={chev:'<path d="M6 9l6 6 6-6"/>',folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',mega:'<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',monitor:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',chart:'<path d="M5 20V12M12 20V6M19 20v-9"/>',msg:'<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>',heart:'<path d="M12 20s-7-4.4-9-8.6C1.6 8.3 3.6 5 7 5c2 0 3.3 1.1 5 3 1.7-1.9 3-3 5-3 3.4 0 5.4 3.3 4 6.4C19 15.6 12 20 12 20z"/>',share:'<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',dl:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',l:'<path d="M15 5l-7 7 7 7"/>',r:'<path d="M9 5l7 7-7 7"/>',plus:'<path d="M12 5v14M5 12h14"/>',bell:'<path d="M6 16v-5a6 6 0 1112 0v5l2 2H4l2-2zM10 20a2 2 0 004 0"/>',print:'<path d="M7 9V4h10v5M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="7" y="14" width="10" height="6"/>',check:'<path d="M5 12l5 5 9-10"/>',play:'<path d="M8 5l11 7-11 7z"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5"/><circle cx="17" cy="7" r="3"/><path d="M17 13c2.6 0 4.5 1.6 5 4.5"/>',build:'<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M3 21h18"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',file:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',up:'<path d="M12 16V5M7 10l5-5 5 5M5 20h14"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',grid:'<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>',map:'<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>',logout:'<path d="M15 4h4a1 1 0 011 1v14a1 1 0 01-1 1h-4M10 16l-4-4 4-4M6 12h11"/>',ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',refresh:'<path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',drag:'<path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/>'};
+const P={menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',chev:'<path d="M6 9l6 6 6-6"/>',folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',mega:'<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',monitor:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',chart:'<path d="M5 20V12M12 20V6M19 20v-9"/>',msg:'<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>',heart:'<path d="M12 20s-7-4.4-9-8.6C1.6 8.3 3.6 5 7 5c2 0 3.3 1.1 5 3 1.7-1.9 3-3 5-3 3.4 0 5.4 3.3 4 6.4C19 15.6 12 20 12 20z"/>',share:'<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',dl:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',l:'<path d="M15 5l-7 7 7 7"/>',r:'<path d="M9 5l7 7-7 7"/>',plus:'<path d="M12 5v14M5 12h14"/>',bell:'<path d="M6 16v-5a6 6 0 1112 0v5l2 2H4l2-2zM10 20a2 2 0 004 0"/>',print:'<path d="M7 9V4h10v5M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="7" y="14" width="10" height="6"/>',check:'<path d="M5 12l5 5 9-10"/>',play:'<path d="M8 5l11 7-11 7z"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5"/><circle cx="17" cy="7" r="3"/><path d="M17 13c2.6 0 4.5 1.6 5 4.5"/>',build:'<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M3 21h18"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',file:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',up:'<path d="M12 16V5M7 10l5-5 5 5M5 20h14"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',grid:'<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>',map:'<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>',logout:'<path d="M15 4h4a1 1 0 011 1v14a1 1 0 01-1 1h-4M10 16l-4-4 4-4M6 12h11"/>',ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',refresh:'<path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',drag:'<path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/>'};
 const I=k=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${P[k]}</svg>`;
 const L=(a,f)=>a.map(f).join('');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1903,7 +1949,7 @@ function closeModal(){dimOut(document.querySelector('.dim'),()=>{if(Q.ret){go(Q.
 function hdSync(){const h=document.querySelector('.hd');if(h)document.documentElement.style.setProperty('--hd-real',h.offsetHeight+'px')}
 addEventListener('resize',hdSync);
 function render(){setTimeout(hdSync,0);
-  CUR=parse();const s=SC(CUR);const base=s.modal?s.bg:CUR;if(base!==PREV_BASE&&!s.modal){S.q='';S.sortNew=false;S.calQ='';S.calM=0;S.dashTab=null;S.flt={};S.filterOpen=false;S.calFilter=false;S.calTab='전체';S.retPw=false;S.retUnlock=false}
+  CUR=parse();const s=SC(CUR);const base=s.modal?s.bg:CUR;if(base!==PREV_BASE&&!s.modal){S.q='';S.mnav=false;S.sortNew=false;S.calQ='';S.calM=0;S.dashTab=null;S.flt={};S.filterOpen=false;S.calFilter=false;S.calTab='전체';S.retPw=false;S.retUnlock=false}
   const html=PAGES[base]?PAGES[base]():'';
   const fa=document.activeElement;FOCUS_K=(base===PREV_BASE&&fa&&fa!==document.body&&fa.matches('button,[role=radio],[role=tab],[role=switch],.chip'))?{tag:fa.tagName,txt:(fa.textContent||'').trim(),grp:((fa.closest('[aria-label]')||{getAttribute:()=>''}).getAttribute('aria-label')||'')}:null;
   document.getElementById('app').innerHTML=html;
@@ -1979,7 +2025,9 @@ function header(){
       ${logged?`${isAdmin()?'<span class="t t-who" aria-label="관리자로 로그인 중">관리자</span>':'<a class="t" href="#/M-01">마이페이지</a>'}<a class="t" onclick="setRole('guest')">로그아웃</a>`:`<a class="t" href="#/C-02">회원가입</a><a class="t login" href="#/C-01">로그인</a><a class="t" href="#/C-01">마이페이지</a>`}
       ${logged&&!isAdmin()?`<a class="icon-btn hd-bell" href="#/M-18" aria-label="알림함 · 확인하지 않은 알림 ${myUnread()}건">${I('bell')}<span class="bell-n" aria-hidden="true">${myUnread()}</span></a>`:''}<a class="icon-btn" href="#/C-10" aria-label="통합 검색">${I('search')}</a>
       ${isAdmin()?`<a class="btn btn-dark btn-sm" href="#/B-02">관리자 대시보드</a>`:''}
-    </div></div></header>`;
+      <button class="icon-btn hd-menu" type="button" aria-expanded="${!!S.mnav}" aria-controls="mnav" aria-label="${S.mnav?'전체 메뉴 닫기':'전체 메뉴 열기'}" onclick="S.mnav=!S.mnav;render()">${I(S.mnav?'x':'menu')}</button>
+    </div></div></header>
+  ${S.mnav?`<nav id="mnav" class="mnav" aria-label="전체 메뉴"><ul>${L(GNB,m=>`<li><a class="mnav-1 ${base.startsWith(m.g)?'on':''}" href="#/${m.to}">${m.n}</a>${m.sub?`<ul>${L(m.sub,([t,to])=>`<li><a class="${base===to?'on':''}" href="#/${to}" ${base===to?'aria-current="page"':''}>${t}</a></li>`)}</ul>`:''}</li>`)}</ul></nav>`:''}`;
 }
 function footer(){return `<footer class="ft"><div class="ft-in wrap">
   <div><div class="logo">ARTPORT, GUNSAN</div><div class="ft-links mt16"><a href="#/C-09">이용약관</a><a href="#/C-09?t=1">개인정보처리방침</a></div>
@@ -2024,7 +2072,6 @@ PAGES['H-01']=()=>{
    <div class="hc-band">${waves()}<svg class="hc-sea" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true"><path d="M0 150 C 240 120, 480 180, 720 150 S 1200 120, 1440 150" /><path d="M0 185 C 240 160, 480 210, 720 185 S 1200 160, 1440 185" /><path d="M0 218 C 240 200, 480 236, 720 218 S 1200 200, 1440 218" /></svg>${kvTag(1)}
     <div class="wrap hc-in">
     <div class="hc-l">
-     <p class="hc-eb">군산의 예술이 출항합니다</p>
      <h1 class="hc-t">예술과 일상을 잇는<br>아트포트 군산</h1>
      <form class="sbar hc-search" role="search" onsubmit="event.preventDefault();go('C-10?q='+encodeURIComponent(this.q.value||'공연'))"><div class="inpw">${I('search')}<label class="sr" for="hq">통합 검색</label><input id="hq" name="q" class="inp" data-rotate-ph placeholder="${HOME_PH[0]}"></div><button class="btn btn-pri" type="submit">검색</button></form>
      <div class="reco"><span style="opacity:.75">추천 검색어</span>${L(['문학','시각','공연','문화예술교육'],k=>`<a href="#/C-10?q=${k}">${k}</a>`)}</div>
@@ -2035,6 +2082,7 @@ PAGES['H-01']=()=>{
      <p>군산 예술 생태계와 시장의 자생력을 키우며 <br class="bk">기록하고, 연결하고, 함께 성장하는 군산의 문화예술 플랫폼 — 아트포트 군산입니다.</p>
     </div>
     </div>
+    <p class="hc-motto">군산의 예술이 출항합니다</p>
    </div>
   </section>
   ${REF(`키비주얼 1 · 홈 화면 히어로 — 남색 영역 전체(화면 가로 전체 × 헤더 아래 화면 높이) 배경 이미지 자리. 군산항의 헤리티지(내항 뜬다리부두·근대 항구·바다)를 담아 「군산의 예술이 출항한다」는 메시지를 전달 · 원본 3840×2000px · WebP 500KB 이하 · 남색 반투명 덮개(투명도 80% 이상)로 흰 글자 대비 4.5:1 유지 · 장식 이미지(alt="")`).replace('class="ref"','class="ref wrap" style="margin:16px auto"')}${REF('검색창 안내 문구는 예술인 → 작품 → 활동 → 지역 → 해시태그 순서로 3.2초마다 바뀜. 검색창을 누르거나 글자를 입력하면 멈춤').replace('class="ref"','class="ref wrap" style="margin:16px auto"')}${REF('홈은 남색 영역만 — 바로가기 버튼·이달의 일정·공지 영역 없음(각 메뉴에서 이용). 남색 영역은 화면 좌우 끝까지, 헤더 아래 화면 높이 전체(1366×768 포함) · 알림 팝업 = 좌·중·우 창 최대 3개를 처음부터 함께 노출(관리자 팝업 관리의 위치별) · 창 크기는 모두 같음(가로 360px, 이미지 3:4) · 한 창에 여러 장이면 ‹ ›·점으로 넘겨 보기(위치당 최대 5장) · [오늘 하루 보지 않기]는 창별로 적용').replace('class="ref"','class="ref wrap" style="margin:16px auto"')}`);
@@ -2044,8 +2092,8 @@ PAGES['H-01']=()=>{
 PAGES['A1-01']=()=>pub(kv('예술인등록','군산의 예술인을 기록하고 연결합니다','예술인등록 › 예술인등록 사업소개')+subtabs(T1,'A1-01')+`
  <section class="sec"><div class="wrap">
   <h2 class="sec-t">예술인 등록 사업</h2><p class="sec-d">등록한 예술인 정보는 다음 흐름으로 기록되고 활용됩니다.</p>
-  <ol class="grid4 mt32" style="grid-template-columns:repeat(5,1fr);gap:16px">${L([['등록','plus','회원가입 후 예술인 정보와 포트폴리오를 등록합니다'],['기록','file','작품·활동·이력을 연도별로 기록합니다'],['연결','link','예술캘린더·예술지도와 연결됩니다'],['노출','eye','통합검색과 예술창고에 공개됩니다'],['활용','dl','공유·공개명함·인쇄·PDF 저장으로 활용합니다']],([t,ic,d],i)=>`<li class="box" style="padding:24px;position:relative"><span class="tiny muted">${i+1}단계</span><div style="width:48px;height:48px;border-radius:var(--r-lg);background:var(--accent-weak);color:var(--accent-2);display:grid;place-items:center;margin:12px 0 16px">${I(ic)}</div><b>${t}</b><p class="small muted mt8">${d}</p></li>`)}</ol>
-  <div class="grid3 mt32">${L(['예술인 포트폴리오 구축','작품, 활동 등록','예술캘린더 및 예술지도 연계','통합검색 노출','SNS 및 홈페이지 연계','포트폴리오 공유 및 인쇄·PDF 저장 활용'],t=>`<div class="row" style="background:var(--bg);border-radius:var(--r);padding:16px 20px"><span style="color:var(--accent)">${I('check')}</span><span class="small" style="font-weight:500">${t}</span></div>`)}</div>
+  <ol class="flow5 mt32">${L([['등록','회원가입 후 예술인 정보와 포트폴리오를 등록합니다'],['기록','작품·활동·이력을 연도별로 기록합니다'],['연결','예술캘린더·예술지도와 연결됩니다'],['노출','통합검색과 예술창고에 공개됩니다'],['활용','공유·공개명함·인쇄·PDF 저장으로 활용합니다']],([t,d],i)=>`<li><span class="f5-n" aria-hidden="true">${i+1}</span><b>${t}</b><p>${d}</p></li>`)}</ol>
+  <h3 class="h4 mt48">등록하면 이용할 수 있는 기능</h3><ul class="feat6 mt16">${L(['예술인 포트폴리오 구축','작품, 활동 등록','예술캘린더 및 예술지도 연계','통합검색 노출','SNS 및 홈페이지 연계','포트폴리오 공유 및 인쇄·PDF 저장 활용'],t=>`<li>${I('check')}<span>${t}</span></li>`)}</ul>
 <div class="row mt48" style="justify-content:center"><a class="btn btn-line" href="#/A1-02">등록 안내 보기</a><a class="btn btn-pri" href="#/A1-03">예술인 등록 신청하기 ${I('r')}</a></div>
  </div></section>`);
 
@@ -2457,7 +2505,7 @@ PAGES['M-22']=()=>regShell(1,'추가 등록 시작',`${callout('<b>포트폴리�
  <div class="formcard mt24"><h3>현재 포트폴리오</h3>${F('공개 상태',`<div class="row">${sbadge('공개')}${badge('갱신 D-28','b-warn')}</div>`)}${F('최초 등록','2024.11.04 승인')}${F('동의 항목',`<p class="small" style="padding-top:12px">예술인 정보 및 콘텐츠 공개 동의 · 등록 관련 개인정보 추가 수집·이용 동의 — 최초 등록 때 동의를 마쳤습니다 (2024.11.04)</p>`)}</div>
  ${REF('M-22 = 추가 등록 시작. 이후 단계는 최초 등록 화면(A1-04~A1-14)을 “추가 등록 모드”로 공용 사용 — 같은 순서·같은 입력 항목, 기존 값 불러오기, 추가·변경분만 심사, 완료 후 포트폴리오 관리로 복귀')}`,{next:'추가 등록 시작하기'});
 const myShow=()=>{const a=A('a1');const ws=myWorks();const pub=ws.filter(w=>!w.priv);const nw=ws.filter(w=>w.kind==='작품').length,na=ws.filter(w=>w.kind==='활동').length,ns=ws.filter(w=>w.support).length;
- return `<section class="my-show" aria-labelledby="show-h"><div class="ms-h"><div><p class="tiny" style="margin:0;opacity:.8">나의 예술 기록</p><h2 id="show-h">${a.name} 님이 쌓아 온 기록입니다</h2></div><a class="btn btn-sm ms-btn" href="#/A3-02?id=${a.id}">${I('eye')} 공개 포트폴리오 보기</a></div>
+ return `<section class="my-show" aria-labelledby="show-h"><div class="ms-h"><div><h2 id="show-h">나의 예술 기록</h2><p class="ms-d">${a.name} 님이 등록한 포트폴리오와 작품·활동입니다.</p></div><a class="btn btn-sm ms-btn" href="#/A3-02?id=${a.id}">${I('eye')} 공개 포트폴리오 보기</a></div>
  <div class="ms-body"><a class="ms-pf" href="#/A3-02?id=${a.id}">${PH(a.t,'대표 이미지')}<span class="ms-pf-t"><b>${a.name}</b><span>${a.field} · ${a.genre}</span><span class="ms-line">${a.line}</span></span></a>
  <div class="ms-r"><p class="ms-sum">작품 <b>${nw}</b>점 · 활동 <b>${na}</b>건${ns?` · 그중 <b>${ns}</b>건이 지원 사업에 선정되었습니다`:''}</p>
  <div class="ms-works">${L(pub.slice(0,4),w=>`<a class="ms-w" href="#/A3-07?id=${w.id}">${PH(w.t,'')}${w.support?supSeal(1):''}<span class="ms-wt">${w.title}</span><span class="ms-wk">${w.kind} · ${w.year}</span></a>`)}</div></div></div></section>${REF('나의 예술 기록 — 예술인이 등록한 포트폴리오·작품·활동을 실제 공개 모습(대표 이미지·작품 썸네일)으로 모아 보여 줌 · 작품·활동 건수와 지원 사업 선정 건수 한 줄 · 공개 중인 최근 작품·활동 4건 · 누르면 공개 화면으로 이동')}`};
@@ -2763,7 +2811,7 @@ PAGES['B-17']=()=>adm('B-17','사이트 기본정보 관리',`<div class="panel"
  <div class="panel"><div class="panel-h"><h2>메인 추천 검색어</h2></div><div class="row wrapf">${L(['문학','시각','공연','문화예술교육'],t=>`<span class="chip">${t} ${I('x')}</span>`)}<div class="inline" style="width:260px"><input class="inp" placeholder="검색어 추가" style="min-height:2.2em"><button class="btn btn-dark btn-sm">추가</button></div></div></div>`);
 PAGES['B-18']=()=>adm('B-18','분류체계·기본 해시태그 관리',`<div class="grid2" style="gap:20px;align-items:start"><div class="panel" style="margin:0"><div class="panel-h"><h2>활동분야 · 세부장르</h2><button class="btn btn-pri btn-sm">${I('plus')} 분야 추가</button></div>${tbl(['순서','활동분야','세부장르','사용',''],Object.entries(FIELDS).map(([f,g],i)=>tr([`<span class="row">${I('drag')}${i+1}</span>`,`<b>${f}</b>`,g.join(', '),{v:POP.filter(p=>p.field===f).length+'명',c:'num'},`<div class="row" style="gap:4px"><button class="btn btn-line btn-xs">수정</button><button class="btn btn-ghost btn-xs" onclick="alert('사용 중인 분류는 삭제할 수 없습니다.')">삭제</button></div>`])))}<h3 class="h4 mt24 mb16">활동 유형</h3><div class="row wrapf">${L(CAT6,t=>`<span class="chip">${t}</span>`)}</div></div>
  <div class="panel" style="margin:0"><div class="panel-h"><h2>기본 해시태그</h2><div class="inline" style="width:240px"><input class="inp" style="min-height:2.2em" placeholder="#태그"><button class="btn btn-dark btn-sm">추가</button></div></div><div class="row wrapf">${L(BASE_TAGS,t=>`<span class="chip">${t} ${I('x')}</span>`)}</div><p class="tiny muted mt16">예술인은 이 목록 안에서만 선택합니다(최대 10개). 자동 추천·유사 태그 통합 기능은 제공하지 않습니다.</p></div></div>`);
-PAGES['B-19']=()=>adm('B-19','자동 로그아웃 설정',`<div class="panel" style="max-width:760px">${F('자동 로그아웃 시간',`<div class="row">${sel(['30분','1시간','2시간','3시간'],'2시간','style="max-width:200px"')}<span class="small muted">미사용 기준 · 초기값 2시간</span></div>`)}${F('예고 알림',`<div class="row">${sel(['3분 전','5분 전','10분 전'],'5분 전','style="max-width:200px"')}</div>`)}${F('연장 시간',`<div class="row">${sel(['10분','30분','1시간'],'30분','style="max-width:200px"')}<span class="small muted">초기값 30분</span></div>`)}<div class="row" style="justify-content:flex-end"><a class="btn btn-line" href="#/C-14?ret=B-19">알림창 미리보기</a><button class="btn btn-pri" onclick="toast('저장되었습니다')">저장</button></div></div>`);
+PAGES['B-19']=()=>adm('B-19','자동 로그아웃 설정',`<div class="panel" style="max-width:767px">${F('자동 로그아웃 시간',`<div class="row">${sel(['30분','1시간','2시간','3시간'],'2시간','style="max-width:200px"')}<span class="small muted">미사용 기준 · 초기값 2시간</span></div>`)}${F('예고 알림',`<div class="row">${sel(['3분 전','5분 전','10분 전'],'5분 전','style="max-width:200px"')}</div>`)}${F('연장 시간',`<div class="row">${sel(['10분','30분','1시간'],'30분','style="max-width:200px"')}<span class="small muted">초기값 30분</span></div>`)}<div class="row" style="justify-content:flex-end"><a class="btn btn-line" href="#/C-14?ret=B-19">알림창 미리보기</a><button class="btn btn-pri" onclick="toast('저장되었습니다')">저장</button></div></div>`);
 PAGES['B-20']=()=>adm('B-20','관리자 계정·2단계 인증',`<div class="panel" style="max-width:860px"><div class="panel-h"><h2>2단계 인증 이메일</h2></div>${F('현재 인증 이메일',inp('','ad***@gunsancf.or.kr','text','readonly'))}${F('변경',`<button class="btn btn-dark btn-sm" onclick="alert('비밀번호 확인 → 2단계 인증 후 변경할 수 있습니다.')">${I('lock')} 비밀번호 + 2단계 인증 후 변경</button>`,{help:'변경 이력은 수정할 수 없으며 기간 제한 없이 보관됩니다.'})}</div>
  <div class="panel"><div class="panel-h"><h2>관리자 로그인·인증 이력</h2>${badge('수정 불가 · 무기한 보관','b-dark')}</div>${tbl(['일시','식별자','IP','접속 기기','수행업무','결과'],[tr(['2026.10.07 09:12:40','admin','211.***.**.12','Chrome 141 / macOS','로그인 · 2단계 인증',sbadge('승인')]),tr(['2026.10.07 09:11:58','admin','211.***.**.12','Chrome 141 / macOS','비밀번호 오류 1회',badge('실패','b-bad')]),tr(['2026.10.06 18:02:11','admin','118.***.**.40','Safari / iOS','회원 목록 다운로드',sbadge('승인')]),tr(['2026.09.30 10:00:00','admin','211.***.**.12','Chrome / macOS','인증 이메일 변경',sbadge('승인')])])}</div>`);
 PAGES['B-21']=()=>adm('B-21','기술관리자 계정·시스템 점검',`<div class="grid2" style="gap:20px;align-items:start"><div class="panel" style="margin:0"><div class="panel-h"><h2>기술관리자 임시 계정</h2><button class="btn btn-pri btn-sm">${I('plus')} 임시 계정 발급</button></div>${tbl(['계정','발급일시','만료','상태',''],[tr(['tech_1007','2026.10.07 10:00','10.08 10:00',sbadge('진행중'),'<div class="row" style="gap:4px"><button class="btn btn-line btn-xs">비밀번호 변경</button><button class="btn btn-ghost btn-xs">삭제</button></div>'])])}<h3 class="h4 mt24 mb16">처리·로그인 이력 (무기한 보관)</h3>${tbl(['일시','처리자','내용'],[tr(['10.07 10:00','admin','tech_1007 발급']),tr(['10.07 10:14','tech_1007','로그인 · 211.***.**.40'])])}<p class="tiny muted mt8">점검 작업이 끝나면 임시 계정을 바로 삭제해 주세요.</p></div>
