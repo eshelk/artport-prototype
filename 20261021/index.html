@@ -2130,6 +2130,8 @@ html[data-hc="1"] .ft-legal{color:var(--color-text-heading)}
 .my-up,.my-quick{background:var(--paper);border:1px solid var(--line)}
 @media (max-width:1100px){.fg-g4{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:767px){.fg-g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.fg-tabs{gap:0;overflow-x:auto}.fg-tabs a{padding:0 12px;white-space:nowrap}.fg-pn{grid-template-columns:1fr}.fg-pager a{min-width:48px}.fg-step b{font-size:.667rem}}
+.fg-subw{padding-top:40px}
+.fg-subw>.lnb-main>.sec:first-child{padding-top:0!important}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -2367,7 +2369,7 @@ function footer(){return `<footer class="ft"><div class="ft-in wrap">
 </div></footer>`}
 const LNB_T={'A1-01':'예술인등록','A3-05':'예술창고','A4-01':'공지사항','A5-01':'아트포트, 군산'};
 const lnbSide=(arr,on)=>{const title=LNB_T[arr[0][1]]||'';return `<aside class="lnb-side"><h2>${title}</h2><nav aria-label="${title} 메뉴">${L(arr,([t,to])=>`<a href="#/${to}" class="${on===to?'on':''}" ${on===to?'aria-current="page"':''}>${t}<span aria-hidden="true">›</span></a>`)}</nav></aside>`};
-const pub=(body)=>{let b=body;const m=b.match(/\u0001([^\u0001]*)\u0001/);if(m){const [items,on]=m[1].split('\u0004');const arr=items.split('\u0003').map(x=>x.split('\u0002'));b=b.slice(0,m.index)+`<div class="wrap lnb">${lnbSide(arr,on)}<div class="lnb-main">${b.slice(m.index+m[0].length)}</div></div>`}return header()+`<main id="main">${b}</main>`+footer()+popHTML()};
+const pub=(body)=>{let b=body;const m=b.match(/\u0001([^\u0001]*)\u0001/);if(m){const [items,on]=m[1].split('\u0004');const arr=items.split('\u0003').map(x=>x.split('\u0002'));b=b.slice(0,m.index)+(arr[0][1]==='A3-05'?`<div class="wrap fg-subw">${fgTabs(arr,on)}<div class="lnb-main">${b.slice(m.index+m[0].length)}</div></div>`:`<div class="wrap lnb">${lnbSide(arr,on)}<div class="lnb-main">${b.slice(m.index+m[0].length)}</div></div>`)}return header()+`<main id="main">${b}</main>`+footer()+popHTML()};
 // 키비주얼 번호 8종
 const KV_NAME={1:'홈 화면 히어로',2:'예술인등록 공용',3:'예술캘린더',4:'예술인 포트폴리오',5:'예술지도',6:'예술작품·활동',7:'공지사항·아트포트, 군산 공용',8:'마이페이지 하단 문의 배너'};
 const KV_USE={2:'예술인등록 사업소개·안내·신청',7:'공지사항(목록·상세·글쓰기) · 아트포트, 군산'};
