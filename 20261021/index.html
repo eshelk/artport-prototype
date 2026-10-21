@@ -2132,6 +2132,13 @@ html[data-hc="1"] .ft-legal{color:var(--color-text-heading)}
 @media (max-width:767px){.fg-g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.fg-tabs{gap:0;overflow-x:auto}.fg-tabs a{padding:0 12px;white-space:nowrap}.fg-pn{grid-template-columns:1fr}.fg-pager a{min-width:48px}.fg-step b{font-size:.667rem}}
 .fg-subw{padding-top:40px}
 .fg-subw>.lnb-main>.sec:first-child{padding-top:0!important}
+.crumbbar.has-tabs .wrap{padding-top:0;padding-bottom:0;flex-wrap:nowrap;align-items:stretch}
+.crumbbar.has-tabs .crumb2{align-self:center}
+.fg-ctabs{border-bottom:0;margin:0 0 -1px;gap:8px;flex:none}
+.fg-ctabs a{height:auto;min-height:60px;padding:0 16px;color:var(--color-text-body);border-bottom:3px solid transparent;margin-bottom:0}
+.fg-ctabs a.on{color:var(--color-brand-primary-hover);border-bottom-color:var(--color-brand-primary-hover)}
+.fg-ctabs a:not(.on):hover{color:var(--color-text-heading);border-bottom-color:var(--color-border-default)}
+@media (max-width:767px){.crumbbar.has-tabs .wrap{flex-wrap:wrap}.fg-ctabs{width:100%;overflow-x:auto}.fg-ctabs a{min-height:48px}}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -2369,7 +2376,7 @@ function footer(){return `<footer class="ft"><div class="ft-in wrap">
 </div></footer>`}
 const LNB_T={'A1-01':'예술인등록','A3-05':'예술창고','A4-01':'공지사항','A5-01':'아트포트, 군산'};
 const lnbSide=(arr,on)=>{const title=LNB_T[arr[0][1]]||'';return `<aside class="lnb-side"><h2>${title}</h2><nav aria-label="${title} 메뉴">${L(arr,([t,to])=>`<a href="#/${to}" class="${on===to?'on':''}" ${on===to?'aria-current="page"':''}>${t}<span aria-hidden="true">›</span></a>`)}</nav></aside>`};
-const pub=(body)=>{let b=body;const m=b.match(/\u0001([^\u0001]*)\u0001/);if(m){const [items,on]=m[1].split('\u0004');const arr=items.split('\u0003').map(x=>x.split('\u0002'));b=b.slice(0,m.index)+(arr[0][1]==='A3-05'?`<div class="wrap fg-subw">${fgTabs(arr,on)}<div class="lnb-main">${b.slice(m.index+m[0].length)}</div></div>`:`<div class="wrap lnb">${lnbSide(arr,on)}<div class="lnb-main">${b.slice(m.index+m[0].length)}</div></div>`)}return header()+`<main id="main">${b}</main>`+footer()+popHTML()};
+const pub=(body)=>{let b=body;const m=b.match(/\u0001([^\u0001]*)\u0001/);if(m){const [items,on]=m[1].split('\u0004');const arr=items.split('\u0003').map(x=>x.split('\u0002'));if(arr[0][1]==='A3-05'){const ci=b.indexOf('<div class="crumbbar">');const ne=ci>=0?b.indexOf('</nav>',ci):-1;if(ne>=0&&ne<m.index)b=b.slice(0,ci)+'<div class="crumbbar has-tabs">'+b.slice(ci+22,ne+6)+fgTabs(arr,on).replace('class="fg-tabs"','class="fg-tabs fg-ctabs"')+b.slice(ne+6)}const m2=b.match(/\u0001([^\u0001]*)\u0001/);b=b.slice(0,m2.index)+(arr[0][1]==='A3-05'?`<div class="wrap fg-subw"><div class="lnb-main">${b.slice(m2.index+m2[0].length)}</div></div>`:`<div class="wrap lnb">${lnbSide(arr,on)}<div class="lnb-main">${b.slice(m2.index+m2[0].length)}</div></div>`)}return header()+`<main id="main">${b}</main>`+footer()+popHTML()};
 // 키비주얼 번호 8종
 const KV_NAME={1:'홈 화면 히어로',2:'예술인등록 공용',3:'예술캘린더',4:'예술인 포트폴리오',5:'예술지도',6:'예술작품·활동',7:'공지사항·아트포트, 군산 공용',8:'마이페이지 하단 문의 배너'};
 const KV_USE={2:'예술인등록 사업소개·안내·신청',7:'공지사항(목록·상세·글쓰기) · 아트포트, 군산'};
@@ -2665,7 +2672,7 @@ const rtSort=()=>`<div class="rt-sort" role="group" aria-label="정렬"><button 
 const rtBar=(n,unit)=>`<div class="listhd rt"><h2 class="rt-cnt">전체 ${n}${unit} ${isAdmin()?badge('비공개 포함 (관리자 보기)','b-dark'):''}</h2><div class="row wrapf">${myShortcuts()}${rtSort()}</div></div>`;
 const PP=()=>S.pp||20;
 const myShortcuts=()=>(isMember()?`<a class="btn btn-line btn-sm" href="#/M-15?t=0">${I('heart')} 나의 관심 예술인</a><a class="btn btn-line btn-sm" href="#/M-15?t=1">${I('heart')} 나의 관심 작품/활동</a>`:'');
-PAGES['A3-01']=()=>{const list=ARTISTS.filter(a=>(!a.priv||isAdmin())&&(!S.q||(a.name+a.line+a.field+a.genre+a.tags.join()).includes(S.q))&&fPass('type',a.type)&&fPass('field',a.field)&&fPass('genre',a.genre)&&fPass('dong',a.dong)&&fPass('dis',a.dis?'장애예술인(공개 동의)':'')).sort((a,b)=>a.name.localeCompare(b.name,'ko'));if(S.sortNew)list.reverse();return pub(kv('예술창고','군산의 예술인과 작품·활동을 만나보세요','예술창고 › 예술인 포트폴리오')+`<section class="sec fg-a301"><div class="wrap">${fgTabs(T3,'A3-01')}
+PAGES['A3-01']=()=>{const list=ARTISTS.filter(a=>(!a.priv||isAdmin())&&(!S.q||(a.name+a.line+a.field+a.genre+a.tags.join()).includes(S.q))&&fPass('type',a.type)&&fPass('field',a.field)&&fPass('genre',a.genre)&&fPass('dong',a.dong)&&fPass('dis',a.dis?'장애예술인(공개 동의)':'')).sort((a,b)=>a.name.localeCompare(b.name,'ko'));if(S.sortNew)list.reverse();return pub(kv('예술창고','군산의 예술인과 작품·활동을 만나보세요','예술창고 › 예술인 포트폴리오')+subtabs(T3,'A3-01')+`<section class="sec fg-a301"><div class="wrap">
  ${searchBlock('예술인명·예명·단체명·기관명을 입력해 주세요',[['type','등록 유형',['개인','단체','기관']],['field','활동 분야',Object.keys(FIELDS)],['genre','세부장르',genreOpts()],['dong','지역',DONG_NAMES],['dis','장애예술인',['장애예술인(공개 동의)']]])}
  <div class="fg-rt"><h2>전체 ${list.length}명 ${isAdmin()?badge('비공개 포함 (관리자 보기)','b-dark'):''}</h2>${rtSort()}</div>
  ${list.length?`<div class="fg-g4">${L(list.slice(0,PP()),fgCard)}</div>${fgPager(Math.max(1,Math.ceil(list.length/PP())))}`:fEmpty('조건에 맞는 예술인이 없습니다')}</div></section>`)};
