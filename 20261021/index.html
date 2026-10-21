@@ -2155,6 +2155,10 @@ html[data-hc="1"] .noti-h,html[data-hc="1"] .noti-h a{color:var(--color-text-hea
 /* */
 .map-sfx .map-sbar{margin-bottom:0}
 .map-sfx .filters{margin-top:16px}
+
+/* */
+.fg-subw:has(.mapw){padding-top:24px}
+.fg-subw .mapw{margin-top:0}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -2710,12 +2714,12 @@ PAGES['A3-03']=()=>{const a=A((Q.back||'').replace('id=','')||'a1');return `<div
  <p class="help mt16">공개명함에는 이메일과 연락처가 표시되지 않습니다. 이미지로 저장해 자유롭게 공유해 보세요.</p>${REF('표시 항목 7개 이하: 대표 이미지·이름·분야·장르·한 줄 소개·지원사업 선정현황·홈페이지 또는 SNS 1개(입력 시) · [이미지 저장]을 누르면 PNG(1200×700) 파일로 내려받음')}</div>
  <div class="modal-f"><button class="btn btn-line" onclick="closeModal()">닫기</button><button class="btn btn-pri" onclick="cardPng('${a.id}')">${I('dl')} 이미지 저장 (PNG)</button></div></div></div>`};
 PAGES['A3-04']=()=>{const a=A((Q.back||'').replace('id=','')||'a1');const ok=isMember()||isAdmin();return `<div class="dim" onclick="if(event.target===this)closeModal()"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="modal-h"><h2 id="mt">${a.name}에게 문의하기</h2><button class="icon-btn" onclick="closeModal()" aria-label="닫기">${I('x')}</button></div>
- ${ok?`<div class="modal-b">${callout('작성한 문의는 예술인의 이메일로 바로 전달됩니다(재단 미경유). 예술인의 이메일 주소는 공개되지 않습니다. <b>예술인이 답장하면 내 이메일 주소가 전달됩니다.</b>')}
+ ${ok?`<div class="modal-b">${callout('작성한 문의는 예술인의 이메일로 바로 전달됩니다(재단 미경유). 예술인의 이메일 주소는 공개되지 않습니다.')}
  ${F('보내는 사람',inp('','홍길동 (hong***@example.com)','text','readonly'),{cls:'stack'})}${F('제목',inp('문의 제목'),{req:1,cls:'stack'})}${F('내용',ta('문의 내용을 입력하세요'),{req:1,cls:'stack'})}</div><div class="modal-f"><button class="btn btn-line" onclick="closeModal()">취소</button><button class="btn btn-pri" onclick="toast('문의를 발송했습니다');closeModal()">${I('mail')} 보내기</button></div>`
  :`<div class="modal-b" style="text-align:center;padding:32px 24px">${I('lock')}<p class="mt16"><b>로그인한 회원만 문의할 수 있습니다.</b></p><p class="small muted mt8">예술인 보호를 위해 로그인한 회원만 문의할 수 있습니다.</p></div><div class="modal-f"><a class="btn btn-line" href="#/C-02">회원가입</a><a class="btn btn-pri" href="#/C-01">로그인</a></div>`}</div></div>`};
 PAGES['A3-05']=()=>{if(Q.dong){S.selDongs=[Q.dong];S.flt={};history.replaceState(null,'','#/A3-05');LAST_HASH=location.hash}const sd=S.selDongs;const fp=p=>fPass('field',p.field)&&fPass('genre',p.genre)&&fPass('area',dongKind(p.dong));const pool=POP.filter(fp);const list=pool.filter(p=>!sd.length||sd.includes(p.dong)).sort((a,b)=>a.name.localeCompare(b.name,'ko'));if(S.sortNew)list.reverse();const total=pool.length;const dc=n=>pool.filter(p=>p.dong===n).length;const pg=Math.max(1,Math.ceil(list.length/10));return pub(kv('예술창고','군산의 예술인과 작품·활동을 만나보세요','예술창고 › 예술지도')+subtabs(T3,'A3-05')+`<section class="sec" style="padding-top:40px"><div class="wrap">
- <div class="mapw"><div class="map"><div class="row between mb16"><p class="small"><b>군산시</b> ${fCount()?'조건에 맞는':'등록'} 예술인 <b style="color:var(--accent-2)">${total}</b>명 · 27개 읍면동</p>${sd.length?`<button class="btn btn-line btn-xs" onclick="S.selDongs=[];render()">${I('refresh')} 선택 초기화</button>`:''}</div>
-  <div class="row between wrapf mb16" style="margin-top:-4px"><span class="small muted">지도 범위</span><div class="seg" role="group" aria-label="지도 범위"><button class="${S.mapZoom?'':'on'}" aria-pressed="${!S.mapZoom}" onclick="S.mapZoom=false;render()">군산시 전체</button><button class="${S.mapZoom?'on':''}" aria-pressed="${!!S.mapZoom}" onclick="S.mapZoom=true;render()">도심 확대</button></div></div>
+ <div class="mapw"><div class="map"><div class="row between wrapf mb16"><p class="small"><b>군산시</b> ${fCount()?'조건에 맞는':'등록'} 예술인 <b style="color:var(--accent-2)">${total}</b>명 · 27개 읍면동</p>
+  <div class="row wrapf" style="gap:8px">${sd.length?`<button class="btn btn-line btn-xs" onclick="S.selDongs=[];render()">${I('refresh')} 선택 초기화</button>`:''}<div class="seg" role="group" aria-label="지도 범위"><button class="${S.mapZoom?'':'on'}" aria-pressed="${!S.mapZoom}" onclick="S.mapZoom=false;render()">군산시 전체</button><button class="${S.mapZoom?'on':''}" aria-pressed="${!!S.mapZoom}" onclick="S.mapZoom=true;render()">도심 확대</button></div></div></div>
   ${artMap(sd,dc)}
   <p class="tiny muted mt16">지도에서 지역을 누르거나 아래 [읍면동으로 선택]에서 고르세요. 여러 지역을 함께 선택할 수 있습니다. 인원은 예술인이 등록한 거주지·소재지 기준입니다.</p>${REF('읍면동 경계는 도식 — 시 경계·읍면 위치는 군산시 도로명 안내도, 도심 동 배치는 군산시 한눈에 시스템, 27개 구성은 군산시청 읍면동 안내 참고. 개발 시 행정구역 경계 데이터(SHP→SVG)로 교체, 지도 API 미사용')}</div>
  </div>
@@ -2796,7 +2800,8 @@ ${REF('좌측 연도 메뉴는 디자인 영역 — 새 연도가 생기면 제�
 
 /* ---------- 공통 C (모달) ---------- */
 const modal=(title,body,foot,o={})=>`<div class="dim" onclick="if(event.target===this)closeModal()"><div class="modal ${o.cls||''}" role="dialog" aria-modal="true" aria-labelledby="mt">${o.steps?`<div class="mstep" aria-label="회원가입 ${o.steps[0]}/5 단계">${L([1,2,3,4,5],i=>`<span class="${i<=o.steps[0]?'on':''}"></span>`)}</div>`:''}<div class="modal-h"><h2 id="mt">${title}</h2><button class="icon-btn" onclick="closeModal()" aria-label="닫기 (ESC)">${I('x')}</button></div><div class="modal-b">${body}</div>${foot?`<div class="modal-f">${foot}</div>`:''}</div></div>`;
-function demoLogin(r){S.role=r;store.set('role',r);toast(ROLES[r]+'(으)로 로그인했습니다');go('H-01')}
+function demoLogin(r){S.role=r;store.set('role',r);toast(ROLES[r]+'(으)로 로그인했습니다');if(Q.bg&&SC(Q.bg)&&!SC(Q.bg).modal){const p=new URLSearchParams(location.hash.split('?')[1]||'');['bg','err','ret'].forEach(k=>p.delete(k));const qs=p.toString();go(Q.bg+(qs?'?'+qs:''))}else go('H-01')}
+function loginHere(){const sc=SC(CUR);let p,q;if(sc&&sc.modal){p=(Q.bg&&SC(Q.bg)&&!SC(Q.bg).modal)?Q.bg:sc.bg;q=Q.back||''}else{[p,q]=location.hash.replace(/^#\/?/,'').split('?')}go('C-01?bg='+p+(q?'&'+q:''))}
 PAGES['C-01']=()=>modal('로그인',`<form onsubmit="event.preventDefault();demoLogin('artist')">${F('아이디',inp('아이디','','text','autocomplete="username"'),{cls:'stack'})}${F('비밀번호',inp('비밀번호','','password','autocomplete="current-password"'),{cls:'stack'})}${Q.err==='2'?fgWarn('로그인이 제한되었습니다','비밀번호를 5회 잘못 입력하여 로그인이 제한되었습니다. 비밀번호 찾기를 이용해 주세요.','mt16'):Q.err?fgWarn('로그인 정보를 확인해 주세요','아이디 또는 비밀번호가 일치하지 않습니다. (2/5회) 5회 이상 틀리면 로그인이 제한됩니다.','mt16'):''}
  <button class="btn btn-pri btn-block mt16 ${Q.err==='2'?'is-off':''}" type="submit" ${Q.err==='2'?'aria-disabled="true" onclick="return false"':''}>로그인</button></form>
  <div class="row mt16" style="justify-content:center;font-size:.778rem"><a href="#/C-07">아이디 찾기</a><span class="muted">|</span><a href="#/C-08">비밀번호 찾기</a><span class="muted">|</span><a href="#/C-02" style="font-weight:700">회원가입</a></div>
@@ -3358,10 +3363,10 @@ const fgCard=a=>{if(a.priv&&!isAdmin())return '';const k='a:'+a.id;const sup=WOR
 function agrSync(){const r=[...document.querySelectorAll('.agr2 input[data-req]')];const b=document.getElementById('agrNext');if(!b)return;const ok=r.length&&r.every(x=>x.checked);b.setAttribute('aria-disabled',!ok);b.classList.toggle('is-off',!ok)}
 /* 확인창 */
 const FG_DLG={
- scrap:['로그인이 필요합니다','','관심 예술인과 작품 · 활동을 스크랩하려면 로그인해 주세요. 로그인하면 마이페이지 > 스크랩한 콘텐츠에서 모아 볼 수 있습니다.',[['로그인',"go('C-01')",'pri'],['닫기','','line']],1],
+ scrap:['로그인이 필요합니다','','관심 예술인과 작품 · 활동을 스크랩하려면 로그인해 주세요. 로그인하면 마이페이지 > 스크랩한 콘텐츠에서 모아 볼 수 있습니다.',[['로그인',"loginHere()",'pri'],['닫기','','line']],1],
  draftdel:['임시저장을 삭제하시겠어요?','','삭제한 임시저장은 되돌릴 수 없습니다.',[['취소','','line'],['삭제',"fgDlg('draftdel2')",'pri']]],
  draftdel2:['정말 삭제할까요?','','한 번 더 확인합니다. [삭제]를 누르면 이 임시저장이 바로 지워집니다.',[['취소','','line'],['삭제',"toast('임시저장을 삭제했습니다')",'pri']]],
- login:['로그인이 필요합니다','','예술인에게 문의하려면 로그인해 주세요. 로그인 후 문의를 작성할 수 있습니다.',[['로그인',"go('C-01')",'pri'],['닫기','','line']],1],
+ login:['로그인이 필요합니다','','예술인에게 문의하려면 로그인해 주세요. 로그인 후 문의를 작성할 수 있습니다.',[['로그인',"loginHere()",'pri'],['닫기','','line']],1],
  submit:['포트폴리오 제출 확인','포트폴리오를 제출하시겠습니까?','제출하면 심사대기 상태가 되며, 관리자가 심사를 시작하기 전까지 마이페이지 > 등록 현황에서 수정할 수 있습니다. 심사중에는 수정할 수 없습니다.',[['취소','','line'],['제출하기',"go('A1-14'+(Q.add?'?add=1':''))",'pri']]],
  leave:['미제출 이탈 경고','아직 최종 제출되지 않았습니다.','이대로 나가면 최종 제출되지 않습니다. 작성을 계속하거나 임시저장 후 나가 주세요.',[['작성 계속하기','','pri'],['임시저장 후 나가기',"toast('임시저장되었습니다');FG_LEAVE_OK=1;location.hash=FG_TO",'line']],1],
  cancel:['신청을 취소하시겠어요?','','등록 신청을 취소합니다. 취소하기 전에 다시 한 번 확인해 주세요.',[['취소','','line'],['신청취소',"toast('신청을 취소했습니다 · 제출한 내용은 임시저장 목록으로 옮겼습니다')",'pri']]]};
