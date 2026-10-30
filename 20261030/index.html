@@ -1359,6 +1359,10 @@ html[data-hc="1"] .ki{background:#000!important;color:#FFF!important;border:1px 
 .quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .quick a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:var(--r);background:var(--paper);color:var(--ink);font-size:.778rem;font-weight:700;text-align:center}
 .quick .ic{width:22px;height:22px;color:var(--accent)}
+.quick-p{display:flex;flex-direction:column}
+.quick-lg{flex:1;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.quick-lg a{justify-content:center;gap:12px;min-height:150px;padding:20px 10px;font-size:.889rem}
+.quick-lg .ic{width:36px;height:36px}
 html[data-fs="1"] .kpi2,html[data-fs="2"] .kpi2{grid-template-columns:repeat(3,minmax(0,1fr))} html[data-fs="2"] .todo ul{grid-template-columns:1fr}
 /* */
 .home-c{min-height:calc(100vh - var(--hdr,122px));min-height:calc(100svh - var(--hdr,122px));display:flex;background:var(--bg)}
@@ -3390,7 +3394,7 @@ PAGES['B-02']=()=>{if(Q.v==='todo'&&(Q.st||Q.g)&&S._tdJump!==location.hash){S._t
   <div class="flow2">${L([['승인',214],['반려',6],['신청취소',3]],([k,v])=>`<a class="flow-a" href="#/B-03?st=${encodeURIComponent(k)}" aria-label="${k} ${v}건 — 등록신청 목록에서 보기">${sbadge(k)}<b>${v}</b></a>`)}</div><p class="tiny muted mt8">상태를 누르면 그 상태만 걸러 본 목록으로 이동합니다.</p></div></div>
  <div class="grid2 mt24" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px"><div class="panel" style="margin:0"><div class="panel-h"><h2>공지사항 최근 등록</h2><a class="link small" href="#/B-08">더보기 ›</a></div>
   ${tbl(['구분','제목',{t:'작성일',c:'c'},{t:'조회수',c:'num'}],NOTICES.slice(0,4).map(n=>tr([n.pin?badge('공지','b-dark'):n.n,`<b>${n.title}</b>`,{v:n.d.slice(5).replace('-','.'),c:'c'},{v:n.v.toLocaleString(),c:'num'}],{href:'B-08'})))}</div>
- <div class="panel" style="margin:0"><div class="panel-h"><h2>바로가기</h2></div><div class="quick">${L([['user','등록신청 심사','B-03'],['cal','일정 관리','B-07'],['folder','작품·활동 관리','B-06'],['mega','공지 글쓰기','B-08'],['monitor','팝업 관리','B-16'],['chart','통계·데이터 다운로드','B-15']],([ic,t,to])=>`<a href="#/${to}">${I(ic)}<span>${t}</span></a>`)}</div></div></div>
+ <div class="panel quick-p" style="margin:0"><div class="panel-h"><h2>바로가기</h2></div><div class="quick quick-lg">${L([['mega','공지 글쓰기','A4-03'],['monitor','팝업 관리','B-16'],['chart','통계·데이터 다운로드','B-15']],([ic,t,to])=>`<a href="#/${to}">${I(ic)}<span>${t}</span></a>`)}</div></div></div>
  ${REF('"처리할 일"을 최상단에 강조 · [전체 보기] → 처리할 일 모아보기(심사 · 갱신 · 문의 · 삭제 요청) · 숫자 카드 5종 — 대기=심사대기, 보완=보완요청+보완제출 · 승인 단계는 확정 상태명으로 진행 중/결과를 나눠 숫자만 표시, 그래프는 2차년도 · 날짜·시간은 제목 줄 오른쪽 · [홈페이지로 바로가기]로 이동하면 관리자는 공개·비공개 콘텐츠를 모두 확인')}`)};
 PAGES['B-03']=()=>{const fst=Q.st||'상태 전체';const rows=REG_Q.filter(r=>fst==='상태 전체'||r.st===fst);return adm('B-03','등록신청 목록',`<div class="panel">${tb(`<select class="inp" aria-label="상태" onchange="go(this.value==='상태 전체'?'B-03':'B-03?st='+encodeURIComponent(this.value))">${L(['상태 전체','심사대기','심사중','보완요청','보완제출','승인','반려','신청취소'],o=>`<option ${o===fst?'selected':''}>${o}</option>`)}</select><select class="inp"><option>유형 전체</option><option>개인</option><option>단체</option><option>기관</option></select><input class="inp" type="date" value="2026-09-01"><span>~</span><input class="inp" type="date" value="2026-10-07"><input class="inp" placeholder="이름·아이디 검색" style="min-width:220px"><button class="btn btn-dark btn-sm">조회</button><span class="grow"></span>${exp3}`)}
  <div class="row mb16 small"><span class="sel-n" aria-live="polite">선택 0건</span><button class="btn btn-line btn-xs">일괄 검토 시작</button><button class="btn btn-line btn-xs">일괄 승인</button></div>
