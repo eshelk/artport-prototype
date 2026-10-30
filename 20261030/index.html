@@ -2462,7 +2462,21 @@ html[data-hc="1"] tr.unsaved td,html[data-hc="1"] tr.cal-ed td,html[data-hc="1"]
 /* */
 .flow-a{display:flex;flex-direction:column;align-items:center;gap:4px;color:inherit;text-decoration:none;border-radius:var(--r);padding:6px 4px}
 .flow2 .flow-a{flex-direction:column}
-@media (hover:hover) and (pointer:fine){.flow-a:hover{background:var(--paper)}.flow-a:hover b{text-decoration:underline;text-underline-offset:3px}}
+@media (hover:hover) and (pointer:fine){.flow-a:hover{background:var(--paper)}
+.ap-p{display:flex;flex-direction:column}
+.ap-p .panel-h{margin-bottom:16px}
+.ap-g{flex:1;display:flex;flex-direction:column;gap:8px;min-height:0}
+.ap-g+.ap-g{margin-top:16px}
+.ap-h{margin:0;font-size:.722rem;font-weight:700;color:var(--ink-2)}
+.ap-h span{font-weight:500;color:var(--ink-3)}
+.ap-p .flow,.ap-p .flow2{flex:1;margin:0;padding:0;border:0;gap:8px}
+.ap-p .flow li{display:flex;padding:0;background:none;border-radius:var(--r)}
+.ap-p .flow-a{flex:1;justify-content:center;gap:10px;min-height:96px;padding:16px 8px;border-radius:var(--r);background:var(--paper);border:1px solid transparent;transition:border-color 150ms ease,background 150ms ease}
+.ap-p .flow2 .flow-a{background:var(--bg);border-color:var(--line)}
+.ap-p .flow-a:hover{border-color:var(--accent);background:var(--bg)}
+.ap-p .flow b,.ap-p .flow2 b{font-size:1.556rem;line-height:1;font-variant-numeric:tabular-nums}
+.ap-p b small{margin-left:2px;font-size:.667rem;font-weight:600;color:var(--ink-3)}
+.ap-n{margin:12px 0 0}.flow-a:hover b{text-decoration:underline;text-underline-offset:3px}}
 .flow-a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .td-flt{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:12px}
 .td-flt .seg a{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;text-decoration:none;color:inherit}
@@ -3389,9 +3403,9 @@ PAGES['B-02']=()=>{if(Q.v==='todo'&&(Q.st||Q.g)&&S._tdJump!==location.hash){S._t
  <div class="kpi2">${L([['user','예술인 등록신청',12,[revCnt('reg','심사대기'),revCnt('reg','심사중'),revCnt('reg','보완요청')+revCnt('reg','보완제출')],'B-03','k1'],['cal','예술캘린더 등록',6,[3,1,0],'B-07','k2'],['folder','작품·활동 등록',18,[revCnt('work','심사대기'),revCnt('work','심사중'),revCnt('work','보완요청')+revCnt('work','보완제출')],'B-06','k3'],['mega','공지사항',NOTICES.length,null,'B-08','k4'],['img','문화예술진흥 지원사업',4,[2,1,1],'B-09','k5']],([ic,k,t,c,to,cls])=>`<a class="kc" href="#/${to}"><span class="kh"><span class="ki ${cls}">${I(ic)}</span>${k}</span><b class="kv2">${t}<small>건</small></b><span class="ks">${c===null?`이번 달 등록 <b>${NOTICES.filter(n=>n.d.slice(0,7)===TODAY.slice(0,7)).length}</b>`:`<span class="nw">대기 <b>${c[0]}</b></span> · <span class="nw">심사중 <b>${c[1]}</b></span> · <span class="nw">보완 <b class="acc">${c[2]}</b></span>`}</span></a>`)}</div>
  <div class="grid2 mt24" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px"><div class="panel" style="margin:0"><div class="panel-h"><h2>최근 등록 현황</h2><div class="seg">${L(['예술인','작품·활동','캘린더'],t=>`<button class="${(S.dashTab||'예술인')===t?'on':''}" onclick="S.dashTab='${t}';render()">${t}</button>`)}</div></div>
  ${(()=>{const t=S.dashTab||'예술인';if(t==='작품·활동')return tbl(['구분','제목','예술인','신청일','대기','상태'],WORK_Q.slice(0,5).map(q=>{const w=W(q.id);return tr([badge(w.kind,w.kind==='작품'?'b-info':'b-sec'),`<b>${w.title}</b>`,A(w.aid).name,q.d.slice(5),{v:waitD(q.d)+'일',c:'num'},sbadge(q.st)],{href:'B-04?k=work&id='+q.id})}));if(t==='캘린더')return tbl(['일정명','주체','기간','등록','상태'],[['월명동 드로잉 산책','예술인 연동','10.16','10.07','심사대기'],['2027 문화예술진흥 지원사업 설명회','관리자','10.15','10.02','공개'],['시민 예술주간 개막식','관리자','10.24','09.30','공개']].map(r=>tr([`<b>${r[0]}</b>`,r[1]==='관리자'?badge('관리자','b-dark'):badge('예술인 연동','b-info'),r[2],r[3],sbadge(r[4])],{href:'B-07'})));return tbl(['유형','신청자','구분','신청일','대기','상태'],REG_Q.slice(0,5).map(r=>tr([r.t,`<b>${r.n}</b>`,r.k==='신규'?r.k:badge(r.k,'b-dark'),r.d.slice(5),{v:waitD(r.d)+'일',c:'num'},sbadge(r.st)],{href:'B-04?r='+r.i})))})()}</div>
- <div class="panel" style="margin:0"><div class="panel-h"><h2>승인 처리 현황</h2><span class="tiny muted">예술인 등록 · 누적</span></div>
-  <ol class="flow">${L(REV_ST,k=>`<li><a class="flow-a" href="#/B-02?v=todo&g=reg&st=${encodeURIComponent(k)}" aria-label="${k} ${revCnt('reg',k)}건 — 처리할 일 목록에서 보기">${sbadge(k)}<b>${revCnt('reg',k)}</b></a></li>`)}</ol>
-  <div class="flow2">${L([['승인',214],['반려',6],['신청취소',3]],([k,v])=>`<a class="flow-a" href="#/B-03?st=${encodeURIComponent(k)}" aria-label="${k} ${v}건 — 등록신청 목록에서 보기">${sbadge(k)}<b>${v}</b></a>`)}</div><p class="tiny muted mt8">상태를 누르면 그 상태만 걸러 본 목록으로 이동합니다.</p></div></div>
+ <div class="panel ap-p" style="margin:0"><div class="panel-h"><h2>승인 처리 현황</h2><span class="tiny muted">예술인 등록 · 누적</span></div>
+  <div class="ap-g"><p class="ap-h">진행 중 <span>— 처리할 일 목록으로</span></p><ol class="flow">${L(REV_ST,k=>`<li><a class="flow-a" href="#/B-02?v=todo&g=reg&st=${encodeURIComponent(k)}" aria-label="${k} ${revCnt('reg',k)}건 — 처리할 일 목록에서 보기">${sbadge(k)}<b>${revCnt('reg',k)}<small>건</small></b></a></li>`)}</ol></div>
+  <div class="ap-g"><p class="ap-h">처리 결과 <span>— 등록신청 목록으로</span></p><div class="flow2">${L([['승인',214],['반려',6],['신청취소',3]],([k,v])=>`<a class="flow-a" href="#/B-03?st=${encodeURIComponent(k)}" aria-label="${k} ${v}건 — 등록신청 목록에서 보기">${sbadge(k)}<b>${v}<small>건</small></b></a>`)}</div></div><p class="tiny muted ap-n">상태를 누르면 그 상태만 걸러 본 목록으로 이동합니다.</p></div></div>
  <div class="grid2 mt24" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px"><div class="panel" style="margin:0"><div class="panel-h"><h2>공지사항 최근 등록</h2><a class="link small" href="#/B-08">더보기 ›</a></div>
   ${tbl(['구분','제목',{t:'작성일',c:'c'},{t:'조회수',c:'num'}],NOTICES.slice(0,4).map(n=>tr([n.pin?badge('공지','b-dark'):n.n,`<b>${n.title}</b>`,{v:n.d.slice(5).replace('-','.'),c:'c'},{v:n.v.toLocaleString(),c:'num'}],{href:'B-08'})))}</div>
  <div class="panel quick-p" style="margin:0"><div class="panel-h"><h2>바로가기</h2></div><div class="quick quick-lg">${L([['mega','공지 글쓰기','A4-03'],['monitor','팝업 관리','B-16'],['chart','통계·데이터 다운로드','B-15']],([ic,t,to])=>`<a href="#/${to}">${I(ic)}<span>${t}</span></a>`)}</div></div></div>
