@@ -2502,8 +2502,913 @@ fieldset.rv-dec[disabled]{opacity:.45}
 .rv-side .btn[disabled]{opacity:.45;cursor:not-allowed}
 .rv-items.is-pre .rv-edit,.rv-items.is-pre .rv-imgb button:last-child{opacity:.4}
 </style>
-<style>/* 11.2 로고(워드마크) — Figma 확정: 마루부리 Bold, 자간 2%, 헤더 36px · 푸터 20px */.logo,.hd .logo{font-family:var(--p-font-family-serif)!important;font-weight:700!important;letter-spacing:0.02em!important}.hd-in .logo{font-size:2rem}/* 11.2 비로그인 헤더 오른쪽 — 로그인 · 회원가입 · 검색 회색 글자 */.hd-r>a.t.t-plain{color:var(--color-text-muted);font-weight:400}/* 11.2 지원 사업 선정 배지 — 주황(#C44826, 흰 글자 대비 4.9:1) */.sup-seal{background:#C44826;box-shadow:0 2px 8px rgba(196,72,38,.28)}.sup-seal svg path:first-child{fill:#fff}.sup-seal svg path:last-child{stroke:#C44826}html[data-hc="1"] .sup-seal{background:#000}html[data-hc="1"] .sup-seal svg path:last-child{stroke:#000}/* 11.2 포트폴리오 전환 탭 — 선택된 탭 개수는 흰 바탕 · 남색 글자 */.ms-tabs button.on span{background:#fff;color:var(--navy)}.fb-pv{background:var(--color-bg-subtle)}.upd-none{justify-content:center;gap:8px;font-size:1rem;padding:18px}.upd-none svg{width:1.1em;height:1.1em}
+<style>/* 11.2 로고(워드마크) — Figma 확정: 마루부리 Bold, 자간 2%, 헤더 36px · 푸터 20px */.logo,.hd .logo{font-family:var(--p-font-family-serif)!important;font-weight:700!important;letter-spacing:0.02em!important}.logo{-webkit-text-stroke:0!important}.hd-in .logo{font-size:2rem}@media(max-width:1100px){.hd-in .logo{font-size:1.667rem}}@media(max-width:767px){.hd-in .logo{font-size:1.333rem}}/* 11.2 비로그인 헤더 오른쪽 — 로그인 · 회원가입 · 검색 회색 글자 */.hd-r>a.t.t-plain{color:var(--color-text-muted);font-weight:400}/* 11.2 지원 사업 선정 배지 — 주황(#C44826, 흰 글자 대비 4.9:1) */.sup-seal{background:#C44826;box-shadow:0 2px 8px rgba(196,72,38,.28)}.sup-seal svg path:first-child{fill:#fff}.sup-seal svg path:last-child{stroke:#C44826}html[data-hc="1"] .sup-seal{background:#000}html[data-hc="1"] .sup-seal svg path:last-child{stroke:#000}/* 11.2 포트폴리오 전환 탭 — 선택된 탭 개수는 흰 바탕 · 남색 글자 */.ms-tabs button.on span{background:#fff;color:var(--navy)}.fb-pv{background:var(--color-bg-subtle)}.upd-none{justify-content:center;gap:8px;font-size:1rem;padding:18px}.upd-none svg{width:1.1em;height:1.1em}
 .img-actw{position:relative;border-radius:var(--r);overflow:hidden}.img-act{position:absolute;left:0;right:0;bottom:0;background:rgba(38,41,43,.72);color:#fff;font-size:.667rem;text-align:center;padding:4px 0;white-space:pre}.noti-e{margin:0;padding:18px 20px;color:var(--ink-2)}.upl-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}.upl-list li{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r)}.upl-list li b{flex:1;font-weight:500}
+</style>
+<style>/* ===== Figma 맞춤 · common ===== */
+/* ── 토큰: Figma 변수(01 기초) 값 맞춤 ── */
+:root{
+  --p-color-orange-600:#C44826;
+  --color-emphasis-orange-bg:var(--p-color-orange-600);
+  --color-emphasis-orange-fg:var(--color-text-inverse);
+  --type-copy-weight:var(--p-font-weight-medium);
+  --c-button-pad-x:var(--p-space-6);
+  --c-callout-bar-w:4px;
+  --c-subtab-h:61px;
+  --c-wordmark-comma-ink:var(--p-color-orange-500);
+}
+/* 토큰을 쓰던 곳 — Figma 화면 색 유지: 헤더 알림 개수 · 관리자 「처리할 일」은 주황 500, M-01 「최근 알림」 띠는 emphasis/orange(#C44826 · 흰 글자) */
+html:not([data-hc="1"]) .bell-n{background:var(--p-color-orange-500)}
+html:not([data-hc="1"]) .todo{border-color:var(--p-color-orange-500)}
+html:not([data-hc="1"]) .todo-h .cnt{background:var(--p-color-orange-500)}
+html:not([data-hc="1"]) .noti-h{background:var(--color-emphasis-orange-bg)}
+
+/* ══ 2차 ① Figma에 없는 변환 손실 요소 없애기 ══ */
+/* 그림자 전부 없앰(카드 · 모달 · 팝업 · 배지 · 관리자 메뉴 주황 막대 등). 키보드 초점 표시(outline)와 입력칸 초점 테두리는 유지,
+   단계 표시 현재 원의 연한 테두리(Figma Step에 있음)와 끌어 놓기 · 저장 안 됨 같은 상태 표시는 유지 */
+*,*::before,*::after{box-shadow:none!important}
+.inp:focus{box-shadow:var(--c-input-ring)!important}
+.stepper li.cur::after{box-shadow:0 0 0 4px var(--accent-weak)!important}
+.fg-step li.cur .n{box-shadow:0 0 0 4px var(--color-bg-tint)!important}
+.yb-t tr.drop td{box-shadow:inset 0 3px 0 var(--accent)!important}
+.savebar.dirty{box-shadow:inset 0 0 0 2px var(--warn)!important}
+/* 점선 → 실선(업로드 상자 · 추가 칸 · 미리보기 틀 · 첨부 상자 · 빈 상태 상자 · 표 줄) */
+.frow,.upl,.pf-empty,.flow2,.amap-isl,.fempty,.ms-empty,.rs-empty,.rv-pv,.al-prev,.rv-gate{border-style:solid}
+[style*="dashed"]{border-style:solid!important}
+/* 장식 가상요소 없앰: 관리자 메뉴 「ㄴ」, A1-01 단계 연결선, A2-01 일정 칩 색 점, 이미지 자리 이름표 */
+.adm-side .it3::before,.flow5::before,.flow5 li::after,.ev::before{display:none!important}
+.ph::after{display:none}
+.ph svg{opacity:1}
+/* A3-08 · A3-09 고른 썸네일 파란 테두리 없음 */
+.gal .th .ph.on:not(:focus-visible){outline:0}
+/* 검색칸 돋보기(Figma는 입력칸 아래에 깔려 안 보임) — 글자 시작 위치는 그대로 */
+.sbar .inpw>.ic{visibility:hidden}
+/* 선택 상자 ▾ 없음(푸터 「패밀리 사이트」는 Figma에도 ▾ 있어 아래에서 따로 그림) */
+select{-webkit-appearance:none;appearance:none}
+select.inp{background-image:none;padding-right:16px}
+.rt-sort select{padding-right:16px}
+/* 날짜 칸 달력 아이콘 없음 — 칸을 누르면 선택 창이 열림(스크립트) */
+input::-webkit-calendar-picker-indicator{display:none}
+/* 토글 스위치: Figma는 손잡이 없이 색 알약만 */
+.switch::after{display:none}
+/* 체크박스 · 라디오: Figma 그대로 — 회색 1.5px 테두리 흰 칸, 고르면 파란 칸/파란 원(체크 표시 · 가운데 점 없음) */
+:where(input[type=checkbox],input[type=radio]){width:13px;height:13px}
+input[type=checkbox],input[type=radio]{-webkit-appearance:none;appearance:none;display:inline-block;vertical-align:middle;flex:none;border:1.5px solid var(--c-input-border);border-radius:4px;background:var(--color-bg-page);cursor:pointer}
+input[type=radio]{border-radius:50%}
+input[type=checkbox]:checked,input[type=radio]:checked{background:var(--color-brand-primary)}
+input[type=checkbox]:disabled,input[type=radio]:disabled{opacity:.45;cursor:not-allowed}
+
+/* ══ 2차 ② 글 안 링크 밑줄 없음(마우스 올리면 밑줄) — A1-13 미리보기 안 링크는 Figma에도 밑줄 ══ */
+.link,.noti-h a{text-decoration:none}
+.link:hover{text-decoration:underline;text-underline-offset:3px}
+html[data-page="A1-13"] :is(.a1-pv,[inert]) .link{text-decoration:underline}
+
+/* ══ 2차 ③ 글자 크기 ══ */
+/* Button Small: 16px Bold · 높이 36 · 좌우 16 · Line 테두리 1.5px #788187(기본 .btn 테두리 1.5px) */
+.btn-sm{font-size:var(--p-font-size-16);padding:0 16px}
+/* Line 버튼 글자색은 제목색(#26292B) — 감싼 상자의 회색 글자를 물려받지 않게 */
+.btn-line{color:var(--color-text-heading)}
+/* Button(48) 좌우 여백: Figma 버튼은 폭이 고정값으로 약 「글자 폭 × 1.15 + 47」(좌우 여백 = 22 + 글자 폭의 7.5%, 글자 자간은 0 · 글자 폭은 브라우저와 같음).
+   기본 28(768 · 360 · 스크립트 전), PC는 btnFit()이 글자 폭을 재서 --fx(글자 폭 7.5%)를 넣음 */
+.btn:where(:not(.btn-sm,.btn-xs,.reg-cta-btn)){padding-left:28px;padding-right:28px}
+@media (min-width:1101px){.btn.fx{padding-left:calc(22px + var(--fx,6px));padding-right:calc(22px + var(--fx,6px))}}
+/* 개수 · 단계 번호 12px: 마이페이지 메뉴 개수, 헤더 알림 개수(PC), 단계 번호 */
+.side nav .cnt{font-size:.667rem}
+.fg-step .n{font-size:.667rem}
+@media (min-width:1101px){.bell-n{font-size:.667rem}}
+
+/* ══ 2차 ④ 주의 안내 상자: 02 Callout(Caution) — 왼쪽 4px 빨간 막대, 다른 테두리 없음(M-04 · M-21 · B-10 포함) ══ */
+.callout.warn,.callout.bad{border:0;border-left:var(--c-callout-bar-w) solid var(--c-callout-caution-bar)}
+
+/* ── 헤더 ── */
+/* 글자 크기 줄(PC): 버튼 · 구분선 간격 8 — 768 Figma는 기존 간격(12 · 16) 그대로 */
+@media (min-width:1101px){.util .sep{margin:0}.util-in .lbl{margin-right:0}}
+/* 로그인 후(PC): Figma Header Logged in=True — 버튼 43×26 · 12px · 간격 6 · 구분선 높이 12 */
+@media (min-width:1101px){
+  .util-li .util-in{gap:6px}
+  .util-li button{height:auto;min-height:max(26px,2.1667em);padding:0 10px;font-size:.667rem}
+  .util-li .sep{height:12px}
+}
+/* 주 메뉴(PC 한 줄): Nav Item — 18px Regular, 좌우 10 · 간격 4 / 선택 Bold #165583 + 3px 밑줄 (768 Figma는 Bold 유지) */
+@media (min-width:1101px){.gnb-item>a{font-weight:400;padding:0 10px}.gnb-item>a.on{font-weight:700}}
+/* 비로그인 오른쪽 글자 링크 간격 12(PC) */
+@media (min-width:1101px){.hd-r>a.t-plain+a.t-plain{margin-left:8px}}
+
+/* ── 푸터 ── */
+.ft .logo{line-height:1.4}
+.ft-legal{min-height:0;margin-bottom:0;line-height:1.4}
+.ft .legal span+span::before,.ft .sns a+a::before{margin:0 4px}
+/* 패밀리 사이트: 테두리 상자(흰색 50% · 모서리 6) + ▾ — PC 209×38, 768 · 360은 글자 폭 */
+.ft-r select{appearance:none;-webkit-appearance:none;width:auto;max-width:100%;height:auto;min-height:max(32px,2.2em);padding:5px 28px 5px 12px;border:1px solid rgba(255,255,255,.5);border-radius:var(--p-radius-sm);text-align:left;line-height:1.4;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'%3E%3Cpath d='M0 0h8L4 5z' fill='%23fff'/%3E%3C/svg%3E") no-repeat right 12px center/6px 4px}
+@media (min-width:1101px){.ft-r select{width:209px;min-height:max(38px,2.4em);padding:6px 32px 6px 14px;background-position:right 15px center}}
+html[data-hc="1"] .ft-r select{border-color:currentColor}
+
+/* ── 상단 띠(Sub Visual) — PC: 설명 18px · 제목과 4 간격, 물결은 띠 높이 전체(720×160)에 가로로 늘림 ── */
+@media (min-width:1101px){
+  .kv p{font-size:1rem;margin-top:4px}
+  .kv svg.waves{top:0;bottom:auto;height:160px}
+  .kv svg.waves path{vector-effect:non-scaling-stroke;stroke-width:1.2}
+}
+/* 768 · 360: Figma는 비율 고정 물결(524 폭) — 비율 고정을 푼 대신 폭을 줄여 기존과 같게 */
+@media (max-width:1100px){.kv svg.waves{width:524px;right:58px}}
+
+/* ── 위치 줄(Breadcrumb): 집 아이콘 왼쪽 맞춤, 마지막 항목도 15px 보통 회색 ── */
+.crumb2>a:first-child{margin:0 -7px}
+.crumb2 b{font-weight:400;color:var(--color-text-muted)}
+
+/* ── 마이페이지 왼쪽 메뉴(My Profile · Side Menu) ── */
+.who2 .who-img{margin-bottom:12px}
+.who2 .who-img svg{display:none}
+.who2 b{line-height:1.4}
+.who2 .tiny{line-height:1.4}
+.who-st{margin-top:0}
+.who2 .btn{margin-top:12px}
+
+/* ── 작성 화면 하단 줄(Form Action Bar) — 03 화면 기준: 모든 버튼 48 높이 Line, 미리보기는 옅은 회색 바탕 ── */
+.formbar .l .btn{min-width:80px;padding-left:12px;padding-right:12px}
+/* (구 기준 파일 호환) 작은 버튼 · 글자 버튼이던 때의 하단 줄도 같은 모양 */
+.formbar .l .btn-sm{height:auto;min-height:var(--control-h)}
+.formbar .btn-ghost{border-color:var(--c-button-line-border);background:var(--color-bg-page);color:var(--color-text-heading)}
+.formbar .r .btn-ghost,.formbar .fb-pv{background:var(--color-bg-subtle)}
+.formbar .r .btn{min-width:80px}
+.formbar .r :is(.fb-pv,.btn-ghost){padding-left:24px;padding-right:24px}
+.formbar .r .btn-pri{margin-left:0}
+.formbar .autosave{margin-left:26px}
+.fb-step{font-size:1rem;font-weight:700;margin-right:8px;gap:4px}
+.fb-step small{font-size:.778rem;font-weight:500;letter-spacing:.25em;margin-right:-.25em}
+/* M-22 추가 등록 시작(regShell 첫 단계): Figma [임시저장] · [불러오기] 96×36 Line 16px */
+html[data-page="M-22"] .formbar .l .btn{height:auto;min-height:36px;min-width:96px;padding-left:20px;padding-right:20px}
+
+/* ── 단계 표시(Stepper) ── */
+/* 현재 단계가 첫 칸이면 원 뒤에 진한 선 없음, 마지막 칸이 현재 단계면 선이 원까지 진하게 */
+.stepper li.cur:first-child::before{background:var(--line)}
+.stepper li.cur:last-child::before{background:var(--navy-2)}
+
+/* ── 모달 틀: 본문 → 버튼 32, 버튼 줄 없는 창 아래 32(PC) ── */
+@media (min-width:1101px){.modal-b{padding-bottom:32px}}
+
+/* ── 배지: Neutral 바탕 #F1F2F3 ── */
+.badge:not([class*=" b-"]){background:var(--color-status-neutral-bg)}
+
+/* ── 입력 오류: 1.5px #B42318 테두리만(바깥 번짐 없음) ── */
+[aria-invalid="true"],.f.need .inp,.f.need select{border-color:var(--color-status-error-fg)!important;border-width:1.5px}
+
+/* ── 빈 상태 상자 ── */
+.fempty.es{background:var(--color-bg-subtle)}
+.rs-empty{background:var(--color-bg-subtle);border:1px solid var(--color-border-default);border-radius:var(--p-radius-lg)}
+
+/* ── 정렬 줄 굵은 체크(「✓ 가나다순」) ── */
+.rt-ck{display:inline-block;width:14px;height:14px;margin-right:5px;vertical-align:-1px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2 7.4l3.2 3.2L12 3.6' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2 7.4l3.2 3.2L12 3.6' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* ── 안내 상자(Callout) 공통 ── (주의형은 위 ④) */
+
+/* ── 「지원 사업 선정」 배지: 02 Support badge 글자 = 14px Regular 흰색. 카드형 .fg-sup도 sup-seal과 같은 주황 알약 + 인장 아이콘 ── */
+.sup-seal,.sup-seal.inl,.ms-w .sup-seal.inl{font-weight:400}
+.fg-sup{align-items:center;gap:6px;min-height:26px;padding:0 10px 0 4px;border:0;border-radius:var(--p-radius-pill);background:var(--p-color-orange-600);color:#fff;font-size:.778rem;font-weight:400;line-height:1.4}
+.fg-sup::before{content:'';flex:none;width:18px;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5l2.2 1.6 2.7-.2.9 2.6 2.3 1.4-.8 2.6.8 2.6-2.3 1.4-.9 2.6-2.7-.2L12 18.5l-2.2-1.6-2.7.2-.9-2.6-2.3-1.4.8-2.6-.8-2.6 2.3-1.4.9-2.6 2.7.2z' fill='%23fff'/%3E%3Cpath d='M8.6 10.6l2.3 2.3 4.5-4.6' fill='none' stroke='%23C44826' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/contain}
+html[data-hc="1"] .fg-sup{background:#000;border:1px solid #fff}
+html[data-hc="1"] .fg-sup::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5l2.2 1.6 2.7-.2.9 2.6 2.3 1.4-.8 2.6.8 2.6-2.3 1.4-.9 2.6-2.7-.2L12 18.5l-2.2-1.6-2.7.2-.9-2.6-2.3-1.4.8-2.6-.8-2.6 2.3-1.4.9-2.6 2.7.2z' fill='%23fff'/%3E%3Cpath d='M8.6 10.6l2.3 2.3 4.5-4.6' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+</style>
+<style>/* ===== Figma 맞춤 · C ===== */
+/* 모달 아래 여백: 기본 32(common) 위에 Figma 값 — 완료 40, 본문→버튼 24(C-05·C-07·C-09·C-14), C-02 안내→버튼 12 */
+html[data-page="C-06"] .modal-b{padding-bottom:40px}
+html[data-page="C-05"] .modal-b,html[data-page="C-07"] .modal-b,html[data-page="C-09"] .modal-b,html[data-page="C-14"] .modal-b{padding-bottom:24px}
+
+/* C-02 회원 유형 선택 */
+html[data-page="C-02"] .modal-b{padding-bottom:12px}
+html[data-page="C-02"] .typecard{padding:32px 20px}
+html[data-page="C-02"] .typecard b{line-height:25px}
+html[data-page="C-02"] .typecard b+span{display:block;margin-top:4px;line-height:20px}
+html[data-page="C-02"] .callout{margin-top:12px;justify-content:center;gap:10px;padding:14px 20px;font-size:.778rem;line-height:22px}
+html[data-page="C-02"] .callout .ic{width:16px;height:16px;margin-top:3px}
+html[data-page="C-02"] .jflow{margin-top:12px;justify-content:center;gap:4px 19px}
+html[data-page="C-02"] .jflow li+li::before{content:none}
+
+/* C-03 · C-04 높이 760 고정, 가운데 내용만 스크롤 (제목·[이전][다음] 고정) */
+@media (min-width:1025px){
+html[data-page="C-03"] .modal,html[data-page="C-04"] .modal{height:760px;display:flex;flex-direction:column;overflow:hidden}
+html[data-page="C-03"] .mstep,html[data-page="C-04"] .mstep,html[data-page="C-03"] .modal-h,html[data-page="C-04"] .modal-h,html[data-page="C-03"] .modal-f,html[data-page="C-04"] .modal-f{flex:none}
+html[data-page="C-03"] .modal-b,html[data-page="C-04"] .modal-b{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;margin-top:12px;padding:8px 24px;scrollbar-width:thin;scrollbar-color:#99A1A8 #EDF0F2}
+html[data-page="C-03"] .modal-f,html[data-page="C-04"] .modal-f{padding-top:16px}
+html[data-page="C-03"] .c03-all{margin:0 -16px;width:calc(100% + 32px)!important}
+}
+
+/* C-04 상세정보 입력 */
+html[data-page="C-04"] .grid2>.f{border-bottom:0}
+html[data-page="C-04"] .c04-row{border-bottom:1px solid var(--line)}
+html[data-page="C-04"] .c-timer{color:var(--accent)}
+
+/* C-07 아이디 찾기 */
+html[data-page="C-07"] .box-p{background:var(--accent-weak)}
+html[data-page="C-07"] .modal-b>.f:has(+.ref){border-bottom:0}
+
+/* C-08 ② 새 비밀번호 설정 */
+html[data-page="C-08"] .c08-sub{margin-top:-15px;font-size:.833rem;line-height:22px;color:var(--ink-2)}
+html[data-page="C-08"] .c08-fs{margin-top:27px}
+html[data-page="C-08"] .c08-fs>.f:first-child{padding-bottom:14px}
+html[data-page="C-08"] .c08-fs>.f:last-child{padding-bottom:17px}
+
+/* C-09 약관 탭: 칸 폭 · 가로 구분선 · 1px 테두리 */
+html[data-page="C-09"] .seg.seg-terms{border-width:1px}
+html[data-page="C-09"] .seg.seg-terms button+button{border-left-width:1px}
+@media (min-width:1101px){
+html[data-page="C-09"] .seg.seg-terms{grid-template-columns:170fr 159fr 166fr 216fr}
+html[data-page="C-09"] .seg.seg-terms button:nth-child(-n+4){border-bottom:1px solid var(--field)}
+html[data-page="C-09"] .seg.seg-terms button:nth-child(4n+1){border-left:0}
+}
+
+/* C-11 오류 안내 (Figma 03 페이지 404·500·403 기준) */
+html[data-page="C-11"] .err-pg{min-height:635px;padding:80px 20px 64px}
+html[data-page="C-11"] .err-pg h1{margin-top:22px;line-height:40px}
+html[data-page="C-11"] .err-pg h1+p{margin-top:13px}
+html.noref[data-page="C-11"] .c11-ref{display:none}
+</style>
+<style>/* ===== Figma 맞춤 · A1 ===== */
+/* A1-03 안내 상자 목록: 네모 글머리(5×5, 본문색) */
+html[data-page="A1-03"] .fg-ib li{position:relative}
+html[data-page="A1-03"] .fg-ib li::before{content:'';position:absolute;left:-16px;top:11px;width:5px;height:5px;background:var(--color-text-body)}
+/* A1-03 일반 회원 안내 상자: 높이 325, 내용 세로 가운데 */
+html[data-page="A1-03"] .gate.box{min-height:325px;justify-content:center}
+
+/* A1-04/05/06 [우편번호 검색]: Figma Button(16px Bold · 높이 36 · 폭 132) */
+html:is([data-page="A1-04"],[data-page="A1-05"],[data-page="A1-06"]) .f-c>.inline>.btn-sm{font-size:.889rem;padding:0 16px;min-width:132px}
+
+/* A1-08/09/10 상세 소개 입력칸 글자 16px · 줄간 26 */
+html:is([data-page="A1-08"],[data-page="A1-09"],[data-page="A1-10"]) .big-ta{font-size:.889rem;line-height:var(--p-font-leading-normal)}
+/* 대표 이미지 자리: 캡션 없음 · 아이콘 진하게(#727171) */
+html:is([data-page="A1-08"],[data-page="A1-09"],[data-page="A1-10"]) .rep-ph .ph::after{display:none}
+html:is([data-page="A1-08"],[data-page="A1-09"],[data-page="A1-10"]) .rep-ph .ph svg{opacity:1;color:var(--color-text-muted)}
+/* 로고 올리기 칸: 실선 2px */
+html:is([data-page="A1-09"],[data-page="A1-10"]) .upl{border-style:solid;border-color:var(--color-border-control)}
+
+/* A1-11 주요 활동 선택 상자: 「선택 0/3」 + 고른 이력 목록 */
+#hist-4 .maj-box{display:flex;align-items:flex-start;gap:18px;background:var(--color-bg-tint);border-radius:10px;padding:8px 12px;font-size:.889rem;line-height:26px}
+#hist-4 .maj-box .maj-n{flex:none;margin:0;color:var(--color-brand-primary-hover)}
+#hist-4 .maj-box .maj-sel{flex:1;min-width:0;gap:4px;font-size:inherit}
+#hist-4 .maj-box .maj-sel li{padding:0;background:none;border-radius:0}
+#hist-4 .maj-box .maj-sel li.muted{color:var(--color-text-on-tint)}
+
+/* A1-12 해시태그: 세로 스크롤 영역(높이 95 · 오른쪽 스크롤 막대 4px) · 선택 수 16px */
+@media (min-width:768px){
+ html[data-page="A1-12"] .tagpick>.chips{height:99px;overflow-y:auto;align-content:flex-start;padding:2px;margin:-2px 23px -2px -2px;scrollbar-width:thin;scrollbar-color:#99A1A8 #EDF0F2}
+ html[data-page="A1-12"] .tagpick>.chips::-webkit-scrollbar{width:4px}
+ html[data-page="A1-12"] .tagpick>.chips::-webkit-scrollbar-track{background:#EDF0F2;border-radius:2px}
+ html[data-page="A1-12"] .tagpick>.chips::-webkit-scrollbar-thumb{background:#99A1A8;border-radius:2px}
+}
+html[data-page="A1-12"] .tagpick>.help{font-size:.889rem;margin-top:10px}
+
+/* A1-13 미리보기: 이미지 자리 캡션 없음 · 아이콘 진하게 (카드 종류 배지·하트는 다른 화면처럼 보이게 둠) */
+html[data-page="A1-13"] .a1-pv .ph::after{display:none}
+html[data-page="A1-13"] .a1-pv .ph svg{opacity:1;color:var(--color-text-muted)}
+.fg-dsub-warn{color:var(--color-status-caution-fg)}
+
+/* A1-14 심사 진행: 원 없이 단계 이름 + 설명, 이름 사이 회색 가는 선(2px) */
+@media (min-width:768px){
+ html[data-page="A1-14"] .st-track{display:flex;justify-content:center;flex-wrap:wrap;gap:0 40px;max-width:none;margin-top:76px}
+ html[data-page="A1-14"] .st-track li{padding-top:0;display:flex;flex-direction:column;align-items:center}
+ html[data-page="A1-14"] .st-track li::before,html[data-page="A1-14"] .st-track li::after{content:'';position:absolute;top:13px;width:auto;height:2px;background:var(--color-border-subtle);border:0;border-radius:0;transform:none;z-index:0}
+ html[data-page="A1-14"] .st-track li::before{left:-20px;right:50%}
+ html[data-page="A1-14"] .st-track li::after{left:50%;right:-20px}
+ html[data-page="A1-14"] .st-track li:first-child::before,html[data-page="A1-14"] .st-track li:last-child::after{display:none}
+ html[data-page="A1-14"] .st-track b{position:relative;z-index:1;background:var(--color-bg-page);padding:0 14px;margin:0 -14px 1px;line-height:28px}
+ html[data-page="A1-14"] .st-track span{line-height:24px}
+ html[data-page="A1-14"] .st-track~.row{margin-top:84px}
+}
+</style>
+<style>/* ===== Figma 맞춤 · A3 ===== */
+/* --- A3-01 예술인 포트폴리오 목록 --- */
+/* 카드 대표 이미지: 자리표시 글자(대표 이미지) 없음 · 그림 아이콘은 흐리지 않게(#727171) */
+html[data-page="A3-01"] .fg-img .ph::after{content:none}
+html[data-page="A3-01"] .fg-img .ph svg{opacity:1}
+/* 검색 결과 없음: 회색 바탕 상자 · 버튼 글자색은 제목색 */
+html[data-page="A3-01"] .fempty.es{background:var(--color-bg-subtle)}
+html[data-page="A3-01"] .fempty.es .btn-line{color:var(--color-text-heading)}
+
+/* --- A3-02 포트폴리오 상세 --- */
+/* 상단 카드: 대표 이미지와 이름 영역을 한 묶음으로 오른쪽 정보 상자 높이의 가운데에 놓는다(위끝은 서로 맞춤) */
+@media (min-width:1101px){
+html[data-page="A3-02"] .pf-card{grid-template-rows:1fr auto 1fr;row-gap:0}
+html[data-page="A3-02"] .pf-card>.pf-img{grid-column:1;grid-row:2}
+html[data-page="A3-02"] .pf-card>.pf-main{grid-column:2;grid-row:2}
+html[data-page="A3-02"] .pf-card>.pf-info{grid-column:3;grid-row:1/4}
+html[data-page="A3-02"] .pf-main .tags{margin-bottom:-6px} /* 태그 링크의 위아래 누름 여백(6px)은 가운데 맞춤 계산에서 뺀다 */
+}
+/* 이미지 자리표시: 글자 없음 · 아이콘 진하게 */
+html[data-page="A3-02"] .ph::after{content:none}
+html[data-page="A3-02"] .ph svg{opacity:1}
+/* 「○○의 작품·활동 전체 보기 ›」 밑줄 없음(마우스 올리면 밑줄) */
+html[data-page="A3-02"] .pf-all .link{text-decoration:none}
+html[data-page="A3-02"] .pf-all .link:hover{text-decoration:underline}
+/* 작품·활동 0건: 실선 테두리 상자 */
+html[data-page="A3-02"] .pf-empty{border-style:solid}
+
+/* --- A3-03 공개명함 --- */
+html[data-page="A3-03"] .modal .ph svg{opacity:1}
+</style>
+<style>/* ===== Figma 맞춤 · M1 ===== */
+/* ---- M-01 마이페이지 홈 ---- */
+html[data-page="M-01"] .pg-h{align-items:center}
+html[data-page="M-01"] .noti{border-color:#C44826}
+html[data-page="M-01"] .noti-h{background:#C44826}
+html[data-page="M-01"] .noti-h a{text-decoration:none}
+html[data-page="M-01"] .noti li .badge{margin-right:6px}
+html[data-page="M-01"] .noti-e{padding:20px 24px;color:var(--ink-3)}
+.m1-none{margin:8px 0 0;font-size:.889rem;color:var(--ink-3)}
+.ms-tabbar{display:flex;align-items:center;gap:8px;margin-top:16px}
+.ms-tabbar .ms-tabs{margin-top:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;min-width:0}
+.ms-tabbar .ms-tabs::-webkit-scrollbar{display:none}
+.ms-tabbar .ms-tabs button{flex:none}
+.ms-sc{flex:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border-radius:50%;border:1px solid var(--p-color-gray-300);background:#fff;color:var(--ink-2)}
+.ms-sc .ic{width:18px;height:18px}
+.ms-sc:disabled{opacity:.4;cursor:default}
+.ms-pf-t{font-size:.833rem;padding:13px 14px 14px}
+.ms-pf-t b{font-size:1.111rem}
+.ms-pf-t .row{gap:8px!important}
+.ms-pf-t span{line-height:22px}
+.ms-pf-t b{line-height:28px}
+.ms-pf-t .ms-note{margin:6px 8px 0 -8px;padding:8px;border-radius:8px;background:var(--p-color-blue-50);color:var(--p-color-gray-600);font-size:.833rem}
+html[data-page="M-01"] .my-up .mlist li{border-color:var(--p-color-gray-600)}
+.ms-empty.ms-init{margin-top:16px;padding:24px;gap:12px;border:1px solid var(--p-color-gray-300);border-radius:16px;background:#fff}
+.ms-init p{margin:0;font-size:.889rem;color:var(--ink)}
+.m1-b36{font-size:.889rem;padding:0 20px}
+.ms-init .m1-b36{padding:0 24px}
+/* Figma: 화면 안 글 링크 밑줄 없음 */
+html[data-page="M-01"] .my-up .link,html[data-page="M-02"] .formcard .link,html[data-page="M-05"] .fg-warn .link,html[data-page="M-06"] .fg-warn .link{text-decoration:none}
+/* ---- M-03 등록 현황 ---- */
+html[data-page="M-03"] .rs-acts{display:flex;align-items:center;gap:4px}
+html[data-page="M-03"] .rs-note{display:block;margin-top:4px;line-height:20px}
+html[data-page="M-03"] .rs-empty,html[data-page="M-06"] .rs-empty{border-style:solid}
+html[data-page="M-03"] .rs-hist{padding-top:27px;padding-bottom:45px}
+html[data-page="M-03"] .rs-hist-l{max-height:300px;margin-top:19px;margin-right:-15px;padding-right:23px;scrollbar-width:thin;scrollbar-color:#99A1A8 #EDF0F2}
+html[data-page="M-03"] .rs-hist-l::-webkit-scrollbar{width:4px}
+html[data-page="M-03"] .rs-hist-l::-webkit-scrollbar-track{background:#EDF0F2;border-radius:2px}
+html[data-page="M-03"] .rs-hist-l::-webkit-scrollbar-thumb{background:#99A1A8;border-radius:2px}
+/* ---- M-04 · M-05 · M-06 빈 상태 ---- */
+.fempty.es.m1-es{margin-top:0;background:var(--p-color-gray-50)}
+html[data-page="M-06"] .fempty.es{background:var(--p-color-gray-50)}
+html[data-page="M-06"] .m1-segrow{align-items:flex-start}
+/* ---- 표 열 폭 (PC) ---- */
+@media (min-width:1101px){
+  html[data-page="M-03"] .rs-h1+.tblw table{table-layout:fixed}
+  html[data-page="M-03"] .rs-h1+.tblw th:nth-child(1){width:243px}
+  html[data-page="M-03"] .rs-h1+.tblw th:nth-child(2){width:166px}
+  html[data-page="M-03"] .rs-h1+.tblw th:nth-child(3){width:167px}
+  html[data-page="M-03"] .rs-h1+.tblw th:nth-child(4){width:160px}
+  html[data-page="M-03"] .rs-h1+.tblw th:nth-child(5){width:256px}
+  html[data-page="M-03"] .rs-h2+.tblw table{table-layout:fixed}
+  html[data-page="M-03"] .rs-h2+.tblw th:nth-child(1){width:132px}
+  html[data-page="M-03"] .rs-h2+.tblw th:nth-child(2){width:311px}
+  html[data-page="M-03"] .rs-h2+.tblw th:nth-child(3){width:132px}
+  html[data-page="M-03"] .rs-h2+.tblw th:nth-child(4){width:127px}
+  html[data-page="M-03"] .rs-h2+.tblw th:nth-child(5){width:290px}
+  html[data-page="M-03"] .rs-h3+.tblw table{table-layout:fixed}
+  html[data-page="M-03"] .rs-h3+.tblw th:nth-child(1){width:104px}
+  html[data-page="M-03"] .rs-h3+.tblw th:nth-child(2){width:195px}
+  html[data-page="M-03"] .rs-h3+.tblw th:nth-child(3){width:192px}
+  html[data-page="M-03"] .rs-h3+.tblw th:nth-child(4){width:144px}
+  html[data-page="M-03"] .rs-h3+.tblw th:nth-child(5){width:137px}
+  html[data-page="M-03"] .rs-h3+.tblw th:nth-child(6){width:220px}
+  html[data-page="M-03"] .rs-h4+.tblw table{table-layout:fixed}
+  html[data-page="M-03"] .rs-h4+.tblw th:nth-child(1){width:104px}
+  html[data-page="M-03"] .rs-h4+.tblw th:nth-child(2){width:162px}
+  html[data-page="M-03"] .rs-h4+.tblw th:nth-child(3){width:162px}
+  html[data-page="M-03"] .rs-h4+.tblw th:nth-child(4){width:141px}
+  html[data-page="M-03"] .rs-h4+.tblw th:nth-child(5){width:104px}
+  html[data-page="M-03"] .rs-h4+.tblw th:nth-child(6){width:101px}
+  html[data-page="M-03"] .rs-h4+.tblw th:nth-child(7){width:218px}
+  html[data-page="M-04"] .m1-evi+.tblw table{table-layout:fixed}
+  html[data-page="M-04"] .m1-evi+.tblw th:nth-child(1){width:416px}
+  html[data-page="M-04"] .m1-evi+.tblw th:nth-child(2){width:200px}
+  html[data-page="M-04"] .m1-evi+.tblw th:nth-child(3){width:217px}
+  html[data-page="M-04"] .m1-evi+.tblw th:nth-child(4){width:158px}
+  html[data-page="M-05"] .pf-count+.tblw table{table-layout:fixed}
+  html[data-page="M-05"] .pf-count+.tblw th:nth-child(1){width:274px}
+  html[data-page="M-05"] .pf-count+.tblw th:nth-child(2){width:187px}
+  html[data-page="M-05"] .pf-count+.tblw th:nth-child(3){width:181px}
+  html[data-page="M-05"] .pf-count+.tblw th:nth-child(4){width:152px}
+  html[data-page="M-05"] .pf-count+.tblw th:nth-child(5){width:199px}
+  html[data-page="M-05"] .m1-addh+.tblw table{table-layout:fixed}
+  html[data-page="M-05"] .m1-addh+.tblw th:nth-child(1){width:178px}
+  html[data-page="M-05"] .m1-addh+.tblw th:nth-child(2){width:323px}
+  html[data-page="M-05"] .m1-addh+.tblw th:nth-child(3){width:179px}
+  html[data-page="M-05"] .m1-addh+.tblw th:nth-child(4){width:172px}
+  html[data-page="M-05"] .m1-addh+.tblw th:nth-child(5){width:140px}
+}
+</style>
+<style>/* ===== Figma 맞춤 · M2 ===== */
+/* ---- M-07~M-13 하단 줄(wk): 임시저장·불러오기 80×48, 미리보기 옅은 회색(.fb-pv) — Figma ---- */
+:is(html[data-page="M-07"],html[data-page="M-08"],html[data-page="M-09"],html[data-page="M-10"],html[data-page="M-11"],html[data-page="M-12"],html[data-page="M-13"]) .formbar .l>.btn{min-width:80px;padding-left:9px;padding-right:9px}
+:is(html[data-page="M-08"],html[data-page="M-09"],html[data-page="M-10"],html[data-page="M-11"],html[data-page="M-12"]) .formbar .fb-pv{background:var(--color-bg-subtle)}
+/* ---- M-22 하단 줄(regShell): 임시저장·불러오기 96×36 Line 16px — Figma ---- */
+html[data-page="M-22"] .formbar .l>.btn{height:36px;min-height:36px;min-width:96px;padding:0 20px}
+/* ---- M-11 이미지: 「변경 | 삭제」 띠 28px · #1C2124 60% · 12px Medium (.img-act) ---- */
+html[data-page="M-11"] .img-act{display:flex;align-items:center;justify-content:center;height:28px;padding:0;background:rgba(28,33,36,.6);font-size:12px;font-weight:500;line-height:1;word-spacing:3px}
+html[data-page="M-11"] .thumbs>.upl{align-content:center;gap:22px;border-style:solid}
+html[data-page="M-11"] .thumbs>.upl .ic{width:15px;height:15px}
+html[data-page="M-11"] .f-l{white-space:nowrap}
+/* ---- M-12 해시태그 세로 스크롤 상자(696×94) ---- */
+html[data-page="M-12"] .tagpick .chips{max-height:94px;width:696px;max-width:100%;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#99a1a8 #edf0f2}
+html[data-page="M-12"] .tagpick .chips::-webkit-scrollbar{width:4px}
+html[data-page="M-12"] .tagpick .chips::-webkit-scrollbar-track{background:#edf0f2;border-radius:2px}
+html[data-page="M-12"] .tagpick .chips::-webkit-scrollbar-thumb{background:#99a1a8;border-radius:2px}
+html[data-page="M-12"] .tagpick>.help{font-size:.889rem;margin-top:11px}
+html[data-page="M-12"] .tagpick+.help{margin-top:6px}
+/* ---- M-12 관련자료 상자 ---- */
+.m2-upl{display:grid;justify-items:center;padding:20px;font-size:.889rem;line-height:1.625;border-style:solid}
+.m2-upl>.ic{width:15px;height:15px;margin-bottom:8px}
+.m2-upl p{margin:0}
+.m2-upl .m2-upl2{font-size:.833rem;line-height:1.6;margin-top:2px}
+.m2-upl.m2-bad{border-color:var(--bad)}
+@media (min-width:768px){.m2-frel>.f-l{padding-top:38px}}
+/* M-12?err=1: Figma는 테두리 · 아이콘 없는 파일 줄 + 상자 없는 빨간 안내 글자 */
+html[data-page="M-12"] .upl-list{margin-top:7px;gap:6px}
+html[data-page="M-12"] .upl-list li{gap:4px;padding:0;border:0;border-radius:0;font-size:.889rem;line-height:26px}
+html[data-page="M-12"] .upl-list li>.ic{display:none}
+html[data-page="M-12"] .upl-list li b{flex:none;font-weight:400;color:var(--ink)}
+html[data-page="M-12"] .upl-list li .btn{margin-left:8px;height:26px;min-height:26px;padding:0 8px}
+html[data-page="M-12"] .upl-list+.callout{margin-top:10px;padding:0;background:none;border:0;color:var(--bad);font-size:.778rem;font-weight:500;line-height:26px}
+html[data-page="M-12"] .upl-list+.callout>.ic{display:none}
+html[data-page="M-12"] .upl-list+.callout b{font-weight:500}
+/* ---- M-15 스크랩 ---- */
+.m2-tabs{margin-bottom:14px}
+html[data-page="M-15"] .m2-tabs .seg{border-width:1px}
+html[data-page="M-15"] .m2-tabs .seg button{height:34px}
+html[data-page="M-15"] .m2-tabs .seg button+button{border-left-width:1px}
+html[data-page="M-15"] .scrap-sec h2 .small{font-weight:700;margin-left:2px}
+html[data-page="M-15"] .scrap-sec .row>.btn-xs{height:30px;min-height:30px;padding:0 14px;border-width:1px;border-radius:15px;font-size:.778rem;font-weight:500}
+html[data-page="M-15"] .rs-empty .btn{font-size:.889rem;padding:0 22px}
+/* ---- M-17 [변경 없이 갱신하기](.upd-none) 434×70 · 가운데 · 18px ---- */
+.upd-b.upd-none{justify-content:center;gap:8px;min-height:70px;font-size:1rem}
+.upd-b.upd-none .ic{width:16px;height:16px}
+/* ---- M-18 알림함 ---- */
+.m2-un{color:#C44826;font-size:.667rem;font-weight:700;white-space:nowrap}
+.m2-rd{color:var(--p-color-ink-light);font-size:.667rem;white-space:nowrap}
+.m2-allread{font-size:.889rem;padding:0 18px}
+html[data-page="M-18"] .tbl a.link{text-decoration:none}
+html[data-page="M-18"] .tbl a.link:hover{text-decoration:underline}
+@media (min-width:1101px){
+ html[data-page="M-18"] .tbl{table-layout:fixed}
+ html[data-page="M-18"] .tbl th:nth-child(1){width:54px;padding-left:0;padding-right:0}
+ html[data-page="M-18"] .tbl td:nth-child(1){padding-left:0;padding-right:0}
+ html[data-page="M-18"] .tbl th:nth-child(2){width:137px}
+ html[data-page="M-18"] .tbl th:nth-child(3){width:496px}
+ html[data-page="M-18"] .tbl th:nth-child(4){width:190px}
+ html[data-page="M-20"] .tbl{table-layout:fixed}
+ html[data-page="M-20"] .tbl th:nth-child(1){width:137px}
+ html[data-page="M-20"] .tbl th:nth-child(2){width:254px}
+ html[data-page="M-20"] .tbl th:nth-child(3){width:166px}
+ html[data-page="M-20"] .tbl th:nth-child(4){width:240px}
+}
+/* ---- M-19 문의 관리: 14px 얇은 쉐브런 · 답변 상자 테두리 없음 ---- */
+html[data-page="M-19"] .inq summary::after{width:14px;height:14px;border:0;margin:0 3px 0 -4px;transform:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3.5 5.25 7 8.75l3.5-3.5' fill='none' stroke='%2326292b' stroke-width='1.05' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+html[data-page="M-19"] .inq[open] summary::after{transform:rotate(180deg)}
+html[data-page="M-19"] .inq-a{border:0}
+/* ---- M-21 회원탈퇴 ---- */
+.m2-agree{grid-template-columns:1fr}
+.m2-agree .chk{align-items:center}
+.opt.m2-req{color:var(--accent);border-color:var(--accent);margin-left:-4px;white-space:nowrap}
+/* ---- M-22 현재 포트폴리오 1·2행: 라벨·값 가운데 ---- */
+@media (min-width:768px){.m2-mid>.f-l{padding-top:6px;padding-bottom:6px}}
+</style>
+<style>/* ===== Figma 맞춤 · B05 ===== */
+/* 관리자 왼쪽 메뉴 — 상세 화면 하위 줄(등록신청 심사 상세 · 작품·활동 심사 상세 · 처리할 일 전체 보기) 바탕: Figma 흰색 10% */
+.adm-side .it3{background:rgba(255,255,255,.1)}
+/* B-02 처리할 일 모아보기 — 구분 · 상태 걸러 보기에서 고른 칸 글자 굵기: Figma Regular */
+.td-flt .seg a.on{font-weight:400}
+</style>
+<style>/* ===== Figma 맞춤 · R04 ===== */
+/* ══════ R04 · 반응형 공통 — 헤더 메뉴 아이콘 · 비로그인 헤더 간격 · 상단 띠 · 위치 줄 · 푸터 ══════ */
+/* ===== R04 반응형 공통 (768 · 360) ===== */
+@media (max-width:1100px){
+  /* 헤더 768 비로그인: 로그인 · 회원가입 · 검색 글자 간격 24, 검색–메뉴 아이콘 24 */
+  .hd-r>a.t-plain+a.t-plain{margin-left:4px}
+  .hd-r>a.t-plain+.hd-menu{margin-left:-3px}
+  /* 상단 띠: 768 높이 237 · 제목/부제를 아래로(아래 여백 28), 물결 524×160 · 띠 아래에서 110(띠 높이가 달라도 같은 자리) */
+  .kv{min-height:237px;justify-content:flex-end}
+  .kv .kv-in{padding-top:28px;padding-bottom:28px}
+  .kv p{margin-top:8px}
+  .kv svg.waves{top:auto;bottom:-50px}
+  /* 위치 줄: 집 아이콘 본문 왼쪽 + 7(Figma 47/23), 마지막 항목 굵게 · 진한 글자 */
+  .crumb2>a:first-child{margin:0}
+  .crumb2 b{font-weight:700;color:var(--ink)}
+  /* 푸터: 정보 줄 · SNS 「·」 좌우 8, 패밀리 사이트 114×32 · 위 18 / 아래 15 */
+  .ft .legal span+span::before,.ft .sns a+a::before{margin:0 8px}
+  .ft-r select{width:114px;padding-right:25px;margin-top:6px}
+}
+@media (max-width:767px){
+  /* 상단 띠 360: 높이 209, 물결은 띠 아래에서 100 */
+  .kv{min-height:209px}
+  .kv svg.waves{bottom:-60px}
+}
+
+/* ══════ R04 · A1-03 · A1-11 · A1-13(+제출 확인) · A1-14, 진행 단계 · 작성 화면 하단 줄 · 입력 표 행 카드 ══════ */
+/* ── A1-03 포트폴리오 등록 시작 ── */
+@media (max-width:767px){
+  /* 하위 탭(알약) 2열 — 3번째 알약도 1열 폭(163), 글자 왼쪽 */
+  html[data-page="A1-03"] .lnb-side nav{display:grid;grid-template-columns:auto auto;justify-content:start}
+  html[data-page="A1-03"] .lnb-side nav a{justify-content:flex-start}
+  /* 진행 단계: 세로 목록(번호 26 · 이름 왼쪽 12) + 번호 사이 2×6 회색 선 */
+  html[data-page="A1-03"] .fg-step.bx{grid-auto-flow:row;grid-auto-columns:auto;row-gap:14px;padding:19px 24px}
+  html[data-page="A1-03"] .fg-step li{flex-direction:row;gap:12px;text-align:left;position:relative}
+  html[data-page="A1-03"] .fg-step li+li::before{content:'';position:absolute;left:12px;top:-10px;width:2px;height:6px;background:var(--color-border-default)}
+  html[data-page="A1-03"] .fg-step .n{font-size:13px}
+  html[data-page="A1-03"] .fg-step b{font-size:14px}
+  html[data-page="A1-03"] .fg-info li{text-wrap:wrap}
+  /* [불러오기][시작하기] 한 줄 반반(158×56) */
+  html[data-page="A1-03"] .start-cta{flex-wrap:nowrap;margin-top:32px}
+  html[data-page="A1-03"] .start-cta .reg-cta-btn{flex:1 1 0;min-width:0;min-height:56px;padding:0 12px}
+}
+
+/* ── A1-11 ④ 활동이력 ── */
+@media (max-width:1100px){
+  /* 이력 탭: 같은 폭 3열(768) · 2열(360), 간격 8 */
+  html[data-page="A1-11"] .hist-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+  html[data-page="A1-11"] .hist-tabs button{justify-content:center;padding:0 8px;min-height:44px}
+  html[data-page="A1-11"] .hist-tabs .hist-no{width:21px;height:21px;margin-right:9px}
+  /* 행 카드: 첫 줄 = [체크박스 16 + 「주요 활동」] … [휴지통 + 삭제] */
+  html[data-page="A1-11"] .edtbl.feat tr{padding:17px 16px}
+  html[data-page="A1-11"] .edtbl.feat td.c:first-child{grid-column:1/3;grid-row:1;gap:8px}
+  html[data-page="A1-11"] .edtbl.feat td.c:first-child::before{order:2;flex:none;font-size:14px;color:var(--color-text-body,#595656)}
+  html[data-page="A1-11"] .edtbl .maj-ck{width:16px;height:16px;min-width:0;min-height:0;padding:0;margin:0;flex:none}
+  html[data-page="A1-11"] .edtbl td:last-child{grid-row:1;grid-column:3/4;align-self:center}
+  html[data-page="A1-11"] .edtbl td:last-child .icon-btn{width:auto!important;height:32px!important;display:inline-flex;gap:4px;border-radius:6px;font-size:14px;font-weight:500;color:var(--color-text-body,#595656)}
+  html[data-page="A1-11"] .edtbl td:last-child .icon-btn .ic{width:16px;height:16px}
+  html[data-page="A1-11"] .edtbl td:last-child .icon-btn::after{content:'삭제'}
+}
+@media (max-width:767px){
+  html[data-page="A1-11"] .hist-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html[data-page="A1-11"] .hist-tabs button{font-size:14px;gap:4px}
+  html[data-page="A1-11"] .hist-tabs .hist-no{width:18px;height:18px;font-size:12px;margin-right:2px}
+  html[data-page="A1-11"] .hist-tabs .hist-cnt{font-size:13px}
+  html[data-page="A1-11"] .edtbl.feat tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px}
+  html[data-page="A1-11"] .edtbl.feat td{grid-column:1/-1}
+  html[data-page="A1-11"] .edtbl.feat td.c:first-child{grid-column:1;grid-row:1;flex-direction:row;align-items:center}
+  html[data-page="A1-11"] .edtbl.feat td:last-child{grid-column:2;grid-row:1}
+  /* ⑤ 주요 활동: 「선택 0 / 3」 아래 줄에 고른 이력 */
+  html[data-page="A1-11"] #hist-4 .maj-box{flex-direction:column;gap:0}
+}
+
+/* ── 작성 화면 하단 줄(Form Action Bar) — 768: 한 줄(왼쪽 임시저장 · 불러오기 / 오른쪽 단계 · 이전 · 미리보기 · 주 버튼) + 자동 저장 안내 아랫줄 ── */
+@media (max-width:1100px){.formbar{margin-top:48px}}
+@media (min-width:768px) and (max-width:1100px){
+  .formbar{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;column-gap:8px;row-gap:14px;padding:16px 0 18px}
+  .formbar .l{display:contents}
+  .formbar .l>.btn:nth-child(1){grid-column:1;grid-row:1}
+  .formbar .l>.btn:nth-child(2){grid-column:2;grid-row:1}
+  .formbar .autosave{grid-column:1/-1;grid-row:2;margin-left:0}
+  .formbar .r{grid-column:3;grid-row:1;justify-self:end;flex-wrap:nowrap}
+}
+/* 360: [임시저장][불러오기] · 단계 표시(오른쪽) / 자동 저장 안내 / [이전][미리보기][주 버튼] 같은 폭 3칸 */
+@media (max-width:767px){
+  .formbar{flex-direction:column;align-items:stretch;gap:13px;padding:16px 0 17px}
+  .formbar .l{row-gap:14px}
+  .formbar .autosave{flex-basis:100%;margin-left:0;align-items:flex-start}
+  .formbar .r{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .formbar .r .btn{min-width:0;padding-left:8px;padding-right:8px}
+  /* 미리보기 버튼이 있는 단계(A1-04~12): 단계 표시는 첫 줄 오른쪽, [이전][미리보기][다음] 같은 폭 */
+  .formbar .r:has(.fb-pv) .fb-step{position:absolute;right:0;top:25px;margin:0;font-size:22px}
+  .formbar .r:has(.fb-pv) .fb-step small{font-size:17px}
+  /* 그 밖(A1-13 등): 이동 줄 = 단계 표시 · [이전] · 주 버튼이 남은 폭 */
+  .formbar .r:not(:has(.fb-pv)){display:flex;gap:12px;flex-wrap:nowrap}
+  .formbar .r:not(:has(.fb-pv)) .fb-step{margin:0}
+  .formbar .r:not(:has(.fb-pv)) .btn-line{flex:none;min-width:80px;padding-left:24px;padding-right:24px}
+  .formbar .r:not(:has(.fb-pv)) .btn-pri{flex:1 1 auto;margin-left:0}
+}
+
+/* ── A1-13 ⑥ 미리보기 및 최종 등록 ── */
+/* 제출 확인 창: 「마이페이지 등록 현황」도 낱말 단위로 줄바꿈(Figma 768 · 360) */
+@media (max-width:1100px){html[data-page="A1-13"] .fg-dlg .nw{white-space:normal}}
+@media (min-width:768px) and (max-width:1100px){
+  /* 이동 줄: [이전]–[이대로 제출하기] 간격 16 */
+  .formbar .r>.btn-line:not(.fb-pv)+.btn-pri{margin-left:8px}
+}
+@media (max-width:767px){
+  /* 미리보기 틀 360: 안쪽 위 8 · 좌우 13 · 아래 40, 카드 안쪽 위 32 · 좌우 16 */
+  html[data-page="A1-13"] .a1-pv{padding:8px 13px 40px!important}
+  html[data-page="A1-13"] .a1-pv .pf-card{padding:32px 15px 34px}
+  html[data-page="A1-13"] .a1-pv .ph{aspect-ratio:auto;height:240px}
+  /* 정보 상자: 목록은 안쪽 25, 버튼 4개(112×40 · 12px) · 문의 버튼 · 안내는 안쪽 16 */
+  html[data-page="A1-13"] .a1-pv .pf-info{padding:24px 16px 19px}
+  html[data-page="A1-13"] .a1-pv .pf-info dl{padding:0 9px}
+  html[data-page="A1-13"] .a1-pv .pf-acts>*{min-height:40px;font-size:12px}
+  html[data-page="A1-13"] .a1-pv .pf-note{font-size:12px;line-height:18px;margin-top:-6px}
+  html[data-page="A1-13"] .a1-pv .pf-info>.btn{margin-top:-4px}
+  /* 상세소개: 좌 23 · 우 18 안쪽 */
+  html[data-page="A1-13"] .a1-pv .pf-pane>section:first-child{padding:0 18px 0 23px}
+  html[data-page="A1-13"] .a1-pv .pf-line{text-wrap:balance}
+  /* 이력 상자: 내용 칸 폭 159(Figma 줄바꿈 위치) */
+  html[data-page="A1-13"] .a1-pv .pf-hist ul.yr{padding-right:37px}
+}
+
+/* ── A1-14 포트폴리오 등록 완료 ── */
+@media (max-width:767px),(min-width:1101px){.r04-tbr{display:none}}
+/* 심사 진행 4단계: 768 · 360 Figma는 번호 원(36) + 원 사이 회색 선(2px) + 단계 이름 · 설명 */
+@media (max-width:1100px){
+  html[data-page="A1-14"] .st-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-width:767px;margin:32px auto 0}
+  html[data-page="A1-14"] .st-track li{display:block;padding-top:44px}
+  html[data-page="A1-14"] .st-track li::before,html[data-page="A1-14"] .st-track li:first-child::before{content:counter(st);display:grid;place-items:center;position:absolute;top:0;left:50%;right:auto;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;background:var(--bg);border:2px solid var(--line);font-size:15px;font-weight:700;color:var(--ink-2);z-index:1}
+  html[data-page="A1-14"] .st-track li.done::before{content:'✓';background:var(--ok);border-color:var(--ok);color:#fff}
+  html[data-page="A1-14"] .st-track li.cur::before{background:var(--accent);border-color:var(--accent);color:#fff}
+  html[data-page="A1-14"] .st-track li::after{display:block;content:'';position:absolute;top:15px;left:calc(50% + 18px);right:auto;width:calc(100% - 28px);height:2px;background:var(--line);border:0;z-index:0}
+  html[data-page="A1-14"] .st-track li:last-child::after{display:none}
+  html[data-page="A1-14"] .st-track b{padding:0;margin:0 0 2px;background:none;line-height:28px}
+  html[data-page="A1-14"] .st-track span{display:block;font-size:14px;line-height:20px}
+  html[data-page="A1-14"] .st-track+p{margin-top:51px}
+  html[data-page="A1-14"] .st-track~.row{margin-top:40px}
+}
+@media (max-width:767px){
+  html[data-page="A1-14"] .box[style*="padding:64px 32px"]{padding:64px 32px 32px!important}
+  html[data-page="A1-14"] .box .sec-t{font-size:24px;line-height:34px}
+  html[data-page="A1-14"] .stepper.reg{margin-top:20px}
+  html[data-page="A1-14"] .st-track b{font-size:14px;line-height:20px;margin-bottom:5px}
+  html[data-page="A1-14"] .st-track span{font-size:12px;line-height:17px;padding:0 5px}
+  html[data-page="A1-14"] .st-track+p{margin:49px -3px 0;text-wrap:wrap}
+  /* 버튼 3개 세로로 폭 전체(280), 간격 10 */
+  html[data-page="A1-14"] .st-track~.row{flex-direction:column;flex-wrap:nowrap;gap:10px;margin:40px -9px 0}
+  html[data-page="A1-14"] .st-track~.row .btn{width:100%;margin:0}
+}
+
+/* ══════ R04 · A3-01 · A3-02 · C-01 · C-03, 카드 목록 · 360 하위 탭 · 모달 틀 ══════ */
+/* ===== R04 a3c ===== */
+/* --- 카드 목록 페이지 번호(1100 이하): 48×48 · 간격 16 --- */
+@media (max-width:1100px){
+  .fg-pager a{min-width:48px}
+}
+/* --- 360 위치 줄 하위 탭: 화면 3등분 · 14px, 위치 줄 위 12 · 탭과 8 (높이 100) --- */
+@media (max-width:767px){
+  .crumbbar.has-tabs .wrap{padding-top:12px;row-gap:8px}
+  .crumbbar.has-tabs .fg-ctabs{width:calc(100% + 32px);margin:0 -16px -1px;gap:0;overflow:visible}
+  .crumbbar.has-tabs .fg-ctabs a{flex:1 1 0;min-width:0;justify-content:center;padding:0 4px;font-size:.778rem;white-space:nowrap}
+}
+
+/* --- 확인창 · 모달 틀(1100 이하): 배경 #0A101C 55% · 화면 세로 가운데 · 아래 여백 32, 모달이 열리면 맨 위로 버튼 숨김 --- */
+@media (max-width:1100px){
+  html:has(.dim) .totop{display:none}
+}
+@media (max-width:767px){
+  .modal:not(.fg-dlg) .modal-f{padding-bottom:32px}
+  .modal:not(.fg-dlg) .modal-b:last-child{padding-bottom:32px}
+}
+/* --- C-03 약관 동의(768 · 360): 전체 동의 상자 좌우 16 넓힘, 마지막 동의 묶음–[이전][다음] 40 (1025 이상은 C 그룹 760 고정 모달) --- */
+@media (max-width:1024px){
+  html[data-page="C-03"] .c03-all{margin:0 -16px;width:calc(100% + 32px)!important}
+  html[data-page="C-03"] .modal-b{padding-bottom:40px}
+}
+@media (max-width:767px){
+  html[data-page="C-03"] .agr2 .help .nw{white-space:normal}
+}
+
+/* --- A3-01 · A3-02 상단 띠 768: 218(물결은 공통 규칙대로 띠 아래에서 110) --- */
+@media (min-width:768px) and (max-width:1100px){
+  html[data-page="A3-01"] .kv,html[data-page="A3-02"] .kv{min-height:218px}
+}
+
+/* --- A3-01 예술인 포트폴리오 목록 --- */
+@media (max-width:1100px){
+  html[data-page="A3-01"] .sp .sbar .btn-line{padding:0 24px}
+  html[data-page="A3-01"] .rt-sort select{display:none}            /* 768 · 360 Figma: 「n개씩 보기」 없음 */
+  html[data-page="A3-01"] .fg-card .fg-sup{margin-top:12px}
+  html[data-page="A3-01"] .fg-g4{gap:43px 24px}
+  html[data-page="A3-01"] .fg-g4>.fg-card:nth-child(n+10){display:none}   /* 768: 3행(9개)까지 + 페이지 번호 */
+}
+@media (max-width:767px){
+  html[data-page="A3-01"] .fg-g4{gap:26px 16px}
+  html[data-page="A3-01"] .fg-rt .row{width:100%}
+  html[data-page="A3-01"] .fg-g4>.fg-card:nth-child(n+5){display:none}    /* 360: 2행(4개)까지 */
+}
+
+/* --- A3-02 예술인 포트폴리오 상세 · 소개 탭 --- */
+@media (max-width:1100px){
+  /* 위치 줄 14px · 간격 8(한 줄), 마지막 항목 굵게 */
+  html[data-page="A3-02"] .crumb2{gap:8px;font-size:.778rem;flex-wrap:nowrap;white-space:nowrap}
+  html[data-page="A3-02"] .crumb2>a:first-child{margin:0 -7px}
+  html[data-page="A3-02"] .pf-main .tags{margin-top:-9px;margin-bottom:17px}
+  html[data-page="A3-02"] .pf-all{margin-top:18px;font-size:.889rem}
+  html[data-page="A3-02"] .fg-pn{margin-top:32px}
+  html[data-page="A3-02"] .fg-pn .btn{padding:0 24px}
+  /* 관심 · 공유 · 명함 · 인쇄 버튼: 바탕 #F8F9F9 · 테두리 #C9CCCF · 모서리 10 */
+  html[data-page="A3-02"] .pf-acts>*{background:var(--color-bg-subtle);border-color:var(--p-color-gray-300,#C9CCCF);border-radius:10px;padding:0 8px;gap:4px}
+}
+@media (min-width:768px) and (max-width:1100px){
+  html[data-page="A3-02"] .crumbbar.has-tabs .wrap{min-height:66px}
+  html[data-page="A3-02"] .crumbbar.has-tabs .fg-ctabs a{min-height:66px}
+  /* 정보 상자: 왼쪽 정보 목록 + 오른쪽 버튼 2×2(137×40), 아래 문의하기 · 안내 */
+  html[data-page="A3-02"] .pf-info{display:grid;grid-template-columns:minmax(0,1fr) 282px;column-gap:16px;row-gap:0}
+  html[data-page="A3-02"] .pf-info>dl{grid-column:1;grid-row:1}
+  html[data-page="A3-02"] .pf-info>.pf-acts{grid-column:2;grid-row:1;align-self:center;margin:0}
+  html[data-page="A3-02"] .pf-info>.btn{grid-column:1/-1;margin-top:24px}
+  html[data-page="A3-02"] .pf-info>.pf-note{grid-column:1/-1;margin-top:13px}
+  html[data-page="A3-02"] .pf-acts>*{min-height:40px;font-size:13px}
+  html[data-page="A3-02"] .pf-acts>* .ic{width:15px;height:15px}
+  html[data-page="A3-02"] .fg-pn{grid-template-columns:auto 1fr 1fr}
+}
+@media (max-width:767px){
+  html[data-page="A3-02"] .crumb2>a:first-child{margin:0 -7px 0 0}
+  html[data-page="A3-02"] .pf-card .pf-name{font-size:1.556rem;line-height:36px}
+  html[data-page="A3-02"] .pf-main{gap:12px}
+  html[data-page="A3-02"] .pf-line{font-size:.889rem}
+  html[data-page="A3-02"] .pf-major{margin-top:14px}
+  html[data-page="A3-02"] .pf-main .tags{margin-top:12px;margin-bottom:0}
+  html[data-page="A3-02"] .pf-info{margin:0 -16px;padding-bottom:31px}
+  html[data-page="A3-02"] .pf-txt{font-size:.889rem;line-height:28px}
+  html[data-page="A3-02"] .pf-all{margin-top:20px;font-size:1rem}
+  html[data-page="A3-02"] .pf-all .link{font-size:.889rem}
+  html[data-page="A3-02"] .fg-pn{margin-top:64px}
+  html[data-page="A3-02"] .pf-info .pf-acts{margin-top:4px}
+  html[data-page="A3-02"] .pf-acts>*{min-height:44px;font-size:12px}
+  html[data-page="A3-02"] .pf-acts>* .ic{width:13px;height:13px}
+  html[data-page="A3-02"] .pf-nm{display:grid;grid-template-columns:auto 1fr;gap:10px 8px;justify-items:start;align-items:center}
+  html[data-page="A3-02"] .pf-nm>.b-info{grid-column:1/-1}
+  html[data-page="A3-02"] .pf-note{font-size:12px;line-height:18px;margin:-4px 0 0;padding:0 22px;text-align:left;text-wrap:wrap;align-items:flex-start}
+  html[data-page="A3-02"] .pf-note .ic{margin-top:2px}
+}
+
+/* ══════ R04 · M-01(+?st=many) · M-03, 접힌 마이페이지 메뉴 · 표 → 행 카드 ══════ */
+/* ── R04·m 마이페이지 공통(1100 이하): 접힌 메뉴 = 계정 요약 + [현재 메뉴][마이페이지 전체 메뉴] ── */
+@media (max-width:1100px){
+  .my>.side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;align-items:start}
+  .my>.side>.who2{grid-column:1/-1}
+  .my>.side:not(.all) nav a.on{justify-content:center;gap:8px;min-height:48px;padding:0 16px;border-radius:10px}
+  .my>.side:not(.all) nav a.on .ni{gap:8px}
+  .my>.side .my-all{margin-top:0;min-height:48px;height:48px}
+  .my>.side.all nav,.my>.side.all .my-all{grid-column:1/-1}
+  .my>.side.all .my-all{margin-top:8px}
+  /* 계정 요약: 사진 자리 그림 아이콘(Figma 768 · 360), 세로 간격 14 · 10 · 10 · 14 */
+  .who2{gap:10px}
+  .who2 .who-img{margin-bottom:4px}
+  .who2 .who-img svg{display:block}
+  .who2 .btn{margin-top:4px}
+}
+@media (max-width:767px){
+  .my>.side{grid-template-columns:minmax(0,1fr)}
+  .my>.side:not(.all) nav a.on{min-height:46px}
+  .my>.side .my-all{margin-top:9px}
+}
+
+/* ── M-01 마이페이지 홈 768 · 360 ── */
+@media (max-width:1100px){
+  html[data-page="M-01"] .my{padding-bottom:48px}
+  /* 순서: 일정 → 나의 예술 기록 → 빠른 등록 · 바로가기 → 문의 배너(위아래 48) */
+  html[data-page="M-01"] .my>.side+div{display:flex;flex-direction:column}
+  html[data-page="M-01"] .my-row{display:contents}
+  html[data-page="M-01"] .my-up{margin-top:24px}
+  html[data-page="M-01"] .my-quick{order:1;margin-top:24px}
+  html[data-page="M-01"] .my-show{margin-top:20px}
+  html[data-page="M-01"] .my>.side+div>.banner-q,html[data-page="M-01"] .my>.side+div>.ref{order:2}
+  html[data-page="M-01"] .my>.side+div>.banner-q{margin-top:48px}
+  /* 제목 줄 [홈페이지로 바로가기] Button Small 14px · 36 */
+  html[data-page="M-01"] .pg-h .btn{font-size:14px;padding:0 16px;gap:8px;min-height:36px;min-width:0}
+  html[data-page="M-01"] .pg-h .btn .ic{width:16px;height:16px}
+  /* 나의 예술 기록: 안쪽 29 · 모서리 24, 탭 14px, 꺾쇠 활성 테두리 #788187 */
+  html[data-page="M-01"] .my-show{padding:28px;border-radius:24px}
+  html[data-page="M-01"] .ms-h .btn{font-size:14px;padding:0 16px;min-height:36px;min-width:0}
+  html[data-page="M-01"] .ms-tabbar .ms-tabs{flex:1 1 auto}
+  html[data-page="M-01"] .ms-tabs button{font-size:14px;padding:0 10px 0 11px;gap:8px}
+  html[data-page="M-01"] .ms-tabs button span{display:inline-flex;align-items:center;justify-content:center;min-height:24px;padding:0 7px;border-radius:12px;font-size:14px}
+  html[data-page="M-01"] .ms-sc:not(:disabled){border-color:#788187;color:var(--ink)}
+  html[data-page="M-01"] .ms-pf-t{align-self:center}
+  html[data-page="M-01"] .ms-works{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px 24px;overflow:visible;padding-right:0}
+  html[data-page="M-01"] .ms-r{min-width:0}
+  html[data-page="M-01"] .ms-w .sup-seal.inl{font-weight:700}
+  /* 작품·활동 페이지 번호 — ‹ 1 2 › (48 칸 · 간격 16) */
+  html[data-page="M-01"] .ms-pg{display:flex;justify-content:center;gap:16px;margin-top:4px}
+  html[data-page="M-01"] .ms-pg button{width:48px;height:48px;padding:0;border:0;border-radius:10px;background:none;font-size:16px;font-weight:700;color:var(--ink-2);cursor:pointer}
+  html[data-page="M-01"] .ms-pg button.on{background:var(--color-bg-inverse,#0B2A41);color:#fff}
+  /* 문의 배너 768: 물결 240×73 · 글자 · [문의하기] 한 줄, 높이 205 */
+  html[data-page="M-01"] .banner-q{min-height:205px;padding:0 40px 0 32px;gap:24px;justify-content:flex-start}
+  html[data-page="M-01"] .banner-q>svg.waves{flex:none;width:240px;height:73px}
+  html[data-page="M-01"] .banner-q>div{flex:1 1 auto;min-width:0}
+  html[data-page="M-01"] .banner-q .h3{font-size:20px;line-height:28px}
+  html[data-page="M-01"] .banner-q .small{margin-top:4px;max-width:206px;font-size:16px;line-height:26px}
+  html[data-page="M-01"] .banner-q .btn{flex:none;min-width:112px;padding:0 28px}
+}
+@media (min-width:1101px){html[data-page="M-01"] .ms-pg{display:none}}
+@media (min-width:768px){html[data-page="M-01"] .ms-dd{display:none}}
+@media (min-width:768px) and (max-width:1100px){
+  html[data-page="M-01"] .ms-pg.one6,html[data-page="M-01"] .ms-pg button:not(.p6):not(.ms-pa){display:none}
+  html[data-page="M-01"] .ms-works[data-pg="1"]>.ms-w:not([data-p6="1"]),html[data-page="M-01"] .ms-works[data-pg="2"]>.ms-w:not([data-p6="2"]),html[data-page="M-01"] .ms-works[data-pg="3"]>.ms-w:not([data-p6="3"]),html[data-page="M-01"] .ms-works[data-pg="4"]>.ms-w:not([data-p6="4"]),html[data-page="M-01"] .ms-works[data-pg="5"]>.ms-w:not([data-p6="5"]){display:none}
+}
+@media (max-width:767px){
+  /* 제목 24px · [홈페이지로 바로가기] 13px 한 줄 */
+  html[data-page="M-01"] .pg-h{flex-wrap:nowrap;margin-bottom:16px}
+  html[data-page="M-01"] .pg-h h1{font-size:24px}
+  html[data-page="M-01"] .pg-h .btn{font-size:13px;padding:0 12px;flex:none}
+  /* 최근 알림 머리 15px · 개수 12px · 전체 보기 13px */
+  html[data-page="M-01"] .noti-h{padding:0 16px 0 20px;min-height:54px;font-size:15px}
+  html[data-page="M-01"] .noti-h h2{gap:8px!important}
+  html[data-page="M-01"] .noti-h h2 .ic{width:18px;height:18px}
+  html[data-page="M-01"] .noti-n{min-height:24px;padding:0 10px;font-size:12px}
+  html[data-page="M-01"] .noti-h a{font-size:13px!important}
+  /* 숫자 카드 156×110 · 아이콘 28 원 · 이름 한 줄 */
+  html[data-page="M-01"] .kpi2.my4{gap:12px 16px}
+  html[data-page="M-01"] .kpi2.my4 .kc{min-height:110px;padding:15px;gap:11px}
+  html[data-page="M-01"] .kpi2.my4 .kh{gap:8px;white-space:nowrap}
+  html[data-page="M-01"] .kpi2.my4 .ki{width:28px;height:28px;border-radius:50%}
+  html[data-page="M-01"] .kpi2.my4 .ki .ic{width:15px;height:15px}
+  /* 나의 예술 기록 360: 제목 22 + 버튼 한 줄, 포트폴리오 전환 = 드롭다운, 2열 2행 */
+  html[data-page="M-01"] .ms-h{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 8px}
+  html[data-page="M-01"] .ms-h>div{display:contents}
+  html[data-page="M-01"] .ms-h h2{grid-column:1;grid-row:1;font-size:22px}
+  html[data-page="M-01"] .ms-h .btn{grid-column:2;grid-row:1;font-size:12px;padding:0 12px}
+  html[data-page="M-01"] .ms-d{grid-column:1/-1;grid-row:2;margin-top:9px;text-wrap:wrap}
+  html[data-page="M-01"] .ms-pf-t{padding-right:8px}
+  html[data-page="M-01"] .ms-sum{line-height:35px}
+  html[data-page="M-01"] .ms-body{row-gap:15px}
+  html[data-page="M-01"] .ms-pg{margin-top:3px}
+  html[data-page="M-01"] .ms-tabbar{display:none}
+  html[data-page="M-01"] .ms-dd{position:relative;display:flex;align-items:center;gap:8px;min-height:44px;margin-top:16px;padding:0 16px;border:1px solid #788187;border-radius:10px;background:#fff;color:var(--ink);font-size:15px}
+  html[data-page="M-01"] .ms-dd-v{flex:1 1 auto;display:flex;align-items:center;gap:8px;min-width:0}
+  html[data-page="M-01"] .ms-dd-v span{display:inline-flex;align-items:center;justify-content:center;min-width:22px;min-height:24px;padding:0 7px;border-radius:12px;background:#F1F2F3;color:#0B2A41;font-size:14px}
+  html[data-page="M-01"] .ms-dd .ic{flex:none;width:18px;height:18px}
+  html[data-page="M-01"] .ms-dd select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px}
+  html[data-hc="1"][data-page="M-01"] .ms-dd{background:#000;border-color:#fff;color:#fff}
+  html[data-hc="1"][data-page="M-01"] .ms-dd-v span{background:#fff;color:#000}
+  html[data-page="M-01"] .ms-dd:focus-within{outline:3px solid var(--color-focus-ring,#1C6BA6);outline-offset:2px}
+  html[data-page="M-01"] .ms-body{margin-top:28px}
+  html[data-page="M-01"] .ms-works{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+  html[data-page="M-01"] .ms-pg:has(>:nth-child(5)){gap:6px}
+  html[data-page="M-01"] .ms-pg:has(>:nth-child(6)) button{width:40px}
+  html[data-page="M-01"] .ms-works[data-pg="1"]>.ms-w:not([data-p4="1"]),html[data-page="M-01"] .ms-works[data-pg="2"]>.ms-w:not([data-p4="2"]),html[data-page="M-01"] .ms-works[data-pg="3"]>.ms-w:not([data-p4="3"]),html[data-page="M-01"] .ms-works[data-pg="4"]>.ms-w:not([data-p4="4"]),html[data-page="M-01"] .ms-works[data-pg="5"]>.ms-w:not([data-p4="5"]),html[data-page="M-01"] .ms-works[data-pg="6"]>.ms-w:not([data-p4="6"]){display:none}
+  /* 문의 배너 360: 물결 280×86 → 글자 → [문의하기] 폭 전체 */
+  html[data-page="M-01"] .banner-q{min-height:0;padding:24px;gap:0;align-items:stretch}
+  html[data-page="M-01"] .banner-q>svg.waves{width:100%;height:86px;margin-bottom:18px}
+  html[data-page="M-01"] .banner-q .small{max-width:none;margin-top:1px}
+  html[data-page="M-01"] .banner-q .btn{width:100%;margin-top:16px}
+}
+
+/* ── R04·m 표 목록 → 행 카드(1100 이하 공통): 라벨 89 + 16, 행동 버튼은 구분선 아래 왼쪽부터 간격 8 ── */
+@media (max-width:1100px){
+  .tbl:not(.adm .tbl) td{width:auto}
+  .tbl:not(.adm .tbl):not(.edtbl) tr{border-color:var(--p-color-gray-200,#E4E6E7);border-radius:12px}
+  .tbl:not(.adm .tbl):not(.edtbl) td{gap:16px;line-height:20px}
+  .rs-filter button.on span{background:#fff;color:var(--navy)}
+  .tbl:not(.adm .tbl):not(.edtbl) td::before{flex:0 0 89px;font-size:14px;font-weight:700;color:var(--ink-2);white-space:nowrap}
+  .tbl:not(.adm .tbl):not(.edtbl) td[data-label=""]{flex-wrap:wrap;justify-content:flex-start;gap:8px;margin-top:4px;padding-top:12px;border-top:1px solid var(--p-color-gray-300,#C9CCCF)}
+  .tbl:not(.adm .tbl):not(.edtbl) td[data-label=""] .btn-xs{min-height:32px;height:auto;padding:0 12px;gap:8px;border-radius:6px;font-size:14px;font-weight:700}
+  .tbl:not(.adm .tbl):not(.edtbl) td[data-label=""] .btn-xs .ic{width:16px;height:16px}
+  .tbl:not(.adm .tbl):not(.edtbl) td[data-label=""] .btn-ghost{border-color:var(--c-button-line-border);background:var(--color-bg-page,#fff);color:var(--color-text-heading)}
+  /* M-03: 3줄 카드(작품·활동)는 줄 간격 16, 승인 전 안내는 구분선 위 */
+  html[data-page="M-03"] .tbl:not(.adm .tbl):not(.edtbl) tr:has(>td:nth-child(6)){row-gap:16px;padding-top:17px}
+  html[data-page="M-03"] .tbl:not(.adm .tbl):not(.edtbl) tr:has(>td:nth-child(6))>td[data-label=""]{margin-top:-4px}
+  html[data-page="M-03"] .tbl:not(.adm .tbl):not(.edtbl) td{text-wrap:wrap}
+  html[data-page="M-03"] .tbl:not(.adm .tbl):not(.edtbl) td[data-label=""]:has(.rs-note){margin-top:0;padding-top:0;border-top:0}
+  html[data-page="M-03"] .tbl:not(.adm .tbl):not(.edtbl) .rs-note{order:-1;flex:0 0 100%;margin:1px 0 0;font-size:14px;line-height:20px}
+  html[data-page="M-03"] .tbl:not(.adm .tbl):not(.edtbl) .rs-acts{flex:0 0 100%;gap:8px;margin-top:4px;padding-top:12px;border-top:1px solid var(--p-color-gray-300,#C9CCCF)}
+  /* 제목 20px(28) · 목록 위 18, 카드 사이 12 */
+  html[data-page="M-03"] h2.h3{line-height:28px;margin-bottom:18px}
+  html[data-page="M-03"] h2.rs-h1{margin-top:36px}
+  html[data-page="M-03"] .tblw+h2.h3{margin-top:35px}
+  html[data-page="M-03"] .rs-empty+h2.h3{margin-top:23px}
+  html[data-page="M-03"] .rs-pg+h2.h3{margin-top:42px}
+  html[data-page="M-03"] .rs-pg+.rs-hist{margin-top:40px}
+  html[data-page="M-03"] .my{padding-bottom:80px}
+  /* 안내 상자: 「상태별 수정 안내」 + 상태마다 한 줄(상태명 굵게 · 네모 글머리 5×5) */
+  html[data-page="M-03"] .rs-co-pc{display:none}
+  html[data-page="M-03"] .rs-co-m .callout{padding:13px 20px 16px;gap:12px;font-size:16px;line-height:26px;color:var(--ink)}
+  html[data-page="M-03"] .rs-co-m .callout>.ic{width:18px;height:18px;margin-top:4px}
+  html[data-page="M-03"] .rs-cl{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+  html[data-page="M-03"] .rs-cl li{position:relative;padding-left:14px}
+  html[data-page="M-03"] .rs-cl li::before{content:'';position:absolute;left:2px;top:10.5px;width:5px;height:5px;background:currentColor}
+  /* 페이지 번호 ‹ 1 2 › — 48 칸 · 간격 16 */
+  html[data-page="M-03"] .rs-pg{display:flex;justify-content:center;gap:16px;margin-top:24px}
+  html[data-page="M-03"] .rs-pg button{width:48px;height:48px;padding:0;border:0;border-radius:10px;background:none;font-size:16px;font-weight:700;color:var(--ink-2);cursor:pointer}
+  html[data-page="M-03"] .rs-pg button.on{background:var(--color-bg-inverse,#0B2A41);color:#fff}
+  html[data-page="M-03"] .tblw:has(+.rs-pg):not([data-pg]) tbody>tr:nth-child(n+4),
+  html[data-page="M-03"] .tblw[data-pg="1"] tbody>tr:nth-child(n+4),
+  html[data-page="M-03"] .tblw[data-pg="2"] tbody>tr:is(:nth-child(-n+3),:nth-child(n+7)),
+  html[data-page="M-03"] .tblw[data-pg="3"] tbody>tr:is(:nth-child(-n+6),:nth-child(n+10)),
+  html[data-page="M-03"] .tblw[data-pg="4"] tbody>tr:is(:nth-child(-n+9),:nth-child(n+13)),
+  html[data-page="M-03"] .tblw[data-pg="5"] tbody>tr:is(:nth-child(-n+12),:nth-child(n+16)){display:none}
+}
+@media (min-width:1101px){html[data-page="M-03"] .rs-co-m,html[data-page="M-03"] .rs-pg{display:none}}
+@media (min-width:768px) and (max-width:1100px){
+  .tbl:not(.adm .tbl):not(.edtbl) tr{padding:16px 20px 14px}
+  .tbl:not(.adm .tbl):not(.edtbl) td:nth-child(even){gap:11px}
+  html[data-page="M-03"] .tbl:not(.adm .tbl):not(.edtbl) tr:has(>td:nth-child(6))>td:not([data-label=""]){min-height:28px}
+}
+@media (max-width:767px){
+  .tbl:not(.adm .tbl) tr{gap:6px;padding:14px 20px}
+  .tbl:not(.adm .tbl):not(.edtbl) td[data-label=""] .btn-xs{min-height:36px}
+  html[data-page="M-03"] .tbl:not(.adm .tbl):not(.edtbl) tr:has(>td:nth-child(6)){row-gap:6px;padding-top:14px}
+  html[data-page="M-03"] .tbl:not(.adm .tbl):not(.edtbl) tr:has(>td:nth-child(6))>td[data-label=""],.tbl:not(.adm .tbl):not(.edtbl) td[data-label=""]{margin-top:6px}
+  html[data-page="M-03"] .rs-pg:has(>:nth-child(6)){gap:8px}
+  html[data-page="M-03"] .rs-pg:has(>:nth-child(6)) button{width:44px}
+}
+
+/* ══════ R04 · 새 기준(index_base2) 화면 보정 — M-11 이미지 칸 · M-12 해시태그 상자 ══════ */
+/* M-11 ⑤ 이미지 및 미디어: PC Figma처럼 정사각 칸(이미지 · [+] 같은 크기)에 「변경 | 삭제」 띠를 칸 안 아래에 겹침 — 768 4칸 · 360 3칸 */
+@media (max-width:1100px){
+  html[data-page="M-11"] .thumbs{grid-template-columns:repeat(4,minmax(0,1fr));align-items:start}
+  html[data-page="M-11"] .thumbs>.upl{aspect-ratio:1;min-height:0;padding:0}
+}
+@media (max-width:767px){
+  html[data-page="M-11"] .thumbs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  html[data-page="M-11"] .thumbs>.upl{gap:8px}
+}
+/* M-12 ⑥ 추가정보: M2의 해시태그 상자 고정 폭 696이 768 · 360에서 칸을 밀어 가로 스크롤 — 1100 이하는 칸 폭에 맞춤 */
+@media (max-width:1100px){
+  html[data-page="M-12"] .tagpick .chips{width:auto}
+}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -2516,7 +3421,7 @@ fieldset.rv-dec[disabled]{opacity:.45}
 /* */
 
 /* ---------- 아이콘 (자체 제작 라인 아이콘) ---------- */
-const P={menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',chev:'<path d="M6 9l6 6 6-6"/>',folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',mega:'<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',monitor:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',chart:'<path d="M5 20V12M12 20V6M19 20v-9"/>',msg:'<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>',heart:'<path d="M12 20s-7-4.4-9-8.6C1.6 8.3 3.6 5 7 5c2 0 3.3 1.1 5 3 1.7-1.9 3-3 5-3 3.4 0 5.4 3.3 4 6.4C19 15.6 12 20 12 20z"/>',share:'<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',dl:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',l:'<path d="M15 5l-7 7 7 7"/>',r:'<path d="M9 5l7 7-7 7"/>',plus:'<path d="M12 5v14M5 12h14"/>',bell:'<path d="M6 16v-5a6 6 0 1112 0v5l2 2H4l2-2zM10 20a2 2 0 004 0"/>',print:'<path d="M7 9V4h10v5M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="7" y="14" width="10" height="6"/>',check:'<path d="M5 12l5 5 9-10"/>',play:'<path d="M8 5l11 7-11 7z"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5"/><circle cx="17" cy="7" r="3"/><path d="M17 13c2.6 0 4.5 1.6 5 4.5"/>',build:'<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M3 21h18"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',file:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',up:'<path d="M12 16V5M7 10l5-5 5 5M5 20h14"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',grid:'<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>',map:'<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>',logout:'<path d="M15 4h4a1 1 0 011 1v14a1 1 0 01-1 1h-4M10 16l-4-4 4-4M6 12h11"/>',ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',refresh:'<path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',drag:'<path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/>'};
+const P={menu:'<path d="M4.2 7.1C6.8 6 9.4 6 12 7.1S17.2 8.2 19.8 7.1M4.2 12C6.8 10.9 9.4 10.9 12 12S17.2 13.1 19.8 12M4.2 16.9C6.8 15.8 9.4 15.8 12 16.9S17.2 18 19.8 16.9"/>',chev:'<path d="M6 9l6 6 6-6"/>',folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',mega:'<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',monitor:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',chart:'<path d="M5 20V12M12 20V6M19 20v-9"/>',msg:'<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>',heart:'<path d="M12 20s-7-4.4-9-8.6C1.6 8.3 3.6 5 7 5c2 0 3.3 1.1 5 3 1.7-1.9 3-3 5-3 3.4 0 5.4 3.3 4 6.4C19 15.6 12 20 12 20z"/>',share:'<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',dl:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',l:'<path d="M15 5l-7 7 7 7"/>',r:'<path d="M9 5l7 7-7 7"/>',plus:'<path d="M12 5v14M5 12h14"/>',bell:'<path d="M6 16v-5a6 6 0 1112 0v5l2 2H4l2-2zM10 20a2 2 0 004 0"/>',print:'<path d="M7 9V4h10v5M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="7" y="14" width="10" height="6"/>',check:'<path d="M5 12l5 5 9-10"/>',play:'<path d="M8 5l11 7-11 7z"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5"/><circle cx="17" cy="7" r="3"/><path d="M17 13c2.6 0 4.5 1.6 5 4.5"/>',build:'<path d="M4 21V8l8-5 8 5v13M9 21v-6h6v6M3 21h18"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',file:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',up:'<path d="M12 16V5M7 10l5-5 5 5M5 20h14"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',grid:'<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>',map:'<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>',logout:'<path d="M15 4h4a1 1 0 011 1v14a1 1 0 01-1 1h-4M10 16l-4-4 4-4M6 12h11"/>',ext:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',refresh:'<path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',drag:'<path d="M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01"/>'};
 const I=k=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${P[k]}</svg>`;
 const L=(a,f)=>a.map(f).join('');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -2649,7 +3554,7 @@ function closeModal(){dimOut(document.querySelector('.dim'),()=>{if(Q.ret){go(Q.
 function hdSync(){const h=document.querySelector('.hd');if(h)document.documentElement.style.setProperty('--hd-real',h.offsetHeight+'px')}
 addEventListener('resize',hdSync);
 function render(){setTimeout(hdSync,0);
-  CUR=parse();if(/^M-(0[789]|10)$/.test(CUR))S.wkKindSet=true;else if(/^M-1[1-4]$/.test(CUR)&&!S.wkKindSet)S.wkKind=(CUR==='M-12'&&Q.err)?'작품':'활동';const s=SC(CUR);const base=s.modal?(Q.bg&&SC(Q.bg)&&!SC(Q.bg).modal?Q.bg:s.bg):CUR;if(base==='B-02'&&!/^B-(0[2-9]|[1-9]\d)$/.test(PREV_BASE||''))S.admMini=false;if(base!==PREV_BASE&&!s.modal){S.q='';S.mnav=false;S.sortNew=false;S.calQ='';S.calM=0;S.dashTab=null;S.flt={};S.filterOpen=false;S.calFilter=false;S.calTab='전체';S.retPw=false;S.retUnlock=false}
+  CUR=parse();document.documentElement.dataset.page=CUR;setTimeout(()=>{if(typeof majSync==='function'&&document.querySelector('.edtbl.feat'))majSync()},30);if(/^M-(0[789]|10)$/.test(CUR))S.wkKindSet=true;else if(/^M-1[1-4]$/.test(CUR)&&!S.wkKindSet)S.wkKind=(CUR==='M-12'&&Q.err)?'작품':'활동';const s=SC(CUR);const base=s.modal?(Q.bg&&SC(Q.bg)&&!SC(Q.bg).modal?Q.bg:s.bg):CUR;if(base==='B-02'&&!/^B-(0[2-9]|[1-9]\d)$/.test(PREV_BASE||''))S.admMini=false;if(base!==PREV_BASE&&!s.modal){S.q='';S.mnav=false;S.sortNew=false;S.calQ='';S.calM=0;S.dashTab=null;S.flt={};S.filterOpen=false;S.calFilter=false;S.calTab='전체';S.retPw=false;S.retUnlock=false}
   const html=PAGES[base]?PAGES[base]():'';
   const fa=document.activeElement;FOCUS_K=(base===PREV_BASE&&fa&&fa!==document.body&&fa.matches('select,input:not([type=checkbox]):not([type=radio]),textarea')&&fa.closest('#app'))?{fld:1,tag:fa.tagName,id:fa.id,idx:[...document.querySelectorAll('#app '+fa.tagName)].indexOf(fa)}:(base===PREV_BASE&&fa&&fa!==document.body&&fa.matches('button,[role=radio],[role=tab],[role=switch],.chip'))?{tag:fa.tagName,txt:(fa.textContent||'').trim(),grp:((fa.closest('[aria-label]')||{getAttribute:()=>''}).getAttribute('aria-label')||'')}:null;
   const sideTop=(document.querySelector('.adm-side')||{}).scrollTop||0;const mySideTop=(document.querySelector('.my>.side')||{}).scrollTop||0;
@@ -2685,7 +3590,10 @@ function setHdr(){const m=document.getElementById('main');if(m)document.document
 window.addEventListener('resize',setHdr);
 let LBL_N=0;
 function labelPrep(){document.querySelectorAll('.f').forEach(f=>{const l=f.querySelector(':scope>label.f-l');const c=f.querySelector('.f-c input:not([type=checkbox]):not([type=radio]),.f-c select,.f-c textarea');if(!l||!c||l.htmlFor||c.closest('label'))return;if(!c.id)c.id='fld'+(++LBL_N);l.htmlFor=c.id})}
-function kbdPrep(){labelPrep();hlPrep();if(window.rvFit)rvFit();{const sc=document.querySelector(".mt-sc"),a=sc&&sc.querySelector("a.on");if(a){const o=a.offsetTop;if(o<sc.scrollTop||o+a.offsetHeight>sc.scrollTop+sc.clientHeight)sc.scrollTop=o-sc.clientHeight/3}}document.querySelectorAll('.upl:not([tabindex])').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label',(el.innerText||'파일 업로드').replace(/\s+/g,' ').trim())});document.querySelectorAll('.switch:not([tabindex]):not([aria-disabled])').forEach(el=>{if(el.style.pointerEvents==='none')return;el.tabIndex=0;el.setAttribute('role','switch');el.setAttribute('aria-checked',el.classList.contains('on'))});document.querySelectorAll('.d.click:not([tabindex])').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button')})}
+document.addEventListener('click',e=>{const t=e.target;if(t&&t.matches&&t.matches('input[type=date],input[type=month],input[type=week],input[type=time],input[type=datetime-local]')&&!t.disabled&&!t.readOnly&&typeof t.showPicker==='function'){try{t.showPicker()}catch(_){}}});
+function btnFit(){if(innerWidth<1101)return;document.querySelectorAll('.btn:not(.btn-sm):not(.btn-xs):not(.btn-block):not(.reg-cta-btn)').forEach(b=>{if(b.matches('.fb-pv,.btn-ghost')||b.closest('.adm,.modal-f,.formbar .l,.sbar,.hc-search,.done-cta,.upd-go,.ref,.pt-panel,.util,.hd'))return;const r=document.createRange();r.selectNodeContents(b);const w=r.getBoundingClientRect().width;if(!w)return;b.style.setProperty('--fx',(w*.075).toFixed(1)+'px');b.classList.add('fx')})}
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{try{btnFit()}catch(_){}});
+function kbdPrep(){labelPrep();try{btnFit()}catch(_){}hlPrep();if(window.rvFit)rvFit();{const sc=document.querySelector(".mt-sc"),a=sc&&sc.querySelector("a.on");if(a){const o=a.offsetTop;if(o<sc.scrollTop||o+a.offsetHeight>sc.scrollTop+sc.clientHeight)sc.scrollTop=o-sc.clientHeight/3}}document.querySelectorAll('.upl:not([tabindex])').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label',(el.innerText||'파일 업로드').replace(/\s+/g,' ').trim())});document.querySelectorAll('.switch:not([tabindex]):not([aria-disabled])').forEach(el=>{if(el.style.pointerEvents==='none')return;el.tabIndex=0;el.setAttribute('role','switch');el.setAttribute('aria-checked',el.classList.contains('on'))});document.querySelectorAll('.d.click:not([tabindex])').forEach(el=>{el.tabIndex=0;el.setAttribute('role','button')})}
 function msSync(){const pf=document.querySelector('.ms-pf'),r=document.querySelector('.ms-r'),g=document.querySelector('.ms-works');if(!pf||!g)return;if(matchMedia('(max-width:1099px)').matches){g.style.height='';g.style.gridAutoRows='';return}const sum=r.querySelector('.ms-sum');const h=pf.offsetHeight-(sum?sum.offsetHeight+12:0);g.style.height=h+'px';g.style.gridAutoRows=((h-12)/2)+'px'}
 function calSync(){msSync();const c=document.querySelector('.cal-wrap .cal'),a=document.querySelector('.cal-side');if(!c||!a)return;const f=()=>{a.style.height=matchMedia('(max-width:1099px)').matches?'':c.offsetHeight+'px'};f();if(!window._calRO){window._calRO=new ResizeObserver(()=>{const c2=document.querySelector('.cal-wrap .cal'),a2=document.querySelector('.cal-side');if(c2&&a2)a2.style.height=matchMedia('(max-width:1099px)').matches?'':c2.offsetHeight+'px'})}window._calRO.disconnect();window._calRO.observe(c)}
 function jumpLink(ev,id){const h=ev.currentTarget.getAttribute('href');if(h===location.hash){ev.preventDefault();softJump(id,1)}else S.jumpTo=id+'|1'}
@@ -2724,7 +3632,7 @@ const GNB=[{n:'예술인등록',to:'A1-01',g:'A1',sub:[['예술인등록 사업�
 function header(){
   const base=(SC(CUR).modal?SC(CUR).bg:CUR);const logged=isMember()||isAdmin();
   return `${S.maint?`<div class="maint-band" role="status">[시스템 점검 예정] 2026. 10. 12.(월) 02:00 ~ 04:00 정기 점검이 예정되어 있습니다. 점검 시간에는 서비스 이용이 제한됩니다.</div>`:''}
-  <div class="util"><div class="wrap util-in" role="toolbar" aria-label="접근성 설정"><span class="lbl">글자 크기</span>${L(['보통','크게','아주 크게'],(t,i)=>`<button class="${S.fs==i?'on':''}" onclick="S.fs=${i};store.set('fs',${i});applyA11y();render()" aria-pressed="${S.fs==i}">${t}</button>`)}<span class="sep"></span><button class="${S.hc?'on':''}" onclick="S.hc=S.hc?0:1;store.set('hc',S.hc);applyA11y();render()" aria-pressed="${!!S.hc}">고대비</button></div></div>
+  <div class="util${logged?' util-li':''}"><div class="wrap util-in" role="toolbar" aria-label="접근성 설정"><span class="lbl">글자 크기</span>${L(['보통','크게','아주 크게'],(t,i)=>`<button class="${S.fs==i?'on':''}" onclick="S.fs=${i};store.set('fs',${i});applyA11y();render()" aria-pressed="${S.fs==i}">${t}</button>`)}<span class="sep"></span><button class="${S.hc?'on':''}" onclick="S.hc=S.hc?0:1;store.set('hc',S.hc);applyA11y();render()" aria-pressed="${!!S.hc}">고대비</button></div></div>
   <header class="hd"><div class="wrap hd-in">
     <a class="logo" href="#/H-01" aria-label="아트포트군산 홈">아트포트군산</a>
     <nav class="gnb" aria-label="주 메뉴">${L(GNB,m=>`<div class="gnb-item"><a href="#/${m.to}" class="${base.startsWith(m.g)?'on':''}">${m.n}</a>${m.sub?`<div class="gnb-sub">${L(m.sub,([t,to])=>`<a href="#/${to}">${t}</a>`)}</div>`:''}</div>`)}</nav>
@@ -2754,7 +3662,7 @@ const kvTag=n=>`<div class="kv-tag ref" role="note"><span class="ref-tag">제작
 const kvSlot=(title,crumb)=>{const n=kvNo(title,crumb);if(!n)return '';
  return `<div class="kv-slot ref" role="note"><span class="ref-tag">제작참고</span><b>${kvBadge(n)} 키비주얼 ${n} · ${KV_NAME[n]} 이미지 자리</b>${KV_USE[n]?`<span>같은 이미지 사용: ${KV_USE[n]}</span>`:''}<span class="kv-spec">표시 크기 화면 전체 폭(최대 1920)×160px · 원본 3840×320px(2배) · WebP 300KB 이하 · 피사체는 오른쪽 절반, 왼쪽 글자 영역은 그라데이션으로 덮어 글자 대비 4.5:1 유지 · 장식 이미지(alt="") · 재단 보유 또는 이용허락 받은 사진</span></div>`};
 const crumbBar=(title,crumb,act='')=>{const segs=(crumb||title).split('›').map(x=>x.trim());return `<div class="crumbbar"><div class="wrap"><nav class="crumb2" aria-label="현재 위치"><a href="#/H-01" aria-label="홈">${I('home')}</a>${L(segs,(x,i)=>`<span class="sep" aria-hidden="true">›</span>${i===segs.length-1?`<b aria-current="page">${x}</b>`:`<span>${x}</span>`}`)}</nav>${act?`<div class="crumb-act">${act}</div>`:''}</div></div>`};
-const kv=(title,desc,crumb,act='')=>`<section class="kv ${['공지사항','문화예술진흥 지원사업'].includes(title)?'dusk':'sky'}">${waves()}${kvSlot(title,crumb)}<div class="wrap kv-in"><h1>${title}</h1>${desc?`<p>${desc}</p>`:''}</div></section>${crumbBar(title,crumb,act)}`;
+const kv=(title,desc,crumb,act='')=>`<section class="kv ${['공지사항','문화예술진흥 지원사업'].includes(title)?'dusk':'sky'}">${waves().replace('<svg ','<svg preserveAspectRatio="none" ')}${kvSlot(title,crumb)}<div class="wrap kv-in"><h1>${title}</h1>${desc?`<p>${desc}</p>`:''}</div></section>${crumbBar(title,crumb,act)}`;
 //
 const subtabs=(arr,on)=>`\u0001${arr.map(x=>x.join('\u0002')).join('\u0003')}\u0004${on}\u0001`;
 const T1=[['예술인등록 사업소개','A1-01'],['예술인등록 안내','A1-02'],['예술인등록 신청','A1-03']];
@@ -2845,7 +3753,7 @@ PAGES['A1-03']=()=>regShell(1,'포트폴리오 등록 절차',`
  <p class="small muted mt16">예술인 정보 공개와 등록 관련 개인정보 추가 수집·이용 동의는 회원가입 때 받았습니다. <a class="link" href="#/C-09?t=3&bg=A1-03">동의 내용 보기</a></p>${REF('등록 동의 2종은 회원가입 ① 약관 동의에서 받음 · 등록 단계: ① 기본정보 → ② 활동분야 → ③ 소개정보 → ④ 활동이력 → ⑤ 외부링크 및 해시태그 → ⑥ 미리보기. 증빙자료 제출 단계 없음 — 관리자가 요청할 때만 마이페이지 > 보완요청·증빙자료(M-04)에서 제출')}
  <div class="start-cta"><a class="btn btn-line reg-cta-btn" href="#/M-20">${I('folder')} 불러오기</a><a class="btn btn-pri reg-cta-btn" href="#/${stepId(2)}">시작하기 ${I('r')}</a></div>`,{noBar:1});
 const disBox=k=>F(k+' 여부',`<div class="row">${rad('d','예',false,'onchange="disToggle(true)"')}${rad('d','아니오',true,'onchange="disToggle(false)"')}</div><div id="disc" class="box-p mt8" hidden style="padding:16px 20px"><b class="small">${k} 여부 공개 <em class="req" aria-label="필수">*</em></b><p class="help" style="margin-top:4px">공개하면 포트폴리오와 예술인 찾기에 ‘${k}’로 표시됩니다. 공개하지 않으면 재단 및 관리자만 확인할 수 있습니다.</p><div class="row mt8 wrapf" role="radiogroup">${rad('dc','공개합니다',false,'onchange="disCheck()"')}${rad('dc','공개하지 않습니다',false,'onchange="disCheck()"')}</div><div id="dmsg" class="mt8" hidden>${callout(`<b>공개 여부를 선택해 주세요.</b> ${k} 여부가 “예”이면 반드시 선택해야 다음 단계로 넘어갈 수 있습니다.`,'bad')}</div></div>`,{req:1});
-const addrF=(l,v,d)=>F(l,`<div class="inline">${inp('',v[0],'text','style="max-width:140px" readonly')}<button class="btn btn-line btn-sm" type="button" onclick="toast('우편번호 검색 창이 열립니다 — 주소를 고르면 읍면동이 자동으로 판별됩니다')">우편번호 검색</button></div><div class="mt8">${inp('',v[1],'text','readonly')}</div>`,{req:1,help:`회원가입 주소를 불러왔습니다. 바꾸려면 [우편번호 검색]을 누르세요. 포트폴리오에는 <b>${d}</b>까지만 표시됩니다.`});
+const addrF=(l,v,d)=>F(l,`<div class="inline">${inp('',v[0],'text','style="max-width:119px" readonly')}<button class="btn btn-line btn-sm" type="button" onclick="toast('우편번호 검색 창이 열립니다 — 주소를 고르면 읍면동이 자동으로 판별됩니다')">우편번호 검색</button></div><div class="mt8">${inp('',v[1],'text','readonly')}</div>`,{req:1,help:`회원가입 주소를 불러왔습니다. 바꾸려면 [우편번호 검색]을 누르세요. 포트폴리오에는 <b>${d}</b>까지만 표시됩니다.`});
 PAGES['A1-04']=()=>regShell(2,'기본정보 — 개인',`<div class="callout">회원가입 때 입력한 정보를 불러왔습니다. 이름을 바꾸려면 마이페이지 문의 관리에서 요청해 주세요.</div>
  <div class="formcard mt16"><h3>기본정보</h3>
  ${F('이름',inp('','한바다','text','readonly'),{req:1,lock:1})}${F('예명 및 활동명',inp('활동명이 있다면 입력','바다'),{opt:1,help:'예술인 검색과 포트폴리오 공개 화면에 쓰입니다.'})}
@@ -2912,8 +3820,8 @@ function majGuard(){const need=Math.min(3,majRows().length);const n=document.que
 PAGES['A1-11']=()=>{const add=!!Q.add;const hint=['연도별 전시·공연·활동을 모두 적어 주세요','학교, 레지던시, 소속 기관 등','','군산문화관광재단과 다른 기관의 지원사업 선정 이력을 모두 적어 주세요'];return regShell(5,'활동이력',`<div class="callout">아래 <b>4가지 이력을 위에서부터 차례대로</b> 입력해 주세요. [행 추가]로 여러 건을 넣을 수 있고, 해당 사항이 없으면 “해당 사항 없음”을 선택하세요. 포트폴리오 소개에 최신 연도순으로 표시됩니다. 탭 버튼을 누르면 해당 이력으로 바로 이동합니다.</div>
  <nav class="hist-tabs mt16" role="tablist" aria-label="활동이력 유형">${L(HIST,([k,c,rows],i)=>`<button type="button" role="tab" class="${i?'':'on'}" aria-selected="${!i}" aria-controls="hist-${i}" onclick="histGo(${i},this)"><span class="hist-no">${i+1}</span>${k} <span class="hist-cnt">${rows.length}건</span></button>`)}<button type="button" role="tab" aria-selected="false" aria-controls="hist-4" onclick="histGo(4,this)"><span class="hist-no">5</span>주요 활동 <span class="hist-cnt maj-tab">${add?3:0} / 3</span></button></nav>
  ${L(HIST,([k,c,rows],i)=>`<div class="formcard${i?'':' mt16'}" id="hist-${i}"><h3><span class="hist-no">${i+1}</span>${k}${hint[i]?` <span class="small muted" style="font-weight:500">— ${hint[i]}</span>`:''}</h3><div class="f stack">${edRows(c,rows,{feat:1,on:add&&i===0?[0,1,2]:[]})}${i>0?`<label class="chk small mt8"><input type="checkbox"> 해당 사항 없음</label>`:''}</div></div>`)}
- <div class="formcard" id="hist-4"><h3><span class="hist-no">5</span>주요 활동 3건 선택 <em class="req" aria-label="필수">*</em></h3><p class="small">위 이력 표의 <b>[주요 활동]</b> 칸을 체크해 나를 대표하는 이력 3건을 골라 주세요. 입력한 이력이 3건보다 적으면 모두 체크하면 됩니다. 포트폴리오 상세의 이름 아래에 표시됩니다. <b class="maj-n">선택 <span id="majn">${add?3:0}</span> / <span id="majneed">3</span></b></p><p class="small muted mt8" id="majtot" aria-live="polite"></p>
- <ul class="maj-sel mt16" id="majsel" aria-live="polite"></ul>
+ <div class="formcard" id="hist-4"><h3><span class="hist-no">5</span>주요 활동 3건 선택 <em class="req" aria-label="필수">*</em></h3><p class="small mt16">위 이력 표의 <b>[주요 활동]</b> 칸을 체크해 나를 대표하는 이력 3건을 골라 주세요. 입력한 이력이 3건보다 적으면 모두 체크하면 됩니다. 포트폴리오 상세의 이름 아래에 표시됩니다.</p><p class="small muted mt8" id="majtot" aria-live="polite"></p>
+ <div class="maj-box"><b class="maj-n">선택 <span id="majn">${add?3:0}</span> / <span id="majneed">3</span></b><ul class="maj-sel" id="majsel" aria-live="polite"></ul></div>
  <div id="majmsg" class="mt8" hidden>${callout('<b>주요 활동을 골라 주세요.</b> 이력 표의 [주요 활동] 칸에서 3건(입력한 이력이 3건보다 적으면 모두)을 체크해야 다음 단계로 넘어갈 수 있습니다.','bad')}</div></div>
  ${REF('활동이력 4종은 한 화면에 위에서부터 나열하고, 상단 탭 버튼은 해당 이력으로 바로 이동하는 바로가기 — 탭을 누르지 않아 입력을 건너뛰는 일을 막기 위함 · 탭에 유형별 입력 건수 표시(행 추가·삭제·입력 시 바로 갱신, 내용이 있는 행만 셈 — 주요 활동 3건 목록도 함께 갱신) · 주요 활동은 이력 행의 [주요 활동] 체크로 선택(선택 건수 표시), 3건 필수 — 입력한 이력이 3건 미만이면 그 이력을 모두 고르면 충족')}`,{guard:'majGuard'})};
 
@@ -2960,13 +3868,13 @@ function disCheck(){const m=document.getElementById('dmsg');if(m)m.hidden=true;c
 function disGuard(){const b=document.getElementById('disc');if(!b||b.hidden)return true;if(document.querySelector('input[name=dc]:checked'))return true;document.getElementById('dmsg').hidden=false;b.style.outline='2px solid var(--bad-solid)';b.scrollIntoView({behavior:'smooth',block:'center'});return false}
 function pfTab(i,b,id='pf'){b.parentNode.querySelectorAll('[role=tab]').forEach((x,j)=>{x.classList.toggle('on',j===i);x.setAttribute('aria-selected',j===i)});for(let j=0;j<9;j++){const p=document.getElementById(id+j);if(!p)break;p.hidden=j!==i}}
 PAGES['A1-13']=()=>regShell(7,'미리보기 및 최종 등록',`${fgWarn('제출 전 꼭 확인해 주세요.','아래는 승인 후 공개될 포트폴리오 화면입니다. 공개되지 않는 정보는 맨 아래에서 확인할 수 있습니다. [이대로 제출하기]를 누르지 않고 나가면 신청이 완료되지 않습니다.')}
- <div class="box mt16" inert aria-label="미리보기 (클릭 불가)" style="border:3px dashed var(--accent);padding:8px 32px 40px">${portfolioBody(A('a1'),true)}</div>
+ <div class="box mt16 a1-pv" inert aria-label="미리보기 (클릭 불가)" style="border:3px solid var(--color-brand-primary);padding:24px 32px">${portfolioBody(A('a1'),true)}</div>
  <div class="formcard mt24"><h3>비공개 정보 확인 <span class="lock">${I('lock')}공개되지 않음</span></h3>${F('연락처','010-0000-0000')}${F('이메일','hanbada@example.com')}${F('전체 주소','전북특별자치도 군산시 월명로 00 (공개 표시: 월명동)')}${F('장애예술인 여부','해당 없음')}</div>${Q.miss?fgWarn('제출 전 꼭 확인해 주세요','필수 항목과 필수 질문에 답하지 않았습니다. 해당 단계로 돌아가 입력을 완료해 주세요.','mt24'):''}${REF(`[이대로 제출하기] → 제출 확인창 · 제출하지 않고 다른 메뉴로 나가면 미제출 이탈 경고 · 필수 항목·질문을 다 채우지 않으면 [이대로 제출하기] 비활성 <a class="btn btn-line btn-xs" href="#/A1-13${Q.miss?'':'?miss=1'}">${Q.miss?'모두 입력한 상태 보기':'필수 항목 미응답 예시'}</a>`)}`,{next:'이대로 제출하기',guard:'regSubmit'});
 const stTrack=()=>`<ol class="st-track" aria-label="심사 진행 상황">${L([['신청완료','2026.10.08 접수','done'],['심사대기','지금 상태 · 내용 수정 가능','cur'],['심사중','관리자 심사 · 수정 불가',''],['등록완료','승인 후 공개','']],([t,d,c])=>`<li class="${c}" ${c==='cur'?'aria-current="step"':''}><b>${t}</b><span>${d}</span></li>`)}</ol><p class="small mt24" style="color:var(--ink-2)">심사대기 중에는 <a class="link" href="#/M-03">마이페이지 등록 현황</a>에서 제출한 내용을 고칠 수 있습니다.</p>${REF('제출 직후 상태 = 심사대기(수정 가능) → 관리자가 심사를 시작하면 심사중(수정 불가). 자동 메일 “신청완료 및 심사대기”(B-12)')}`;
 PAGES['A1-14']=()=>Q.add?regShell(8,'추가 등록 완료',`<div class="box" style="text-align:center;padding:56px 32px"><div style="width:84px;height:84px;border-radius:50%;background:var(--ok-weak);color:var(--ok);display:grid;place-items:center;margin:0 auto">${I('check').replace('class="ic"','class="ic" style="width:42px;height:42px"')}</div>
  <h2 class="sec-t mt24">추가 등록이 제출되었습니다</h2><p class="mt8" style="color:var(--ink-2)">지금 공개 중인 포트폴리오는 그대로 유지되며, 추가한 내용은 심사 후 반영됩니다.<br>심사 결과는 알림함과 이메일로 알려 드립니다.</p>${stTrack()}
  <div class="row mt32" style="justify-content:center;flex-wrap:wrap"><a class="btn btn-line" href="#/M-05">포트폴리오 관리로</a><a class="btn btn-pri" href="#/M-03">등록 현황 보기</a></div></div>`,{noBar:1}):regShell(8,'포트폴리오 등록 완료',`<div class="box" style="text-align:center;padding:64px 32px"><div style="width:84px;height:84px;border-radius:50%;background:var(--ok-weak);color:var(--ok);display:grid;place-items:center;margin:0 auto">${I('check').replace('class="ic"','class="ic" style="width:42px;height:42px"')}</div>
- <h2 class="sec-t mt24">포트폴리오 등록신청이 완료되었습니다</h2><p class="mt8" style="color:var(--ink-2)">“신청완료 및 심사대기” 안내 메일을 보내 드렸습니다. 안내 메일은 최대 5분 안에 발송됩니다.<br>심사 결과는 이메일과 마이페이지 알림으로 알려 드립니다.</p>${stTrack()}
+ <h2 class="sec-t mt24">포트폴리오 등록신청이 완료되었습니다</h2><p class="mt8" style="color:var(--ink-2)">“신청완료 및 심사대기” 안내 메일을 보내 드렸습니다.<br class="r04-tbr"> 안내 메일은 최대 5분 안에 발송됩니다.<br>심사 결과는 이메일과 마이페이지 알림으로 알려 드립니다.</p>${stTrack()}
  <div class="row mt32" style="justify-content:center;flex-wrap:wrap"><a class="btn btn-line" href="#/H-01">홈으로 이동</a><a class="btn btn-dark" href="#/M-03">등록 현황 보기</a><a class="btn btn-pri" href="#/M-07">작품·활동 등록하기</a></div></div>`,{noBar:1});
 
 /* */
@@ -3040,12 +3948,12 @@ PAGES['A2-02']=()=>{const d=Q.d||'2026-10-24';const e=eventsOn(d);return `<div c
 
 /* ---------- A3 예술창고 ---------- */
 const searchBlock=(ph,filters)=>`<div class="sp ${S.filterOpen?'open':''}"><form class="sbar" role="search" onsubmit="event.preventDefault();S.q=this.q.value.trim();render()"><input class="inp" name="q" value="${esc(S.q||'')}" placeholder="${ph}" aria-label="검색어"><button class="btn btn-pri" type="submit">검색</button><button class="btn btn-line" type="button" aria-expanded="${S.filterOpen}" onclick="S.filterOpen=!S.filterOpen;render()">세부 검색${fCount()?` <span class="cnt">${fCount()}</span>`:''} <span aria-hidden="true">${S.filterOpen?'−':'+'}</span></button></form>${S.filterOpen?`<hr class="sp-div">${spPanel(filters)}${fSel()}`:fCount()||S.q?fSel():''}</div>`;
-const rtSort=()=>`<div class="rt-sort" role="group" aria-label="정렬"><button type="button" class="${S.sortNew?'':'on'}" aria-pressed="${!S.sortNew}" onclick="S.sortNew=false;render()">${S.sortNew?'':'✓ '}가나다순</button><button type="button" class="${S.sortNew?'on':''}" aria-pressed="${!!S.sortNew}" onclick="S.sortNew=true;render()">${S.sortNew?'✓ ':''}최신등록순</button><select aria-label="한 페이지에 보기" onchange="S.pp=+this.value;render()">${L([20,40,60],n=>`<option value="${n}" ${(S.pp||20)===n?'selected':''}>${n}개씩 보기</option>`)}</select></div>`;
+const rtSort=()=>`<div class="rt-sort" role="group" aria-label="정렬"><button type="button" class="${S.sortNew?'':'on'}" aria-pressed="${!S.sortNew}" onclick="S.sortNew=false;render()">${S.sortNew?'':'<i class="rt-ck" aria-hidden="true"></i>'}가나다순</button><button type="button" class="${S.sortNew?'on':''}" aria-pressed="${!!S.sortNew}" onclick="S.sortNew=true;render()">${S.sortNew?'<i class="rt-ck" aria-hidden="true"></i>':''}최신등록순</button><select aria-label="한 페이지에 보기" onchange="S.pp=+this.value;render()">${L([20,40,60],n=>`<option value="${n}" ${(S.pp||20)===n?'selected':''}>${n}개씩 보기</option>`)}</select></div>`;
 const rtBar=(n,unit)=>`<div class="listhd rt"><h2 class="rt-cnt">전체 ${n}${unit} ${isAdmin()?badge('비공개 포함 (관리자 보기)','b-dark'):''}</h2><div class="row wrapf">${myShortcuts()}${rtSort()}</div></div>`;
 const PP=()=>S.pp||20;
 const myShortcuts=()=>(isMember()?`<a class="btn btn-line btn-sm" href="#/M-15?t=0">${I('heart')} 나의 관심 예술인</a><a class="btn btn-line btn-sm" href="#/M-15?t=1">${I('heart')} 나의 관심 작품/활동</a>`:'');
 PAGES['A3-01']=()=>{const list=ARTISTS.filter(a=>(!a.priv||isAdmin())&&(!S.q||(a.name+a.line+a.field+a.genre+a.tags.join()).includes(S.q))&&fPass('type',a.type)&&fPass('field',a.field)&&fPass('genre',a.genre)&&fPass('dong',a.dong)&&fPass('dis',a.dis?'장애예술인(공개 동의)':'')).sort((a,b)=>a.name.localeCompare(b.name,'ko'));if(S.sortNew)list.reverse();return pub(kv('예술창고','군산의 예술인과 작품·활동을 만나보세요','예술창고 › 예술인 포트폴리오')+subtabs(T3,'A3-01')+`<section class="sec fg-a301"><div class="wrap">
- ${searchBlock('예술인명·예명·단체명·기관명을 입력해 주세요',[['type','등록 유형',['개인','단체','기관']],['field','활동 분야',Object.keys(FIELDS)],['genre','세부장르',genreOpts()],['dong','지역',DONG_NAMES],['dis','장애예술인',['장애예술인(공개 동의)']]])}
+ ${searchBlock(matchMedia('(max-width:767px)').matches?'예술인명·단체명·기관명 검색':'예술인명·예명·단체명·기관명을 입력해 주세요',[['type','등록 유형',['개인','단체','기관']],['field','활동 분야',Object.keys(FIELDS)],['genre','세부장르',genreOpts()],['dong','지역',DONG_NAMES],['dis','장애예술인',['장애예술인(공개 동의)']]])}
  <div class="fg-rt"><h2>전체 ${list.length}명 ${isAdmin()?badge('비공개 포함 (관리자 보기)','b-dark'):''}</h2><div class="row wrapf">${myShortcuts()}${rtSort()}</div></div>
  ${list.length?`<div class="fg-g4">${L(list.slice(0,PP()),fgCard)}</div>${fgPager(Math.max(1,Math.ceil(list.length/PP())))}`:fEmpty('조건에 맞는 예술인이 없습니다')}</div></section>`)};
 const pfTools=(a,preview)=>preview?`<div class="pf-acts" aria-hidden="true">${L([['heart','관심 예술인'],['share','공유'],['dl','명함 다운로드'],['print','인쇄·PDF']],([i,t])=>`<span>${I(i)}${t}</span>`)}</div>`:`<div class="pf-acts" role="group" aria-label="포트폴리오 도구"><button type="button" class="${S.scrap['a:'+a.id]?'on':''}" aria-pressed="${!!S.scrap['a:'+a.id]}" onclick="toggleScrap('a:${a.id}',this);this.setAttribute('aria-pressed',this.classList.contains('on'))">${I('heart')}관심 예술인</button><button type="button" onclick="toast('포트폴리오 주소를 복사했습니다')">${I('share')}공유</button><a href="#/A3-03?back=id=${a.id}" aria-label="공개명함 다운로드">${I('dl')}명함 다운로드</a><button type="button" onclick="window.print()" aria-label="인쇄·PDF 저장">${I('print')}인쇄·PDF</button></div>`;
@@ -3062,11 +3970,11 @@ async function cardPng(id){const a=A(id);const c=document.createElement('canvas'
  g.fillStyle='rgba(255,255,255,.75)';g.font=`500 22px ${ff}`;g.fillText('지원사업 선정 · 2025 지역 예술인 창작지원',576,560);g.fillText('instagram.com/example',576,598);
  c.toBlob(b=>{const u=URL.createObjectURL(b);const l=document.createElement('a');l.href=u;l.download=`아트포트군산_공개명함_${a.name}.png`;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),2000);toast('공개명함 이미지(PNG)를 내려받았습니다 · 프로토타입 샘플')},'image/png')}
 PAGES['A3-03']=()=>{const a=A((Q.back||'').replace('id=','')||'a1');return `<div class="dim" onclick="if(event.target===this)closeModal()"><div class="modal lg" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="modal-h"><h2 id="mt">공개명함</h2><button class="icon-btn" onclick="closeModal()" aria-label="닫기">${I('x')}</button></div><div class="modal-b">
- <div style="background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:24px;display:grid;grid-template-columns:170px 1fr;gap:24px;position:relative;overflow:hidden">${PH(a.t,'').replace('class="ph','style="aspect-ratio:4/5" class="ph')}<div><p class="tiny" style="opacity:.6;letter-spacing:var(--p-font-tracking-widest)">아트포트군산 · 공개명함</p><p class="serif" style="font-size:1.778rem;font-weight:700;margin-top:8px">${a.name}</p><p class="small" style="opacity:.85">${a.field} · ${a.genre}</p><p class="mt16 small">${a.line}</p><p class="tiny mt16" style="opacity:.75">지원사업 선정 · 2025 지역 예술인 창작지원</p><p class="tiny" style="opacity:.75">instagram.com/example</p></div></div>
+ <div style="background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:24px;display:grid;grid-template-columns:170px 1fr;gap:24px;position:relative;overflow:hidden">${PH(a.t,'').replace('class="ph','style="aspect-ratio:4/5" class="ph')}<div><p class="tiny" style="opacity:.6">아트포트군산 · 공개명함</p><p class="serif" style="font-size:1.778rem;font-weight:700;margin-top:8px">${a.name}</p><p class="small" style="opacity:.85">${a.field} · ${a.genre}</p><p class="mt16 small">${a.line}</p><p class="tiny mt16" style="opacity:.75">지원사업 선정 · 2025 지역 예술인 창작지원</p><p class="tiny" style="opacity:.75">instagram.com/example</p></div></div>
  <p class="help mt16">공개명함에는 이메일과 연락처가 표시되지 않습니다. 이미지로 저장해 자유롭게 공유해 보세요.</p>${REF('표시 항목 7개 이하: 대표 이미지·이름·분야·장르·한 줄 소개·지원사업 선정현황·홈페이지 또는 SNS 1개(입력 시) · [이미지 저장]을 누르면 PNG(1200×700) 파일로 내려받음')}</div>
  <div class="modal-f"><button class="btn btn-line" onclick="closeModal()">닫기</button><button class="btn btn-pri" onclick="cardPng('${a.id}')">${I('dl')} 이미지 저장 (PNG)</button></div></div></div>`};
 PAGES['A3-04']=()=>{const a=A((Q.back||'').replace('id=','')||'a1');const ok=isMember()||isAdmin();return `<div class="dim" onclick="if(event.target===this)closeModal()"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="modal-h"><h2 id="mt">${a.name}에게 문의하기</h2><button class="icon-btn" onclick="closeModal()" aria-label="닫기">${I('x')}</button></div>
- ${ok?`<div class="modal-b">${callout('작성한 문의는 예술인의 이메일로 바로 전달되며, 예술인의 이메일 주소는 공개되지 않습니다.<br>보낸 문의 내용은 발송 기록 관리를 위해 재단 관리자도 확인할 수 있습니다.')}
+ ${ok?`<div class="modal-b">${callout('작성한 문의는 예술인의 이메일로 바로 전달되며, 예술인의 이메일 주소는 공개되지 않습니다. 보낸 문의 내용은 발송 기록 관리를 위해 재단 관리자도 확인할 수 있습니다.')}
  ${F('보내는 사람',inp('','홍길동 (hong***@example.com)','text','readonly'),{cls:'stack'})}${F('제목',inp('문의 제목'),{req:1,cls:'stack'})}${F('내용',ta('문의 내용을 입력하세요'),{req:1,cls:'stack'})}</div><div class="modal-f"><button class="btn btn-line" onclick="closeModal()">취소</button><button class="btn btn-pri" onclick="toast('문의를 발송했습니다');closeModal()">${I('mail')} 보내기</button></div>`
  :`<div class="modal-b" style="text-align:center;padding:32px 24px">${I('lock')}<p class="mt16"><b>로그인한 회원만 문의할 수 있습니다.</b></p><p class="small muted mt8">예술인 보호를 위해 로그인한 회원만 문의할 수 있습니다.</p></div><div class="modal-f"><a class="btn btn-line" href="#/C-02">회원가입</a><a class="btn btn-pri" href="#/C-01">로그인</a></div>`}</div></div>`};
 PAGES['A3-05']=()=>{if(Q.dong){S.selDongs=[Q.dong];S.flt={};history.replaceState(null,'','#/A3-05');LAST_HASH=location.hash}const sd=S.selDongs;const fp=p=>fPass('field',p.field)&&fPass('genre',p.genre)&&fPass('area',dongKind(p.dong));const pool=POP.filter(fp);const list=pool.filter(p=>!sd.length||sd.includes(p.dong)).sort((a,b)=>a.name.localeCompare(b.name,'ko'));if(S.sortNew)list.reverse();const total=pool.length;const dc=n=>pool.filter(p=>p.dong===n).length;const pg=Math.max(1,Math.ceil(list.length/10));return pub(kv('예술창고','군산의 예술인과 작품·활동을 만나보세요','예술창고 › 예술지도')+subtabs(T3,'A3-05')+`<section class="sec" style="padding-top:40px"><div class="wrap">
@@ -3164,21 +4072,21 @@ PAGES['C-02']=()=>modal('회원가입',`<p class="small" style="color:var(--ink-
  <div class="grid2 mt16" style="gap:12px">${L(MT,([k,t,d,ic])=>`<button class="typecard ${S.memType===k?'on':''}" onclick="S.memType='${k}';render()" aria-pressed="${S.memType===k}"><span class="tc-i">${I(ic)}</span><span><b>${t}</b><span>${d}</span></span></button>`)}</div>
  ${S.memType==='일반'?callout('일반 회원은 예술인 등록신청 없이 관심 예술인·작품·활동 스크랩, 스크랩 목록 확인·다운로드를 이용할 수 있습니다.'):''}
  <ol class="jflow mt16" aria-label="가입 절차">${L(['시작','① 약관 동의','② 상세정보 입력','③ 아이디·비밀번호','가입 완료'],(t,i)=>`<li class="${i===0?'on':''}">${t}</li>`)}</ol>`,`<a class="btn btn-pri" href="#/C-03">다음</a>`,{steps:[1]});
-PAGES['C-03']=()=>modal('① 약관 동의',`<label class="chk" style="font-weight:700;padding:12px 16px;border-radius:var(--r);background:var(--paper);width:100%"><input type="checkbox" onclick="document.querySelectorAll('.agr2 input').forEach(x=>x.checked=this.checked);agrSync()"> 전체 동의</label>
+PAGES['C-03']=()=>modal('① 약관 동의',`<label class="chk c03-all" style="font-weight:700;padding:12px 16px;border-radius:var(--r);background:var(--paper);width:100%"><input type="checkbox" onclick="document.querySelectorAll('.agr2 input').forEach(x=>x.checked=this.checked);agrSync()"> 전체 동의</label>
  <div class="agr2 mt8">${L([['(필수) 이용약관 동의',0],['(필수) 개인정보 수집 및 이용 동의',1],['(필수) 개인정보 제3자 제공 동의',2],['(필수) 서비스 이용 관련 안내 메일 수신 동의 <span class="nw">(심사·보완·승인·갱신 안내 등)</span>',5],['(선택) 군산문화관광재단 소식 수신 동의',6]],([t,k])=>`<div class="row between" style="padding:8px 0">${chk(t,false,t.startsWith('(필수)')?'data-req onchange="agrSync()"':'onchange="agrSync()"')}${k>=0?`<a class="small link" href="#/C-09?t=${k}&ret=C-03">보기</a>`:''}</div>`)}</div>
- ${S.memType!=='일반'?`<div class="agr2" style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px"><p class="tiny muted" style="margin-bottom:4px">예술인 회원(개인·단체·기관) 동의</p>${L([['(필수) 예술인 정보 및 콘텐츠 공개 동의','이름·예명·분야·장르·소개·이력·대표 이미지·SNS·홈페이지가 공개됩니다. <span class="nw">연락처·전체 주소·증빙자료</span>는 항상 비공개입니다.'],['(필수) 예술인 등록 관련 개인정보 추가 수집·이용 동의','등록 심사에 필요한 정보와, 심사 중 관리자가 요청할 경우 제출하는 증빙자료를 수집합니다. 보관 기간 3년.']],([t,d],j)=>`<div style="padding:8px 0"><div class="row between">${chk(t,false,'data-req onchange="agrSync()"')}<a class="small link" href="#/C-09?t=${j?7:3}&ret=C-03">보기</a></div><p class="help" style="margin:2px 0 0 32px">${d}</p></div>`)}</div>`:''}
+ ${S.memType!=='일반'?`<div class="agr2" style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px"><p class="tiny muted" style="margin-bottom:4px">예술인 회원(개인·단체·기관) 동의</p>${L([['(필수) 예술인 정보 및 콘텐츠 공개 동의','이름·예명·분야·장르·소개·이력·대표 이미지<wbr>·SNS·홈페이지가 공개됩니다. <span class="nw">연락처·전체 주소·증빙자료</span>는 항상 비공개입니다.'],['(필수) 예술인 등록 관련 개인정보 추가 수집·이용 동의','등록 심사에 필요한 정보와, 심사 중 관리자가 요청할 경우 제출하는 증빙자료를 수집합니다. 보관 기간 3년.']],([t,d],j)=>`<div style="padding:8px 0"><div class="row between">${chk(t,false,'data-req onchange="agrSync()"')}<a class="small link" href="#/C-09?t=${j?7:3}&ret=C-03">보기</a></div><p class="help" style="margin:2px 0 0 32px">${d}</p></div>`)}</div>`:''}
  <div class="agr2" style="border-top:1px solid var(--line);margin-top:12px;padding-top:12px">${chk('(필수) 만 14세 이상입니다',false,'data-req onchange="agrSync()"')}<p class="help" style="margin:2px 0 0 32px">만 14세 미만은 회원가입을 할 수 없습니다.</p></div>
- ${REF('가입 연령은 만 14세 이상(만 14세 미만 가입·법정대리인 동의·본인인증 없음) · 예술인 회원(개인·단체·기관)은 예술인 정보 공개·개인정보 추가 수집·이용 동의 2종을 가입 때 받음 — 포트폴리오 등록 시작 화면에서는 받지 않음 · 서비스 이용 관련 안내 메일 수신 동의(필수)는 심사·보완·승인·갱신 등 자동 메일 발송 근거')}`,`<a class="btn btn-line" href="#/C-02">이전</a><a class="btn btn-pri is-off" id="agrNext" aria-disabled="true" href="#/C-04" onclick="return this.getAttribute('aria-disabled')!=='true'">동의하고 다음</a>`,{steps:[2]});
+ ${REF('가입 연령은 만 14세 이상(만 14세 미만 가입·법정대리인 동의·본인인증 없음) · 예술인 회원(개인·단체·기관)은 예술인 정보 공개·개인정보 추가 수집·이용 동의 2종을 가입 때 받음 — 포트폴리오 등록 시작 화면에서는 받지 않음 · 서비스 이용 관련 안내 메일 수신 동의(필수)는 심사·보완·승인·갱신 등 자동 메일 발송 근거')}`,`<a class="btn btn-line" href="#/C-02">이전</a><a class="btn btn-pri is-off" id="agrNext" aria-disabled="true" href="#/C-04" onclick="return this.getAttribute('aria-disabled')!=='true'">다음</a>`,{steps:[2]});
 PAGES['C-04']=()=>{const t=S.memType;const st={cls:'stack',req:1};const E=!!Q.err,bad='style="border-color:var(--bad)" aria-invalid="true"';
  const addr=(l,h)=>F(l,`<div class="inline">${inp('우편번호','','text','readonly')}<button class="btn btn-line btn-sm" type="button" onclick="toast('우편번호 검색 창이 열립니다 — 주소를 고르면 기본 주소와 읍면동이 자동으로 채워집니다')">우편번호 검색</button></div><div class="mt8">${inp('기본 주소 (우편번호 검색 후 자동 입력)','','text','readonly')}</div><div class="mt8">${inp('상세 주소')}</div>`,{...st,help:h});
- const contact=`${F('이메일',`<div class="inline">${inp('example@email.com',E?'bada@example.com':'')}<button class="btn btn-line btn-sm" type="button" onclick="toast('인증번호를 보냈습니다')">인증번호 발송</button></div><div class="inline mt8">${inp('인증번호 6자리','','text',E?bad:'')}<button class="btn btn-line btn-sm" type="button" onclick="toast('이메일 인증이 완료되었습니다')">확인</button></div>`,E?{...st,err:'인증 시간이 지났습니다. [인증번호 발송]을 다시 눌러 주세요.'}:{...st,help:'인증번호 입력 남은 시간 04:52'})}${F('연락처',inp('010-0000-0000',E?'010-12':'','text',E?bad:''),E?{...st,err:'연락처를 숫자로 정확히 입력해 주세요.'}:st)}`;
+ const contact=`${F('이메일',`<div class="inline">${inp('example@email.com',E?'bada@example.com':'')}<button class="btn btn-line btn-sm" type="button" onclick="toast('인증번호를 보냈습니다')">인증번호 발송</button></div><div class="inline mt8">${inp('인증번호 6자리','','text',E?bad:'')}<button class="btn btn-line btn-sm" type="button" onclick="toast('이메일 인증이 완료되었습니다')">확인</button></div>`,E?{...st,err:'인증 시간이 지났습니다. [인증번호 발송]을 다시 눌러 주세요.'}:{...st,help:'<span class="c-timer">인증번호 입력 남은 시간 04:52</span>'})}${F('연락처',inp('010-0000-0000',E?'010-12':'','text',E?bad:''),E?{...st,err:'연락처를 숫자로 정확히 입력해 주세요.'}:st)}`;
  const dis=k=>F(k+' 여부',`<div class="row">${rad('dd','장애')}${rad('dd','비장애',true)}</div>`,{...st,help:'공개 여부는 포트폴리오 등록 ① 기본정보에서 따로 선택합니다.'});
  const biz=k=>`${F(k==='단체'?'단체명':'기관명',inp('사업자등록증에 표기된 이름 그대로 입력'),{...st,help:`<b>반드시 사업자등록증에 표기된 이름</b>으로 입력해 주세요. 회원가입 시 입력한 ${k==='단체'?'단체명':'기관명'}과 사업자등록증에 표기된 이름이 다를 경우, 향후 재단 사업 신청에 불이익을 받을 수 있습니다.`})}${F(k==='단체'?'단체대표자명':'기관장명',inp(''),st)}
  <div class="grid2" style="gap:12px">${F('사업자등록번호',inp('000-00-00000'),st)}${F('개업일자',inp('','','date'),st)}</div>
  <div class="bizv"><button class="btn ${S.bizOk?'btn-line':'btn-dark'} btn-sm" onclick="S.bizOk=!S.bizOk;render()">${S.bizOk?I('check')+' 진위확인 완료':'사업자 진위확인'}</button>${S.bizOk?'<p class="okmsg">국세청 정보와 일치합니다. 사업 상태: 계속사업자</p>':`<p class="help">사업자등록번호 · ${k==='단체'?'대표자명':'기관장명'} · 개업일자가 국세청 정보와 일치하는지, 휴·폐업 상태인지 자동으로 확인합니다.</p>`}</div>
  ${contact}${addr(k==='단체'?'단체 주소':'기관 주소','우편번호 검색으로 입력합니다. 군산 소재 확인과 예술지도 읍면동 집계에만 쓰이며, <span class="nw">전체 주소</span>는 공개되지 않습니다.')}${k==='단체'?dis('장애예술단체'):''}`;
  return modal(`② 상세정보 입력 <span class="badge b-dark" style="vertical-align:4px;margin-left:8px">${MT.find(m=>m[0]===t)[1]}</span>`,`
- ${t==='개인'?`${F('성명',inp('','','text',E?bad:''),E?{...st,err:'성명을 입력해 주세요.'}:st)}${F('예명 및 활동명',inp('활동명이 있다면 입력'),{cls:'stack',opt:1})}<div class="grid2" style="gap:12px">${F('생년월일',inp('',E?'2015-03-12':'','date',E?bad:''),E?{...st,err:'만 14세 미만은 회원가입을 할 수 없습니다.'}:{...st,help:'만 14세 이상만 가입할 수 있습니다.'})}${F('성별',sel(['선택','남','여']),st)}</div>${contact}${addr('주소(거주지)','우편번호 검색으로 입력합니다. 군산 거주 확인과 예술지도 읍면동 집계에만 쓰이며, <span class="nw">전체 주소</span>는 공개되지 않습니다.')}${dis('장애예술인')}`:''}
+ ${t==='개인'?`${F('성명',inp('','','text',E?bad:''),E?{...st,err:'성명을 입력해 주세요.'}:st)}${F('예명 및 활동명',inp('활동명이 있다면 입력'),{cls:'stack',opt:1})}<div class="grid2 c04-row" style="gap:12px">${F('생년월일',inp('',E?'2015-03-12':'','date',E?bad:''),E?{...st,err:'만 14세 미만은 회원가입을 할 수 없습니다.'}:{...st,help:'만 14세 이상만 가입할 수 있습니다.'})}${F('성별',sel(['선택','남','여']),st)}</div>${contact}${addr('주소(거주지)','우편번호 검색으로 입력합니다. 군산 거주 확인과 예술지도 읍면동 집계에만 쓰이며, <span class="nw">전체 주소</span>는 공개되지 않습니다.')}${dis('장애예술인')}`:''}
  ${t==='단체'||t==='기관'?biz(t):''}${t==='일반'?`${F('성명',inp(''),st)}${contact}`:''}
  ${REF('가입 때 활동분야는 받지 않음(포트폴리오 등록 ② 활동분야에서 입력) · 단체·기관 개업일자 필수 + [사업자 진위확인]: 공공데이터포털 「국세청_사업자등록정보 진위확인 및 상태조회」 API, 불일치 시 재입력 안내 · '+(Q.err?'<a class="link" href="#/C-04">기본 화면</a>':'<a class="link" href="#/C-04?err=1">입력 오류 예시</a>'))}
  <p class="ref" role="note"><span class="ref-tag">제작참고</span><span>유형 전환: ${L(MT,([k,tt])=>`<a class="link" onclick="S.memType='${k}';render()">${tt}</a>`).replace(/<\/a><a/g,'</a> · <a')}</span></p>`,`<a class="btn btn-line" href="#/C-03">이전</a><a class="btn btn-pri" href="#/C-05">다음</a>`,{steps:[3]})};
@@ -3188,22 +4096,22 @@ PAGES['C-05']=()=>{const E=!!Q.err,bad='style="border-color:var(--bad)" aria-inv
  <div class="box-p mt16" style="padding:16px 16px"><div class="row">${chk('로봇이 아닙니다')}<span class="tiny muted" style="margin-left:auto">자동 가입 방지</span></div></div>${REF(E?'오류 예시 화면 — <a class="link" href="#/C-05">기본 화면</a>':'<a class="link" href="#/C-05?err=1">아이디 중복 · 비밀번호 규칙 오류 예시</a>')}`,`<a class="btn btn-line" href="#/C-04">이전</a><a class="btn btn-pri" href="#/C-06">가입하기</a>`,{steps:[4]})};
 PAGES['C-06']=()=>{const art=S.memType!=='일반';const r={개인:'artist',단체:'org',기관:'inst'}[S.memType]||'general';const as=`S.role='${r}';store.set('role',S.role);`;return modal('회원가입 완료',`<div style="text-align:center;padding:16px 0"><div style="width:72px;height:72px;border-radius:50%;background:var(--ok-weak);color:var(--ok);display:grid;place-items:center;margin:0 auto">${I('check')}</div><p class="h3 mt16">회원가입이 완료되었습니다.</p><p class="mt8" style="color:var(--ink-2)">아트포트군산의 회원이 되신 것을 환영합니다.<br>지금 바로 다양한 서비스를 이용해 보세요.</p><p class="tiny muted mt8">자동으로 로그인되었습니다.</p></div>
  <div class="done-cta">${art?`<a class="btn btn-pri" onclick="${as}go('A1-03')">${I('user')} 포트폴리오 등록하기</a><a class="btn btn-dark" onclick="${as}go('M-07')">작품 및 활동 등록하기</a><a class="btn btn-line" onclick="demoLogin('${r}')">메인으로 이동</a>`:`<a class="btn btn-pri" onclick="${as}go('A3-01')">예술창고 둘러보기</a><a class="btn btn-line" onclick="demoLogin('general')">메인으로 이동</a>`}</div>`,'',{steps:[5]})};
-PAGES['C-07']=()=>Q.err?modal('아이디 찾기',`<p class="small muted">가입 시 등록한 이메일로 인증합니다.</p>${F('이메일',`<div class="inline">${inp('example@email.com','bada@example.com','text','style="border-color:var(--bad)" aria-invalid="true"')}<button class="btn btn-line btn-sm">인증번호 발송</button></div>`,{cls:'stack',req:1,err:'이 이메일로 가입한 회원이 없습니다. 이메일을 다시 확인하거나 회원가입을 해 주세요.'})}${REF('오류 예시 화면 — <a class="link" href="#/C-07">기본 화면</a>')}`,`<a class="btn btn-line" href="#/C-08">비밀번호 찾기</a><a class="btn btn-pri" href="#/C-01">로그인</a>`):modal('아이디 찾기',`<p class="small muted">가입 시 등록한 이메일로 인증합니다.</p>${F('이메일',`<div class="inline">${inp('example@email.com')}<button class="btn btn-line btn-sm">인증번호 발송</button></div>`,{cls:'stack',req:1})}${F('인증번호',`<div class="inline">${inp('6자리')}<button class="btn btn-line btn-sm" type="button" onclick="toast('인증되었습니다')">인증 확인</button></div>`,{cls:'stack',req:1,help:'<b style="color:var(--color-text-link)">남은 시간 04:52</b>'})}
- <div class="box-p mt16" style="text-align:center">회원님의 아이디는 <b>artkim01</b> 입니다.</div>${REF('<a class="link" href="#/C-07?err=1">일치하는 회원 없음 예시</a>')}`,`<a class="btn btn-line" href="#/C-08">비밀번호 찾기</a><a class="btn btn-pri" href="#/C-01">로그인</a>`);
-PAGES['C-08']=()=>Q.step==='2'?modal('새 비밀번호 설정',`<p class="small" style="color:var(--ink-2)">artkim01 회원님, 새로 사용할 비밀번호를 입력해 주세요.</p><div class="mt16"></div>${F('새 비밀번호',inp('영문·숫자·특수문자 포함 8자 이상','','password'),{cls:'stack',req:1,help:'영문, 숫자, 특수문자를 모두 넣어 8자 이상으로 만들어 주세요.'})}${F('새 비밀번호 확인',inp('',Q.err?'abc':'','password',Q.err?'style="border-color:var(--bad)" aria-invalid="true"':''),Q.err?{cls:'stack',req:1,err:'비밀번호가 일치하지 않습니다.'}:{cls:'stack',req:1})}<p class="tiny muted mt16">재설정 링크는 메일을 보낸 때부터 24시간 동안 사용할 수 있습니다. 시간이 지났다면 비밀번호 찾기에서 다시 받아 주세요.</p>${REF(Q.err?'오류 예시 화면 — <a class="link" href="#/C-08?step=2">기본 화면</a>':'<a class="link" href="#/C-08?step=2&err=1">비밀번호 확인 오류 예시</a>')}`,`<a class="btn btn-pri" href="#/C-01">변경하고 로그인</a>`):modal('비밀번호 찾기',`<p class="small" style="color:var(--ink-2)">가입할 때 등록한 이메일로 비밀번호 재설정 링크를 보내 드립니다.</p><div class="mt16"></div>${F('아이디',inp('',Q.err?'artport01':''),{cls:'stack',req:1})}${F('이메일',inp('',Q.err?'bada@example.com':'','text',Q.err?'style="border-color:var(--bad)" aria-invalid="true"':''),Q.err?{cls:'stack',req:1,err:'아이디와 이메일이 일치하는 회원이 없습니다. 다시 확인해 주세요.'}:{cls:'stack',req:1})}<button class="btn btn-dark btn-block mt8" onclick="toast('재설정 링크를 발송했습니다')">재설정 링크 발송</button>${REF('메일의 링크를 누르면 사이트가 열리면서 「새 비밀번호 설정」 창이 뜸 — <a class="link" href="#/C-08?step=2">미리보기</a>'+(Q.err?' · <a class="link" href="#/C-08">기본 화면</a>':' · <a class="link" href="#/C-08?err=1">일치하는 회원 없음 예시</a>'))}`);
+PAGES['C-07']=()=>Q.err?modal('아이디 찾기',`<p class="small muted">가입 시 등록한 이메일로 인증합니다.</p>${F('이메일',`<div class="inline">${inp('example@email.com','bada@exmple.com','text','style="border-color:var(--bad)" aria-invalid="true"')}<button class="btn btn-line btn-sm">인증번호 발송</button></div>`,{cls:'stack',req:1,err:'이 이메일로 가입한 회원이 없습니다. 이메일을 다시 확인하거나 회원가입을 해 주세요.'})}${REF('오류 예시 화면 — <a class="link" href="#/C-07">기본 화면</a>')}`,`<a class="btn btn-line" href="#/C-08">비밀번호 찾기</a><a class="btn btn-pri" href="#/C-01">로그인</a>`):modal('아이디 찾기',`<p class="small muted">가입 시 등록한 이메일로 인증합니다.</p>${F('이메일',`<div class="inline">${inp('example@email.com')}<button class="btn btn-line btn-sm">인증번호 발송</button></div>`,{cls:'stack',req:1})}${F('인증번호',`<div class="inline">${inp('6자리')}<button class="btn btn-line btn-sm" type="button" onclick="toast('인증되었습니다')">인증 확인</button></div>`,{cls:'stack',req:1,help:'<b style="color:var(--color-text-link)">남은 시간 04:52</b>'})}
+ <div class="box-p mt16" style="text-align:center">회원님의 아이디는 <b>artkim01</b>입니다.</div>${REF('<a class="link" href="#/C-07?err=1">일치하는 회원 없음 예시</a>')}`,`<a class="btn btn-line" href="#/C-08">비밀번호 찾기</a><a class="btn btn-pri" href="#/C-01">로그인</a>`);
+PAGES['C-08']=()=>Q.step==='2'?modal('새 비밀번호 설정',`<p class="c08-sub">artkim01 회원님, 새로 사용할 비밀번호를 입력해 주세요.</p><div class="c08-fs">${F('새 비밀번호',inp('영문·숫자·특수문자 포함 8자 이상','','password'),{cls:'stack',req:1,help:'영문, 숫자, 특수문자를 모두 넣어 8자 이상으로 만들어 주세요.'})}${F('새 비밀번호 확인',inp('',Q.err?'abc':'','password',Q.err?'style="border-color:var(--bad)" aria-invalid="true"':''),Q.err?{cls:'stack',req:1,err:'비밀번호가 일치하지 않습니다.'}:{cls:'stack',req:1})}</div><a class="btn btn-pri btn-block mt24" href="#/C-01">변경하고 로그인</a><p class="tiny muted mt16">재설정 링크는 메일을 보낸 때부터 24시간 동안 사용할 수 있습니다.<br>시간이 지났다면 비밀번호 찾기에서 다시 받아 주세요.</p>${REF(Q.err?'오류 예시 화면 — <a class="link" href="#/C-08?step=2">기본 화면</a>':'<a class="link" href="#/C-08?step=2&err=1">비밀번호 확인 오류 예시</a>')}`):modal('비밀번호 찾기',`${F('아이디',inp('',Q.err?'artport01':''),{cls:'stack',req:1})}${F('이메일',inp('',Q.err?'bada@example.com':'','text',Q.err?'style="border-color:var(--bad)" aria-invalid="true"':''),Q.err?{cls:'stack',req:1,err:'아이디와 이메일이 일치하는 회원이 없습니다. 다시 확인해 주세요.'}:{cls:'stack',req:1})}<button class="btn btn-dark btn-block mt8" onclick="toast('재설정 링크를 발송했습니다')">재설정 링크 발송</button>${Q.err?'':'<p class="tiny muted" style="margin-top:12px">가입할 때 등록한 이메일로 비밀번호 재설정 링크를 보내 드립니다.</p>'}${REF('메일의 링크를 누르면 사이트가 열리면서 「새 비밀번호 설정」 창이 뜸 — <a class="link" href="#/C-08?step=2">미리보기</a>'+(Q.err?' · <a class="link" href="#/C-08">기본 화면</a>':' · <a class="link" href="#/C-08?err=1">일치하는 회원 없음 예시</a>'))}`);
 PAGES['C-09']=()=>{const ti=Math.min(7,Math.max(0,+(Q.t||0)||0));return modal('약관·개인정보처리방침',`<div class="seg seg-terms">${L(['이용약관','개인정보 처리방침','개인정보 제3자 제공','예술인 정보·콘텐츠 공개 동의','이메일무단수집거부','안내 메일 수신 동의','재단 소식 수신 동의','개인정보 추가 수집·이용 동의'],(t,i)=>`<button class="${i===ti?'on':''}" onclick="go('C-09?t=${i}'+(Q.bg?'&bg='+Q.bg:'')+(Q.ret?'&ret='+Q.ret:''))">${t}</button>`)}</div>
  <div class="box mt16" style="height:300px;overflow:auto;font-size:.778rem;color:var(--ink-2);padding:20px"><b>${['이용약관','개인정보 처리방침','개인정보 제3자 제공','예술인 정보·콘텐츠 공개 동의','이메일무단수집거부','안내 메일 수신 동의','재단 소식 수신 동의','개인정보 추가 수집·이용 동의'][ti]} 전문</b>${ti===4?'<p class="mt8">본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반하면 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 따라 처벌받을 수 있습니다.</p>':`<p class="mt8">제1조(목적) 이 약관은 군산문화관광재단이 운영하는 아트포트군산 홈페이지의 이용 조건 및 절차에 관한 사항을 규정함을 목적으로 합니다.</p><p class="mt8">제2조(정의) … </p><p class="mt8">제3조(약관의 효력과 변경) …</p>`}${ti===1?'<p class="mt16"><b>개인정보보호책임자</b> 이주환 · 063-443-4820</p>':''}</div>${REF('약관 전문은 재단 제공 원고로 교체')}`,`<button class="btn btn-dark" onclick="closeModal()">확인</button>`,{cls:'lg'})};
-PAGES['C-14']=()=>modal('자동 로그아웃 안내',`<div style="text-align:center;padding:8px 0"><div style="color:var(--accent)">${I('clock').replace('class="ic"','class="ic" style="width:48px;height:48px;margin:0 auto"')}</div><p class="mt16">일정 시간 동안 사용하지 않아<br><b><span data-countdown style="color:var(--accent-2);font-size:1.333rem;font-variant-numeric:tabular-nums">5:00</span> 후 자동으로 로그아웃</b>됩니다.</p><p class="small muted mt8">로그인을 연장하면 30분 동안 계속 이용할 수 있습니다.<br>작성 중인 내용은 임시저장됩니다.</p></div>`,`<button class="btn btn-line" onclick="setRole('guest');go('H-01')">로그아웃</button><button class="btn btn-pri" onclick="toast('로그인이 30분 연장되었습니다');closeModal()">로그인 연장</button>`);
+PAGES['C-14']=()=>modal('자동 로그아웃 안내',`<div style="text-align:center;padding:8px 0"><div style="color:var(--accent)">${I('clock').replace('class="ic"','class="ic" style="width:48px;height:48px;margin:0 auto"')}</div><p class="mt16">일정 시간 동안 사용하지 않아<br><b><span data-countdown style="color:var(--accent-2);font-size:1.333rem;font-variant-numeric:tabular-nums">5:00</span> 후 자동으로 로그아웃됩니다.</b></p><p class="small muted mt8">로그인을 연장하면 <b style="color:var(--accent)">30분 동안</b> 계속 이용할 수 있습니다.<br>작성 중인 내용은 임시저장됩니다.</p></div>`,`<button class="btn btn-line" onclick="setRole('guest');go('H-01')">로그아웃</button><button class="btn btn-pri" onclick="toast('로그인이 30분 연장되었습니다');closeModal()">로그인 연장</button>`);
 /* C 페이지 */
 PAGES['C-10']=()=>{const q=Q.q||'바다';const ar=ARTISTS.filter(a=>!a.priv&&(a.field+a.genre+a.name+a.tags.join()+a.dong).includes(q.replace('#','')));const ws=WORKS.filter(w=>!w.priv&&w.kind==='작품'&&(w.field+w.genre+w.title+w.tags.join()).includes(q.replace('#','')));const ac=WORKS.filter(w=>!w.priv&&w.kind==='활동'&&(w.field+w.genre+w.title+w.tags.join()+(w.place||'')).includes(q.replace('#','')));
  const sec=(t,n,body,to)=>`<section class="mt48"><div class="row between"><h2 class="h3">${t} <span style="color:var(--accent-2)">${n}</span></h2>${n?`<a class="link small" href="#/${to}">모두 보기</a>`:''}</div><div class="grid4 mt16">${body||'<p class="muted small">검색 결과가 없습니다.</p>'}</div></section>`;
- return pub(`<section style="background:var(--paper);padding:48px 0"><div class="wrap"><form class="sbar" onsubmit="event.preventDefault();go('C-10?q='+encodeURIComponent(this.q.value))"><div class="inpw">${I('search')}<input class="inp" name="q" value="${esc(q)}" aria-label="통합 검색"></div><button class="btn btn-pri">검색</button></form>
- <p class="mt16">“<b>${esc(q)}</b>” 검색 결과 총 <b style="color:var(--accent-2)">${ar.length+ws.length+ac.length}</b>건</p><p class="tiny muted mt8">예술인 이름, 작품·활동명, 지역(읍면동), 분야, 해시태그로 검색할 수 있습니다.</p></div></section>
+ return pub(`<section style="background:var(--paper);padding:48px 0 29px"><div class="wrap"><form class="sbar" onsubmit="event.preventDefault();go('C-10?q='+encodeURIComponent(this.q.value))"><div class="inpw">${I('search')}<input class="inp" name="q" value="${esc(q)}" aria-label="통합 검색"></div><button class="btn btn-pri">검색</button></form>
+ <p class="mt32">“<b>${esc(q)}</b>” 검색 결과 총 <b style="color:var(--accent-2)">${ar.length+ws.length+ac.length}</b>건</p><p class="tiny muted" style="margin-top:10px">예술인 이름, 작품·활동명, 지역(읍면동), 분야, 해시태그로 검색할 수 있습니다.</p></div></section>
  <div class="wrap" style="padding-bottom:80px">${sec('예술인',ar.length,L(ar.slice(0,4),artistCard),'A3-01')}${sec('작품',ws.length,L(ws.slice(0,4),w=>workCard(w)),'A3-06?k=작품')}${sec('활동',ac.length,L(ac.slice(0,4),w=>workCard(w)),'A3-06?k=활동')}</div>`)};
 function err403(){Q.c='403';return PAGES['C-11']().replace('</main>',`<div class="wrap" style="max-width:720px;padding-bottom:40px">${REF('권한 없는 계정이 글쓰기 주소(A4-03)로 직접 접근하면 403 오류 화면(C-11)으로 처리 — 별도 안내 화면 없음. [글쓰기] 버튼 자체가 권한 계정에만 노출')}</div></main>`)}
 PAGES['C-11']=()=>{const c=Q.c||S.errCode;const m={404:['페이지를 찾을 수 없습니다','주소가 바뀌었거나 삭제된 페이지입니다.'],500:['일시적인 오류가 발생했습니다','잠시 후 다시 시도해 주세요. 문제가 계속되면 063-443-4820으로 문의해 주세요.'],403:['접근 권한이 없습니다',(isMember()||isAdmin())?'이 화면을 이용할 권한이 없습니다. 계정 권한을 확인해 주세요.':'로그인 후 이용할 수 있는 화면입니다.']}[c];
- return pub(`<div class="err-pg"><div>${CUR==='C-11'?`<div style="max-width:360px;margin:0 auto 16px">${REF('오류 유형 보기: '+L(['404','500','403'],x=>`<button class="btn btn-xs ${x===c?'btn-dark':'btn-line'}" style="margin:2px" onclick="go('C-11?c=${x}')">${x}</button>`))}</div>`:''}<p class="code">${c}</p><h1 class="sec-t mt16">${m[0]}</h1><p class="mt8 muted">${m[1]}</p><div class="row mt32" style="justify-content:center">${c==='403'&&!(isMember()||isAdmin())?`<a class="btn btn-line" href="#/C-02">회원가입</a><a class="btn btn-pri" href="#/C-01">로그인</a>`:`<button class="btn btn-line" onclick="history.back()">이전 화면</button><a class="btn btn-pri" href="#/H-01">홈으로</a>`}</div></div></div>`)};
-PAGES['C-12']=()=>`<div style="min-height:100vh;display:grid;place-items:center;background:var(--navy);color:#fff;padding:24px;position:relative;overflow:hidden">${waves()}<div style="text-align:center;position:relative;max-width:640px"><p class="logo" style="color:#fff">아트포트군산</p><div style="margin:40px auto 0;width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center">${I('shield').replace('class="ic"','class="ic" style="width:40px;height:40px"')}</div><h1 class="sec-t mt24" style="font-size:2.222rem">시스템 점검 중입니다</h1><p class="mt16" style="opacity:.85">보다 안정적인 서비스를 위해 시스템 점검을 진행하고 있습니다.<br>이용에 불편을 드려 죄송합니다.</p>
+ return pub(`<div class="err-pg"><div>${CUR==='C-11'?`<div class="c11-ref" style="max-width:360px;margin:0 auto 16px">${REF('오류 유형 보기: '+L(['404','500','403'],x=>`<button class="btn btn-xs ${x===c?'btn-dark':'btn-line'}" style="margin:2px" onclick="go('C-11?c=${x}')">${x}</button>`))}</div>`:''}<p class="code">${c}</p><h1 class="sec-t mt16">${m[0]}</h1><p class="mt8 muted">${m[1]}</p><div class="row mt32" style="justify-content:center">${c==='403'&&!(isMember()||isAdmin())?`<a class="btn btn-line" href="#/C-02">회원가입</a><a class="btn btn-pri" href="#/C-01">로그인</a>`:`<button class="btn btn-line" onclick="history.back()">이전 화면</button><a class="btn btn-pri" href="#/H-01">홈으로</a>`}</div></div></div>`)};
+PAGES['C-12']=()=>`<div style="min-height:100vh;display:grid;place-items:center;background:var(--navy);color:#fff;padding:24px;position:relative;overflow:hidden">${waves()}<div style="text-align:center;position:relative;max-width:640px"><p class="logo" style="color:#fff">아트포트군산</p><div style="margin:40px auto 0;width:84px;height:84px;border-radius:50%;display:grid;place-items:center">${I('shield').replace('class="ic"','class="ic" style="width:40px;height:40px"')}</div><h1 class="sec-t mt24" style="font-size:2.222rem">시스템 점검 중입니다</h1><p class="mt16" style="opacity:.85">보다 안정적인 서비스를 위해 시스템 점검을 진행하고 있습니다.<br>이용에 불편을 드려 죄송합니다.</p>
  <dl class="dl" style="background:rgba(255,255,255,.08);border-radius:var(--r-lg);padding:24px 24px;text-align:left;margin-top:32px"><dt style="color:#fff;opacity:.6">점검 사유</dt><dd>정기 보안 업데이트</dd><dt style="color:#fff;opacity:.6">예상 종료</dt><dd>2026. 10. 12.(월) 04:00</dd><dt style="color:#fff;opacity:.6">문의</dt><dd>063-443-4820</dd></dl>
  <p class="small mt24" style="opacity:.6">작성 중이던 신청서는 임시저장으로 보존됩니다.</p><div style="max-width:420px;margin:24px auto 0">${REF('점검 화면에는 이동 링크 없음 · <a class="link" href="#/H-01">홈으로 돌아가기</a>'+(isAdmin()?' · <a class="link" href="#/B-21">관리자 점검 설정으로</a>':''))}</div></div></div>`;
 PAGES['C-13']=()=>pub(kv('접근성 안내','누구나 편하게 이용할 수 있도록 돕는 기능입니다','접근성 안내')+`<section class="sec"><div class="wrap" style="max-width:1000px">
@@ -3221,79 +4129,90 @@ function my(active,body){
   if(!isArtist()&&!['M-01','M-02','M-15','M-18','M-19','M-21'].includes(active))return err403();
   const nav=MYNAV.filter(n=>isArtist()||n[2]==='all');
   const MYIC={'M-01':'home','M-18':'bell','M-03':'check','M-04':'alert','M-05':'user','M-06':'img','M-15':'heart','M-17':'refresh','M-20':'file','M-02':'pen','M-19':'msg','M-21':'logout'};
-  return pub(`<div class="wrap my"><aside class="side${S.myAll?' all':''}"><div class="who2">${PH(isArtist()?1:3,'').replace('class="ph','class="who-img ph')}<b>${myName()} 님</b><span class="tiny muted">${ROLES[S.role]}</span>${isArtist()?`<div class="who-st">${sbadge('등록완료')}<span class="badge b-warn">갱신 D-28</span></div><a class="btn btn-line btn-sm btn-block" href="#/M-17">정보 갱신하기</a>`:''}</div><nav aria-label="마이페이지 메뉴">${L(nav,([id,t,,c])=>{const cnt=id==='M-18'?myUnread():c;return `${id==='M-02'?'<span class="nav-sep" aria-hidden="true"></span>':''}<a href="#/${id}" class="${active===id?'on':''}" ${active===id?'aria-current="page"':''}><span class="ni">${I(MYIC[id]||'r')}${t}</span>${cnt?`<span class="cnt">${cnt}</span>`:''}</a>`})}</nav><button type="button" class="btn btn-line btn-block my-all" aria-expanded="${!!S.myAll}" onclick="S.myAll=!S.myAll;render()">${S.myAll?'메뉴 접기':'마이페이지 전체 메뉴'}</button></aside><div style="min-width:0">${body}</div></div>`);
+  return pub(`<div class="wrap my"><aside class="side${S.myAll?' all':''}"><div class="who2">${PH(isArtist()?1:3,'').replace('class="ph','class="who-img ph')}<b>${myName()} 님</b><span class="tiny muted">${ROLES[S.role].replace(/\s*\(.*\)$/,'')}</span>${isArtist()?`<div class="who-st">${sbadge('등록완료')}<span class="badge b-warn">갱신 D-28</span></div><a class="btn btn-line btn-sm btn-block" href="#/M-17">정보 갱신하기</a>`:''}</div><nav aria-label="마이페이지 메뉴">${L(nav,([id,t,,c])=>{const cnt=id==='M-18'?myUnread():c;return `${id==='M-02'?'<span class="nav-sep" aria-hidden="true"></span>':''}<a href="#/${id}" class="${active===id?'on':''}" ${active===id?'aria-current="page"':''}><span class="ni">${I(MYIC[id]||'r')}${t}</span>${cnt?`<span class="cnt">${cnt}</span>`:''}</a>`})}</nav><button type="button" class="btn btn-line btn-block my-all" aria-expanded="${!!S.myAll}" onclick="S.myAll=!S.myAll;render()">${S.myAll?'메뉴 접기':'마이페이지 전체 메뉴'}</button></aside><div style="min-width:0">${body}</div></div>`);
 }
 const MYPF=[{id:'p1',aid:'a1',sub:'회화',field:'시각',genre:'회화',st:'등록완료',t:1,line:'바다와 원도심의 빛을 기록하는 회화 작가'},{id:'p2',aid:'a5',sub:'사진',field:'시각',genre:'사진',st:'심사중',t:5,line:'포구의 사람들을 담는 다큐멘터리 사진 작업'},{id:'p3',aid:null,sub:'드로잉',field:'시각',genre:'드로잉',st:'심사대기',t:3,line:'골목을 걸으며 그리는 현장 드로잉'}];
 const pfWorks=pf=>pf.aid?WORKS.filter(w=>w.aid===pf.aid):[];
 const pfStBadge=st=>st==='등록완료'?badge('공개 중','b-ok'):sbadge(st);
 const myWorks=()=>WORKS.filter(w=>w.aid==='a1'||w.aid==='a5').slice(0,6);
 const pgh=(t,r='')=>`<div class="pg-h"><h1>${t}</h1><div class="row">${r}</div></div>`;
-PAGES['M-22']=()=>regShell(1,'추가 등록 시작',`${callout('<b>포트폴리오 추가 등록</b>은 처음 등록할 때와 같은 순서로 진행됩니다. 각 단계에 지금 등록된 내용이 불러와져 있으니 <b>새로 추가하거나 바꿀 내용만 입력</b>하세요. 지금 공개 중인 포트폴리오는 심사가 끝날 때까지 그대로 유지됩니다.')}
- <div class="box-p mt16"><b>진행 순서</b><div class="grid4 mt16" style="grid-template-columns:repeat(5,1fr);gap:8px">${L(REG_STEPS,(t,i)=>`<div class="small" style="background:var(--bg);border-radius:var(--r);padding:12px 12px"><b class="muted tiny">${i+1}</b> ${t}</div>`)}</div></div>
- <div class="formcard mt24"><h3>현재 포트폴리오</h3>${F('공개 상태',`<div class="row">${sbadge('공개')}${badge('갱신 D-28','b-warn')}</div>`)}${F('최초 등록','2024.11.04 승인')}${F('동의 항목',`<p class="small" style="padding-top:12px">예술인 정보 및 콘텐츠 공개 동의 · 등록 관련 개인정보 추가 수집·이용 동의 — 최초 등록 때 동의를 마쳤습니다 (2024.11.04)</p>`)}</div>
+PAGES['M-22']=()=>regShell(1,'추가 등록 시작',`${callout('<b>포트폴리오 추가 등록</b>은 처음 등록할 때와 같은 순서로 진행됩니다. 각 단계에 지금 등록된 내용이 불러와져 있으니<br><b>새로 추가하거나 바꿀 내용만 입력</b>하세요. 지금 공개 중인 포트폴리오는 심사가 끝날 때까지 그대로 유지됩니다.')}
+ <div class="box-p mt16"><b>진행 순서</b><div class="grid4 mt16" style="grid-template-columns:repeat(5,1fr);gap:8px">${L(REG_STEPS,(t,i)=>`<div class="small" style="background:var(--bg);border-radius:var(--r);padding:12px 16px"><b class="muted tiny" style="margin-right:8px">${i+1}</b>${t}</div>`)}</div></div>
+ <div class="formcard mt24"><h3>현재 포트폴리오</h3>${F('공개 상태',`<div class="row" style="padding-top:5px">${sbadge('공개')}${badge('갱신 D-28','b-warn')}</div>`,{cls:'m2-mid'})}${F('최초 등록',`<p class="small" style="padding-top:6px">2024.11.04 승인</p>`,{cls:'m2-mid'})}${F('동의 항목',`<p class="small" style="padding-top:12px">예술인 정보 및 콘텐츠 공개 동의 · 등록 관련 개인정보 추가 수집·이용 동의 — 최초 등록 때 동의를 마쳤습니다 (2024.11.04)</p>`)}</div>
  ${REF('M-22 = 추가 등록 시작. 이후 단계는 최초 등록 화면(A1-04~A1-14)을 “추가 등록 모드”로 공용 사용 — 같은 순서·같은 입력 항목, 기존 값 불러오기, 추가·변경분만 심사, 완료 후 포트폴리오 관리로 복귀')}`,{next:'추가 등록 시작하기'});
-const myShow=()=>{const nm=myName();const pf=MYPF.find(x=>x.id===S.msPf)||MYPF[0];const ws=pfWorks(pf);const nw=ws.filter(w=>w.kind==='작품').length,na=ws.filter(w=>w.kind==='활동').length,ns=ws.filter(w=>w.support).length;const open=pf.st==='등록완료';
- return `<section class="my-show" aria-labelledby="show-h"><div class="ms-h"><div><h2 id="show-h">나의 예술 기록</h2><p class="ms-d">${nm} 님이 등록한 포트폴리오와 작품·활동입니다.</p></div>${open?`<a class="btn btn-line btn-sm" href="#/A3-02?id=${pf.aid}">${I('eye')} 공개 포트폴리오 보기</a>`:''}</div>
- ${MYPF.length>1?`<div class="ms-tabs" role="tablist" aria-label="내 포트폴리오">${L(MYPF,(x,i)=>`<button type="button" role="tab" aria-selected="${x.id===pf.id}" class="${x.id===pf.id?'on':''}" onclick="S.msPf='${x.id}';render()">포트폴리오 ${i+1} · ${x.sub}<span>${pfWorks(x).length}</span></button>`)}</div>`:''}
- <div class="ms-body"><div class="ms-pf">${PH(pf.t,'대표 이미지')}<div class="ms-pf-t"><div class="row" style="gap:6px;flex-wrap:wrap"><b>${nm}</b>${pfStBadge(pf.st)}</div><span>${pf.field} · ${pf.genre}</span><span class="ms-line">${pf.line}</span>${open?'':`<span class="tiny ms-note">${pf.st==='심사대기'?'심사 전이라 아직 공개되지 않았습니다':'심사 중이라 아직 공개되지 않았습니다'}</span>`}</div></div>
- <div class="ms-r"><p class="ms-sum">작품 <b>${nw}</b>점 · 활동 <b>${na}</b>건${ns?` · 그중 <b>${ns}</b>건이 지원 사업에 선정되었습니다`:''}</p>
- ${ws.length?`<div class="ms-works" tabindex="0" aria-label="${pf.sub} 포트폴리오의 작품·활동">${L(ws,w=>`<a class="ms-w" href="#/A3-07?id=${w.id}">${PH(w.t,'')}<span class="ms-wt">${w.title}</span><span class="ms-wk">${w.kind} · ${w.year}</span><span class="ms-sup">${w.support?supSeal(1):''}</span></a>`)}</div>`:`<div class="ms-empty"><p class="small" style="margin:0">이 포트폴리오에 연동된 작품·활동이 아직 없습니다.</p><a class="btn btn-pri btn-sm" href="#/M-07">${I('plus')} 작품·활동 등록</a></div>`}</div></div></section>${REF('나의 예술 기록 — 다가오는 일정·빠른 등록 아래 · 포트폴리오가 여러 개면 위 탭으로 전환하고, 고른 포트폴리오에 연동된 작품·활동만 표시 · 오른쪽 목록은 4열 2행이 왼쪽 미리보기 높이에 맞고 더 있으면 목록 안에서 스크롤 · 공개 전 포트폴리오는 상태 표시, 공개 화면 버튼 없음')}`};
+const msDd=pf=>`<label class="ms-dd"><span class="ms-dd-v">포트폴리오 ${MYPF.indexOf(pf)+1} · ${pf.sub}<span>${pfWorks(pf).length}</span></span>${I('chev')}<select aria-label="내 포트폴리오 선택" onchange="S.msPf=this.value;render()">${L(MYPF,(x,i)=>`<option value="${x.id}" ${x.id===pf.id?'selected':''}>포트폴리오 ${i+1} · ${x.sub} (${pfWorks(x).length})</option>`)}</select></label>`;
+const msPg=n=>{const a=Math.ceil(n/6),b=Math.ceil(n/4);if(b<2)return '';return `<nav class="ms-pg${a<2?' one6':''}" aria-label="작품·활동 페이지"><button type="button" class="ms-pa" aria-label="이전 페이지" onclick="msPgGo(this,-1)">‹</button>${L(Array.from({length:b},(_,i)=>i+1),k=>`<button type="button" class="${k===1?'on':''} ${k<=a?'p6':''}" ${k===1?'aria-current="page"':''} onclick="msPgGo(this,${k},1)">${k}</button>`)}<button type="button" class="ms-pa" aria-label="다음 페이지" onclick="msPgGo(this,1)">›</button></nav>`};
+function msPgGo(b,k,abs){const nv=b.closest('.ms-pg'),g=nv.previousElementSibling;const max=Math.ceil(g.children.length/(matchMedia('(max-width:767px)').matches?4:6));let p=abs?k:(+g.dataset.pg||1)+k;p=Math.max(1,Math.min(max,p));g.dataset.pg=p;nv.querySelectorAll('button:not(.ms-pa)').forEach(x=>{const on=+x.textContent===p;x.classList.toggle('on',on);if(on)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')})}
+function msTabSc(t){if(t.children.length<=3)return;t.previousElementSibling.disabled=t.scrollLeft<=1;t.nextElementSibling.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-1}
+const myShow=(ini)=>{const nm=myName();if(ini)return `<section class="my-show" aria-labelledby="show-h"><div class="ms-h"><div><h2 id="show-h">나의 예술 기록</h2><p class="ms-d">${nm} 님이 등록한 포트폴리오와 작품·활동입니다.</p></div></div><div class="ms-empty ms-init" role="status"><p>아직 등록한 포트폴리오가 없습니다. 포트폴리오를 등록하고 관리자 승인을 받으면 예술창고에 공개되고, 이곳에서 포트폴리오와 작품·활동을 한눈에 볼 수 있습니다.</p><a class="btn btn-pri btn-sm m1-b36" href="#/A1-03">포트폴리오 등록하기</a></div></section>`;const pf=MYPF.find(x=>x.id===S.msPf)||MYPF[0];const ws=pfWorks(pf);const nw=ws.filter(w=>w.kind==='작품').length,na=ws.filter(w=>w.kind==='활동').length,ns=ws.filter(w=>w.support).length;const open=pf.st==='등록완료';
+ return `<section class="my-show" aria-labelledby="show-h"><div class="ms-h"><div><h2 id="show-h">나의 예술 기록</h2><p class="ms-d">${nm} 님이 등록한 포트폴리오와 작품·<wbr>활동입니다.</p></div>${open?`<a class="btn btn-line btn-sm" href="#/A3-02?id=${pf.aid}">공개 포트폴리오 보기</a>`:''}</div>
+ ${MYPF.length>1?`<div class="ms-tabbar"><button type="button" class="ms-sc" aria-label="이전 포트폴리오 탭 보기" disabled onclick="this.nextElementSibling.scrollBy({left:-240,behavior:'smooth'})">${I('l')}</button><div class="ms-tabs" role="tablist" aria-label="내 포트폴리오" onscroll="msTabSc(this)">${L(MYPF,(x,i)=>`<button type="button" role="tab" aria-selected="${x.id===pf.id}" class="${x.id===pf.id?'on':''}" onclick="const s=this.parentNode.scrollLeft;S.msPf='${x.id}';render();setTimeout(()=>{const t=document.querySelector('.ms-tabs');if(t){t.scrollLeft=s;msTabSc(t)}})">포트폴리오 ${i+1} · ${x.sub}<span>${pfWorks(x).length}</span></button>`)}</div><button type="button" class="ms-sc" aria-label="다음 포트폴리오 탭 보기" ${MYPF.length<=3?'disabled':''} onclick="this.previousElementSibling.scrollBy({left:240,behavior:'smooth'})">${I('r')}</button></div>${msDd(pf)}`:''}
+ <div class="ms-body"><div class="ms-pf">${PH(pf.t,'')}<div class="ms-pf-t"><div class="row" style="gap:6px;flex-wrap:wrap"><b>${nm}</b>${pfStBadge(pf.st)}</div><span>${pf.field} · ${pf.genre}</span><span class="ms-line">${pf.line}</span>${open?'':`<span class="tiny ms-note">${pf.st==='심사대기'?'심사 전이라 아직 공개되지 않았습니다':'심사 중이라 아직 공개되지 않았습니다'}</span>`}</div></div>
+ <div class="ms-r"><p class="ms-sum">작품 <b>${nw}</b>점 · 활동 <b>${na}</b>건${ns?` · 그중 <b>${ns}</b>건이 <span class="nw">지원 사업에</span> 선정되었습니다`:''}</p>
+ ${ws.length?`<div class="ms-works" data-pg="1" tabindex="0" aria-label="${pf.sub} 포트폴리오의 작품·활동">${L(ws,(w,j)=>`<a class="ms-w" data-p6="${(j/6|0)+1}" data-p4="${(j/4|0)+1}" href="#/A3-07?id=${w.id}">${PH(w.t,'')}<span class="ms-wt">${w.title}</span><span class="ms-wk">${w.kind} · ${w.year}</span><span class="ms-sup">${w.support?supSeal(1):''}</span></a>`)}</div>${msPg(ws.length)}`:`<div class="ms-empty"><p class="small" style="margin:0">이 포트폴리오에 연동된 작품·활동이 아직 없습니다.</p><a class="btn btn-pri btn-sm" href="#/M-07">${I('plus')} 작품·활동 등록</a></div>`}</div></div></section>${REF('나의 예술 기록 — 다가오는 일정·빠른 등록 아래 · 포트폴리오가 여러 개면 위 탭으로 전환하고, 고른 포트폴리오에 연동된 작품·활동만 표시 · 오른쪽 목록은 4열 2행이 왼쪽 미리보기 높이에 맞고 더 있으면 목록 안에서 스크롤 · 공개 전 포트폴리오는 상태 표시, 공개 화면 버튼 없음')}`};
 
-PAGES['M-01']=()=>{scrapSeed();const E=!!Q.empty;const un=E?0:myUnread();const sc=E?0:Object.values(S.scrap).filter(Boolean).length;return my('M-01',`<div class="pg-h"><h1>마이페이지</h1><a class="btn btn-line btn-sm" href="#/H-01">${I('home')} 홈페이지로 바로가기</a></div>
+/* M1: 빈 상태(?empty=1) — 프로필 카드 「포트폴리오 등록 전」·메뉴 건수·종 아이콘 건수를 이 화면에서만 바꿔 보여 줌 */
+const m1Ini=(on,h,o={})=>{if(!on)return h;if(o.only)return h.replace(new RegExp('(<a href="#/'+o.only+'"(?:(?!</a>)[\\s\\S])*?)<span class="cnt">\\d+</span>'),'$1');h=h.replace(/<span class="bell-n" aria-hidden="true">\d+<\/span>/,'').replace(/확인하지 않은 알림 \d+건/,'확인하지 않은 알림 0건').replace(/<span class="cnt">\d+<\/span>/g,'');if(isArtist())h=h.replace(/<div class="who-st">[\s\S]*?정보 갱신하기<\/a>/,`<div class="who-st">${badge('포트폴리오 등록 전')}</div><a class="btn btn-pri btn-sm btn-block m1-b36" href="#/A1-03">포트폴리오 등록하기</a>`);return h};
+const M1_P4={id:'p4',aid:'a11',sub:'공예',field:'시각',genre:'공예',st:'심사중',t:4,line:'바닷가 재료로 만드는 생활 공예'};
+PAGES['M-01']=()=>{if(Q.st==='many'&&!MYPF.some(x=>x.id==='p4')){MYPF.push(M1_P4);try{return M1_PAGE()}finally{MYPF.pop()}}return M1_PAGE()};
+const M1_PAGE=()=>{scrapSeed();const E=!!Q.empty;const un=E?0:myUnread();const sc=E?0:Object.values(S.scrap).filter(Boolean).length;return m1Ini(E,my('M-01',`<div class="pg-h"><h1>마이페이지</h1><a class="btn btn-line btn-sm" href="#/H-01">${I('home')} 홈페이지로 바로가기</a></div>
  <section class="noti" aria-labelledby="noti-h"><div class="noti-h"><h2 id="noti-h" class="row" style="gap:10px;margin:0;font-size:inherit">${I('bell')} 최근 알림 ${E?'':`<span class="noti-n">미확인 알림 ${un}건</span>`}</h2><a href="#/M-18" style="font-size:.778rem">전체 보기 ›</a></div>${E?'<p class="noti-e small">새 알림이 없습니다. 심사 결과·문의 답변 등 알림이 오면 이곳에 3건까지 표시됩니다.</p>':''}<ul ${E?'hidden':''}>${L((isArtist()?[['unread','보완요청','작품 〈월명의 오후〉에 보완요청이 있습니다. 사유를 확인해 주세요.','10.07'],['unread','갱신','정보 갱신 기한이 28일 남았습니다.','10.05'],['read','승인','예술인 등록이 완료되었습니다.','09.30']]:[['unread','문의 답변','문의 “스크랩 목록을 엑셀로 받을 수 있나요?”에 답변이 등록되었습니다.','10.07'],['read','안내','개인정보 처리방침 개정 안내를 보내 드렸습니다.','09.20'],['read','문의 답변','문의 “관심 예술인은 몇 명까지 저장되나요?”에 답변이 등록되었습니다.','09.12']]).slice(0,3),([c,b,t,d])=>`<li class="${c}"><span class="dot"></span><span><span class="badge ${b==='보완요청'?'b-acc':b==='갱신'?'b-warn':b==='안내'?'b-info':'b-ok'}">${b}</span> <b>${t}</b></span><span class="tiny muted">${d}</span></li>`)}</ul></section>
  <div class="kpi2 my4">${L(isArtist()?[['user','내 포트폴리오',E?0:MYPF.length,'M-05','k1'],['img','등록한 작품',E?0:myWorks().filter(w=>w.kind==='작품').length,'M-06','k2'],['cal','등록한 활동',E?0:myWorks().filter(w=>w.kind==='활동').length,'M-06','k3'],['heart','스크랩',sc,'M-15','k5']]:[['heart','관심 예술인',E?0:2,'M-15','k1'],['img','관심 작품·활동',E?0:2,'M-15?t=1','k2'],['msg','내 문의',E?0:2,'M-19','k3'],['bell','미확인 알림',un,'M-18','k5']],([ic,k,v,to,cls])=>`<a class="kc" href="#/${to}"><span class="kh"><span class="ki ${cls}">${I(ic)}</span>${k}</span><b class="kv2">${v}<small>건</small></b></a>`)}</div>
- <div class="my-row">${isArtist()?`<section class="box my-up" aria-labelledby="up-h"><div class="row between"><h3 id="up-h" class="h4">다가오는 내 일정</h3><a class="link small" href="#/M-06">전체 보기 ›</a></div><p class="tiny muted">내가 등록한 일정만 표시됩니다.</p>${E?'<p class="small muted mt16">등록한 일정이 없습니다. 활동을 등록하면 예술캘린더 일정이 이곳에 표시됩니다.</p>':''}<ul class="mlist mt8" ${E?'hidden':''}>${L([['10.16','월명동 드로잉 산책','#/A3-09?id=w21','공개 중'],['10.22','연계 토크 · 원도심의 빛','#/M-06','심사중']],([d,t,h,st])=>`<li><div class="md">${d.slice(3)}<small>10월</small></div><div><a href="${h}" style="font-weight:700">${t}</a> ${sbadge(st==='공개 중'?'공개':st)}</div></li>`)}</ul></section>
+ <div class="my-row">${isArtist()?`<section class="box my-up" aria-labelledby="up-h"><div class="row between"><h3 id="up-h" class="h4">다가오는 내 일정</h3><a class="link small" href="#/M-06">전체 보기 ›</a></div><p class="tiny muted">내가 등록한 일정만 표시됩니다.</p>${E?'<p class="m1-none">등록한 일정이 없습니다. 활동을 등록하면 예술캘린더 일정이 이곳에 표시됩니다.</p>':''}<ul class="mlist mt8" ${E?'hidden':''}>${L([['10.16','월명동 드로잉 산책','#/A3-09?id=w21','공개 중'],['10.22','연계 토크 · 원도심의 빛','#/M-06','심사중']],([d,t,h,st])=>`<li><div class="md">${d.slice(3)}<small>10월</small></div><div><a href="${h}" style="font-weight:700">${t}</a> ${sbadge(st==='공개 중'?'공개':st)}</div></li>`)}</ul></section>
  <section class="box my-quick" aria-labelledby="q-h"><h3 id="q-h" class="h4">빠른 등록</h3><div class="qk">${L([['img','작품 등록하기','M-07?k=작품'],['cal','활동 등록하기','M-07?k=활동'],E?['user','포트폴리오 등록하기','A1-03']:['user','포트폴리오 추가 등록','M-22']],([ic,t,to])=>`<a href="#/${to}">${I(ic)}<span>${t}</span>${I('r')}</a>`)}</div><h3 class="h4 mt24">바로가기</h3><div class="qk">${L([['heart','스크랩한 콘텐츠 보기','M-15'],['file','임시저장 목록 보기','M-20'],['msg','문의 관리','M-19']],([ic,t,to])=>`<a href="#/${to}">${I(ic)}<span>${t}</span>${I('r')}</a>`)}</div></section>`
  :`<section class="box my-up" aria-labelledby="ar-h"><h3 id="ar-h" class="h4">예술인으로 활동하고 계신가요?</h3><p class="small mt8" style="color:var(--ink-2)">군산에 거주하고 활동하는 예술인이라면 예술인으로 등록해 포트폴리오를 공개할 수 있습니다.</p><a class="btn btn-pri mt16" href="#/A1-02">예술인등록 안내 보기</a></section>
  <section class="box my-quick" aria-labelledby="q-h"><h3 id="q-h" class="h4">바로가기</h3><div class="qk">${L([['heart','스크랩한 콘텐츠 보기','M-15'],['msg','문의 관리','M-19'],['pen','내 정보 관리','M-02']],([ic,t,to])=>`<a href="#/${to}">${I(ic)}<span>${t}</span>${I('r')}</a>`)}</div></section>`}</div>
- ${isArtist()?(E?`<section class="my-show" aria-labelledby="show-h"><div class="ms-h"><div><h2 id="show-h">나의 예술 기록</h2><p class="ms-d">${myName()} 님이 등록한 포트폴리오와 작품·활동입니다.</p></div></div><div class="fempty es" role="status"><p>아직 등록한 포트폴리오가 없습니다. 포트폴리오를 등록하고 관리자 승인을 받으면 예술창고에 공개되고, 이곳에서 포트폴리오와 작품·활동을 한눈에 볼 수 있습니다.</p><a class="btn btn-pri" href="#/A1-03">${I('plus')} 포트폴리오 등록하기</a></div></section>`:myShow()):''}
+ ${isArtist()?myShow(E):''}
  <div class="banner-q mt24">${waves()}${kvTag(8)}<div style="position:relative"><p class="h3">궁금한 점이 있으신가요?</p><p class="small" style="opacity:.8">이용 문의, 기본정보 변경, 콘텐츠 삭제 요청을 남겨 주세요.</p></div><a class="btn btn-pri" style="position:relative" href="#/M-19?w=1">문의하기</a></div>${REF(`키비주얼 8 · 마이페이지 하단 문의 배너 — 배너 배경 이미지 자리. 표시 크기 본문 폭×약 130px · 원본 2000×260px · WebP 150KB 이하 · 남색 덮개로 흰 글자 대비 4.5:1 유지 · 장식 이미지(alt="")`)}
- ${REF(E?'초기 상태 예시(가입 직후) — <a class="link" href="#/M-01">기본 화면</a>':'<a class="link" href="#/M-01?empty=1">초기 상태 예시(가입 직후, 내용 없음)</a>')}
- ${REF('좌측 프로필 카드(등록 상태·갱신 D-day 포함)·아이콘 메뉴 · 최근 알림은 맨 위에 3건까지만, 확인하지 않은 알림 수는 대비색 숫자로 표시(헤더 종 아이콘에도 표시) · 다가오는 일정은 본인 일정만 · 캘린더는 활동 등록으로만 연동 · 상단 이미지 배너 없이 제목 줄만')}`)};
+ ${REF(E?'초기 상태 예시(가입 직후) — <a class="link" href="#/M-01">기본 화면</a>':Q.st==='many'?'포트폴리오 4개 이상 예시(꺾쇠 활성) — <a class="link" href="#/M-01">기본 화면</a>':'<a class="link" href="#/M-01?empty=1">초기 상태 예시(가입 직후, 내용 없음)</a> · <a class="link" href="#/M-01?st=many">포트폴리오 4개 이상 예시(꺾쇠 활성)</a>')}
+ ${REF('좌측 프로필 카드(등록 상태·갱신 D-day 포함)·아이콘 메뉴 · 최근 알림은 맨 위에 3건까지만, 확인하지 않은 알림 수는 대비색 숫자로 표시(헤더 종 아이콘에도 표시) · 다가오는 일정은 본인 일정만 · 캘린더는 활동 등록으로만 연동 · 상단 이미지 배너 없이 제목 줄만 · 나의 예술 기록 탭 양옆 꺾쇠는 포트폴리오 4개 이상일 때만 활성')}`))};
 PAGES['M-02']=()=>my('M-02',pgh('내 정보 관리')+`<div class="formcard">${F('아이디',inp('','artport01','text','readonly'),{lock:1,help:'아이디는 변경할 수 없습니다.'})}${F(isArtist()&&S.role!=='artist'?'단체명·기관명':'성명',inp('',myName(),'text','readonly'),{lock:1,help:'기본정보를 바꾸려면 <a class="link" href="#/M-19?w=1">문의 관리</a>에서 요청해 주세요.'})}
- ${F('비밀번호',`<button class="btn btn-line btn-sm">비밀번호 변경</button>`)}${F('이메일',`<div class="inline">${inp('','bada***@example.com')}<button class="btn btn-line btn-sm">재인증</button></div>`,{req:1})}${F('연락처',inp('','010-0000-0000'),{req:1})}${F('수신 동의',chk('(선택) 뉴스레터 및 홍보 정보 수신',true))}</div><div class="row mt24" style="justify-content:flex-end"><button class="btn btn-pri" onclick="toast('저장되었습니다')">저장</button></div>`);
+ ${F('비밀번호',`<button class="btn btn-line btn-sm m1-b36">비밀번호 변경</button>`)}${F('이메일',`<div class="inline">${inp('','bada***@example.com')}<button class="btn btn-line btn-sm m1-b36">재인증</button></div>`,{req:1})}${F('연락처',inp('','010-0000-0000'),{req:1})}${F('수신 동의',chk('(선택) 뉴스레터 및 홍보 정보 수신',true))}</div><div class="row mt24" style="justify-content:flex-end"><button class="btn btn-pri" onclick="toast('저장되었습니다')">저장</button></div>`);
 const RS_ST=['심사대기','심사중','보완요청','등록완료','반려','신청취소'];
 const rsWorks=()=>{const ws=MYPF.flatMap((pf,pi)=>pfWorks(pf).map(w=>[w,pf,pi]));return ws.map(([w,pf,pi],i)=>{const st=pf.st!=='등록완료'?(i%2?'심사중':'심사대기'):w.id==='w1'?'보완요청':w.title==='월명동 드로잉 산책'?'심사중':i%5===3?'심사대기':'등록완료';return {w,pf,pi,st,d:`2026.${st==='등록완료'?'09':'10'}.${String(2+((i*3)%26)).padStart(2,'0')}`}})};
 const rsAct=st=>st==='심사대기'?'<button class="btn btn-line btn-xs">수정</button> <button class="btn btn-ghost btn-xs" onclick="fgDlg(\'cancel\')">신청취소</button>':st==='심사중'?'<button class="btn btn-ghost btn-xs" onclick="fgDlg(\'cancel\')">신청취소</button>':st==='보완요청'?'<a class="btn btn-dark btn-xs" href="#/M-04">보완하기</a>':st==='보완제출'?'<span class="tiny muted">재심사 대기</span>':st==='신청취소'?'<a class="btn btn-line btn-xs" href="#/M-20">임시저장에서 다시 제출</a>':'';
+const rsPg=n=>n>3?`<nav class="rs-pg" aria-label="페이지"><button type="button" class="ms-pa" aria-label="이전 페이지" onclick="rsPgGo(this,-1)">‹</button>${L(Array.from({length:Math.ceil(n/3)},(_,i)=>i+1),k=>`<button type="button" class="${k===1?'on':''}" ${k===1?'aria-current="page"':''} onclick="rsPgGo(this,${k},1)">${k}</button>`)}<button type="button" class="ms-pa" aria-label="다음 페이지" onclick="rsPgGo(this,1)">›</button></nav>`:'';
+function rsPgGo(b,k,abs){const nv=b.closest('.rs-pg'),t=nv.previousElementSibling;const max=Math.ceil(t.querySelectorAll('tbody>tr').length/3);let p=abs?k:(+t.dataset.pg||1)+k;p=Math.max(1,Math.min(max,p));t.dataset.pg=p;nv.querySelectorAll('button:not(.ms-pa)').forEach(x=>{const on=+x.textContent===p;x.classList.toggle('on',on);if(on)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')})}
 PAGES['M-03']=()=>{const f=S.rsF||'전체';const ws=rsWorks();const pfs=MYPF.map((pf,i)=>({pf,i,st:pf.st,d:['2026.09.24','2026.10.08','2026.10.15'][i]||'2026.10.15'}));const ex=[{k:'수정본',t:'포트폴리오 1 · 상세소개·활동내역 수정',d:'2026.10.06',st:'심사대기'},{k:'추가 등록',t:'포트폴리오 1 · 수상내역 1건',d:'2026.09.30',st:'등록완료'}];
  const wex=[{k:'수정본',kind:'작품',t:'월명의 오후',c:'작품 규격 · <span class="nw">대표 이미지</span> 교체',pf:1,d:'2026.10.07',st:'보완요청'},{k:'추가 등록',kind:'활동',t:'월명동 드로잉 산책',c:'활동사진 3장 추가',pf:1,d:'2026.10.05',st:'심사중'},{k:'수정본',kind:'작품',t:'원도심 창문 연작 Ⅰ',c:'한 줄 소개 수정',pf:1,d:'2026.10.03',st:'심사대기'},{k:'추가 등록',kind:'작품',t:'내항의 크레인',c:'영상 링크 1건 추가',pf:1,d:'2026.09.27',st:'등록완료'},{k:'추가 등록',kind:'활동',t:'항구의 작은 낭독회',c:'활동 1건 추가',pf:1,d:'2026.10.04',st:'신청취소'}];
  const RHIST=[['2026.10.07 15:10','작품 〈월명의 오후〉 수정본','보완요청 — 작품 규격·대표 이미지 보완'],['2026.10.06 11:02','포트폴리오 1 · 회화 수정본','신청완료 — 심사대기'],['2026.10.06 09:15','활동 〈항구의 작은 낭독회〉 추가 등록','신청취소 — 임시저장 목록으로 이동'],['2026.10.05 16:20','활동 〈월명동 드로잉 산책〉 추가 등록','심사 시작 — 심사중'],['2026.10.03 10:40','작품 〈원도심 창문 연작 Ⅰ〉 수정본','신청완료 — 심사대기'],['2026.10.02 09:30','포트폴리오 2 · 사진','심사 시작 — 심사중'],['2026.09.30 14:20','포트폴리오 1 · 회화 추가 등록(수상내역)','등록완료 — 공개 페이지에 반영'],['2026.09.30 14:20','포트폴리오 1 · 회화','등록완료 — 공개 페이지에 반영'],['2026.09.29 09:40','포트폴리오 1 · 회화','재심사 시작 — 심사중'],['2026.09.28 10:02','포트폴리오 1 · 회화','보완제출 — 심사대기'],['2026.09.27 13:15','작품 〈내항의 크레인〉 추가 등록','등록완료 — 공개 페이지에 반영'],['2026.09.26 16:40','포트폴리오 1 · 회화','보완요청 — 증빙자료 보완'],['2026.09.25 10:15','포트폴리오 1 · 회화','심사 시작 — 심사중'],['2026.09.24 09:12','포트폴리오 1 · 회화','신청완료 — 심사대기']];
  const all=[...pfs.map(x=>x.st),...ws.map(x=>x.st),...ex.map(x=>x.st),...wex.map(x=>x.st)];const cnt=st=>all.filter(x=>x===st).length;const pass=st=>f==='전체'||st===f;
  const pfRows=pfs.filter(x=>pass(x.st)),wkRows=ws.filter(x=>pass(x.st)),exRows=ex.filter(x=>pass(x.st)),wexRows=wex.filter(x=>pass(x.st));
+ const exAct=(st,href)=>st==='심사대기'?`<div class="rs-acts">${rsAct(st)}</div><span class="tiny muted rs-note">승인 전까지 <span class="nw">기존 정보가</span> 공개됩니다</span>`:st==='등록완료'?`<a class="btn btn-line btn-xs" href="${href}">${I('ext')} 공개 화면</a>`:rsAct(st);
  const empty=t=>`<p class="small muted rs-empty">${f} 상태인 ${t}${(t.charCodeAt(t.length-1)-0xAC00)%28?'이':'가'} 없습니다.</p>`;
  return my('M-03',pgh('등록 현황')+`<p class="small muted" style="margin:-8px 0 16px">등록 신청한 포트폴리오와 작품·활동의 심사 상태를 한곳에서 확인합니다.</p>
  <div class="rs-filter" role="group" aria-label="심사 상태로 보기">${L(['전체',...RS_ST],st=>`<button type="button" class="${f===st?'on':''}" aria-pressed="${f===st}" onclick="S.rsF='${st}';render()">${st}<span>${st==='전체'?all.length:cnt(st)}</span></button>`)}</div>
- ${callout('상태별 수정 안내 — <b>심사대기:</b> 제출한 내용을 수정하거나 신청을 취소할 수 있습니다 &nbsp;|&nbsp; <b>심사중:</b> 수정할 수 없고 신청 취소만 할 수 있습니다<br><b>보완요청:</b> 요청받은 항목만 고쳐 다시 제출하며, 제출하면 다시 심사대기가 됩니다 &nbsp;|&nbsp; <b>신청취소:</b> 심사대기 또는 심사중 상태에서 취소할 수 있으며, 취소한 내용은 임시저장 목록으로 돌아갑니다. 임시저장 목록에서 불러오기 후 수정하여 다시 제출할 수 있습니다.')}
- <h2 class="h3 mt32 mb16">포트폴리오 <span class="muted small">${pfRows.length}건</span></h2>${pfRows.length?tbl(['구분','분야 · 장르','신청일','상태',''],pfRows.map(x=>tr([`<b>포트폴리오 ${x.i+1}</b> · ${x.pf.sub}`,`${x.pf.field} · ${x.pf.genre}`,x.d,sbadge(x.st),x.st==='등록완료'?`<a class="btn btn-line btn-xs" href="#/A3-02?id=${x.pf.aid}">${I('ext')} 공개 화면</a>`:rsAct(x.st)]))):empty('포트폴리오')}
- <h2 class="h3 mt32 mb16">포트폴리오 추가 등록 · 수정본 <span class="muted small">${exRows.length}건</span></h2>${exRows.length?tbl(['구분','내용','제출일','상태',''],exRows.map(x=>tr([badge(x.k,x.k==='수정본'?'b-info':'b-sec'),`<b>${x.t}</b>`,x.d,sbadge(x.st),x.st==='심사대기'?'<span class="tiny muted">승인 전까지 <span class="nw">기존 정보가</span> 공개됩니다</span>':'']))):empty('신청')}
- <h2 class="h3 mt32 mb16">작품·활동 <span class="muted small">${wkRows.length}건</span></h2>${wkRows.length?tbl(['구분','제목','연동 포트폴리오','신청일','상태',''],wkRows.map(x=>tr([badge(x.w.kind,x.w.kind==='작품'?'b-info':'b-sec'),`<b>${x.w.title}</b>`,`포트폴리오 ${x.pi+1} · ${x.pf.sub}`,x.d,sbadge(x.st),x.st==='등록완료'?`<a class="btn btn-line btn-xs" href="#/${x.w.kind==='작품'?'A3-08':'A3-09'}?id=${x.w.id}">${I('ext')} 공개 화면</a>`:rsAct(x.st)]))):empty('작품·활동')}
- <h2 class="h3 mt32 mb16">작품·활동 추가 등록 · 수정본 <span class="muted small">${wexRows.length}건</span></h2>${wexRows.length?tbl(['구분','작품·활동','내용','연동 포트폴리오','제출일','상태',''],wexRows.map(x=>tr([badge(x.k,x.k==='수정본'?'b-info':'b-sec'),`<span class="tbt">${badge(x.kind,x.kind==='작품'?'b-info':'b-sec')}<b>${x.t}</b></span>`,x.c,`포트폴리오 ${x.pf} · ${MYPF[x.pf-1].sub}`,x.d,sbadge(x.st),x.st==='등록완료'?'':x.st==='심사대기'?'<span class="tiny muted">승인 전까지 <span class="nw">기존 정보가</span> 공개됩니다</span>':rsAct(x.st)]))):empty('신청')}
- <section class="box mt32 rs-hist" aria-labelledby="rsh-h"><div class="row between"><h2 id="rsh-h" class="h4" style="margin:0">최근 심사 이력 <span class="muted small">${RHIST.length}건</span></h2><button type="button" class="btn btn-line btn-sm" aria-expanded="${!S.rsHistOff}" aria-controls="rsh-l" onclick="rsHistTog(this)"><span class="lb">${S.rsHistOff?'펼치기':'접기'}</span> <span class="chev ${S.rsHistOff?'':'up'}">${I('chev')}</span></button></div>
- <ul class="timeline rs-hist-l mt16" id="rsh-l" tabindex="0" aria-label="최근 심사 이력 목록" ${S.rsHistOff?'hidden':''}>${L(RHIST,([d,t,e],i)=>`<li class="${i===0?'on':''}"><span class="tiny muted">${d}</span><p><b>${t}</b> · ${e}</p></li>`)}</ul></section>
- ${REF('등록 현황 = 내가 신청한 포트폴리오·포트폴리오 추가 등록/수정본·작품·활동·작품/활동 추가 등록/수정본 전체의 심사 상태 · 최근 심사 이력은 모든 신청을 최신순으로 기본 펼침, 목록 안 스크롤, [접기]/[펼치기] · 위 상태 버튼으로 걸러 보기(건수 표시, 실제 목록에 적용) · 상태별 버튼: 심사대기 수정·신청취소 / 심사중 신청취소 / 보완요청 보완하기 / 등록완료 공개 화면 / 신청취소 임시저장에서 다시 제출 · 신청취소한 제출본(첨부 파일 포함)은 임시저장 목록(M-20)에 「작성 중」으로 돌아가고, 다시 제출하면 새 신청으로 접수')}`)};
-PAGES['M-04']=()=>my('M-04',pgh('보완요청·증빙자료')+`${Q.empty?'<div class="fempty es" role="status"><h3>보완요청이 없습니다.</h3><p>심사 중 보완이 필요하면 알림함과 이메일로 알려 드리고, 이곳에서 사유를 확인해 고칠 수 있습니다.</p></div>':`${callout('<b>보완이 필요한 항목이 있습니다.</b> 상세 사유를 확인하고 해당 자료를 제출해 주세요. 보완 사유는 이메일에는 포함되지 않으며 이 화면에서만 확인할 수 있습니다.','warn')}
+ <div class="rs-co-pc">${callout('상태별 수정 안내 — <b>심사대기:</b> 제출한 내용을 수정하거나 신청을 취소할 수 있습니다 &nbsp;|&nbsp; <b>심사중:</b> 수정할 수 없고 신청 취소만 할 수 있습니다<br><b>보완요청:</b> 요청받은 항목만 고쳐 다시 제출하며, 제출하면 다시 심사대기가 됩니다 &nbsp;|&nbsp; <b>신청취소:</b> 심사대기 또는 심사중 상태에서 취소할 수 있으며, 취소한 내용은 임시저장 목록으로 돌아갑니다. 임시저장 목록에서 불러오기 후 수정하여 다시 제출할 수 있습니다.')}</div><div class="rs-co-m">${callout('상태별 수정 안내<ul class="rs-cl"><li><b>심사대기</b>: 제출한 내용을 수정하거나 신청을 취소할 수 있습니다.</li><li><b>심사중</b>: 수정할 수 없고 신청 취소만 할 수 있습니다.</li><li><b>보완요청</b>: 요청받은 항목만 고쳐 다시 제출하며, 제출하면 다시 심사대기가 됩니다.</li><li><b>신청취소</b>: 심사대기 또는 심사중 상태에서 취소할 수 있으며, 취소한 내용은 임시저장 목록으로 돌아갑니다. 임시저장 목록에서 불러오기 후 수정하여 다시 제출할 수 있습니다.</li></ul>')}</div>
+ <h2 class="h3 mt32 mb16 rs-h1">포트폴리오 <span class="muted small">${pfRows.length}건</span></h2>${pfRows.length?tbl(['구분','분야 · 장르','신청일','상태',''],pfRows.map(x=>tr([`<span><b>포트폴리오 ${x.i+1}</b> · ${x.pf.sub}</span>`,`${x.pf.field} · ${x.pf.genre}`,x.d,sbadge(x.st),x.st==='등록완료'?`<a class="btn btn-line btn-xs" href="#/A3-02?id=${x.pf.aid}">${I('ext')} 공개 화면</a>`:rsAct(x.st)])))+rsPg(pfRows.length):empty('포트폴리오')}
+ <h2 class="h3 mt32 mb16 rs-h2">포트폴리오 추가 등록 · 수정본 <span class="muted small">${exRows.length}건</span></h2>${exRows.length?tbl(['구분','내용','제출일','상태',''],exRows.map(x=>tr([badge(x.k,x.k==='수정본'?'b-info':'b-sec'),`<b>${x.t}</b>`,x.d,sbadge(x.st),exAct(x.st,`#/A3-02?id=${MYPF[0].aid}`)])))+rsPg(exRows.length):empty('신청')}
+ <h2 class="h3 mt32 mb16 rs-h3">작품·활동 <span class="muted small">${wkRows.length}건</span></h2>${wkRows.length?tbl(['구분','제목','연동 포트폴리오','신청일','상태',''],wkRows.map(x=>tr([badge(x.w.kind,x.w.kind==='작품'?'b-info':'b-sec'),`<b>${x.w.title}</b>`,`포트폴리오 ${x.pi+1} · ${x.pf.sub}`,x.d,sbadge(x.st),x.st==='등록완료'?`<a class="btn btn-line btn-xs" href="#/${x.w.kind==='작품'?'A3-08':'A3-09'}?id=${x.w.id}">${I('ext')} 공개 화면</a>`:rsAct(x.st)])))+rsPg(wkRows.length):empty('작품·활동')}
+ <h2 class="h3 mt32 mb16 rs-h4">작품·활동 추가 등록 · 수정본 <span class="muted small">${wexRows.length}건</span></h2>${wexRows.length?tbl(['구분','작품·활동','내용','연동 포트폴리오','제출일','상태',''],wexRows.map(x=>tr([badge(x.k,x.k==='수정본'?'b-info':'b-sec'),`<span class="tbt">${badge(x.kind,x.kind==='작품'?'b-info':'b-sec')}<b>${x.t}</b></span>`,`<span>${x.c}</span>`,`포트폴리오 ${x.pf} · ${MYPF[x.pf-1].sub}`,x.d,sbadge(x.st),exAct(x.st,`#/${x.kind==='작품'?'A3-08':'A3-09'}?id=${(WORKS.find(w=>w.title===x.t)||{}).id}`)])))+rsPg(wexRows.length):empty('신청')}
+ <section class="box mt32 rs-hist" aria-labelledby="rsh-h"><h2 id="rsh-h" class="h4" style="margin:0">최근 심사 이력 <span class="muted small">${RHIST.length}건</span></h2>
+ <ul class="timeline rs-hist-l mt16" id="rsh-l" tabindex="0" aria-label="최근 심사 이력 목록 (목록 안에서 스크롤)">${L(RHIST,([d,t,e],i)=>`<li class="${i===0?'on':''}"><span class="tiny muted">${d}</span><p><b>${t}</b> · ${e}</p></li>`)}</ul></section>
+ ${REF('등록 현황 = 내가 신청한 포트폴리오·포트폴리오 추가 등록/수정본·작품·활동·작품/활동 추가 등록/수정본 전체의 심사 상태 · 최근 심사 이력은 모든 신청을 최신순으로 4건 높이까지 보이고 나머지는 목록 안 스크롤(접기 없음) · 추가 등록·수정본도 심사대기 [수정]·신청취소(승인 전까지 기존 정보 공개 안내) / 등록완료 [공개 화면] · 위 상태 버튼으로 걸러 보기(건수 표시, 실제 목록에 적용) · 상태별 버튼: 심사대기 수정·신청취소 / 심사중 신청취소 / 보완요청 보완하기 / 등록완료 공개 화면 / 신청취소 임시저장에서 다시 제출 · 신청취소한 제출본(첨부 파일 포함)은 임시저장 목록(M-20)에 「작성 중」으로 돌아가고, 다시 제출하면 새 신청으로 접수')}`)};
+PAGES['M-04']=()=>m1Ini(Q.empty,my('M-04',pgh('보완요청·증빙자료')+`${Q.empty?'<div class="fempty es m1-es" role="status"><h3>보완요청이 없습니다.</h3><p>심사 중 보완이 필요하면 알림함과 이메일로 알려 드리고, 이곳에서 사유를 확인해 고칠 수 있습니다.</p></div>':`${callout('<b>보완이 필요한 항목이 있습니다.</b> 상세 사유를 확인하고 해당 자료를 제출해 주세요. 보완 사유는 이메일에는 포함되지 않으며 이 화면에서만 확인할 수 있습니다.','warn')}
  <div class="box mt16"><div class="row between"><b>작품 〈월명의 오후〉 · 1차 보완요청</b><span class="tiny muted">요청일 2026.10.07</span></div>
  ${tbl(['항목','사유','상세 사유'],[tr(['<b>작품 규격</b>',badge('필수 입력정보 누락 또는 오류','b-bad'),'규격 단위(cm)가 빠져 있습니다.']),tr(['<b>증빙자료</b>',badge('제출정보와 증빙자료 불일치','b-bad'),'전시 연도가 리플릿과 다릅니다. 2026년 리플릿을 첨부해 주세요.'])])}
  <div class="formcard mt24" style="border-color:var(--accent)"><h3>보완 입력</h3>${F('작품 규격',inp('','162.2 × 130.3cm'),{req:1})}${F('추가 증빙',`<div class="upl">${I('up')}<p class="mt8">파일을 끌어 놓거나 클릭해 업로드</p><p class="tiny">이미지 · PDF · 한글 · 워드 · 엑셀 · 파워포인트 등 / 개당 10MB · 최대 20개 · 한 번에 50MB 이하</p></div>`,{req:1})}</div>
  <div class="row mt24" style="justify-content:flex-end"><button class="btn btn-line" onclick="toast('임시저장되었습니다')">임시저장</button><button class="btn btn-pri" onclick="toast('보완 내용을 제출했습니다');go('M-03')">보완 제출하기</button></div></div>`}
  <div class="pg-h mt48" id="evi"><h2 class="h3">증빙자료</h2><button class="btn btn-pri btn-sm" onclick="toast('파일 선택 창이 열립니다')">${I('up')} 증빙자료 추가 제출</button></div>
  ${Q.empty?'':callout('<b>추가 증빙자료를 제출해 주세요.</b> 상세 사유를 확인하고 해당 자료를 제출해 주세요.','warn')}
- <div class="mt16"></div>${tbl(['파일명','구분','제출일','상태'],[tr(['2026_개인전_리플릿.pdf','관리자 요청','2026.09.25',sbadge('승인')]),tr(['2025_단체전_참여확인서.jpg','관리자 요청','2026.09.25',sbadge('승인')]),tr(['보완_증빙.pdf','보완 제출','2026.09.28',sbadge('승인')])])}
+ <div class="${Q.empty?'':'mt16 '}m1-evi"></div>${tbl(['파일명','구분','제출일','상태'],[tr(['2026_개인전_리플릿.pdf','관리자 요청','2026.09.25',sbadge('승인')]),tr(['2025_단체전_참여확인서.jpg','관리자 요청','2026.09.25',sbadge('승인')]),tr(['보완_증빙.pdf','보완 제출','2026.09.28',sbadge('승인')])])}
  <p class="tiny muted mt8">제출한 증빙자료는 공개되지 않으며 심사에만 사용됩니다. 정보 갱신 때에는 최근 2년 이내 활동을 확인할 수 있는 자료를 제출해 주세요.</p>
- ${REF('증빙자료는 이 화면 아래쪽에서 제출 · 등록 신청 단계에는 증빙 제출 없음, 관리자 요청 시에만 제출 · 증빙자료 3년 보관 후 파기 · '+(Q.empty?'<a class="link" href="#/M-04">기본 화면</a>':'<a class="link" href="#/M-04?empty=1">보완요청 없음 예시</a>'))}`);
-PAGES['M-05']=()=>Q.empty?my('M-05',pgh('포트폴리오 관리')+'<div class="fempty es" role="status"><h3>등록한 포트폴리오가 없습니다.</h3><p>포트폴리오를 등록하고 관리자 승인을 받으면 예술창고에 공개됩니다. 분야가 다르면 포트폴리오를 여러 개 만들 수 있습니다.</p><a class="btn btn-pri" href="#/A1-03">포트폴리오 등록하기</a></div>'+REF('등록 전 상태 예시 — <a class="link" href="#/M-05">기본 화면</a>')):my('M-05',pgh('포트폴리오 관리',`<a class="btn btn-line btn-sm" href="#/A3-02?id=a1">${I('ext')} 공개 화면 보기</a><a class="btn btn-pri btn-sm" href="#/M-22">${I('plus')} 추가 등록</a>`)+`<div class="pf-count"><p style="margin:0">내 포트폴리오 <b>${MYPF.length}</b>개 <span class="muted small">· 공개 중 ${MYPF.filter(x=>x.st==='등록완료').length} · 심사 대기·심사 중 ${MYPF.filter(x=>x.st!=='등록완료').length}</span></p></div>
+ ${REF('증빙자료는 이 화면 아래쪽에서 제출 · 등록 신청 단계에는 증빙 제출 없음, 관리자 요청 시에만 제출 · 증빙자료 3년 보관 후 파기 · '+(Q.empty?'<a class="link" href="#/M-04">기본 화면</a>':'<a class="link" href="#/M-04?empty=1">보완요청 없음 예시</a>'))}`),{only:'M-04'});
+PAGES['M-05']=()=>Q.empty?m1Ini(1,my('M-05',pgh('포트폴리오 관리')+'<div class="fempty es m1-es" role="status"><h3>등록한 포트폴리오가 없습니다.</h3><p>포트폴리오를 등록하고 관리자 승인을 받으면 예술창고에 공개됩니다. 분야가 다르면 포트폴리오를 여러 개 만들 수 있습니다.</p><a class="btn btn-pri" href="#/A1-03">포트폴리오 등록하기</a></div>'+REF('등록 전 상태 예시 — <a class="link" href="#/M-05">기본 화면</a>'))):my('M-05',pgh('포트폴리오 관리',`<a class="btn btn-line btn-sm" href="#/A3-02?id=a1">${I('ext')} 공개 화면 보기</a><a class="btn btn-pri btn-sm" href="#/M-22">${I('plus')} 추가 등록</a>`)+`<div class="pf-count"><p style="margin:0">내 포트폴리오 <b>${MYPF.length}</b>개 <span class="muted small">· 공개 중 ${MYPF.filter(x=>x.st==='등록완료').length} · 심사 대기·심사 중 ${MYPF.filter(x=>x.st!=='등록완료').length}</span></p></div>
  ${tbl(['구분','분야 · 장르','상태','작품·활동',''],MYPF.map((x,i)=>tr([`<b>포트폴리오 ${i+1}</b> · ${x.sub}`,`${x.field} · ${x.genre}`,pfStBadge(x.st),`${pfWorks(x).length}건`,i===0?'<span class="tiny muted">아래에서 관리</span>':`<a class="btn btn-line btn-xs" href="#/M-03">등록 현황</a>`])))}
  <h2 class="h3 mt32 mb16">포트폴리오 1 · ${MYPF[0].sub}</h2><div class="box" style="display:grid;grid-template-columns:140px 1fr auto;gap:24px;align-items:center">${PH(1,'').replace('class="ph','style="aspect-ratio:4/5" class="ph')}<div><p class="h3">${myName()}</p><p class="small muted">시각 · 회화 · 월명동</p><div class="row mt8">${sbadge(S.pfPriv?'비공개':'공개')}${badge('수정본 심사대기','b-info')}</div><p class="tiny muted mt8">${S.pfPriv?'비공개 중에는 예술창고·예술지도·검색에 보이지 않습니다. 내용을 바꾸지 않고 재공개하면 심사 없이 바로 공개됩니다.':'수정한 내용은 승인된 뒤 반영됩니다. 승인 전까지는 기존 정보가 그대로 공개됩니다.'}</p></div>
- <div style="display:grid;gap:8px"><a class="btn btn-dark btn-sm" href="#/A1-04">수정하기</a>${S.pfPriv?`<button class="btn btn-pri btn-sm" onclick="pfPrivToggle()">재공개하기</button>`:`<button class="btn btn-line btn-sm" onclick="pfPrivToggle()">비공개로 전환</button>`}</div></div>
- <h2 class="h3 mt32 mb16">추가 등록 내역</h2>
+ <div style="display:grid;gap:8px"><a class="btn btn-dark btn-sm m1-b36" href="#/A1-04">수정하기</a>${S.pfPriv?`<button class="btn btn-pri btn-sm m1-b36" onclick="pfPrivToggle()">재공개하기</button>`:`<button class="btn btn-line btn-sm m1-b36" onclick="pfPrivToggle()">비공개로 전환</button>`}</div></div>
+ <h2 class="h3 mt32 mb16 m1-addh">추가 등록 내역</h2>
  ${tbl(['구분','내용','제출일','상태',''],[tr([badge('추가 등록','b-sec'),'<b>활동내역 2건 · 활동사진 3장</b>','2026.10.06',sbadge('심사대기'),'<a class="btn btn-line btn-xs" href="#/M-22">수정</a>']),tr([badge('수정본','b-info'),'<b>상세소개 · 활동내역 수정</b>','2026.10.06',sbadge('심사대기'),'<button class="btn btn-line btn-xs">수정</button>']),tr([badge('추가 등록','b-sec'),'<b>수상내역 1건</b>','2026.09.30',sbadge('승인'),''])])}
  <p class="tiny muted mt8">새로운 활동·수상 이력, 사진, 영상은 [추가 등록]으로 언제든 제출할 수 있습니다.</p>
- <div class="mt24"></div>${fgWarn('포트폴리오는 직접 삭제할 수 없습니다.','먼저 비공개로 전환한 뒤 <a class="link" href="#/M-19?w=1">문의 관리</a>에서 삭제를 요청해 주세요. 삭제되면 연결된 모든 포트폴리오·작품·활동에서 해당 내용이 함께 삭제됩니다.')}
+ <div class="mt48 m1-gap"></div>${fgWarn('포트폴리오는 직접 삭제할 수 없습니다.','먼저 비공개로 전환한 뒤 <a class="link" href="#/M-19?w=1">문의 관리</a>에서 삭제를 요청해 주세요. 삭제되면 연결된 모든 포트폴리오·작품·활동에서 해당 내용이 함께 삭제됩니다.')}
  <div class="mt16"></div>${callout('비공개로 전환한 뒤 내용을 바꾸지 않고 다시 공개하면 별도 심사 없이 바로 공개됩니다.')}
  ${REF('[추가 등록]은 상단 강조 버튼(작품·활동 관리와 동일 패턴) · 추가 등록은 모든 심사 상태에서 가능, 제출 즉시 관리자 대시보드 알림 · <a class="link" href="#/M-05?empty=1">포트폴리오 없음 예시</a>')}`);
 const mw=()=>Q.empty?[]:myWorks();
-PAGES['M-06']=()=>my('M-06',pgh('작품·활동 관리',`<a class="btn btn-pri btn-sm" href="#/M-07">${I('plus')} 작품·활동 등록</a>`)+`<div class="seg mb16" role="tablist" aria-label="작품·활동 구분">${L([['전체',''],['작품','작품'],['활동','활동']],([x,k])=>`<button type="button" role="tab" class="${(Q.k||'')===k?'on':''}" aria-selected="${(Q.k||'')===k}" onclick="go('M-06${k?'?k='+k:''}')">${x} ${mw().filter(w=>!k||w.kind===k).length}</button>`)}</div>
- ${mw().filter(w=>!Q.k||w.kind===Q.k).length?tbl(['구분','제목','상태','공개','예술캘린더 연동','문화예술진흥 지원사업',''],mw().map((w,i)=>[w,i]).filter(([w])=>!Q.k||w.kind===Q.k).map(([w,i])=>tr([badge(w.kind,w.kind==='작품'?'b-info':'b-sec'),`<a href="#/${w.kind==='작품'?'A3-08':'A3-09'}?id=${w.id}"><b>${w.title}</b></a>`,sbadge(['등록완료','보완요청','심사중','등록완료','등록완료','심사대기'][i]),w.priv?sbadge('비공개'):sbadge('공개'),w.kind==='활동'?badge('연동됨','b-ok'):'<span class="tiny muted">일정 없음</span>',w.support?badge('노출','b-dark'):'<span class="tiny muted">—</span>',`<div class="row" style="gap:4px"><button class="btn btn-line btn-xs">수정</button><button class="btn btn-ghost btn-xs">${w.priv?'재공개':'비공개'}</button></div>`]))):`<div class="fempty es" role="status"><h3>등록한 ${Q.k||'작품·활동'}이 없습니다.</h3><p>[작품·활동 등록]으로 작품이나 활동을 등록해 주세요. 관리자 승인 뒤 예술창고에 공개됩니다.</p><a class="btn btn-pri" href="#/M-07">${I('plus')} 작품·활동 등록</a></div>`}
+PAGES['M-06']=()=>my('M-06',pgh('작품·활동 관리')+`<div class="row between mb16 m1-segrow"><div class="seg" role="tablist" aria-label="작품·활동 구분">${L([['전체',''],['작품','작품'],['활동','활동']],([x,k])=>`<button type="button" role="tab" class="${(Q.k||'')===k?'on':''}" aria-selected="${(Q.k||'')===k}" onclick="go('M-06${k?'?k='+k:''}')">${x} ${mw().filter(w=>!k||w.kind===k).length}</button>`)}</div><a class="btn btn-pri btn-sm" href="#/M-07">${I('plus')} 작품·활동 등록</a></div>
+ ${mw().filter(w=>!Q.k||w.kind===Q.k).length?tbl(['구분','제목','상태','공개','예술캘린더 연동','문화예술진흥 지원사업',''],mw().map((w,i)=>[w,i]).filter(([w])=>!Q.k||w.kind===Q.k).map(([w,i])=>tr([badge(w.kind,w.kind==='작품'?'b-info':'b-sec'),`<a href="#/${w.kind==='작품'?'A3-08':'A3-09'}?id=${w.id}"><b>${w.title}</b></a>`,sbadge(['등록완료','보완요청','심사중','등록완료','등록완료','심사대기'][i]),w.priv?sbadge('비공개'):sbadge('공개'),w.kind==='활동'?badge('연동됨','b-ok'):'<span class="tiny muted">일정 없음</span>',w.support?badge('노출','b-dark'):'<span class="tiny muted">—</span>',`<div class="row" style="gap:4px"><button class="btn btn-line btn-xs">수정</button><button class="btn btn-line btn-xs">${w.priv?'재공개':'비공개'}</button></div>`]))):`<div class="fempty es" role="status"><h3>등록한 ${Q.k||'작품·활동'}이 없습니다.</h3><p>[작품·활동 등록]으로 작품이나 활동을 등록해 주세요. 관리자 승인 뒤 예술창고에 공개됩니다.</p><a class="btn btn-pri" href="#/M-07">${I('plus')} 작품·활동 등록</a></div>`}
  <h2 class="h3 mt32 mb16">예술캘린더 연동 내역</h2>${Q.empty?'<p class="small muted rs-empty">예술캘린더에 연동된 활동이 없습니다.</p>':tbl(['활동명','기간','연동 상태'],[tr(['월명동 드로잉 산책','2026.10.16',sbadge('승인')+' 예술캘린더에 공개 중'])])}<div class="mt24"></div>${fgInfo('안내','수정본 승인 전까지 기존 공개정보를 유지합니다. 내용을 바꾸지 않은 재공개는 재승인 없이 즉시 반영됩니다.')}<div class="mt16"></div>${fgWarn('작품·활동은 직접 삭제할 수 없습니다.','비공개로 전환한 뒤 <a class="link" href="#/M-19?w=1">문의 관리</a>에서 삭제를 요청해 주세요.')}${REF('상단 [작품·활동 등록] 버튼으로 등록 단계 진입')}`);
 const WK_STEPS=['시작','기본정보','상세정보','이미지·미디어','추가정보','미리보기·등록','완료'];
 const wkIdx={'M-07':1,'M-08':2,'M-09':3,'M-10':3,'M-11':4,'M-12':5,'M-13':6,'M-14':7};
@@ -3302,7 +4221,7 @@ const wkPrev=id=>({'M-08':'M-07','M-09':'M-08','M-10':'M-08','M-11':S.wkKind==='
 function wk(id,title,body,o={}){if(isMember()&&!isArtist())return my('M-06',gate('예술인(개인·단체·기관) 회원만 등록할 수 있습니다',['artist','org','inst'],1));const n=wkIdx[id];return my('M-06',`<a class="small muted" href="#/M-06">← 작품·활동 관리</a><div class="progress mt8"><h1 class="sec-t">${title}</h1><b>${n}/7 단계</b></div><p class="small muted mt8">1회 제출 = ${S.wkKind} 1건 · 등록 유형: <b style="color:var(--ink)">${S.wkKind}</b></p><ol class="stepper mt16">${L(WK_STEPS,(t,i)=>`<li class="${i+1<n?'done':i+1===n?'cur':''}">${t}</li>`)}</ol>${body}
  ${o.noBar?'':`<div class="formbar"><div class="l"><button class="btn btn-line" onclick="toast('임시저장되었습니다')">임시저장</button><a class="btn btn-line" href="#/M-20">불러오기</a><span class="autosave">${I('clock')} 5분마다 자동 저장</span></div><div class="r"><span class="fb-step" aria-label="7단계 중 ${n}단계">${n}<small>/7</small></span>${wkPrev(id)?`<a class="btn btn-line" href="#/${wkPrev(id)}">이전</a>`:''}${id!=='M-13'&&id!=='M-07'?`<a class="btn btn-line fb-pv" href="#/M-13">미리보기</a>`:''}<a class="btn btn-pri ${id==='M-13'?'is-off':''}" ${id==='M-13'?'id="qsubmit" aria-disabled="true" onclick="return qSubmit()"':o.guard?`onclick="return ${o.guard}()"`:['M-08','M-09','M-10','M-11'].includes(id)?'onclick="return reqGuard()"':''} href="#/${wkNext(id)}">${o.next||'다음 단계'}</a></div></div>`}`)}
 PAGES['M-07']=()=>{if(Q.k==='작품'||Q.k==='활동')S.wkKind=Q.k;return wk('M-07','작품·활동 등록 — 유형 선택',`<div class="grid2">${L([['작품','img','회화·조각·사진·문학 작품 등'],['활동','cal','공연·전시 등 일정이 있는 활동']],([k,ic,d])=>`<button class="typecard ${S.wkKind===k?'on':''}" style="padding:24px" onclick="S.wkKind='${k}';render()"><span class="tc-i" style="width:56px;height:56px">${I(ic)}</span><span><b style="font-size:1.111rem">${k} 등록</b><span>${d}</span></span></button>`)}</div>${callout('작품·활동은 한 번에 1건씩 등록합니다. 작품·활동을 여러 개 등록하실 경우 추가 등록을 여러 건 진행해 주세요.')}`.replace('</div>'+'<div class="callout','</div><div class="mt16"></div><div class="callout'),{next:'시작하기'})};
-PAGES['M-08']=()=>{const f=S.wf||'시각';const w=S.wkKind==='작품';return wk('M-08','② 기본정보',`<div class="formcard">${F('연동할 포트폴리오',`<select class="inp" style="max-width:480px" aria-required="true"><option value="" selected disabled>포트폴리오를 선택하세요</option>${L(MYPF,(x,i)=>`<option>포트폴리오 ${i+1} · ${x.field} ${x.genre} (${x.st==='등록완료'?'등록완료':x.st})</option>`)}</select>`,{req:1,help:'이 작품·활동을 표시할 내 포트폴리오를 고르세요. 신청완료(심사대기)부터 승인까지 모든 단계의 포트폴리오를 고를 수 있습니다. 반려되거나 신청을 취소한 포트폴리오는 목록에 없습니다.'})}${F('등록 유형',`<div class="row">${badge(S.wkKind,'b-dark')}</div>`,{req:1})}${F(S.wkKind+'명',inp('',w?'월명의 오후':'월명동 드로잉 산책'),{req:1})}${F(w?'작품 부제':'부제',inp(''),{opt:1})}
+PAGES['M-08']=()=>{const f=S.wf||'시각';const w=S.wkKind==='작품';return wk('M-08','② 기본정보',`<div class="formcard">${F('연동할 포트폴리오',`<select class="inp" style="max-width:480px" aria-required="true"><option value="" selected disabled>포트폴리오를 선택하세요</option>${L(MYPF,(x,i)=>`<option>포트폴리오 ${i+1} · ${x.field} ${x.genre} (${x.st==='등록완료'?'등록완료':x.st})</option>`)}</select>`,{req:1,help:'이 작품·활동을 표시할 내 포트폴리오를 고르세요. 신청완료(심사대기)부터 승인까지 모든 단계의 포트폴리오를 고를 수 있습니다. 반려되거나 신청을 취소한 포트폴리오는 목록에 없습니다.'})}${F('등록 유형',`<div class="row" style="padding-top:6px">${badge(S.wkKind,'b-dark')}</div>`,{req:1})}${F(S.wkKind+'명',inp('',w?'월명의 오후':'월명동 드로잉 산책'),{req:1})}${F(w?'작품 부제':'부제',inp(''),{opt:1})}
  ${F('분야',`<div class="chips" role="radiogroup" aria-label="분야">${L(CAT6,k=>`<button type="button" class="chip ${k===f?'on':''}" role="radio" aria-checked="${k===f}" onclick="S.wf='${k}';render()">${k}</button>`)}</div>`,{req:1,help:'분야를 고르면 세부장르가 바뀝니다.'})}
  ${F('세부장르',f==='기타'?inp('분야와 장르를 직접 입력하세요'):genreChips(f,f==='시각'?['회화']:[]),{req:1,help:'여러 개 고를 수 있으며, 「기타」를 고르면 직접 입력할 수 있습니다.'})}
  ${F(w?'제작 연도':'개최 연도',`<div class="row">${sel(['2026','2025','2024','2023'],'2026','style="max-width:180px"')}${chk('진행중')}</div>`,{req:1})}${F('한 줄 소개',inp('50자 이내',w?'원도심 골목에 내려앉은 오후의 빛':'작가와 함께 걷고 그리는 골목 드로잉','text','maxlength="50"'),{req:1})}
@@ -3310,12 +4229,12 @@ PAGES['M-08']=()=>{const f=S.wf||'시각';const w=S.wkKind==='작품';return wk(
 PAGES['M-09']=()=>{S.wkKind='작품';return wk('M-09','③ 상세정보 — 작품',`<div class="formcard">${F('작품 개요',ta('작품의 의도와 내용을 소개해 주세요'),{req:1})}${F('작품 기법',inp('예) 캔버스에 유채'),{req:1})}${F('작품 규격',inp('예) 162.2 × 130.3cm'),{req:1})}${F('소재',inp('예) 캔버스, 유채 물감'),{req:1})}${F('소장 여부',`<div class="row wrapf" role="radiogroup">${rad('own','소장 및 판매 가능')}${rad('own','비매품')}${rad('own','미정')}</div>`,{req:1})}${REF('작품 상세 항목 모두 필수, 소장 여부 3가지 중 선택')}</div>`)};
 PAGES['M-10']=()=>{S.wkKind='활동';return wk('M-10','④ 상세정보 — 활동',`<div class="formcard">${F('활동 개요',ta('활동 내용을 소개해 주세요'),{req:1})}${F('활동 유형',`<div class="chips" role="radiogroup" aria-label="활동 유형">${L(CAT6,k=>`<button type="button" class="chip ${k==='시각'?'on':''}" role="radio" aria-checked="${k==='시각'}" onclick="this.parentNode.querySelectorAll('.chip').forEach(x=>{x.classList.toggle('on',x===this);x.setAttribute('aria-checked',x===this)})">${k}</button>`)}</div>`,{req:1,help:'예술캘린더의 분야 색과 필터에 쓰입니다.'})}${F('주최 및 주관',inp('','한바다'),{req:1})}${F('협력기관',inp(''),{opt:1})}${F('활동 장소',inp('장소를 직접 입력하세요','월명동 일대'),{req:1})}${F('활동 기간',`<div class="row">${inp('','2026-10-16','date')}<span>~</span>${inp('','2026-10-16','date')}</div>`,{req:1})}${F('관람 및 참여 대상',chips(['전체관람가','어린이','청소년','성인'],['전체관람가']),{req:1})}${F('관람료 및 참가비',`<div class="row">${rad('fee','무료',true)}${rad('fee','유료')}${inp('금액 숫자 입력','','text','style="max-width:180px"')}</div>`,{req:1})}${REF('활동유형 6분류 = 예술캘린더 분야 · 지원사업 선정 여부는 ⑦ 미리보기에서 질문')}</div>`)};
 PAGES['M-11']=()=>wk('M-11','⑤ 이미지 및 미디어',`<div class="formcard">${F('대표 이미지',`<div class="thumbs"><div class="img-actw">${PH(2,'')}<span class="img-act">변경 | 삭제</span></div></div>`,{req:1})}${F('추가 이미지 (최대 10장)',`<div class="thumbs">${L([3,4,5],t=>`<div class="img-actw">${PH(t,'')}<span class="img-act">변경 | 삭제</span></div>`)}<div class="upl" style="display:grid;place-items:center">${I('plus')}<span class="tiny">3/10</span></div></div>`,{opt:1})}${F('영상 링크 (최대 5개)',inp('https://youtu.be/...'),{opt:1})}</div>`);
-PAGES['M-12']=()=>wk('M-12','⑥ 추가정보',`<div class="formcard">${F('해시태그',tagPick([]),{req:1,help:'관리자가 지정한 기본 해시태그 중에서 1개 이상 고릅니다.'})}${F('관련자료',`<div class="upl">${I('up')}<p class="mt8">보도자료 등 — 상세 화면 “관련자료”에 표시됩니다<br>이미지 · PDF · 한글 · 워드 · 엑셀 · 파워포인트 등 / 개당 10MB · 최대 5개 · 한 번에 50MB 이하</p></div>${Q.err?`<ul class="upl-list">${L([['2026_보도자료.pdf','1.2MB'],['전시전경.jpg','3.4MB']],([n,s])=>`<li>${I('file')}<b>${n}</b><span class="tiny muted">${s} · 올림</span><button class="btn btn-ghost btn-xs" type="button">삭제</button></li>`)}</ul>${callout('<b>파일 2개를 올리지 못했습니다.</b><br>· 공연실황_원본.mov (148MB) — 파일 하나는 10MB 이하만 올릴 수 있습니다.<br>· setup.exe — 실행 파일(exe 등)은 올릴 수 없습니다.','bad')}`:''}`,{opt:1})}${REF('필수: 해시태그 최소 1개(목록 표시 통일) / 선택: 관련자료 · '+(Q.err?'<a class="link" href="#/M-12">기본 화면</a>':'<a class="link" href="#/M-12?err=1">파일 업로드 실패 예시</a>'))}</div>`,{guard:'tagGuard'});
+PAGES['M-12']=()=>wk('M-12','⑥ 추가정보',`<div class="formcard">${F('해시태그',tagPick([]),{req:1,help:'관리자가 지정한 기본 해시태그 중에서 1개 이상 고릅니다.'})}${F('관련자료',`<div class="upl m2-upl${Q.err?' m2-bad':''}">${I('up')}<p>보도자료 등 — 상세 화면 “관련자료”에 표시됩니다</p><p class="m2-upl2">이미지 · PDF · 한글 · 워드 · 엑셀 · 파워포인트 등 / 개당 10MB · 최대 5개 · 한 번에 50MB 이하</p></div>${Q.err?`<ul class="upl-list">${L([['2026_보도자료.pdf','1.2MB'],['전시전경.jpg','3.4MB']],([n,s])=>`<li>${I('file')}<b>${n}</b><span class="tiny muted">${s} · 올림</span><button class="btn btn-ghost btn-xs" type="button">삭제</button></li>`)}</ul>${callout('<b>파일 2개를 올리지 못했습니다.</b><br>· 공연실황_원본.mov (148MB) — 파일 하나는 10MB 이하만 올릴 수 있습니다.<br>· setup.exe — 실행 파일(exe 등)은 올릴 수 없습니다.','bad')}`:''}`,{opt:1,cls:'m2-frel'})}${REF('필수: 해시태그 최소 1개(목록 표시 통일) / 선택: 관련자료 · '+(Q.err?'<a class="link" href="#/M-12">기본 화면</a>':'<a class="link" href="#/M-12?err=1">파일 업로드 실패 예시</a>'))}</div>`,{guard:'tagGuard'});
 function qOk(){return !!(document.querySelector('input[name=q1]:checked')&&document.querySelector('input[name=q2]:checked'))}
 function qCheck(){const b=document.getElementById('qsubmit');if(b){b.classList.toggle('is-off',!qOk());b.setAttribute('aria-disabled',!qOk())}if(qOk()){const m=document.getElementById('qmsg');if(m)m.hidden=true;document.querySelectorAll('.qcard').forEach(c=>c.classList.remove('need'))}}
 function qSubmit(){if(!qOk()){const m=document.getElementById('qmsg');m.hidden=false;document.querySelectorAll('.qcard').forEach(c=>{const nm=c.dataset.q;c.classList.toggle('need',!document.querySelector('input[name='+nm+']:checked'))});document.getElementById('qcards').scrollIntoView({behavior:'smooth',block:'center'});return false}return confirm('입력한 내용으로 제출하시겠습니까?')}
-PAGES['M-13']=()=>{const has=S.wkKind==='활동';const qa='onchange="qCheck()"';return wk('M-13','⑦ 미리보기 및 등록',`${callout('<b>제출 전 꼭 확인해 주세요.</b> 아래는 승인 후 공개될 화면입니다. 하단의 두 질문에 <b>직접 답해야 제출할 수 있으며</b>, [이대로 제출하기]를 누르지 않고 나가면 등록이 완료되지 않습니다.','warn')}
- <div class="box mt16" style="border:3px dashed var(--accent);padding:24px;display:grid;grid-template-columns:280px 1fr;gap:24px">${PH(2,'대표 이미지').replace('class="ph','style="aspect-ratio:4/3" class="ph')}<div>${badge(S.wkKind,has?'b-sec':'b-info')}<p class="h3 mt8">${has?'월명동 드로잉 산책':'월명의 오후'}</p><p class="small muted">시각 · 회화 · ${myName()}</p><p class="small mt8">${has?'작가와 함께 걷고 그리는 골목 드로잉 · 2026.10.16 · 월명동 일대':'원도심 골목에 내려앉은 오후의 빛'}</p></div></div>
+PAGES['M-13']=()=>{const has=S.wkKind==='활동';const qa='onchange="qCheck()"';return wk('M-13','⑦ 미리보기 및 등록',`${callout('<b>제출 전 꼭 확인해 주세요.</b> 아래는 승인 후 공개될 화면입니다. 하단의 두 질문에 <b>직접 답해야 제출할 수 있으며</b>,<br>[이대로 제출하기]를 누르지 않고 나가면 등록이 완료되지 않습니다.','warn')}
+ <div class="box mt16" style="border:3px solid var(--accent);padding:24px;display:grid;grid-template-columns:280px 1fr;gap:24px">${PH(2,'').replace('class="ph','style="aspect-ratio:4/3" class="ph')}<div>${badge(S.wkKind,has?'b-sec':'b-info')}<p class="h3 mt8">${has?'월명동 드로잉 산책':'월명의 오후'}</p><p class="small muted">시각 · 회화 · ${myName()}</p><p class="small mt8">${has?'작가와 함께 걷고 그리는 골목 드로잉 · 2026.10.16 · 월명동 일대':'원도심 골목에 내려앉은 오후의 빛'}</p></div></div>
  <div id="qcards">
  <div class="formcard mt24 qcard" data-q="q1"><h3>질문 1 · 예술캘린더 등록 <em class="req">*</em></h3><div class="f stack">${has?`<div class="box-p" style="padding:16px 20px">${I('cal').replace('class="ic"','class="ic" style="display:inline;vertical-align:-3px"')} 입력한 일정: <b>월명동 드로잉 산책 · 2026.10.16(금) · 월명동 일대</b></div><p class="mt8"><b>이 일정을 예술캘린더에 등록하시겠습니까?</b></p><div class="row mt8 wrapf" role="radiogroup">${rad('q1','예 — 승인되면 예술캘린더에 공개됩니다',false,qa)}${rad('q1','아니오 — 예술캘린더에 공개하지 않습니다',false,qa)}</div>`:`<div class="box-p" style="padding:16px 20px">등록할 일정이 없습니다. 이 작품은 예술캘린더에 등록되지 않습니다.</div><div class="row mt8">${rad('q1','예',false,'disabled')}${rad('q1','아니오 (자동 선택)',true,'disabled')}</div>`}</div></div>
  <div class="formcard qcard" data-q="q2"><h3>질문 2 · 지원사업 선정 여부 <em class="req">*</em></h3><div class="f stack"><p><b>이 ${S.wkKind}이 군산시 문화예술진흥 지원사업으로 선정되었습니까?</b></p><div class="row mt8 wrapf" role="radiogroup">${rad('q2','예 — “문화예술진흥 지원사업”과 예술창고에 함께 소개됩니다',false,'onchange="qCheck();document.getElementById(\'q2y\').hidden=false"')}${rad('q2','아니오 — 예술창고에만 소개됩니다',false,'onchange="qCheck();document.getElementById(\'q2y\').hidden=true"')}</div><div id="q2y" class="mt16" hidden>${F('선정 연도',sel(['2026','2025','2024','2023'],'2026','style="max-width:180px"'),{cls:'stack',req:1,help:'선정된 연도의 “문화예술진흥 지원사업” 목록에 소개됩니다.'})}</div></div></div>
@@ -3328,7 +4247,7 @@ PAGES['M-15']=()=>{scrapSeed();const t=Q.t==null||Q.t===''?-1:+Q.t;const sa=Q.em
  const grid=(k,ls)=>`<div class="grid4 scrap-g ${k===0?'scrap-a':''}">${k===0?L(ls,artistCard):L(ls,w=>workCard(w))}</div>`;
  const empty=k=>`<div class="rs-empty"><p class="small muted" style="margin:0 0 12px">${k<0?'스크랩한 콘텐츠가':N[k]+'이'} 없습니다. 하트를 눌러 저장해 보세요.</p><a class="btn btn-line btn-sm" href="#/${k===0?'A3-01':'A3-06'}">${k===0?'예술인 찾아보기':'작품·활동 보기'}</a></div>`;
  const body=t<0?(sa.length+sw.length?L([0,1,2].filter(k=>lists[k].length),k=>`<section class="scrap-sec"><div class="row mb16" style="gap:12px"><h2 class="h4" style="margin:0">${N[k]} <span class="muted small">${lists[k].length}</span></h2><a class="btn btn-line btn-xs" href="#/M-15?t=${k}" onclick="event.preventDefault();go('M-15?t=${k}')" aria-label="${N[k]} 전체 보기">전체 보기</a></div>${grid(k,lists[k])}</section>`):empty(-1)):(lists[t].length?grid(t,lists[t]):empty(t));
- return my('M-15',pgh('스크랩한 콘텐츠',`<button class="btn btn-line btn-sm" onclick="toast('목록을 다운로드했습니다 (CSV)')">${I('dl')} 목록 다운로드</button>`)+`<div class="seg mb16" role="tablist" aria-label="스크랩 구분">${L([['전체',-1,sa.length+sw.length],...N.map((x,i)=>[x,i,lists[i].length])],([x,i,n])=>`<button type="button" role="tab" aria-selected="${t===i}" class="${t===i?'on':''}" onclick="go('M-15${i<0?'':'?t='+i}')">${x} ${n}</button>`)}</div>${body}${REF('스크랩한 콘텐츠 탭: 전체(기본) · 관심 예술인 · 관심 작품 · 관심 활동, 탭마다 건수 · 전체는 종류별로 묶어 보여 주고 [전체 보기]로 해당 탭 이동 · 하트를 눌러 해제하면 목록에서 빠짐 · '+(Q.empty?'<a class="link" href="#/M-15">기본 화면</a>':'<a class="link" href="#/M-15?empty=1">스크랩 없음 예시</a>'))}`)};
+ return my('M-15',pgh('스크랩한 콘텐츠')+`<div class="row between m2-tabs"><div class="seg" role="tablist" aria-label="스크랩 구분">${L([['전체',-1,sa.length+sw.length],...N.map((x,i)=>[x,i,lists[i].length])],([x,i,n])=>`<button type="button" role="tab" aria-selected="${t===i}" class="${t===i?'on':''}" onclick="go('M-15${i<0?'':'?t='+i}')">${x} ${n}</button>`)}</div><button class="btn btn-line btn-sm" onclick="toast('목록을 다운로드했습니다 (CSV)')">${I('dl')} 목록 다운로드</button></div>${body}${REF('스크랩한 콘텐츠 탭: 전체(기본) · 관심 예술인 · 관심 작품 · 관심 활동, 탭마다 건수 · 전체는 종류별로 묶어 보여 주고 [전체 보기]로 해당 탭 이동 · 하트를 눌러 해제하면 목록에서 빠짐 · '+(Q.empty?'<a class="link" href="#/M-15">기본 화면</a>':'<a class="link" href="#/M-15?empty=1">스크랩 없음 예시</a>'))}`)};
 
 function updSubmit(){const c=document.getElementById('updok');if(!c.checked){document.getElementById('updmsg').hidden=false;c.focus();return}if(confirm('변경 없이 정보 갱신을 최종 제출하시겠습니까? 재승인 없이 바로 갱신이 완료됩니다.'))go('M-17?s=done')}
 PAGES['M-17']=()=>{const ws=myWorks(),wk=ws.filter(w=>w.kind==='작품'),ac=ws.filter(w=>w.kind==='활동');const st=Q.s||'';const ban=`<div class="status-banner" style="margin-top:0"><span style="color:var(--warn)">${I('alert')}</span><div class="grow"><b>갱신 필요 · D-28</b><p class="small">승인일 2024.11.04 · 갱신 기한 2026.11.04. 기한이 지나도 공개는 유지되며 “갱신 필요”가 표시됩니다.</p></div></div>`;
@@ -3344,19 +4263,20 @@ PAGES['M-17']=()=>{const ws=myWorks(),wk=ws.filter(w=>w.kind==='작품'),ac=ws.f
  return my('M-17',pgh('정보 갱신 (2년 주기)')+ban+`<div class="grid2 mt24"><div class="box"><b class="h4">변경 사항이 없어요</b><p class="small muted mt8">등록된 포트폴리오·작품·활동을 모두 확인한 뒤 최종 제출하면, <span class="nw">재승인 없이</span> 바로 갱신됩니다.</p><a class="upd-b upd-none mt16" href="#/M-17?s=check">${I('check')}변경 없이 갱신하기</a></div>
  <div class="box"><b class="h4">변경할 정보가 있어요</b><p class="small muted mt8">바꿀 항목을 골라 수정해 주세요. 변경된 항목만 관리자 검토 후 반영됩니다. 최근 2년 이내 활동 증빙을 함께 제출해 주세요.</p><div class="upd-go mt16">${L([['M-05','포트폴리오',1,'user'],['M-06?k=작품','작품',wk.length,'img'],['M-06?k=활동','활동',ac.length,'cal']],([h,t,n,ic])=>`<a class="upd-b" href="#/${h}"><span class="upd-i">${I(ic)}</span><span class="upd-t">변경 가능 ${t}</span><span class="upd-n"><b>${n}</b>건</span>${I('r')}</a>`)}</div></div></div>
  <p class="tiny muted mt16">갱신 대상: 포트폴리오 정보와 회원 기본정보</p>${REF('변경할 정보가 있을 때는 건수 버튼으로 포트폴리오 관리(M-05) · 작품·활동 관리(M-06, 작품/활동 탭)로 이동해 수정')}`)};
-PAGES['M-18']=()=>Q.empty?my('M-18',pgh('알림함')+'<div class="fempty es" role="status"><h3>알림이 없습니다.</h3><p>심사 결과, 보완요청, 정보 갱신 안내, 문의 답변이 오면 이곳에 표시됩니다.</p></div><p class="tiny muted mt8">이메일로 보내 드린 안내를 이곳에서도 확인할 수 있습니다.</p>'+REF('알림 없음 예시 — <a class="link" href="#/M-18">기본 화면</a>')):my('M-18',pgh('알림함',`<button class="btn btn-line btn-sm">모두 읽음</button>`)+`${tbl(['','구분','내용','일시',''],((isArtist()?null:[['unread','문의 답변','문의 “스크랩 목록을 엑셀로 받을 수 있나요?”에 답변이 등록되었습니다.','2026.10.07 15:40','M-19'],['read','안내','개인정보 처리방침 개정 안내를 보내 드렸습니다.','2026.09.20 10:00','C-09?t=1'],['read','문의 답변','문의 “관심 예술인은 몇 명까지 저장되나요?”에 답변이 등록되었습니다.','2026.09.12 11:05','M-19']])||[['unread','보완요청','작품 〈월명의 오후〉 보완요청이 있습니다.','2026.10.07 11:20','M-04'],['unread','갱신','정보 갱신 기한이 28일 남았습니다.','2026.10.05 09:00','M-17'],['unread','심사','활동 〈월명동 드로잉 산책〉 심사가 시작되었습니다.','2026.10.03 15:12','M-03'],['read','승인','예술인 등록이 완료되었습니다.','2026.09.30 14:20','M-03'],['read','문의 답변','문의 “공개명함을 인쇄해도 되나요?”에 답변이 등록되었습니다.','2026.09.30 10:12','M-19'],['read','보완요청','증빙자료 보완요청이 있습니다.','2026.09.26 16:40','M-04'],['read','신청','등록신청이 완료되었습니다. (심사대기)','2026.09.24 09:12','M-03']]).map(([c,b,t,d,to])=>tr([{v:c==='unread'?'<b style="color:#C44826;white-space:nowrap">안읽음</b>':'<span class="muted" style="white-space:nowrap">읽음</span>',c:'c'},badge(b,b==='보완요청'?'b-acc':b==='승인'?'b-ok':''),c==='unread'?`<b>${t}</b>`:t,d,`<a class="link small" href="#/${to}">바로가기</a>`])))}<p class="tiny muted mt8">이메일로 보내 드린 안내를 이곳에서도 확인할 수 있습니다.</p>${REF('<a class="link" href="#/M-18?empty=1">알림 없음 예시</a>')}`);
+PAGES['M-18']=()=>Q.empty?my('M-18',pgh('알림함')+'<div class="fempty es" role="status"><h3>알림이 없습니다.</h3><p>심사 결과, 보완요청, 정보 갱신 안내, 문의 답변이 오면 이곳에 표시됩니다.</p></div><p class="tiny muted mt8">이메일로 보내 드린 안내를 이곳에서도 확인할 수 있습니다.</p>'+REF('알림 없음 예시 — <a class="link" href="#/M-18">기본 화면</a>')):my('M-18',pgh('알림함',`<button class="btn btn-line btn-sm m2-allread">모두 읽음</button>`)+`${tbl(['','구분','내용','일시',''],((isArtist()?null:[['unread','문의 답변','문의 “스크랩 목록을 엑셀로 받을 수 있나요?”에 답변이 등록되었습니다.','2026.10.07 15:40','M-19'],['read','안내','개인정보 처리방침 개정 안내를 보내 드렸습니다.','2026.09.20 10:00','C-09?t=1'],['read','문의 답변','문의 “관심 예술인은 몇 명까지 저장되나요?”에 답변이 등록되었습니다.','2026.09.12 11:05','M-19']])||[['unread','보완요청','작품 〈월명의 오후〉 보완요청이 있습니다.','2026.10.07 11:20','M-04'],['unread','갱신','정보 갱신 기한이 28일 남았습니다.','2026.10.05 09:00','M-17'],['unread','심사','활동 〈월명동 드로잉 산책〉 심사가 시작되었습니다.','2026.10.03 15:12','M-03'],['read','승인','예술인 등록이 완료되었습니다.','2026.09.30 14:20','M-03'],['read','문의 답변','문의 “공개명함을 인쇄해도 되나요?”에 답변이 등록되었습니다.','2026.09.30 10:12','M-19'],['read','보완요청','증빙자료 보완요청이 있습니다.','2026.09.26 16:40','M-04'],['read','신청','등록신청이 완료되었습니다. (심사대기)','2026.09.24 09:12','M-03']]).map(([c,b,t,d,to])=>tr([{v:c==='unread'?'<b class="m2-un">안읽음</b>':'<span class="m2-rd">읽음</span>',c:'c'},badge(b,b==='보완요청'?'b-acc':b==='승인'?'b-ok':''),c==='unread'?`<b>${t}</b>`:t,d,`<a class="link small" href="#/${to}">바로가기</a>`])))}<p class="tiny muted mt8">이메일로 보내 드린 안내를 이곳에서도 확인할 수 있습니다.</p>${REF('<a class="link" href="#/M-18?empty=1">알림 없음 예시</a>')}`);
 const INQ_G=[{t:'이용 문의',title:'스크랩 목록을 엑셀로 받을 수 있나요?',d:'2026.10.06',st:'답변완료',body:'관심 예술인 목록을 엑셀 파일로 내려받고 싶습니다. 방법이 있을까요?',a:'안녕하세요, 아트포트군산입니다. 마이페이지 스크랩한 콘텐츠에서 [목록 다운로드]를 누르면 엑셀(CSV) 파일로 받을 수 있습니다. 감사합니다.',ad:'2026.10.07'},{t:'회원 정보 변경 요청',title:'예술인 회원으로 바꾸고 싶습니다',d:'2026.10.02',st:'처리중',body:'일반 회원으로 가입했는데 최근 창작 활동을 시작해서 예술인(개인) 회원으로 바꾸고 싶습니다.'},{t:'이용 문의',title:'관심 예술인은 몇 명까지 저장되나요?',d:'2026.09.11',st:'답변완료',body:'관심 예술인 저장 개수에 제한이 있는지 궁금합니다.',a:'안녕하세요, 아트포트군산입니다. 관심 예술인·작품·활동은 개수 제한 없이 저장할 수 있습니다. 감사합니다.',ad:'2026.09.12'}];
 const INQ_A=[{t:'기본정보 변경 요청',title:'예명 변경을 요청합니다',d:'2026.10.07',st:'접수',body:'예명을 “바다”에서 “한바다”로 바꾸고 싶습니다. 확인 부탁드립니다.',file:'활동증명_예명.jpg'},{t:'작품·활동 삭제 요청',title:'〈파란 대문 집〉 삭제 요청',d:'2026.10.06',st:'처리중',body:'비공개로 전환한 작품 〈파란 대문 집〉을 삭제해 주세요.'},{t:'이용 문의',title:'공개명함을 인쇄해도 되나요?',d:'2026.09.29',st:'답변완료',body:'공개명함을 인쇄해서 전시장에 비치해도 되는지, 이미지 크기는 어느 정도인지 궁금합니다.',a:'안녕하세요, 아트포트군산입니다. 공개명함은 화면 공유용 이미지로 저장됩니다. 인쇄물이 필요하시면 포트폴리오 화면의 [인쇄·PDF 저장]을 이용해 주세요. 감사합니다.',ad:'2026.09.30'}];
 const inqModal=()=>`<div class="dim" onclick="if(event.target===this)go('M-19')"><div class="modal lg" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="modal-h"><h2 id="mt">새 문의 작성</h2><button class="icon-btn" onclick="go('M-19')" aria-label="닫기">${I('x')}</button></div><div class="modal-b">${F('작성자',inp('',`${myName()} · ${S.role==='general'?'hong':'bada'}***@example.com`,'text','readonly'),{cls:'stack',help:'회원 정보가 자동으로 입력됩니다.'})}${F('문의 유형',sel(isArtist()?['선택해 주세요','이용 문의','기본정보 변경 요청','작품·활동 삭제 요청','기타']:['선택해 주세요','이용 문의','회원 정보 변경 요청','기타']),{cls:'stack',req:1})}${F('제목',inp('제목을 입력해 주세요'),{cls:'stack',req:1})}${F('내용',ta('문의 내용을 자세히 적어 주세요'),{cls:'stack',req:1})}${F('첨부파일',`<div class="upl" style="padding:16px">${I('up')}<p class="tiny mt8">이미지·문서(PDF·한글·워드·엑셀·파워포인트 등)·압축파일 · 최대 10개, 개당 5MB<br>실행 파일(exe 등)은 올릴 수 없습니다</p></div>`,{cls:'stack',opt:1})}<p class="tiny muted">답변이 등록되면 알림함과 이메일로 알려 드립니다.</p></div><div class="modal-f"><button class="btn btn-line" onclick="go('M-19')">취소</button><button class="btn btn-pri" onclick="toast('문의가 접수되었습니다');go('M-19')">문의 접수</button></div></div></div>`;
 PAGES['M-19']=()=>{const INQ=Q.empty?[]:isArtist()?INQ_A:INQ_G;return my('M-19',pgh('문의 관리',`<a class="btn btn-pri btn-sm" href="#/M-19?w=1">${I('plus')} 새 문의 작성</a>`)+`<p class="small mb16" style="color:var(--ink-2)">${isArtist()?'이용 중 궁금한 점, 기본정보 변경, 작품·활동 삭제 요청을 남겨 주세요.':'이용 중 궁금한 점이나 회원 정보 변경 요청을 남겨 주세요.'} 답변이 등록되면 알림함과 이메일로 알려 드립니다.</p>
- ${Q.empty?'<div class="fempty es" role="status"><h3>작성한 문의가 없습니다.</h3><p>궁금한 점이나 기본정보 변경 · 작품·활동 삭제 요청은 [새 문의 작성]으로 남겨 주세요.</p></div>'+REF('문의 없음 예시 — <a class="link" href="#/M-19">기본 화면</a>'):''}<div class="row mb16 small" ${Q.empty?'hidden':''}><span>전체 <b>${INQ.length}</b>건</span><span class="muted">·</span><span>답변 대기 <b style="color:var(--accent-2)">${INQ.filter(q=>!q.a).length}</b>건</span></div>
- <div>${L(INQ,(q,i)=>`<details class="inq" ${i===0?'open':''}><summary><span class="badge">${q.t}</span><b class="grow">${q.title}</b><span class="tiny muted">${q.d}</span>${sbadge(q.st)}</summary><div class="inq-b"><p class="tiny muted">내 문의</p><p class="small mt8">${q.body}</p>${q.file?`<p class="tiny mt8">${I('file').replace('class="ic"','class="ic" style="display:inline;vertical-align:-2px"')} ${q.file}</p>`:''}${q.a?`<div class="inq-a"><p class="tiny" style="font-weight:700;color:var(--accent-2)">아트포트군산 답변 · ${q.ad}</p><p class="small mt8">${q.a}</p></div>`:`<p class="tiny mt16" style="color:var(--ink-on-tint)">담당자가 확인하고 있습니다. 답변이 등록되면 알려 드립니다.</p>`}</div></details>`)}</div>
+ ${Q.empty?'<div class="fempty es" role="status"><h3>작성한 문의가 없습니다.</h3><p>'+(isArtist()?'궁금한 점이나 기본정보 변경 · 작품·활동 삭제 요청은':'궁금한 점이나 회원 정보 변경 요청은')+' [새 문의 작성]으로 남겨 주세요.</p></div>'+REF('문의 없음 예시 — <a class="link" href="#/M-19">기본 화면</a>'):''}<div class="row mb16 small" ${Q.empty?'hidden':''}><span>전체 <b>${INQ.length}</b>건</span><span class="muted">·</span><span>답변 대기 <b style="color:var(--accent-2)">${INQ.filter(q=>!q.a).length}</b>건</span></div>
+ <div>${L(INQ,(q,i)=>`<details class="inq" ${i===0||q.a?'open':''}><summary><span class="badge">${q.t}</span><b class="grow">${q.title}</b><span class="tiny muted">${q.d}</span>${sbadge(q.st)}</summary><div class="inq-b"><p class="tiny muted">내 문의</p><p class="small mt8">${q.body}</p>${q.file?`<p class="tiny mt8">${I('file').replace('class="ic"','class="ic" style="display:inline;vertical-align:-2px"')} ${q.file}</p>`:''}${q.a?`<div class="inq-a"><p class="tiny" style="font-weight:700;color:var(--accent-2)">아트포트군산 답변 · ${q.ad}</p><p class="small mt8">${q.a}</p></div>`:`<p class="tiny mt16" style="color:var(--ink-on-tint)">담당자가 확인하고 있습니다. 답변이 등록되면 알려 드립니다.</p>`}</div></details>`)}</div>
  ${REF('문의 관리: 제출 이력 목록 + [새 문의 작성] 모달 · 관리자 대시보드 알림으로만 접수(관리자 메일 없음) · 답변은 관리자 문의 관리(B-11)에서 작성')}
  ${Q.w?inqModal():''}`)};
 PAGES['M-20']=()=>my('M-20',pgh('임시저장 목록')+`${Q.empty?'<div class="fempty es" role="status"><h3>임시저장한 내용이 없습니다.</h3><p>포트폴리오나 작품·활동을 작성하다가 [임시저장]을 누르면 이곳에서 이어서 작성할 수 있습니다.</p></div>':tbl(['구분','제목','진행 단계','최종 저장',''],[tr([badge('포트폴리오','b-dark'),'예술인 등록신청','④ 활동이력 (50%)','2026.10.07 14:32',`<div class="row" style="gap:4px"><a class="btn btn-dark btn-xs" href="#/A1-11">불러오기</a><button class="btn btn-ghost btn-xs" type="button" onclick="fgDlg('draftdel')">삭제</button></div>`]),tr([badge('활동','b-sec'),`항구의 작은 낭독회 ${badge('신청취소 제출본',ST['신청취소']??'')}`,'제출본 (추가 등록)','2026.10.06 09:15 신청취소',`<div class="row" style="gap:4px"><a class="btn btn-dark btn-xs" href="#/M-13">불러오기</a><button class="btn btn-ghost btn-xs" type="button" onclick="fgDlg('draftdel')">삭제</button></div>`]),tr([badge('작품','b-info'),'파란 대문 집 Ⅱ','② 기본정보 (17%)','2026.10.05 21:08',`<div class="row" style="gap:4px"><a class="btn btn-dark btn-xs" href="#/M-08">불러오기</a><button class="btn btn-ghost btn-xs" type="button" onclick="fgDlg('draftdel')">삭제</button></div>`])])}<p class="tiny muted mt8">신청을 취소한 제출본도 이 목록으로 돌아옵니다. 불러와 고친 뒤 다시 제출하면 새 신청으로 접수됩니다. · 임시저장 자료는 마지막 저장일부터 ${S.ret&&S.ret.draft||'3년'}이 지나면 자동 삭제됩니다.</p>${REF(Q.empty?'임시저장 없음 예시 — <a class="link" href="#/M-20">기본 화면</a>':'<a class="link" href="#/M-20?empty=1">임시저장 없음 예시</a>')}`);
 PAGES['M-21']=()=>my('M-21',pgh('회원탈퇴')+`<div class="box">${callout('탈퇴 전 꼭 확인해 주세요.','bad')}<ul class="mt16 small" style="display:grid;gap:8px;color:var(--ink-2)">${L(['탈퇴 즉시 공개 중인 포트폴리오·작품·활동이 모두 비공개 처리됩니다.','탈퇴 회원 정보는 관련 규정에 따라 1년 보관 후 자동 파기됩니다.','별도의 “예술인 등록 취소” 기능은 없으며 회원탈퇴로 운영합니다.','탈퇴하면 이 계정으로 로그인할 수 없습니다.','탈퇴 후에는 같은 이메일로 바로 새로 가입할 수 있으나, 탈퇴한 아이디는 다시 쓸 수 없으며 이전 정보와는 연결되지 않습니다.'],t=>`<li class="row" style="align-items:flex-start">· ${t}</li>`)}</ul>
- <div class="formcard mt24">${F('비밀번호 재입력',inp('','','password'),{req:1})}${F('탈퇴 사유',sel(['선택','이용 빈도 낮음','활동 중단','기타']),{opt:1})}${F('',chk('위 안내를 모두 확인했습니다'))}</div>
- <div class="row mt24" style="justify-content:flex-end"><a class="btn btn-line" href="#/M-01">취소</a><button class="btn btn-dark" onclick="confirm('정말 탈퇴하시겠습니까?')">탈퇴하기</button></div></div>`);
+ <div class="formcard mt24">${F('비밀번호 재입력',inp('','','password'),{req:1})}${F('탈퇴 사유',sel(['선택','이용 빈도 낮음','활동 중단','기타']),{opt:1})}<div class="f m2-agree"><label class="chk"><input type="checkbox" id="m2wdok" aria-required="true" onchange="m2Wd(this.checked)"> <span>위 안내를 모두 확인했습니다</span><span class="opt m2-req">필수</span></label></div></div>
+ <div class="row mt24" style="justify-content:flex-end"><a class="btn btn-line" href="#/M-01">취소</a><button class="btn btn-dark is-off" id="m2wd" aria-disabled="true" onclick="if(this.classList.contains('is-off')){toast('위 안내를 모두 확인했다고 체크해 주세요');document.getElementById('m2wdok').focus();return}confirm('정말 탈퇴하시겠습니까?')">탈퇴하기</button></div></div>`);
+function m2Wd(on){const b=document.getElementById('m2wd');if(b){b.classList.toggle('is-off',!on);b.setAttribute('aria-disabled',!on)}}
 
 /* ---------- 관리자 ---------- */
 const ADNAV=[['','B-02','대시보드'],['심사·회원'],['','B-03','등록신청',5],['','B-05','포트폴리오'],['','B-10','회원·개인정보'],['','B-14','갱신 대상'],['','B-11','문의',2],['콘텐츠'],['','B-06','작품·활동',3],['','B-07','예술캘린더'],['','B-08','공지사항·권한'],['','B-09','문화예술진흥 지원사업'],['','B-16','팝업'],['','B-23','공개 템플릿'],['운영'],['','B-12','이메일 템플릿·이력'],['','B-13','이메일 작성·발송'],['','B-15','통계'],['','B-17','사이트 기본정보'],['','B-18','분류체계·해시태그'],['시스템·보안'],['','B-19','자동 로그아웃'],['','B-20','관리자 계정·2단계 인증'],['','B-21','기술관리자·점검'],['','B-22','보관·파기·복구']];
@@ -3922,7 +4842,7 @@ const FG_DLG={
  draftdel2:['정말 삭제할까요?','','한 번 더 확인합니다. [삭제]를 누르면 이 임시저장이 바로 지워집니다.',[['취소','','line'],['삭제',"toast('임시저장을 삭제했습니다')",'pri']]],
  login:['로그인이 필요합니다','','예술인에게 문의하려면 로그인해 주세요. 로그인 후 문의를 작성할 수 있습니다.',[['로그인',"loginHere()",'pri'],['닫기','','line']],1],
  submit:['포트폴리오 제출 확인','포트폴리오를 제출하시겠습니까?','제출하면 심사대기 상태가 되며, 관리자가 심사를 시작하기 전까지 <span class="nw">마이페이지 등록 현황</span>에서 수정할 수 있습니다. 심사중에는 수정할 수 없습니다.',[['취소','','line'],['제출하기',"go('A1-14'+(Q.add?'?add=1':''))",'pri']]],
- leave:['미제출 이탈 경고','아직 최종 제출되지 않았습니다.','이대로 나가면 최종 제출되지 않습니다. 작성을 계속하거나 임시저장 후 나가 주세요.',[['작성 계속하기','','pri'],['임시저장 후 나가기',"toast('임시저장되었습니다');FG_LEAVE_OK=1;location.hash=FG_TO",'line']],1],
+ leave:['미제출 이탈 경고','<span class="fg-dsub-warn">아직 최종 제출되지 않았습니다.</span>','이대로 나가면 최종 제출되지 않습니다. 작성을 계속하거나 임시저장 후 나가 주세요.',[['작성 계속하기','','pri'],['임시저장 후 나가기',"toast('임시저장되었습니다');FG_LEAVE_OK=1;location.hash=FG_TO",'line']],1],
  cancel:['신청을 취소하시겠어요?','','등록 신청을 취소합니다. 취소하기 전에 다시 한 번 확인해 주세요.',[['취소','','line'],['신청취소',"toast('신청을 취소했습니다 · 제출한 내용은 임시저장 목록으로 옮겼습니다')",'pri']]]};
 const fgDlgHTML=(k,close)=>{const [t,sub,p,bs,col]=FG_DLG[k];return `<div class="dim" onclick="if(event.target===this)${close}"><div class="modal fg-dlg" role="dialog" aria-modal="true" aria-labelledby="fgt"><h2 id="fgt">${t}</h2>${sub?`<p class="fg-dsub">${sub}</p>`:''}<p class="fg-dtxt">${p}</p><div class="fg-df ${col?'col':''}">${L(bs,([l,a,c])=>`<button type="button" class="btn ${c==='pri'?'btn-pri':'btn-line'}" onclick="${a?(close==='fgClose()'?close+';'+a:a):close}">${l}</button>`)}</div></div></div>`};
 function fgDlg(k){const m=document.getElementById('modal');m.innerHTML=fgDlgHTML(k,'fgClose()');const f=m.querySelector('.fg-df button');if(f)f.focus();return false}
