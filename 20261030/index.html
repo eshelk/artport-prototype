@@ -2502,7 +2502,7 @@ fieldset.rv-dec[disabled]{opacity:.45}
 .rv-side .btn[disabled]{opacity:.45;cursor:not-allowed}
 .rv-items.is-pre .rv-edit,.rv-items.is-pre .rv-imgb button:last-child{opacity:.4}
 </style>
-<style>/* 10.31 로고(워드마크) — Figma 확정: Pretendard GOV Bold, 자간 -1% */.logo,.hd .logo{font-family:var(--p-font-family-sans)!important;font-weight:700!important;letter-spacing:-0.01em!important}.fb-pv{background:var(--color-bg-subtle)}.upd-none{justify-content:center;gap:8px;font-size:1rem;padding:18px}.upd-none svg{width:1.1em;height:1.1em}
+<style>/* 11.2 로고(워드마크) — Figma 확정: 마루부리 Bold, 자간 2%, 헤더 36px · 푸터 20px */.logo,.hd .logo{font-family:var(--p-font-family-serif)!important;font-weight:700!important;letter-spacing:0.02em!important}.hd-in .logo{font-size:2rem}/* 11.2 비로그인 헤더 오른쪽 — 로그인 · 회원가입 · 검색 회색 글자 */.hd-r>a.t.t-plain{color:var(--color-text-muted);font-weight:400}/* 11.2 지원 사업 선정 배지 — 주황(#C44826, 흰 글자 대비 4.9:1) */.sup-seal{background:#C44826;box-shadow:0 2px 8px rgba(196,72,38,.28)}.sup-seal svg path:first-child{fill:#fff}.sup-seal svg path:last-child{stroke:#C44826}html[data-hc="1"] .sup-seal{background:#000}html[data-hc="1"] .sup-seal svg path:last-child{stroke:#000}/* 11.2 포트폴리오 전환 탭 — 선택된 탭 개수는 흰 바탕 · 남색 글자 */.ms-tabs button.on span{background:#fff;color:var(--navy)}.fb-pv{background:var(--color-bg-subtle)}.upd-none{justify-content:center;gap:8px;font-size:1rem;padding:18px}.upd-none svg{width:1.1em;height:1.1em}
 .img-actw{position:relative;border-radius:var(--r);overflow:hidden}.img-act{position:absolute;left:0;right:0;bottom:0;background:rgba(38,41,43,.72);color:#fff;font-size:.667rem;text-align:center;padding:4px 0;white-space:pre}.noti-e{margin:0;padding:18px 20px;color:var(--ink-2)}.upl-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}.upl-list li{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r)}.upl-list li b{flex:1;font-weight:500}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
@@ -2729,8 +2729,8 @@ function header(){
     <a class="logo" href="#/H-01" aria-label="아트포트군산 홈">아트포트군산</a>
     <nav class="gnb" aria-label="주 메뉴">${L(GNB,m=>`<div class="gnb-item"><a href="#/${m.to}" class="${base.startsWith(m.g)?'on':''}">${m.n}</a>${m.sub?`<div class="gnb-sub">${L(m.sub,([t,to])=>`<a href="#/${to}">${t}</a>`)}</div>`:''}</div>`)}</nav>
     <div class="hd-r">
-      ${logged?`${isAdmin()?'<span class="t t-who" aria-label="관리자로 로그인 중">관리자</span>':'<a class="t" href="#/M-01">마이페이지</a>'}<a class="t" onclick="setRole('guest')">로그아웃</a>`:`<a class="t" href="#/C-02">회원가입</a><a class="t login" href="#/C-01">로그인</a><a class="t" href="#/C-01">마이페이지</a>`}
-      ${logged&&!isAdmin()?`<a class="icon-btn hd-bell" href="#/M-18" aria-label="알림함 · 확인하지 않은 알림 ${myUnread()}건">${I('bell')}<span class="bell-n" aria-hidden="true">${myUnread()}</span></a>`:''}<a class="icon-btn" href="#/C-10" aria-label="통합 검색">${I('search')}</a>
+      ${logged?`${isAdmin()?'<span class="t t-who" aria-label="관리자로 로그인 중">관리자</span>':'<a class="t" href="#/M-01">마이페이지</a>'}<a class="t" onclick="setRole('guest')">로그아웃</a>`:`<a class="t t-plain" href="#/C-01">로그인</a><a class="t t-plain" href="#/C-02">회원가입</a><a class="t t-plain" href="#/C-10">검색</a>`}
+      ${logged&&!isAdmin()?`<a class="icon-btn hd-bell" href="#/M-18" aria-label="알림함 · 확인하지 않은 알림 ${myUnread()}건">${I('bell')}<span class="bell-n" aria-hidden="true">${myUnread()}</span></a>`:''}${logged?`<a class="icon-btn" href="#/C-10" aria-label="통합 검색">${I('search')}</a>`:''}
       ${isAdmin()?`<a class="btn btn-dark btn-sm" href="#/B-02">관리자 대시보드</a>`:''}
       <button class="icon-btn hd-menu" type="button" aria-expanded="${!!S.mnav}" aria-controls="mnav" aria-label="${S.mnav?'전체 메뉴 닫기':'전체 메뉴 열기'}" onclick="S.mnav=!S.mnav;render()">${I(S.mnav?'x':'menu')}</button>
     </div></div></header>
@@ -3148,7 +3148,7 @@ ${REF('좌측 연도 메뉴는 디자인 영역 — 새 연도가 생기면 제�
  ${searchBlock('작품명, 활동명으로 검색',[['field','분야',Object.keys(FIELDS)],['genre','세부장르',genreOpts()],['dong','지역',DONG_NAMES],['wcat','활동 유형',CAT6]])}
  <div class="seg mt24"><button class="on">전체 보기</button><button>작품 보기</button><button>활동 보기</button></div>
  ${worksList(list).replace('class="grid4"','class="grid3"')}
- ${REF('지원 사업 선정 배지(용역사 제안) — 인증 마크 형태: 톱니 원형 인장 + 체크 + 「지원 사업 선정」 글자 · 썸네일을 가리지 않도록 카드 제목 바로 아래 · 높이 28px(인장 20px, 글자 13px 굵게) · 남색 바탕·흰 글자(대비 4.5:1 이상) · 지원사업 선정 작품·활동이면 문화예술진흥 지원사업·예술작품·활동 목록·관심 목록 카드에 같은 모양으로 표시 · 상세 화면에도 제목 옆 같은 배지')}</div></div></section>`)};
+ ${REF('지원 사업 선정 배지(용역사 제안) — 인증 마크 형태: 톱니 원형 인장 + 체크 + 「지원 사업 선정」 글자 · 썸네일을 가리지 않도록 카드 제목 바로 아래 · 높이 28px(인장 20px, 글자 13px 굵게) · 주황 바탕(#C44826)·흰 인장 · 주황 체크 · 흰 글자(대비 4.9:1) · 지원사업 선정 작품·활동이면 문화예술진흥 지원사업·예술작품·활동 목록·관심 목록 카드에 같은 모양으로 표시 · 상세 화면에도 제목 옆 같은 배지')}</div></div></section>`)};
 
 /* ---------- 공통 C (모달) ---------- */
 const modal=(title,body,foot,o={})=>`<div class="dim" onclick="if(event.target===this)closeModal()"><div class="modal ${o.cls||''}" role="dialog" aria-modal="true" aria-labelledby="mt">${o.steps?`<div class="mstep" aria-label="회원가입 ${o.steps[0]}/5 단계">${L([1,2,3,4,5],i=>`<span class="${i<=o.steps[0]?'on':''}"></span>`)}</div>`:''}<div class="modal-h"><h2 id="mt">${title}</h2><button class="icon-btn" onclick="closeModal()" aria-label="닫기 (ESC)">${I('x')}</button></div><div class="modal-b">${body}</div>${foot?`<div class="modal-f">${foot}</div>`:''}</div></div>`;
