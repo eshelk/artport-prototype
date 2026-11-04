@@ -5464,6 +5464,7 @@ function stQuick(q){const c=stCur();let qs=c.qs.slice();if(qs.includes(q)){qs=qs
  if(!qs.length)qs=['올해'];S.st=stMake(qs);S.stY='';S.stM='';stLoad()}
 function stDate(k,v){const c=stCur();const r=k==='from'?[v,c.to]:[c.from,v];if(r[0]>r[1]){toast('시작일은 종료일보다 앞이어야 합니다');render();return}S.st=stMake([],[r]);stLoad()}
 function stYM(){const y=S.stY||TODAY.slice(0,4),m=S.stM;if(!S.stY&&!m)return;const r=m?stMon(+y,+m):[`${y}-01-01`,y===TODAY.slice(0,4)?TODAY:`${y}-12-31`];S.st=stMake([],[r]);stLoad()}
+function stCmpReset(){S.stBy=['유형'];S.stArea='all';S.stDongs=[];S.stPg=0;stLoad()}
 function stReset(){S.st=null;S.stY='';S.stM='';S.stBy=['유형'];S.stArea='all';S.stDongs=[];S.stField='시각';stLoad()}
 function stTog(k,v){const a=S[k]||[];S[k]=a.includes(v)?a.filter(x=>x!==v):a.concat([v]);stLoad()}
 function stLabel(c){const f=d=>d.replaceAll('-','.');return c.qs.length?c.qs.join(' · '):`${f(c.from)} ~ ${f(c.to)}`}
@@ -5500,7 +5501,7 @@ PAGES['B-15']=()=>{const c=stCur();const y0=+TODAY.slice(0,4);if(!S.stBy)S.stBy=
   const areas=S.stArea==='all'?(()=>{const a=DONG_NAMES.filter(d=>d!=='옥구읍'&&d!=='회현면');a.splice(a.indexOf('서수면')+1,0,'옥구읍','회현면');return a})():S.stDongs;
   const rowOf=(name,all,link)=>{const base=timeDim?all:all.filter(inR);const cells=combos.map(cb=>({v:n(all,p=>(timeDim?true:inR(p))&&cb.f(p)),c:'num'}));if(onlyP){const d=n(all,inR)-n(all,DIM['기간'][1].f);cells.push({v:`<span class="${d>0?'st-up':d<0?'st-dn':''}">${d>0?'+':''}${d}</span>`,c:'num'})}return tr([link?`<a class="link" href="#/B-10?dong=${encodeURIComponent(name)}">${name}</a>`:`<b>${name}</b>`,{v:`<b>${base.length}</b>`,c:'num'},...cells],{cls:link?'':'pin'})};
   const NM={'유형':'개인·단체·기관','장애 여부':'장애·비장애','연도':'연도별','기간':'현재 기간 ↔ 직전 같은 길이 기간'};
-  const cmp=`<div class="panel mt16">${tag}<div class="panel-h"><h2>읍면동 비교</h2></div>
+  const cmp=`<div class="panel mt16">${tag}<div class="panel-h"><h2>읍면동 비교</h2><button type="button" class="btn btn-ghost btn-sm" onclick="stCmpReset()">${I('refresh')} 조건 초기화</button></div>
    <div class="st-row"><b class="st-l">비교 지역</b><div class="row wrapf" style="gap:8px"><div class="seg">${L([['all','군산시 전체 ↔ 27개 읍면동'],['pick','읍면동 골라서 비교']],([k,t])=>`<button type="button" class="${S.stArea===k?'on':''}" onclick="S.stArea='${k}';S.stPg=0;stLoad()">${k==='pick'?I('chev'):''}${t}</button>`)}</div></div></div>
    ${S.stArea==='pick'?`<div class="st-row"><b class="st-l">읍면동 <span class="tiny muted">${S.stDongs.length}곳 선택</span></b><div class="chips">${L(DONG_NAMES,d=>`<button type="button" class="chip chip-sm ${S.stDongs.includes(d)?'on':''}" aria-pressed="${S.stDongs.includes(d)}" onclick="stTog('stDongs','${d}')">${d}</button>`)}</div></div>`:''}
    <div class="st-row"><b class="st-l">비교 기준</b><div class="chips">${L(['연도','기간','유형','장애 여부'],k=>`<button type="button" class="chip chip-sm ${BY.includes(k)?'on':''}" aria-pressed="${BY.includes(k)}" onclick="stTog('stBy','${k}')">${NM[k]}</button>`)}<span class="b15-note">여러 개 고르면 겹쳐서 비교</span></div></div>
