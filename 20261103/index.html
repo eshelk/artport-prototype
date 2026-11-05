@@ -4221,6 +4221,476 @@ html[data-page="A4-03"] .a403-dre{padding:24px 16px;font-size:14px;color:#727171
 /* 공통 「점선 → 실선」 규칙이 아래선만 있던 요소의 네 변을 기본 굵기(3px) 검정 실선으로 만들던 것 바로잡음 */
 .frow{border-style:none none solid none}
 .flow2{border-style:solid none none none}
+</style>
+<style>/* ===== Figma 맞춤 · RC ===== */
+/* 새 요소(360 왼쪽 메뉴 선택 상자): 768 이상에서는 숨김 */
+@media (min-width:768px){.lnb-sel{display:none}}
+
+/* ── 유틸 줄(글자 크기 · 고대비) — 02 Header/768 · 360: 높이 39, 단추 26 · 글자 11.2 · 모서리 6, 사이 3 · 구분선 좌우 6 ── */
+@media (max-width:1100px){
+ .util{display:block}
+ .util-in{height:38px;gap:3px}
+ .util-in .lbl{position:static;width:auto;height:auto;overflow:visible;clip:auto;margin-right:3px;font-size:.622rem;color:var(--color-text-muted,#727171)}
+ .util button{height:26px;min-height:26px;padding:0 10px;border-radius:6px;font-size:.622rem;line-height:1;white-space:nowrap}
+ .util .sep{height:11px;margin:0 3px}
+}
+
+/* ── 헤더 768 — 메뉴 단추 없음, 오른쪽 글자 16 · 회색 · 간격 24, 메뉴 줄 선은 화면 끝까지 ── */
+@media (min-width:768px) and (max-width:1100px){
+ .hd-in .hd-menu{display:none}
+ .hd-in .hd-r{gap:4px;margin-right:3px}
+ .hd-in .hd-r>a.t.t-plain{padding:0 10px;color:var(--color-text-muted,#727171);font-weight:400}
+ .hd-in .hd-r>a.t:not(.t-plain){font-weight:500}
+ .hd-in .hd-r>a.t-plain+a.t-plain{margin-left:0}
+ .hd-in .gnb{margin-left:-40px;margin-right:-40px;padding-left:40px;padding-right:40px}
+}
+
+/* ── 헤더 360 — 유틸 줄 보임, 메뉴 단추 = 아이콘 16 + 「메뉴」 14.4(누름 영역 45×36) ── */
+@media (max-width:767px){
+ .hd-in .hd-menu{display:inline-flex;align-items:center;gap:4px;width:auto;height:36px;min-width:36px;padding:0;border-radius:6px;font-size:.8rem;font-weight:400;color:var(--ink)}
+ .hd-in .hd-menu .ic{width:16px;height:16px}
+ .hd-in .hd-menu::after{content:"메뉴"}
+ .hd-in .hd-menu[aria-expanded="true"]::after{content:"닫기"}
+ /* 유틸 줄이 360에도 보이므로 펼친 메뉴 안 「글자 크기」 중복 줄은 숨김 */
+ .mnav-a11y{display:none}
+}
+
+/* ── 왼쪽 메뉴(안내 화면) 360 — 알약 대신 선택 상자 328×44 · 모서리 10 · 글자 15 ── */
+@media (max-width:767px){
+ .lnb-side:has(.lnb-sel) nav{display:none}
+ .lnb-side h2{margin-bottom:12px}
+ .lnb-sel{display:block;width:100%;height:44px;padding:0 44px 0 16px;border:1px solid #788187;border-radius:10px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2326292B' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center/18px;font-size:15px;color:var(--ink);-webkit-appearance:none;appearance:none}
+}
+
+/* ── 상단 띠(kv) 768 — 06 화면은 높이 218(04 1차 화면은 237 그대로) ── */
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="H-01"] .kv,html[data-page="C-12"] .kv,html[data-page="C-11"] .kv,html[data-page="A2-01"] .kv,html[data-page="A2-02"] .kv,html[data-page="A3-05"] .kv,html[data-page="A3-06"] .kv,html[data-page="A3-07"] .kv,html[data-page="A3-08"] .kv,html[data-page="A3-09"] .kv,html[data-page="A3-10"] .kv,html[data-page="A4-01"] .kv,html[data-page="A4-02"] .kv,html[data-page="A4-03"] .kv,html[data-page="A5-01"] .kv,html[data-page="A1-01"] .kv,html[data-page="A1-02"] .kv{min-height:218px}
+}
+
+/* ── 상단 띠 360(06 화면): 제목–부제 사이 3 ── */
+@media (max-width:767px){
+ html[data-page="H-01"] .kv p,html[data-page="C-12"] .kv p,html[data-page="C-11"] .kv p,html[data-page="A2-01"] .kv p,html[data-page="A2-02"] .kv p,html[data-page="A3-05"] .kv p,html[data-page="A3-06"] .kv p,html[data-page="A3-07"] .kv p,html[data-page="A3-08"] .kv p,html[data-page="A3-09"] .kv p,html[data-page="A3-10"] .kv p,html[data-page="A4-01"] .kv p,html[data-page="A4-02"] .kv p,html[data-page="A4-03"] .kv p,html[data-page="A5-01"] .kv p,html[data-page="A1-01"] .kv p,html[data-page="A1-02"] .kv p{margin-top:3px}
+}
+/* ── 왼쪽 메뉴 아래 간격(06 화면): 768 알약–본문 40 · 360 위 32 / 선택 상자–본문 32 ── */
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="H-01"] .lnb,html[data-page="C-12"] .lnb,html[data-page="C-11"] .lnb,html[data-page="A2-01"] .lnb,html[data-page="A2-02"] .lnb,html[data-page="A3-05"] .lnb,html[data-page="A3-06"] .lnb,html[data-page="A3-07"] .lnb,html[data-page="A3-08"] .lnb,html[data-page="A3-09"] .lnb,html[data-page="A3-10"] .lnb,html[data-page="A4-01"] .lnb,html[data-page="A4-02"] .lnb,html[data-page="A4-03"] .lnb,html[data-page="A5-01"] .lnb,html[data-page="A1-01"] .lnb,html[data-page="A1-02"] .lnb{row-gap:40px}
+}
+@media (max-width:767px){
+ html[data-page="H-01"] .lnb,html[data-page="C-12"] .lnb,html[data-page="C-11"] .lnb,html[data-page="A2-01"] .lnb,html[data-page="A2-02"] .lnb,html[data-page="A3-05"] .lnb,html[data-page="A3-06"] .lnb,html[data-page="A3-07"] .lnb,html[data-page="A3-08"] .lnb,html[data-page="A3-09"] .lnb,html[data-page="A3-10"] .lnb,html[data-page="A4-01"] .lnb,html[data-page="A4-02"] .lnb,html[data-page="A4-03"] .lnb,html[data-page="A5-01"] .lnb,html[data-page="A1-01"] .lnb,html[data-page="A1-02"] .lnb{padding-top:32px;row-gap:32px}
+}
+
+/* ── 푸터 768 · 360 — 02 Footer/768 · 360: 로고 위 46, 정보 줄 위 10, ©줄 위 16, 약관 줄 위 34, SNS 위 14, 아래 47(높이 385 · 486) ── */
+@media (max-width:1100px){
+ .ft .ft-in{padding-top:46px;padding-bottom:47px;row-gap:34px}
+ .ft .legal{margin-top:10px}
+ .ft .cp{margin-top:16px}
+ .ft .sns{margin-top:2px}
+}
+
+/* ── 위치 줄(06 화면) 768 · 360 — 한 줄 고정, 마지막 항목이 길면 말줄임(Figma 「한바다의 작…」) ── */
+@media (max-width:1100px){
+ html[data-page="H-01"] .crumb2,html[data-page="C-12"] .crumb2,html[data-page="C-11"] .crumb2,html[data-page="A2-01"] .crumb2,html[data-page="A2-02"] .crumb2,html[data-page="A3-05"] .crumb2,html[data-page="A3-06"] .crumb2,html[data-page="A3-07"] .crumb2,html[data-page="A3-08"] .crumb2,html[data-page="A3-09"] .crumb2,html[data-page="A3-10"] .crumb2,html[data-page="A4-01"] .crumb2,html[data-page="A4-02"] .crumb2,html[data-page="A4-03"] .crumb2,html[data-page="A5-01"] .crumb2,html[data-page="A1-01"] .crumb2,html[data-page="A1-02"] .crumb2{flex-wrap:nowrap;white-space:nowrap;min-width:0;flex:0 1 auto}
+ html[data-page="H-01"] .crumb2>:not(b),html[data-page="C-12"] .crumb2>:not(b),html[data-page="C-11"] .crumb2>:not(b),html[data-page="A2-01"] .crumb2>:not(b),html[data-page="A2-02"] .crumb2>:not(b),html[data-page="A3-05"] .crumb2>:not(b),html[data-page="A3-06"] .crumb2>:not(b),html[data-page="A3-07"] .crumb2>:not(b),html[data-page="A3-08"] .crumb2>:not(b),html[data-page="A3-09"] .crumb2>:not(b),html[data-page="A3-10"] .crumb2>:not(b),html[data-page="A4-01"] .crumb2>:not(b),html[data-page="A4-02"] .crumb2>:not(b),html[data-page="A4-03"] .crumb2>:not(b),html[data-page="A5-01"] .crumb2>:not(b),html[data-page="A1-01"] .crumb2>:not(b),html[data-page="A1-02"] .crumb2>:not(b){flex:none}
+ html[data-page="H-01"] .crumb2>b,html[data-page="C-12"] .crumb2>b,html[data-page="C-11"] .crumb2>b,html[data-page="A2-01"] .crumb2>b,html[data-page="A2-02"] .crumb2>b,html[data-page="A3-05"] .crumb2>b,html[data-page="A3-06"] .crumb2>b,html[data-page="A3-07"] .crumb2>b,html[data-page="A3-08"] .crumb2>b,html[data-page="A3-09"] .crumb2>b,html[data-page="A3-10"] .crumb2>b,html[data-page="A4-01"] .crumb2>b,html[data-page="A4-02"] .crumb2>b,html[data-page="A4-03"] .crumb2>b,html[data-page="A5-01"] .crumb2>b,html[data-page="A1-01"] .crumb2>b,html[data-page="A1-02"] .crumb2>b{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+}
+
+/* ── 왼쪽 메뉴 항목이 하나뿐일 때(A5-01) 768 · 360 — 알약 대신 PC와 같은 각진 남색 상자 220×60 + 「›」 ── */
+@media (max-width:1100px){
+ .lnb-side nav:has(>a:only-child){flex-direction:column;width:220px;max-width:100%;border-top:2px solid var(--navy);gap:0}
+ .lnb-side nav>a:only-child{border:0;border-bottom:1px solid var(--navy);border-radius:0;min-height:60px;padding:8px 16px;justify-content:space-between}
+ .lnb-side nav>a:only-child span{display:inline}
+}
+</style>
+<style>/* ===== Figma 맞춤 · R1 ===== */
+/* H-01 홈 히어로 — 태블릿 768 (Figma 5294:9209) */
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="H-01"] .hc-full .hc-band{min-height:0}
+ html[data-page="H-01"] .hc-full .hc-in{padding-top:96px;padding-bottom:193px;gap:48px}
+ html[data-page="H-01"] .hc-full .hc-l{max-width:none;min-width:0;width:100%}
+ html[data-page="H-01"] .hc-full .hc-search{padding-top:40px;max-width:640px;gap:12px}
+ html[data-page="H-01"] .hc-full .hc-search .btn{width:86px;padding:0;justify-content:center;flex:none}
+ html[data-page="H-01"] .hc-full .reco{margin-top:12px;gap:8px}
+ html[data-page="H-01"] .hc-full .hc-t{font-size:50.4px;line-height:63px;letter-spacing:-.02em}
+ html[data-page="H-01"] .hc-full .hc-copy{padding-top:47px;gap:15px;font-size:18px;line-height:1.85}
+ html[data-page="H-01"] .hc-full .hc-band svg.h01-wv{left:24px;right:auto;top:80px;bottom:auto;width:864px;height:260px}
+}
+/* H-01 홈 히어로 — 모바일 360 (Figma 5294:9401) */
+@media (max-width:767px){
+ html[data-page="H-01"] .hc-full .hc-band{min-height:0}
+ html[data-page="H-01"] .hc-full .hc-in{padding-top:56px;padding-bottom:162px;gap:31px}
+ html[data-page="H-01"] .hc-full .hc-t{font-size:40px;line-height:50px;letter-spacing:-.01em}
+ html[data-page="H-01"] .hc-full .hc-search{padding-top:28px;gap:8px}
+ html[data-page="H-01"] .hc-full .hc-search .btn{width:86px;padding:0;justify-content:center;flex:none}
+ html[data-page="H-01"] .hc-full .reco{margin-top:12px;gap:8px}
+ html[data-page="H-01"] .hc-full .hc-copy{padding-top:32px;gap:16px;font-size:18px;line-height:1.85}
+ html[data-page="H-01"] .hc-full .hc-copy p{text-wrap:wrap}
+ html[data-page="H-01"] .hc-full .hc-search .inp{text-overflow:ellipsis}
+ html[data-page="H-01"] .hc-full .hc-band svg.h01-wv{left:-244px;right:auto;top:250px;bottom:auto;width:864px;height:260px}
+}
+/* H-01 아래 바다 물결 — Figma처럼 1440 폭 그대로 가운데 (768 · 360 공통)
+   추천 검색어 테두리 · 소개글 위 구분선 — Figma 06은 #B0D6F2 불투명 1px */
+@media (max-width:1100px){
+ html[data-page="H-01"] .hc-full .reco a{border-color:#B0D6F2}
+ html[data-page="H-01"] .hc-full .hc-copy{border-top-color:#B0D6F2}
+ html[data-page="H-01"] .hc-full .hc-sea.h01-sea{left:50%;right:auto;width:1440px;margin-left:-720px;height:198px}
+}
+/* C-12 점검 예고 띠배너(홈) — 768 (Figma 5318:44617): 2줄 · 14/140%(20) · 높이 78 */
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="H-01"] .maint-band{padding:19px 16px;line-height:20px;min-height:0}
+ html[data-page="H-01"] .maint-band .mb-pc{display:none}
+ html[data-page="H-01"] .maint-band .mb-rs{display:inline!important}
+ html[data-page="H-01"] .maint-band .mb-rs br.mb-m{display:none}
+}
+/* 360 (Figma 5318:44711): 4줄 · 높이 108 */
+@media (max-width:767px){
+ html[data-page="H-01"] .maint-band{padding:14px 16px;line-height:20px;min-height:0}
+ html[data-page="H-01"] .maint-band .mb-pc{display:none}
+ html[data-page="H-01"] .maint-band .mb-rs{display:inline!important}
+}
+/* C-12 시스템 점검 안내 — 물결은 Figma처럼 1392 폭 그대로(오른쪽 잘림) */
+@media (max-width:1100px){
+ html[data-page="C-12"] .c12-wv{width:1392px}
+}
+/* C-12 768 (Figma 5294:9650): 위 240 · 아래 166 */
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="C-12"] .c12{padding:240px 24px 166px}
+}
+/* C-12 360 (Figma 5294:9672): 로고 44/62 · 제목 36/64 · 위 196 · 아래 120 */
+@media (max-width:767px){
+ html[data-page="C-12"] .c12{padding:196px 16px 120px}
+ html[data-page="C-12"] .c12 .logo{font-size:44px;line-height:62px}
+ html[data-page="C-12"] .c12-t{font-size:36px;line-height:64px}
+}
+/* C-11 404 768 (Figma 5318:44185): 본문 594 높이 · 위아래 160 */
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="C-11"] .err-pg{min-height:0;padding:160px 20px}
+}
+/* C-11 404 360 (Figma 5318:44298): 404 72/72 · 제목 24/30 · 위 96 · 아래 120 */
+@media (max-width:767px){
+ html[data-page="C-11"] .err-pg{min-height:0;padding:96px 20px 120px}
+ html[data-page="C-11"] .err-pg .code{font-size:72px;line-height:72px}
+ html[data-page="C-11"] .err-pg h1{font-size:24px;line-height:30px}
+}
+</style>
+<style>/* ===== Figma 맞춤 · R2 ===== */
+/* ---------- A2-01 예술캘린더 — 태블릿·모바일 공통 ---------- */
+@media (max-width:1100px){
+ html[data-page="A2-01"] .crumbbar+.sec{padding-top:45px!important}
+ html[data-page="A2-01"] .sbar .inp,html[data-page="A2-01"] .sbar .btn{height:48px;min-height:48px}
+ html[data-page="A2-01"] .cal-wrap{margin-top:29px;row-gap:33px}
+ html[data-page="A2-01"] .cal-wrap+.sec-t{margin-top:217px}
+ html[data-page="A2-01"] .cal-side{padding:26px 25px 0!important}
+ html[data-page="A2-01"] .cal-side .cal-side-l{max-height:550px}
+ html[data-page="A2-01"] .seg button.on{background:#0B2A41;border-color:#0B2A41}
+}
+/* ---------- A2-01 — 태블릿 ---------- */
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="A2-01"] .cal-g .ev{font-size:14px;line-height:20px;padding:4px 0 0 16px;border-bottom:5px solid transparent;word-break:keep-all;-webkit-line-clamp:2;border-radius:6px}
+ html[data-page="A2-01"] .cal-g .ev.org{-webkit-line-clamp:2}
+ html[data-page="A2-01"] .cal-g .ev.org:last-child{margin-bottom:4px}
+}
+/* ---------- A2-01 — 모바일 ---------- */
+@media (max-width:767px){
+ html[data-page="A2-01"] .sbar{row-gap:22px;column-gap:12px}
+ html[data-page="A2-01"] .sbar>.btn-dark,html[data-page="A2-01"] .sbar>.a2-more{flex:1 1 0;width:auto;min-width:0}
+ html[data-page="A2-01"] .cal-g .dw{padding:8px 0;line-height:24px}
+ html[data-page="A2-01"] .cal-g .d{min-height:66px;padding:11px 5px 5px;font-size:0;line-height:0}
+ html[data-page="A2-01"] .cal-g .d .dn{display:block;margin:0 0 0 2px;font-size:14px;line-height:20px;width:auto;height:auto}
+ html[data-page="A2-01"] .cal-g .d.today .dn{display:grid;width:24px;height:24px;margin:-6px 0 2px -4px;line-height:1}
+ html[data-page="A2-01"] .cal-g .d.out:nth-last-child(-n+7){min-height:44px}
+ html[data-page="A2-01"] .legend{row-gap:6px}
+ html[data-page="A2-01"] .cal-g .ev{display:inline-block;vertical-align:top;width:7px;height:7px;padding:0;margin:-1px 3px 0 0;border:0;border-radius:50%;font-size:0;line-height:0;overflow:hidden}
+ html[data-page="A2-01"] .cal-g .ev.lit{background:var(--c-lit)} html[data-page="A2-01"] .cal-g .ev.exhi{background:var(--c-exhi)}
+ html[data-page="A2-01"] .cal-g .ev.perf{background:var(--c-perf)} html[data-page="A2-01"] .cal-g .ev.multi{background:var(--c-multi)}
+ html[data-page="A2-01"] .cal-g .ev.edu{background:var(--c-edu)} html[data-page="A2-01"] .cal-g .ev.etc{background:var(--c-etc)}
+ html[data-page="A2-01"] .cal-g .ev.org{background:var(--c-org);margin-bottom:0}
+ html[data-page="A2-01"] .cal-g .more{display:block;min-height:0;padding:0;margin-top:3px;font-size:13px;font-weight:700;line-height:21px}
+ html[data-page="A2-01"] .cal-g .more .more-t{display:none}
+ html[data-page="A2-01"] .grid4{column-gap:16px}
+ html[data-page="A2-01"] .seg{display:flex;flex-wrap:wrap;gap:8px;border:0;border-radius:0;overflow:visible}
+ html[data-page="A2-01"] .seg>button{flex:none;height:34px;min-height:34px;padding:0 15px;border:1px solid var(--field);border-radius:8px;font-size:14px}
+ html[data-page="A2-01"] .seg>button+button{border-left:1px solid var(--field)}
+ html[data-page="A2-01"] .seg>button.on{border-color:var(--accent)}
+}
+/* ---------- A2-02 날짜 확장 상세 ---------- */
+@media (max-width:1100px){
+ html[data-page="A2-02"] .a22-l{max-height:419px;overflow-y:auto;scrollbar-width:thin}
+}
+@media (max-width:767px){
+ html[data-page="A2-02"] .modal-h{align-items:flex-start}
+ html[data-page="A2-02"] .modal-h h2{font-size:20px;line-height:28px}
+ html[data-page="A2-02"] .a22-n{display:block;margin:6px 0 0;font-size:16px;line-height:22px}
+ html[data-page="A2-02"] .a22-close{margin-top:-4px}
+ html[data-page="A2-02"] .modal-b{padding:22px 24px 32px}
+}
+/* ---------- A3-05 예술지도 ---------- */
+@media (max-width:1100px){
+ html[data-page="A3-05"] .map-list .tbl tbody tr{padding:17px 21px!important;row-gap:14px!important;border-radius:12px}
+ html[data-page="A3-05"] .map-list .tbl td{padding:0;line-height:26px;min-height:26px}
+ html[data-page="A3-05"] .map-list .tbl:not(.edtbl) td::before{flex:0 0 56px!important;font-size:16px!important;line-height:26px;color:#26292B!important}
+ html[data-page="A3-05"] .map-list .tbl td b{font-weight:700}
+}
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="A3-05"] .map-list .tbl tbody tr{grid-template-columns:311px 1fr!important;column-gap:0!important}
+}
+@media (max-width:767px){
+ html[data-page="A3-05"] .map,html[data-page="A3-05"] .pickbox,html[data-page="A3-05"] .map-list{padding:16px!important}
+ html[data-page="A3-05"] .amap-t,html[data-page="A3-05"] .amap-isl,html[data-page="A3-05"] .amap-zin,html[data-page="A3-05"] .amap-w{display:none!important}
+ html[data-page="A3-05"] .map-list .tbl tbody tr{gap:14px!important}
+ html[data-page="A3-05"] .amap-lg{padding-left:80px}
+ html[data-page="A3-05"] .amap-lg>span:first-child{margin-left:-80px;width:60px}
+}
+</style>
+<style>/* ===== Figma 맞춤 · R3 ===== */
+/* ---------- 태블릿 768–1100 ---------- */
+@media (min-width:768px) and (max-width:1100px){
+  /* A3-06 카드 행 간격 (Figma 행 사이 45) */
+  html[data-page="A3-06"] .grid4{row-gap:44px}
+  /* A3-07 뷰어 폭 = 화면 좌우 40 여백(688) */
+  html[data-page="A3-07"] .viewer{width:calc(100vw - 80px);max-width:none}
+  /* A3-08 · A3-09 */
+  :is(html[data-page="A3-08"],html[data-page="A3-09"]) .wd-top{row-gap:32px}
+  :is(html[data-page="A3-08"],html[data-page="A3-09"]) .fg-pn{margin-top:48px}
+  /* A3-08: 이전 272 · 목록 120 · 다음 272 한 줄 */
+  html[data-page="A3-08"] .fg-pn{grid-template-columns:minmax(0,1fr) 120px minmax(0,1fr)}
+  /* A3-09: 이전 · 다음 반반 한 줄, 목록 160 가운데 둘째 줄 (Figma 5318:48359) */
+  html[data-page="A3-09"] .fg-pn{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html[data-page="A3-09"] .fg-pn>.btn:nth-child(2){grid-row:2;grid-column:1/-1;justify-self:center;width:160px}
+  /* A3-10 카드 행 간격 · 쪽 번호 위 여백 */
+  html[data-page="A3-10"] .a310-g{row-gap:68px}
+  html[data-page="A3-10"] .a310-g+.pager{margin-top:70px}
+}
+/* ---------- 태블릿 · 모바일 공통 ---------- */
+@media (max-width:1100px){
+  html[data-page="A3-07"] .viewer>.row:first-child{padding-left:0!important;padding-right:0!important}
+  :is(html[data-page="A3-08"],html[data-page="A3-09"]) .wd-body{row-gap:40px}
+  html[data-page="A3-10"] .a310-back{margin-top:3px}
+  html[data-page="A3-10"] .a310-g{margin-top:21px}
+}
+/* ---------- 모바일 ≤767 ---------- */
+@media (max-width:767px){
+  /* A3-06 검색 단추 두 개 같은 폭 */
+  html[data-page="A3-06"] .sp .sbar .btn{flex:1 1 0;width:auto;min-width:0;padding-left:0;padding-right:0;justify-content:center}
+  /* A3-06 · A3-10 보기 탭 3등분 */
+  :is(html[data-page="A3-06"],html[data-page="A3-10"]) .utabs{gap:0}
+  :is(html[data-page="A3-06"],html[data-page="A3-10"]) .utabs button{flex:1 1 0;padding-left:0;padding-right:0;text-align:center}
+  html[data-page="A3-06"] .rt-sort{gap:20px}
+  /* 카드: 2열 간격 16, 지원 사업 선정 표시는 제목 아래 줄 */
+  :is(html[data-page="A3-06"],html[data-page="A3-10"]) .grid4{column-gap:16px}
+  html[data-page="A3-06"] .grid4{row-gap:44px}
+  :is(html[data-page="A3-06"],html[data-page="A3-10"]) .card .nm-row{flex-wrap:wrap;row-gap:2px}
+  :is(html[data-page="A3-06"],html[data-page="A3-10"]) .card .nm-row .nm{max-width:100%}
+  /* A3-07 이전·다음 단추 40, 안쪽 8 */
+  html[data-page="A3-07"] .vw-stage .icon-btn{width:40px!important;height:40px!important;min-width:0;min-height:0}
+  html[data-page="A3-07"] .vw-stage .icon-btn[aria-label="이전"]{left:8px!important}
+  html[data-page="A3-07"] .vw-stage .icon-btn[aria-label="다음"]{right:8px!important}
+  /* A3-08 · A3-09 */
+  :is(html[data-page="A3-08"],html[data-page="A3-09"]) .wd-top{row-gap:24px}
+  :is(html[data-page="A3-08"],html[data-page="A3-09"]) .wd-body{margin-top:32px}
+  :is(html[data-page="A3-08"],html[data-page="A3-09"]) .wd-tabs button{font-size:15px;line-height:24px}
+  :is(html[data-page="A3-08"],html[data-page="A3-09"]) .fg-pn{margin-top:32px;gap:8px}
+  /* A3-10 제목 26 · 카드 행 간격 70 */
+  html[data-page="A3-10"] .a310-back+h1{margin-top:17px!important;font-size:26px;line-height:33px}
+  html[data-page="A3-10"] .utabs{margin-top:34px}
+  html[data-page="A3-10"] .a310-g{row-gap:70px}
+  html[data-page="A3-10"] .a310-g+.pager{margin-top:72px}
+}
+</style>
+<style>/* ===== Figma 맞춤 · R4 ===== */
+/* ---- A4-01 공지사항 목록 ---- */
+@media (max-width:1100px){
+ html[data-page="A4-01"] .a401{padding-top:32px!important}
+ html[data-page="A4-01"] .a401-bar{margin-bottom:17px}
+ html[data-page="A4-01"] .a401-bar>.small{font-size:16px;line-height:26px;color:#26292B}
+ html[data-page="A4-01"] .a401-s .inp{height:48px;min-height:48px;font-size:16px}
+ html[data-page="A4-01"] .a401-s .inpw>.ic{left:18px;width:18px;height:18px}
+ html[data-page="A4-01"] .a401-s .inpw>.ic~.inp{padding-left:44px}
+ html[data-page="A4-01"] .a401-w{height:48px;min-height:48px;font-size:16px;gap:8px}
+ html[data-page="A4-01"] .a401-w .ic{width:18px;height:18px}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) tr{padding:18px 20px 16px;border-color:#E4E6E7;background:#fff}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) tr.pin{background:var(--accent-weak)}
+ html[data-hc="1"][data-page="A4-01"] .a401 .tbl:not(#x) tr.pin{background:var(--color-bg-sunken)}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) tr.pin td{background:none}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) td{align-items:flex-start;gap:12px;font-size:14px;line-height:20px;color:#26292B;justify-content:flex-start;text-align:left!important;padding:0}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) td::before{flex:0 0 41px;font-size:14px;line-height:20px;font-weight:700;color:#26292B;white-space:nowrap}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) td:first-child{font-weight:400}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) td .badge{height:28px;margin:-6px 0 -2px 0;padding:0 10px;font-size:14px;background:none;color:#165583}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) td[data-label="제목"]{display:block;position:relative;padding-left:53px}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) td[data-label="제목"]::before{position:absolute;left:0;top:0}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) td[data-label="제목"] .ic{width:15px;height:15px}
+}
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="A4-01"] .a401 .tbl:not(#x) tr{gap:17px 24px}
+}
+@media (max-width:767px){
+ html[data-page="A4-01"] .a401-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;row-gap:12px;margin-bottom:22px}
+ html[data-page="A4-01"] .a401-bar>.row{display:contents}
+ html[data-page="A4-01"] .a401-bar .a401-s{grid-row:2;grid-column:1/-1;width:100%}
+ html[data-page="A4-01"] .a401-bar .a401-w{grid-row:1;grid-column:2}
+ html[data-page="A4-01"] .a401 .tbl:not(#x) tr{gap:17px;margin-bottom:12px}
+}
+
+/* ---- A4-02 공지사항 상세 ---- */
+@media (max-width:1100px){
+ html[data-page="A4-02"] .a402{padding-top:57px!important}
+ html[data-page="A4-02"] .a402-h{padding:26px 4px 23px}
+ html[data-page="A4-02"] .a402-h h1{line-height:34px}
+ html[data-page="A4-02"] .a402-h p{margin-top:11px}
+ html[data-page="A4-02"] .a402-b{min-height:0;padding:31px 4px 97px}
+ html[data-page="A4-02"] .a402-f{padding:20px 20px 15px}
+ html[data-page="A4-02"] .a402-f>b{display:block;line-height:22px;color:#26292B}
+ html[data-page="A4-02"] .a402-f p{margin-top:11px}
+ html[data-page="A4-02"] .a402-a{flex-wrap:wrap;row-gap:8px}
+ html[data-page="A4-02"] .a402-a>.row:last-child{margin-left:auto}
+ html[data-page="A4-02"] .a402-a .btn{font-size:16px;font-weight:700;gap:8px;padding:0 14px}
+ html[data-page="A4-02"] .a402-a .btn-line{color:#26292B}
+ html[data-page="A4-02"] .a402-a .btn .ic{width:16px;height:16px}
+ html[data-page="A4-02"] .a402-a>.row:first-child .btn{padding:0;justify-content:center;width:101px}
+ html[data-page="A4-02"] .a402-a>.row:first-child .btn+.btn{width:74px}
+ html[data-page="A4-02"] .a402-pn li{align-items:flex-start;min-height:0;padding:16px 4px}
+ html[data-page="A4-02"] .a402-pn b{line-height:22px;margin-top:2px}
+ html[data-page="A4-02"] .a402-pn a{line-height:26px}
+}
+@media (max-width:767px){
+ html[data-page="A4-02"] .a402-h{padding-top:23px}
+ html[data-page="A4-02"] .a402-h p{margin-top:18px}
+ html[data-page="A4-02"] .a402-pn li{padding-right:11px}
+}
+
+/* ---- A4-03 공지사항 글쓰기·수정 ---- */
+@media (max-width:1100px){
+ html[data-page="A4-03"] .a403-fc{padding:12px 24px}
+ html[data-page="A4-03"] .a403-fc>.f{grid-template-columns:minmax(0,1fr);gap:8px;padding:16px 0 20px}
+ html[data-page="A4-03"] .a403-fc>.f:last-child{border-bottom:0}
+ html[data-page="A4-03"] .a403-fc>.f>.f-l{padding-top:0;font-size:16px;line-height:22px}
+ html[data-page="A4-03"] .a403-fc .f-c>.row{gap:12px}
+ html[data-page="A4-03"] .a403-fc .f-c>.row .help{font-size:14px;line-height:20px;color:#727171}
+ html[data-page="A4-03"] .a403-fc .f-c>.row .help{white-space:nowrap}
+ html[data-page="A4-03"] .a403-tb{flex-wrap:wrap;height:auto;padding:9px 8px 10px 8.5px}
+ html[data-page="A4-03"] .a403-tb button{height:30px}
+ html[data-page="A4-03"] .a403-mode{order:1}
+ html[data-page="A4-03"] .a403-tb::after{content:"";order:2;flex:0 0 100%;height:0}
+ html[data-page="A4-03"] .a403-ed textarea{min-height:300px;height:300px}
+ html[data-page="A4-03"] .a403-pv{min-height:300px}
+ html[data-page="A4-03"] .a403-fh{line-height:20px;margin-top:7px}
+ html[data-page="A4-03"] .a403-dr{margin-top:37px;padding:31px 24px 30px;background:#fff}
+ html[data-page="A4-03"] .a403-drt{line-height:25px}
+ html[data-page="A4-03"] .a403-drd{margin:17px 0 20px;line-height:20px}
+ html[data-page="A4-03"] .a403-drsc{max-height:none;overflow:visible;border-top:0}
+ html[data-page="A4-03"] .a403-drtb{min-width:0!important;table-layout:auto}
+ html[data-page="A4-03"] .a403-drtb,html[data-page="A4-03"] .a403-drtb tbody{display:block}
+ html[data-page="A4-03"] .a403-drtb thead{display:none}
+ html[data-page="A4-03"] .a403-drtb tr{display:grid;grid-template-columns:max-content minmax(0,1fr) auto;align-items:center;column-gap:0;row-gap:6px;padding:14px 0;border-top:1px solid #E4E6E7}
+ html[data-page="A4-03"] .a403-drtb tr:last-child{border-bottom:1px solid #E4E6E7}
+ html[data-page="A4-03"] .a403-drtb td{height:auto;padding:0;border:0;font-size:15px;line-height:18px;color:#26292B}
+ html[data-page="A4-03"] .a403-drtb td:nth-child(2){grid-row:1;grid-column:1/3;white-space:normal}
+ html[data-page="A4-03"] .a403-drtb td:nth-child(2) b{color:#26292B}
+ html[data-page="A4-03"] .a403-drtb td:nth-child(1){grid-row:2;grid-column:1}
+ html[data-page="A4-03"] .a403-drtb td:nth-child(3){grid-row:2;grid-column:2}
+ html[data-page="A4-03"] .a403-drtb td:nth-child(3)::before{content:" · ";white-space:pre}
+ html[data-page="A4-03"] .a403-drtb td:nth-child(4){grid-row:1/3;grid-column:3;padding:0;overflow:visible}
+}
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="A4-03"] .a403-tb>button:nth-child(15),html[data-page="A4-03"] .a403-tb>button:nth-child(16){order:3}
+ html[data-page="A4-03"] .a403-drtb td:nth-child(4){padding-left:16px}
+}
+@media (max-width:767px){
+ html[data-page="A4-03"] .a403-fc{padding:12px 16px}
+ html[data-page="A4-03"] .a403-fc .f-c>.row{flex-wrap:wrap!important;row-gap:8px}
+ html[data-page="A4-03"] .a403-lock{width:100%}
+ html[data-page="A4-03"] .a403-fc .f-c>.row:has(.a403-dt){row-gap:16px}
+ html[data-page="A4-03"] .a403-tb::before{content:"";order:2;flex:0 0 100%;height:0}
+ html[data-page="A4-03"] .a403-tb>:nth-child(4),html[data-page="A4-03"] .a403-tb>:nth-child(12){display:none}
+ html[data-page="A4-03"] .a403-tb>:nth-child(n+5):nth-child(-n+11){order:3}
+ html[data-page="A4-03"] .a403-tb::after{order:4}
+ html[data-page="A4-03"] .a403-tb>:nth-child(n+13):nth-child(-n+16){order:5}
+ html[data-page="A4-03"] .a403-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+ html[data-page="A4-03"] .a403-acts .btn,html[data-page="A4-03"] .a403-acts .a403-cancel,html[data-page="A4-03"] .a403-acts .btn-pri{width:auto}
+ html[data-page="A4-03"] .a403-dr{padding:31px 16px 30px}
+ html[data-page="A4-03"] .a403-drtb tr{row-gap:6px}
+ html[data-page="A4-03"] .a403-drtb td:nth-child(4){grid-row:3;grid-column:1/-1;text-align:left;margin-top:4px}
+}
+
+/* ---- A4-03a 마크다운 문법 안내 창 (A4-03 위 모달 · data-page=A4-03) ---- */
+@media (max-width:767px){
+ html[data-page="A4-03"] .modal.mdh{width:100%;padding:28px 16px}
+ html[data-page="A4-03"] .mdh-x{margin-right:8px}
+ html[data-page="A4-03"] .mdh-d{margin-top:11px;line-height:20px}
+ html[data-page="A4-03"] .mdh-t th,html[data-page="A4-03"] .mdh-t td{padding:0 12px}
+ html[data-page="A4-03"] .mdh-t th:first-child{width:150px;box-sizing:border-box}
+ html[data-page="A4-03"] .mdh-t th+th{width:auto}
+}
+
+/* ---- A5-01 연도별 지원사업 목록 ---- */
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="A5-01"] .a501 .grid3{row-gap:71px}
+}
+@media (max-width:767px){
+ html[data-page="A5-01"] .a501 .grid3{column-gap:16px;row-gap:71px}
+ html[data-page="A5-01"] .a501 .grid3 .nm-row{flex-wrap:wrap;row-gap:6px}
+ html[data-page="A5-01"] .a501 .grid3 .nm-row>.nm{flex:1 1 100%;max-width:100%}
+ html[data-page="A5-01"] .a501 .utabs>button{flex:1 1 0;justify-content:center;text-align:center}
+}
+</style>
+<style>/* ===== Figma 맞춤 · R5 ===== */
+/* --- 공통(두 화면) 위 신청 띠 · 아래 신청 상자 --- */
+@media (max-width:1100px){
+ html[data-page="A1-01"] .reg-top,html[data-page="A1-02"] .reg-top{padding-right:20px}
+ /* Figma 줄바꿈과 같게: 본문 글자는 pretty 대신 보통 줄바꿈 */
+ html[data-page="A1-01"] .sec p,html[data-page="A1-02"] .sec p,html[data-page="A1-02"] .sec li{text-wrap:wrap}
+ html[data-page="A1-01"] .reg-cta,html[data-page="A1-02"] .reg-cta{padding:41px 20px;gap:19px}
+ html[data-page="A1-01"] .reg-cta>p,html[data-page="A1-02"] .reg-cta>p{line-height:25px}
+}
+@media (max-width:767px){
+ html[data-page="A1-01"] .reg-top,html[data-page="A1-02"] .reg-top{padding:18px 20px;row-gap:12px}
+ html[data-page="A1-01"] .reg-cta-btn,html[data-page="A1-02"] .reg-cta-btn{align-self:stretch;padding:0 20px}
+}
+/* --- A1-01 768: 5단계 가로 배치 + 연결선 · 기능 2열 간격 없음 --- */
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="A1-01"] .flow5{grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+ html[data-page="A1-01"] .flow5::before{display:block!important;left:69px;right:69px;top:17px;height:2px;background:#B0D6F2}
+ html[data-page="A1-01"] .flow5 li{display:block;padding:0;text-align:center}
+ html[data-page="A1-01"] .flow5 .f5-n{margin:0 auto}
+ html[data-page="A1-01"] .flow5 b{margin-top:16px;line-height:25px}
+ html[data-page="A1-01"] .flow5 p{margin:6px auto 0;max-width:122px}
+ html[data-page="A1-01"] .flow5 li:last-child p{max-width:none}
+ html[data-page="A1-01"] .feat6{column-gap:0}
+}
+/* --- A1-01 360: 단계 세로 · 원 옆 글자 간격 · 세로 연결선 --- */
+@media (max-width:767px){
+ html[data-page="A1-01"] .flow5 li{grid-template-columns:36px 1fr;column-gap:16px}
+ html[data-page="A1-01"] .flow5 b{margin-top:5px;line-height:25px}
+ html[data-page="A1-01"] .flow5 p{margin-top:2px}
+ html[data-page="A1-01"] .flow5 li::after{content:"";display:block!important;position:absolute;left:17px;top:42px;bottom:-14px;width:2px;background:#B0D6F2}
+ html[data-page="A1-01"] .flow5 li:last-child::after{bottom:0}
+}
+/* --- A1-02 768·360 --- */
+@media (max-width:1100px){
+ html[data-page="A1-02"] .grid3>.box>div:first-child .ic{width:29px;height:29px}
+ html[data-page="A1-02"] .grid3>.box>div:first-child{line-height:0}
+ html[data-page="A1-02"] .grid3>.box>b.h4{margin-top:13px!important;line-height:25px}
+ html[data-page="A1-02"] .grid3>.box>p{margin-top:10px}
+ html[data-page="A1-02"] .a12-steps{column-gap:6px!important;row-gap:10px!important}
+ html[data-page="A1-02"] .a12-steps>li{gap:5px!important}
+ html[data-page="A1-02"] .a12-steps>li>.muted .ic{width:19px;height:19px}
+ html[data-page="A1-02"] .callout b{font-weight:400}
+ html[data-page="A1-02"] .grid2{grid-template-columns:1fr;gap:48px!important}
+ html[data-page="A1-02"] .grid2 .box{padding:25px 24px 24px}
+ html[data-page="A1-02"] .grid2 .box>b{display:block;line-height:25px}
+ html[data-page="A1-02"] .grid2 .box>p{margin-top:11px}
+ html[data-page="A1-02"] .grid2 .a12-s{display:block}
+ html[data-page="A1-02"] .reg-cta{margin-top:78px}
+}
+@media (min-width:768px) and (max-width:1100px){
+ html[data-page="A1-02"] .grid3{gap:16px}
+ html[data-page="A1-02"] .grid2 .box{min-height:164px}
+}
+@media (max-width:767px){
+ html[data-page="A1-02"] .grid3{grid-template-columns:1fr;gap:32px}
+ html[data-page="A1-02"] .grid3>.box{min-height:185px}
+ html[data-page="A1-02"] .callout{padding-right:5px}
+ html[data-page="A1-02"] .grid2 .box+.box{min-height:190px}
+}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -4448,7 +4918,7 @@ function toggleScrap(key,btn){if(!isMember()&&!isAdmin()){fgDlg('scrap');return}
 const GNB=[{n:'예술인등록',to:'A1-01',g:'A1',sub:[['예술인등록 사업소개','A1-01'],['예술인등록 안내','A1-02'],['예술인등록 신청','A1-03']]},{n:'예술캘린더',to:'A2-01',g:'A2'},{n:'예술창고',to:'A3-05',g:'A3',sub:[['예술지도','A3-05'],['예술인 포트폴리오','A3-01'],['예술작품·활동','A3-06']]},{n:'공지사항',to:'A4-01',g:'A4'},{n:'문화예술진흥 지원사업',to:'A5-01',g:'A5'}];
 function header(){
   const base=(SC(CUR).modal?SC(CUR).bg:CUR);const logged=isMember()||isAdmin();
-  return `${S.maint?`<div class="maint-band" role="status">[시스템 점검 예정] 2026. 10. 12.(월) 02:00 ~ 04:00 정기 점검이 예정되어 있습니다. 점검 시간에는 서비스 이용이 제한됩니다.</div>`:''}
+  return `${S.maint?`<div class="maint-band" role="status"><span class="mb-pc">[시스템 점검 예정] 2026. 10. 12.(월) 02:00 ~ 04:00 정기 점검이 예정되어 있습니다. 점검 시간에는 서비스 이용이 제한됩니다.</span><span class="mb-rs" style="display:none">[시스템 점검 예정]<br class="mb-m"> 2026. 10. 12.(월) 02:00 ~ 04:00<br> 정기 점검이 예정되어 있습니다.<br class="mb-m"> 점검 시간에는 서비스 이용이 제한됩니다.</span></div>`:''}
   <div class="util${logged?' util-li':''}"><div class="wrap util-in" role="toolbar" aria-label="접근성 설정"><span class="lbl">글자 크기</span>${L(['보통','크게','아주 크게'],(t,i)=>`<button class="${S.fs==i?'on':''}" onclick="S.fs=${i};store.set('fs',${i});applyA11y();render()" aria-pressed="${S.fs==i}">${t}</button>`)}<span class="sep"></span><button class="${S.hc?'on':''}" onclick="S.hc=S.hc?0:1;store.set('hc',S.hc);applyA11y();render()" aria-pressed="${!!S.hc}">고대비</button></div></div>
   <header class="hd"><div class="wrap hd-in">
     <a class="logo" href="#/H-01" aria-label="아트포트군산 홈">아트포트군산</a>
@@ -4468,7 +4938,7 @@ function footer(){return `<footer class="ft"><div class="ft-in wrap">
   <div class="ft-r"><nav class="ft-legal" aria-label="약관 및 정책"><a href="#/C-09?t=1"><b>개인정보처리방침</b></a><a href="#/C-09">이용약관</a><a href="#/C-09?t=4">이메일무단수집거부</a></nav><select aria-label="패밀리 사이트" onchange="if(this.selectedIndex){window.open('https://gunsancf.or.kr','_blank','noopener');this.selectedIndex=0}"><option>패밀리 사이트</option><option>군산문화관광재단 (gunsancf.or.kr)</option></select><div class="sns"><a href="https://www.instagram.com/gunsan_cf/" target="_blank" rel="noopener" aria-label="인스타그램(새 창)">인스타그램</a><a href="https://www.facebook.com/gunsancf" target="_blank" rel="noopener" aria-label="페이스북(새 창)">페이스북</a><a href="https://blog.naver.com/gunsan_cf" target="_blank" rel="noopener" aria-label="네이버 블로그(새 창)">네이버 블로그</a></div>${REF('푸터 정보는 관리자 > 사이트 기본정보(B-17)에서 수정')}</div>
 </div></footer>`}
 const LNB_T={'A1-01':'예술인등록','A3-05':'예술창고','A4-01':'공지사항','A5-01':'군산시 지원사업 선정'};
-const lnbSide=(arr,on)=>{const title=LNB_T[arr[0][1]]||'';return `<aside class="lnb-side"><h2>${title}</h2><nav aria-label="${title} 메뉴">${L(arr,([t,to])=>`<a href="#/${to}" class="${on===to?'on':''}" ${on===to?'aria-current="page"':''}>${t}<span aria-hidden="true">›</span></a>`)}</nav></aside>`};
+const lnbSide=(arr,on)=>{const title=LNB_T[arr[0][1]]||'';return `<aside class="lnb-side"><h2>${title}</h2><nav aria-label="${title} 메뉴">${L(arr,([t,to])=>`<a href="#/${to}" class="${on===to?'on':''}" ${on===to?'aria-current="page"':''}>${t}<span aria-hidden="true">›</span></a>`)}</nav>${arr.length>1?`<select class="lnb-sel" aria-label="${title} 메뉴 선택" onchange="location.hash='#/'+this.value">${L(arr,([t,to])=>`<option value="${to}" ${on===to?'selected':''}>${t}</option>`)}</select>`:''}</aside>`};
 const pub=(body)=>{let b=body;const m=b.match(/\u0001([^\u0001]*)\u0001/);if(m){const [items,on]=m[1].split('\u0004');const arr=items.split('\u0003').map(x=>x.split('\u0002'));if(arr[0][1]==='A3-05'){const ci=b.indexOf('<div class="crumbbar">');const ne=ci>=0?b.indexOf('</nav>',ci):-1;if(ne>=0&&ne<m.index)b=b.slice(0,ci)+'<div class="crumbbar has-tabs">'+b.slice(ci+22,ne+6)+fgTabs(arr,on).replace('class="fg-tabs"','class="fg-tabs fg-ctabs"')+b.slice(ne+6)}const m2=b.match(/\u0001([^\u0001]*)\u0001/);b=b.slice(0,m2.index)+(arr[0][1]==='A3-05'?`<div class="wrap fg-subw"><div class="lnb-main">${b.slice(m2.index+m2[0].length)}</div></div>`:`<div class="wrap lnb">${lnbSide(arr,on)}<div class="lnb-main">${b.slice(m2.index+m2[0].length)}</div></div>`)}return header()+`<main id="main">${b}</main>`+footer()+popHTML()};
 // 키비주얼 번호 8종
 const KV_NAME={1:'홈 화면 히어로',2:'예술인등록 공용',3:'예술캘린더',4:'예술인 포트폴리오',5:'예술지도',6:'예술작품·활동',7:'공지사항·문화예술진흥 지원사업 공용',8:'마이페이지 하단 문의 배너'};
@@ -4541,7 +5011,7 @@ PAGES['A1-02']=()=>pub(kv('예술인등록','군산 예술의 기록과 연결',
   <div><h2 class="sec-t">주요 반려 사유</h2><ol class="hist mt16">${L(['신청 자격 미충족','필수 입력정보 누락 또는 오류','필수 증빙자료 미제출 및 미비','제출정보와 증빙자료 불일치','사실 확인이 어려운 정보','아트포트군산 등록 목적 및 대상에 부합하지 않는 내용'],(t,i)=>`<li style="grid-template-columns:40px 1fr"><span class="y">${i+1}</span><span>${t}</span></li>`)}</ol>
    <p class="small muted mt16">반려 시 기존 신청 내용은 유지되며, 반려된 항목과 사유를 확인한 뒤 필요한 항목만 수정해 재신청할 수 있습니다.</p></div>
   <div><h2 class="sec-t">정보 갱신 · 회원탈퇴</h2>
-   <div class="box mt16"><b>2년 주기 정보 갱신</b><p class="small mt8" style="color:var(--ink-2)">갱신일 30일 전부터 홈페이지 알림과 이메일로 안내합니다. 갱신하지 않아도 공개는 유지되며 “갱신 필요”가 표시됩니다. 변경 사항이 없으면 재승인 없이 갱신이 완료됩니다.</p></div>
+   <div class="box mt16"><b>2년 주기 정보 갱신</b><p class="small mt8" style="color:var(--ink-2)"><span class="a12-s">갱신일 30일 전부터 홈페이지 알림과 이메일로 안내합니다.</span> <span class="a12-s">갱신하지 않아도 공개는 유지되며 “갱신 필요”가 표시됩니다.</span> <span class="a12-s">변경 사항이 없으면 재승인 없이 갱신이 완료됩니다.</span></p></div>
    <div class="box mt16"><b>회원탈퇴</b><p class="small mt8" style="color:var(--ink-2)">별도의 등록 취소 기능 없이 마이페이지에서 회원탈퇴로 운영합니다. 탈퇴 시 공개 정보는 즉시 비공개 처리됩니다.</p></div>
   </div></div>
  <div class="reg-cta mt48"><p class="h4" style="margin:0">신청 자격을 확인하셨나요?</p><a class="btn btn-pri reg-cta-btn" href="#/A1-03">예술인 등록 신청하기 ${I('r')}</a></div>
@@ -4752,7 +5222,7 @@ PAGES['A2-01']=()=>{
   <div class="cal-wrap"><div>
    <div class="cal"><div class="cal-h"><button class="icon-btn" aria-label="이전 달" onclick="S.calM=Math.max(-1,(S.calM||0)-1);render()" ${(S.calM||0)<=-1?'disabled style="opacity:.3"':''}>${I('l')}</button><h2>${y}. ${String(m+1).padStart(2,'0')}</h2><button class="icon-btn" aria-label="다음 달" onclick="S.calM=Math.min(1,(S.calM||0)+1);render()" ${(S.calM||0)>=1?'disabled style="opacity:.3"':''}>${I('r')}</button></div>
    <div class="cal-g">${L(['일','월','화','수','목','금','토'],(d,i)=>`<div class="dw ${i===0?'sun':i===6?'sat':''}">${d}</div>`)}
-   ${L(days,d=>{const k=ds(d);const e=eventsOn(k);const out=d.getMonth()!==m;const today=k==='2026-10-07';return `<div class="d ${out?'out':''} ${today?'today':''} ${e.length>3?'click':''}" ${e.length>3?`onclick="if(!event.target.closest('a'))go('A2-02?d=${k}')"`:''}><span class="dn">${d.getDate()}</span>${out?'':L(e.slice(0,3),x=>`<a class="ev ${evc(x)}" ${evLink(x)} title="${esc(x.title)}">${x.admin?'◆ ':''}${x.title}</a>`)}${!out&&e.length>3?`<a class="more" href="#/A2-02?d=${k}">+${e.length-3}개 더보기</a>`:''}</div>`})}
+   ${L(days,d=>{const k=ds(d);const e=eventsOn(k);const out=d.getMonth()!==m;const today=k==='2026-10-07';return `<div class="d ${out?'out':''} ${today?'today':''} ${e.length>3?'click':''}" ${e.length>3?`onclick="if(!event.target.closest('a'))go('A2-02?d=${k}')"`:''}><span class="dn">${d.getDate()}</span>${out?'':L(e.slice(0,3),x=>`<a class="ev ${evc(x)}" ${evLink(x)} title="${esc(x.title)}">${x.admin?'◆ ':''}${x.title}</a>`)}${!out&&e.length>3?`<a class="more" href="#/A2-02?d=${k}">+${e.length-3}<span class="more-t">개 더보기</span></a>`:''}</div>`})}
    </div></div>
    <div class="row between mt16 wrapf"><div class="legend">${L([['문학','--c-lit'],['시각','--c-exhi'],['공연','--c-perf'],['다원예술','--c-multi'],['문화예술교육','--c-edu'],['기타','--c-etc'],['◆ 재단·기관 일정','--c-org']],([t,c])=>`<span><i style="background:var(${c})"></i>${t}</span>`)}</div>${REF('분야 6분류(문학·시각·공연·다원예술·문화예술교육·기타, 작품·활동 활동유형 기준)와 지원사업 선정 여부(선정/일반) 필터 · 포스터 호버 보기는 2차년도 · 이달의 주요 일정은 지난 일정을 빼고 오늘(진행 중 포함)부터 말일까지 날짜별로 묶어 표시(날짜마다 그날 진행되는 일정을 모두 표시 — 여러 날 일정은 일정 시작·일정 중간·마지막 날로 구분, 하루 일정은 구분 표시 없이 먼저), 목록 높이는 달력과 같고 넘치면 목록 안에서 스크롤 · 필터는 기본 접힘, [세부 검색] 클릭 시 펼침. 조건을 고르면 달력·주요 일정·전체 일정에 바로 적용')}</div>
   </div>
