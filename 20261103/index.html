@@ -2511,12 +2511,37 @@ fieldset.rv-dec[disabled]{opacity:.45}
   --p-color-orange-600:#C44826;
   --color-emphasis-orange-bg:var(--p-color-orange-600);
   --color-emphasis-orange-fg:var(--color-text-inverse);
-  --type-copy-weight:var(--p-font-weight-medium);
-  --c-button-pad-x:var(--p-space-6);
   --c-callout-bar-w:4px;
   --c-subtab-h:61px;
+  --control-h-sm:2rem;
+  --c-button-lg-h:3.556rem;
+  --c-button-lg-w:10.944rem;
+  --c-modal-width-md:624px;
+  --c-modal-pad-md:var(--p-space-8);
+  --c-kv-min-h-md:12.111rem;
+  --c-kv-min-h-md-sub:13.167rem;
+  --c-kv-min-h-sm:11.667rem;
+  --c-kv-title-sm:var(--p-font-size-32);
+  --c-placeholder-bg:var(--color-bg-sunken);
+  --c-placeholder-fg:var(--color-text-on-tint);
+  --c-placeholder-font:var(--p-font-size-14);
+  --c-wordmark-weight:var(--p-font-weight-bold);
+  --c-wordmark-tracking:.02em;
+  --c-wordmark-size-lg:36px;
+  --c-wordmark-size-md:30px;
+  --c-wordmark-size-sm:24px;
+  --c-wordmark-size-footer:20px;
+  --c-wordmark-size-admin:22px;
+  --c-wordmark-ink:var(--p-color-blue-900);
+  --c-wordmark-ink-inverse:var(--color-text-inverse);
   --c-wordmark-comma-ink:var(--p-color-orange-500);
 }
+html[data-hc="1"]{
+  --c-wordmark-ink:var(--p-color-white);
+  --c-wordmark-comma-ink:var(--p-color-white);
+}
+@media (max-width:1100px){:root{--c-modal-width:var(--c-modal-width-md);--c-modal-pad:var(--c-modal-pad-md);--c-kv-min-h:var(--c-kv-min-h-md)}}
+@media (max-width:767px){:root{--c-modal-width:calc(100vw - 32px);--c-modal-pad:var(--p-space-6);--c-kv-min-h:var(--c-kv-min-h-sm);--c-kv-title:var(--c-kv-title-sm)}}
 /* 토큰을 쓰던 곳 — Figma 화면 색 유지: 헤더 알림 개수 · 관리자 「처리할 일」은 주황 500, M-01 「최근 알림」 띠는 emphasis/orange(#C44826 · 흰 글자) */
 html:not([data-hc="1"]) .bell-n{background:var(--p-color-orange-500)}
 html:not([data-hc="1"]) .todo{border-color:var(--p-color-orange-500)}
@@ -3411,8 +3436,9 @@ html[data-page="M-19"] .inq-a{border:0}
 }
 </style>
 <style>/* ===== Figma 맞춤 · P ===== */
-/* 공통 헤더(Figma 02 Header 인스턴스 오버라이드): 로고 32px · 메뉴 Bold · 로그인/회원가입/검색 진회색 SemiBold */
-@media (min-width:1101px){.hd-in .logo{font-size:32px}.gnb-item>a{font-weight:700}}
+/* 공통 헤더(Figma 02 Header): 로고 36px(1101~1279px는 메뉴와 겹치지 않게 30px) · 메뉴 Bold · 로그인/회원가입/검색 진회색 SemiBold */
+@media (min-width:1101px){.hd-in .logo{font-size:36px}.gnb-item>a{font-weight:700}}
+@media (min-width:1101px) and (max-width:1279px){.hd-in .logo{font-size:30px}}
 .hd-r>a.t.t-plain{color:#26292B;font-weight:600}
 /* 공통 푸터 — 높이 244 */
 .ft .cp{margin-top:12px}
@@ -5397,8 +5423,8 @@ PAGES['C-06']=()=>{const art=S.memType!=='일반';const r={개인:'artist',단�
 PAGES['C-07']=()=>Q.err?modal('아이디 찾기',`<p class="small muted">가입 시 등록한 이메일로 인증합니다.</p>${F('이메일',`<div class="inline">${inp('example@email.com','bada@exmple.com','text','style="border-color:var(--bad)" aria-invalid="true"')}<button class="btn btn-line btn-sm">인증번호 발송</button></div>`,{cls:'stack',req:1,err:'이 이메일로 가입한 회원이 없습니다. 이메일을 다시 확인하거나 회원가입을 해 주세요.'})}${REF('오류 예시 화면 — <a class="link" href="#/C-07">기본 화면</a>')}`,`<a class="btn btn-line" href="#/C-08">비밀번호 찾기</a><a class="btn btn-pri" href="#/C-01">로그인</a>`):modal('아이디 찾기',`<p class="small muted">가입 시 등록한 이메일로 인증합니다.</p>${F('이메일',`<div class="inline">${inp('example@email.com')}<button class="btn btn-line btn-sm">인증번호 발송</button></div>`,{cls:'stack',req:1})}${F('인증번호',`<div class="inline">${inp('6자리')}<button class="btn btn-line btn-sm" type="button" onclick="toast('인증되었습니다')">인증 확인</button></div>`,{cls:'stack',req:1,help:'<b style="color:var(--color-text-link)">남은 시간 04:52</b>'})}
  <div class="box-p mt16" style="text-align:center">회원님의 아이디는 <b>artkim01</b>입니다.</div>${REF('<a class="link" href="#/C-07?err=1">일치하는 회원 없음 예시</a>')}`,`<a class="btn btn-line" href="#/C-08">비밀번호 찾기</a><a class="btn btn-pri" href="#/C-01">로그인</a>`);
 PAGES['C-08']=()=>Q.step==='2'?modal('새 비밀번호 설정',`<p class="c08-sub">artkim01 회원님, 새로 사용할 비밀번호를 입력해 주세요.</p><div class="c08-fs">${F('새 비밀번호',inp('영문·숫자·특수문자 포함 8자 이상','','password'),{cls:'stack',req:1,help:'영문, 숫자, 특수문자를 모두 넣어 8자 이상으로 만들어 주세요.'})}${F('새 비밀번호 확인',inp('',Q.err?'abc':'','password',Q.err?'style="border-color:var(--bad)" aria-invalid="true"':''),Q.err?{cls:'stack',req:1,err:'비밀번호가 일치하지 않습니다.'}:{cls:'stack',req:1})}</div><a class="btn btn-pri btn-block mt24" href="#/C-01">변경하고 로그인</a><p class="tiny muted mt16">재설정 링크는 메일을 보낸 때부터 24시간 동안 사용할 수 있습니다.<br>시간이 지났다면 비밀번호 찾기에서 다시 받아 주세요.</p>${REF(Q.err?'오류 예시 화면 — <a class="link" href="#/C-08?step=2">기본 화면</a>':'<a class="link" href="#/C-08?step=2&err=1">비밀번호 확인 오류 예시</a>')}`):modal('비밀번호 찾기',`${F('아이디',inp('',Q.err?'artport01':''),{cls:'stack',req:1})}${F('이메일',inp('',Q.err?'bada@example.com':'','text',Q.err?'style="border-color:var(--bad)" aria-invalid="true"':''),Q.err?{cls:'stack',req:1,err:'아이디와 이메일이 일치하는 회원이 없습니다. 다시 확인해 주세요.'}:{cls:'stack',req:1})}<button class="btn btn-dark btn-block mt8" onclick="toast('재설정 링크를 발송했습니다')">재설정 링크 발송</button>${Q.err?'':'<p class="tiny muted" style="margin-top:12px">가입할 때 등록한 이메일로 비밀번호 재설정 링크를 보내 드립니다.</p>'}${REF('메일의 링크를 누르면 사이트가 열리면서 「새 비밀번호 설정」 창이 뜸 — <a class="link" href="#/C-08?step=2">미리보기</a>'+(Q.err?' · <a class="link" href="#/C-08">기본 화면</a>':' · <a class="link" href="#/C-08?err=1">일치하는 회원 없음 예시</a>'))}`);
-PAGES['C-09']=()=>{const ti=Math.min(7,Math.max(0,+(Q.t||0)||0));return modal('약관·개인정보처리방침',`<div class="seg seg-terms">${L(['이용약관','개인정보 처리방침','개인정보 제3자 제공','예술인 정보·콘텐츠 공개 동의','이메일무단수집거부','안내 메일 수신 동의','재단 소식 수신 동의','개인정보 추가 수집·이용 동의'],(t,i)=>`<button class="${i===ti?'on':''}" onclick="go('C-09?t=${i}'+(Q.bg?'&bg='+Q.bg:'')+(Q.ret?'&ret='+Q.ret:''))">${t}</button>`)}</div>
- <div class="box mt16" style="height:300px;overflow:auto;font-size:.778rem;color:var(--ink-2);padding:20px"><b>${['이용약관','개인정보 처리방침','개인정보 제3자 제공','예술인 정보·콘텐츠 공개 동의','이메일무단수집거부','안내 메일 수신 동의','재단 소식 수신 동의','개인정보 추가 수집·이용 동의'][ti]} 전문</b>${ti===4?'<p class="mt8">본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반하면 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 따라 처벌받을 수 있습니다.</p>':`<p class="mt8">제1조(목적) 이 약관은 군산문화관광재단이 운영하는 아트포트군산 홈페이지의 이용 조건 및 절차에 관한 사항을 규정함을 목적으로 합니다.</p><p class="mt8">제2조(정의) … </p><p class="mt8">제3조(약관의 효력과 변경) …</p>`}${ti===1?'<p class="mt16"><b>개인정보보호책임자</b> 이주환 · 063-443-4820</p>':''}</div>${REF('약관 전문은 재단 제공 원고로 교체')}`,`<button class="btn btn-dark" onclick="closeModal()">확인</button>`,{cls:'lg'})};
+PAGES['C-09']=()=>{const ti=Math.min(7,Math.max(0,+(Q.t||0)||0));return modal('약관·개인정보처리방침',`<div class="seg seg-terms">${L(['이용약관','개인정보 처리방침','개인정보 제3자 제공','예술인 정보·콘텐츠 공개 동의','이메일무단수집거부','안내 메일 수신 동의','군산문화관광재단 소식 수신 동의','개인정보 추가 수집·이용 동의'],(t,i)=>`<button class="${i===ti?'on':''}" onclick="go('C-09?t=${i}'+(Q.bg?'&bg='+Q.bg:'')+(Q.ret?'&ret='+Q.ret:''))">${t}</button>`)}</div>
+ <div class="box mt16" style="height:300px;overflow:auto;font-size:.778rem;color:var(--ink-2);padding:20px"><b>${['이용약관','개인정보 처리방침','개인정보 제3자 제공','예술인 정보·콘텐츠 공개 동의','이메일무단수집거부','안내 메일 수신 동의','군산문화관광재단 소식 수신 동의','개인정보 추가 수집·이용 동의'][ti]} 전문</b>${ti===4?'<p class="mt8">본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반하면 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 따라 처벌받을 수 있습니다.</p>':`<p class="mt8">제1조(목적) 이 약관은 군산문화관광재단이 운영하는 아트포트군산 홈페이지의 이용 조건 및 절차에 관한 사항을 규정함을 목적으로 합니다.</p><p class="mt8">제2조(정의) … </p><p class="mt8">제3조(약관의 효력과 변경) …</p>`}${ti===1?'<p class="mt16"><b>개인정보보호책임자</b> 이주환 · 063-443-4820</p>':''}</div>${REF('약관 전문은 재단 제공 원고로 교체')}`,`<button class="btn btn-dark" onclick="closeModal()">확인</button>`,{cls:'lg'})};
 PAGES['C-14']=()=>modal('자동 로그아웃 안내',`<div style="text-align:center;padding:8px 0"><div style="color:var(--accent)">${I('clock').replace('class="ic"','class="ic" style="width:48px;height:48px;margin:0 auto"')}</div><p class="mt16">일정 시간 동안 사용하지 않아<br><b><span data-countdown style="color:var(--accent-2);font-size:1.333rem;font-variant-numeric:tabular-nums">5:00</span> 후 자동으로 로그아웃됩니다.</b></p><p class="small muted mt8">로그인을 연장하면 <b style="color:var(--accent)">30분 동안</b> 계속 이용할 수 있습니다.<br>작성 중인 내용은 임시저장됩니다.</p></div>`,`<button class="btn btn-line" onclick="setRole('guest');go('H-01')">로그아웃</button><button class="btn btn-pri" onclick="toast('로그인이 30분 연장되었습니다');closeModal()">로그인 연장</button>`);
 /* C 페이지 */
 PAGES['C-10']=()=>{const q=Q.q||'바다';const ar=ARTISTS.filter(a=>!a.priv&&(a.field+a.genre+a.name+a.tags.join()+a.dong).includes(q.replace('#','')));const ws=WORKS.filter(w=>!w.priv&&w.kind==='작품'&&(w.field+w.genre+w.title+w.tags.join()).includes(q.replace('#','')));const ac=WORKS.filter(w=>!w.priv&&w.kind==='활동'&&(w.field+w.genre+w.title+w.tags.join()+(w.place||'')).includes(q.replace('#','')));
@@ -5465,7 +5491,7 @@ const M1_PAGE=()=>{scrapSeed();const E=!!Q.empty;const un=E?0:myUnread();const s
  ${REF(E?'초기 상태 예시(가입 직후) — <a class="link" href="#/M-01">기본 화면</a>':Q.st==='many'?'포트폴리오 4개 이상 예시(꺾쇠 활성) — <a class="link" href="#/M-01">기본 화면</a>':'<a class="link" href="#/M-01?empty=1">초기 상태 예시(가입 직후, 내용 없음)</a> · <a class="link" href="#/M-01?st=many">포트폴리오 4개 이상 예시(꺾쇠 활성)</a>')}
  ${REF('좌측 프로필 카드(등록 상태·갱신 D-day 포함)·아이콘 메뉴 · 최근 알림은 맨 위에 3건까지만, 확인하지 않은 알림 수는 대비색 숫자로 표시(헤더 종 아이콘에도 표시) · 다가오는 일정은 본인 일정만 · 캘린더는 활동 등록으로만 연동 · 상단 이미지 배너 없이 제목 줄만 · 나의 예술 기록 탭 양옆 꺾쇠는 포트폴리오 4개 이상일 때만 활성')}`))};
 PAGES['M-02']=()=>my('M-02',pgh('내 정보 관리')+`<div class="formcard">${F('아이디',inp('','artport01','text','readonly'),{lock:1,help:'아이디는 변경할 수 없습니다.'})}${F(isArtist()&&S.role!=='artist'?'단체명·기관명':'성명',inp('',myName(),'text','readonly'),{lock:1,help:'기본정보를 바꾸려면 <a class="link" href="#/M-19?w=1">문의 관리</a>에서 요청해 주세요.'})}
- ${F('비밀번호',`<button class="btn btn-line btn-sm m1-b36">비밀번호 변경</button>`)}${F('이메일',`<div class="inline">${inp('','bada***@example.com')}<button class="btn btn-line btn-sm m1-b36">재인증</button></div>`,{req:1})}${F('연락처',inp('','010-0000-0000'),{req:1})}${F('수신 동의',chk('(선택) 뉴스레터 및 홍보 정보 수신',true))}</div><div class="row mt24" style="justify-content:flex-end"><button class="btn btn-pri" onclick="toast('저장되었습니다')">저장</button></div>`);
+ ${F('비밀번호',`<button class="btn btn-line btn-sm m1-b36">비밀번호 변경</button>`)}${F('이메일',`<div class="inline">${inp('','bada***@example.com')}<button class="btn btn-line btn-sm m1-b36">재인증</button></div>`,{req:1})}${F('연락처',inp('','010-0000-0000'),{req:1})}${F('수신 동의',chk('(선택) 군산문화관광재단 소식 수신 동의',true))}</div><div class="row mt24" style="justify-content:flex-end"><button class="btn btn-pri" onclick="toast('저장되었습니다')">저장</button></div>`);
 const RS_ST=['심사대기','심사중','보완요청','등록완료','반려','신청취소'];
 const rsWorks=()=>{const ws=MYPF.flatMap((pf,pi)=>pfWorks(pf).map(w=>[w,pf,pi]));return ws.map(([w,pf,pi],i)=>{const st=pf.st!=='등록완료'?(i%2?'심사중':'심사대기'):w.id==='w1'?'보완요청':w.title==='월명동 드로잉 산책'?'심사중':i%5===3?'심사대기':'등록완료';return {w,pf,pi,st,d:`2026.${st==='등록완료'?'09':'10'}.${String(2+((i*3)%26)).padStart(2,'0')}`}})};
 const rsAct=st=>st==='심사대기'?'<button class="btn btn-line btn-xs">수정</button> <button class="btn btn-ghost btn-xs" onclick="fgDlg(\'cancel\')">신청취소</button>':st==='심사중'?'<button class="btn btn-ghost btn-xs" onclick="fgDlg(\'cancel\')">신청취소</button>':st==='보완요청'?'<a class="btn btn-dark btn-xs" href="#/M-04">보완하기</a>':st==='보완제출'?'<span class="tiny muted">재심사 대기</span>':st==='신청취소'?'<a class="btn btn-line btn-xs" href="#/M-20">임시저장에서 다시 제출</a>':'';
@@ -5825,7 +5851,7 @@ const nowStr=()=>{const d=new Date();const p=n=>String(n).padStart(2,'0');return
 S.mtype=S.mtype||{};
 function typeBtn(n,cur,posts){return `<button class="btn btn-line btn-xs" type="button" onclick="typeChg('${n}','${S.mtype[n]||cur}',${posts})">유형 변경</button>`}
 function typeChg(n,cur,posts){if(posts){dlg('회원 유형 변경',`${callout(`<b>${n}</b> 회원은 등록한 글이 있어 유형을 바꿀 수 없습니다.`,'warn')}<p class="small mt16">포트폴리오·작품·활동 등 등록한 글이 있는 회원은 유형을 바꿀 수 없습니다.</p>`,`<button class="btn btn-pri" onclick="closeDlg()">확인</button>`);return}
- dlg('회원 유형 변경',`<p class="small"><b>${n}</b> · 현재 유형 <b>${cur}</b></p><div class="mt16">${F('바꿀 유형',sel(['선택','개인','단체','기관','일반'].filter(x=>x!==cur),'','id="mt-new" aria-label="바꿀 유형"'),{cls:'stack',req:1})}</div>${callout('바꾸면 회원에게 「추가 정보 입력 요청」 메일이 바로 발송되고, 회원이 다음에 내 정보 수정에 들어오면 새 유형의 필수 정보·동의를 입력해야 합니다.','info')}`,`<button class="btn btn-line" onclick="closeDlg()">취소</button><button class="btn btn-pri" onclick="const v=document.getElementById('mt-new').value;if(v==='선택'){toast('바꿀 유형을 선택해 주세요');return}S.mtype['${n}']=v;B10_LOG.unshift([nowStr(),'admin','—','회원 유형 변경','${n} · ${cur} → '+v,'211.***.**.12','Chrome / macOS']);closeDlg();setTimeout(()=>{render();toast('유형을 변경했습니다 · 「추가 정보 입력 요청」 메일을 보냈습니다')},170)">변경</button>`)}
+ dlg('회원 유형 변경',`<p class="small"><b>${n}</b> · 현재 유형 <b>${cur}</b></p><div class="mt16">${F('바꿀 유형',sel(['선택','개인','단체','기관','일반'].filter(x=>x!==cur),'','id="mt-new" aria-label="바꿀 유형"'),{cls:'stack',req:1})}</div>${callout('바꾸면 회원에게 「회원 유형이 변경되어 추가 정보 입력이 필요합니다」 메일이 바로 발송되고, 회원이 다음에 내 정보 관리에 들어오면 새 유형의 필수 정보·동의를 입력해야 합니다.','info')}`,`<button class="btn btn-line" onclick="closeDlg()">취소</button><button class="btn btn-pri" onclick="const v=document.getElementById('mt-new').value;if(v==='선택'){toast('바꿀 유형을 선택해 주세요');return}S.mtype['${n}']=v;B10_LOG.unshift([nowStr(),'admin','—','회원 유형 변경','${n} · ${cur} → '+v,'211.***.**.12','Chrome / macOS']);closeDlg();setTimeout(()=>{render();toast('유형을 변경했습니다 · 「추가 정보 입력 요청」 메일을 보냈습니다')},170)">변경</button>`)}
 const B10_LOG=[['2026.10.23 16:19:14','admin','홍길동','다운로드(Excel)','회원 목록 214건','211.***.**.12','Chrome / macOS']];
 function b10View(){if(S.b10V){S.b10V=false;render();toast('연락처·주소를 다시 가렸습니다');return}dlg('개인정보 열람',`${callout('열람하면 연락처·주소 전체가 표시됩니다. 열람 이력(일시·관리자 실명·IP·접속 기기)은 기간 제한 없이 보관되며, 이 페이지를 벗어나면 다시 가림 상태가 됩니다.','warn')}<div class="mt16">${F('관리자 실명',`<input class="inp" id="vwname" placeholder="예) 홍길동" oninput="document.getElementById('vwgo').disabled=!this.value.trim()">`,{cls:'stack',req:1,help:'열람하는 관리자 본인의 실명을 입력해 주세요. 열람 이력에 함께 기록됩니다.'})}</div>`,`<button class="btn btn-line" onclick="dimOut(this.closest('.dim'))">취소</button><button class="btn btn-pri" id="vwgo" disabled onclick="const n=document.getElementById('vwname').value.trim();if(!n)return;dimOut(this.closest('.dim'),()=>{document.getElementById('modal').innerHTML='';S.b10V=true;B10_LOG.unshift([nowStr(),'admin',n,'열람','회원 목록 연락처·주소','211.***.**.12','Chrome / macOS']);render();toast('연락처·주소를 표시했습니다 · 열람 이력에 기록되었습니다')})">${I('eye')} 열람</button>`)}
 addEventListener('hashchange',()=>{if(!/^#\/B-10(\?|$)/.test(location.hash))S.b10V=false});
