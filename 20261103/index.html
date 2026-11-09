@@ -4717,6 +4717,39 @@ html[data-page="A4-03"] .a403-dre{padding:24px 16px;font-size:14px;color:#727171
  html[data-page="A1-02"] .callout{padding-right:5px}
  html[data-page="A1-02"] .grid2 .box+.box{min-height:190px}
 }
+
+/* ---- A4-03 본문 이미지 ---- */
+html[data-page="A4-03"] .a403-fc>.f>.f-c,html[data-page="A4-03"] .a403-ed{min-width:0;max-width:100%}
+html[data-page="A4-03"] .a403-ed textarea.drag,html[data-page="A4-03"] .a403-pv.drag{outline:2px dashed var(--color-focus-ring);outline-offset:-6px;background:#F8F9F9}
+html[data-page="A4-03"] .a403-pv{color:var(--ink);line-height:1.7;overflow:hidden}
+html[data-page="A4-03"] .a403-pv .a403-pv0{color:#727171;margin:0}
+html[data-page="A4-03"] .a403-pv p,html[data-page="A4-03"] .a403-pv ul,html[data-page="A4-03"] .a403-pv blockquote{margin:0 0 10px}
+html[data-page="A4-03"] .a403-pv h2,html[data-page="A4-03"] .a403-pv h3,html[data-page="A4-03"] .a403-pv h4{margin:6px 0 10px;font-size:1.111rem;line-height:1.4}
+html[data-page="A4-03"] .a403-pv ul{padding-left:22px}
+html[data-page="A4-03"] .a403-pv blockquote{padding-left:12px;border-left:3px solid #C9CCCF;color:#595656}
+html[data-page="A4-03"] .a403-fig{position:relative;max-width:100%;margin:6px 0 14px;outline:1px solid transparent}
+html[data-page="A4-03"] .a403-fig:hover,html[data-page="A4-03"] .a403-fig:focus-within,html[data-page="A4-03"] .a403-fig.rz{outline-color:var(--color-focus-ring)}
+html[data-page="A4-03"] .a403-fig img{display:block;width:100%;height:auto}
+html[data-page="A4-03"] .a403-rz{position:absolute;right:-7px;bottom:22px;width:16px;height:16px;padding:0;border:2px solid #fff;border-radius:3px;background:var(--color-brand-primary);box-shadow:0 0 0 1px rgba(0,0,0,.25);cursor:nwse-resize;touch-action:none}
+html[data-page="A4-03"] .a403-rz:focus-visible{outline:3px solid var(--color-focus-ring);outline-offset:2px}
+html[data-page="A4-03"] .a403-px{margin-top:4px;font-size:.778rem;line-height:18px;color:#727171}
+html[data-page="A4-03"] .a403-im{margin-top:16px;border:1px solid #E4E6E7;border-radius:10px;padding:14px 16px}
+html[data-page="A4-03"] .a403-imh{margin:0 0 10px;font-size:.889rem;font-weight:700}
+html[data-page="A4-03"] .a403-im ul{list-style:none;margin:0;padding:0}
+html[data-page="A4-03"] .a403-im li{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-top:1px solid #E4E6E7}
+html[data-page="A4-03"] .a403-th{width:72px;height:72px;object-fit:cover;border-radius:6px;background:#F1F3F4;flex:none}
+html[data-page="A4-03"] .a403-imc{flex:1;min-width:0}
+html[data-page="A4-03"] .a403-imn{margin:0 0 8px;font-size:.778rem;line-height:18px;color:#595656;display:flex;flex-wrap:wrap;gap:4px 10px}
+html[data-page="A4-03"] .a403-imn span{overflow-wrap:anywhere;font-weight:700}
+html[data-page="A4-03"] .a403-imn em{font-style:normal;color:#727171}
+html[data-page="A4-03"] .a403-imf{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:flex-end}
+html[data-page="A4-03"] .a403-imf label{display:flex;flex-direction:column;gap:4px;font-size:.778rem;font-weight:700;color:#595656}
+html[data-page="A4-03"] .a403-al{flex:1 1 260px}
+html[data-page="A4-03"] .a403-wb{display:flex;align-items:center;gap:6px;font-weight:400}
+html[data-page="A4-03"] .a403-wi{width:110px}
+html[data-page="A4-03"] .a403-imd{flex:none}
+html[data-page="A4-03"] .a403-imt{margin:10px 0 0;font-size:.778rem;line-height:1.5;color:#727171}
+@media (max-width:767px){html[data-page="A4-03"] .a403-im{padding:12px}html[data-page="A4-03"] .a403-th{width:56px;height:56px}html[data-page="A4-03"] .a403-al{flex-basis:100%}}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -5360,17 +5393,57 @@ function mdClose(el){document.querySelector('[data-md-help]')?.classList.remove(
 S.a403Dr=S.a403Dr||[['2026.10.06 18:20','11월 예술인 네트워킹 모임 안내','관리자'],['2026.10.02 09:45','2027 군산시 문화예술진흥 지원사업 공모 안내(초안)','관리자'],['2026.09.29 16:10','','관리자'],['2026.09.24 11:05','예술인등록신청 서류 보완 안내','관리자'],['2026.09.18 14:30','[교육] 하반기 생활문화 예술교육 강사 모집','관리자']];
 function a403Keep(f){const s=document.getElementById('a403-subj'),b=document.getElementById('a403-body');const v=[s&&s.value,b&&b.value];f();keepRender();const s2=document.getElementById('a403-subj'),b2=document.getElementById('a403-body');if(s2)s2.value=v[0]||'';if(b2)b2.value=v[1]||''}
 function a403Save(){const s=document.getElementById('a403-subj'),b=document.getElementById('a403-body');const t=((s&&s.value)||'').trim(),x=((b&&b.value)||'').trim();if(!t&&!x){toast('저장할 제목이나 본문을 입력해 주세요');return}a403Keep(()=>S.a403Dr.unshift([nowStr().slice(0,16),t,isAdmin()?'관리자':'극단 물결',x]));toast('임시저장했습니다 · 아래 「공지사항 임시저장 목록」에서 다시 불러올 수 있습니다')}
-function a403Load(i){const d=S.a403Dr[i];if(!d)return;if(S.mdPv){S.mdPv=0;render()}const s=document.getElementById('a403-subj'),b=document.getElementById('a403-body');if(s)s.value=d[1];if(b)b.value=d[3]||('## '+(d[1]||'제목 없음')+'\n\n안녕하세요, 군산문화관광재단입니다.\n\n- 일시: \n- 장소: \n- 문의: 063-443-4820');const top=document.querySelector('.a403 .sec-t');if(top)top.scrollIntoView({behavior:'smooth',block:'start'});if(s)s.focus({preventScroll:true});toast('임시저장한 글을 불러왔습니다')}
+function a403Load(i){const d=S.a403Dr[i];if(!d)return;if(S.mdPv){S.mdPv=0;render()}const s=document.getElementById('a403-subj'),b=document.getElementById('a403-body');if(s)s.value=d[1];if(b)b.value=d[3]||('## '+(d[1]||'제목 없음')+'\n\n안녕하세요, 군산문화관광재단입니다.\n\n- 일시: \n- 장소: \n- 문의: 063-443-4820');if(b)S.a403Tx=b.value;const top=document.querySelector('.a403 .sec-t');if(top)top.scrollIntoView({behavior:'smooth',block:'start'});if(s)s.focus({preventScroll:true});toast('임시저장한 글을 불러왔습니다')}
 function a403Del(i){const d=S.a403Dr[i];if(!d||!confirm(`‘${d[1]||'(제목 없음)'}’ 임시저장 글을 삭제하시겠습니까?`))return;a403Keep(()=>S.a403Dr.splice(i,1));toast('임시저장 글을 삭제했습니다')}
 function a403Drafts(){return `<div class="a403-dr" id="a403-dr"><h2 class="a403-drt">공지사항 임시저장 목록</h2><p class="a403-drd">[임시저장]한 글입니다. [불러오기]를 누르면 위 글쓰기 칸에 그대로 채워집니다.</p><div class="a403-drsc" tabindex="0" role="region" aria-label="공지사항 임시저장 목록"><table class="a403-drtb"><thead><tr><th scope="col">저장일시</th><th scope="col">제목</th><th scope="col">작성자</th><th scope="col"><span class="sr">관리</span></th></tr></thead><tbody>${S.a403Dr.map((d,i)=>`<tr><td>${d[0]}</td><td><b>${d[1]?esc(d[1]):'(제목 없음)'}</b></td><td>${esc(d[2])}</td><td><span class="a403-drb"><button type="button" class="btn btn-line btn-xs" onclick="a403Load(${i})">불러오기</button><button type="button" class="btn btn-line btn-xs" onclick="a403Del(${i})">삭제</button></span></td></tr>`).join('')}</tbody></table>${S.a403Dr.length?'':'<p class="a403-dre">임시저장한 글이 없습니다.</p>'}</div></div>`}
+/* A4-03 본문 이미지 — 올리기 · 설명 · 크기 조절 */
+S.a403Im=S.a403Im||[];if(S.a403Tx==null)S.a403Tx='';
+const A403_MAX=10,A403_MB=10,A403_TY=['image/jpeg','image/png','image/gif','image/webp'];
+const A403_RE=/!\[([^\]\n]*)\]\(이미지(\d+)\)(\{width=\d+\})?/g;
+function a403Tx(){const b=document.getElementById('a403-body');if(b)S.a403Tx=b.value;return S.a403Tx}
+function a403Pick(){a403Tx();const f=document.getElementById('a403-file');if(f){f.value='';f.click()}}
+function a403Mk(m){return `![${m.a.replace(/[\[\]\n]/g,'')}](이미지${m.id})${m.w?`{width=${m.w}}`:''}`}
+function a403Sync(){S.a403Tx=a403Tx().replace(A403_RE,(all,a,id)=>{const m=S.a403Im.find(x=>x.id==id);return m?a403Mk(m):all});const b=document.getElementById('a403-body');if(b&&b.value!==S.a403Tx){const p=b.selectionStart;b.value=S.a403Tx;try{b.setSelectionRange(p,p)}catch(_){}}}
+function a403Size(f){return new Promise(r=>{const i=new Image();i.onload=()=>r([i.naturalWidth,i.naturalHeight]);i.onerror=()=>r([0,0]);i.src=f})}
+async function a403Add(files){const fs=[...(files||[])];if(!fs.length)return;const b=document.getElementById('a403-body');const pos=b?b.selectionStart:a403Tx().length;a403Tx();let ins='',ok=0;const bad=[];
+ for(const f of fs){const nm=f.name||'붙여넣은 이미지.png';if(!A403_TY.includes(f.type)){bad.push(`${nm}: JPG · PNG · GIF · WEBP만 올릴 수 있습니다`);continue}if(f.size>A403_MB*1048576){bad.push(`${nm}: 10MB를 넘습니다`);continue}if(S.a403Im.length>=A403_MAX){bad.push(`본문 이미지는 글 1개당 ${A403_MAX}장까지 올릴 수 있습니다`);break}
+  const u=URL.createObjectURL(f);const [ow,oh]=await a403Size(u);const m={id:(S.a403ImN=(S.a403ImN||0)+1),n:nm,u,ow,oh,w:0,a:''};S.a403Im.push(m);ins+=`\n${a403Mk(m)}\n`;ok++}
+ if(ok){S.a403Tx=S.a403Tx.slice(0,pos)+ins+S.a403Tx.slice(pos);render();setTimeout(()=>{const a=document.querySelector('.a403-im li:last-child .a403-alt');if(a)a.focus()},60)}
+ toast(bad.length?bad[0]+(bad.length>1?` 외 ${bad.length-1}건`:''):`이미지 ${ok}장을 본문에 넣었습니다 · 이미지 설명을 입력해 주세요`)}
+function a403Paste(e){const fs=[...(e.clipboardData&&e.clipboardData.files||[])];if(fs.length){e.preventDefault();a403Add(fs)}}
+function a403Drop(e){e.preventDefault();e.currentTarget.classList.remove('drag');a403Add(e.dataTransfer&&e.dataTransfer.files)}
+function a403Alt(id,v){const m=S.a403Im.find(x=>x.id==id);if(!m)return;m.a=v;const f=document.querySelector(`.a403-fig[data-i="${id}"] img`);if(f)f.alt=v;a403Sync()}
+function a403Max(){const p=document.querySelector('.a403-pv');return p?Math.max(40,Math.floor(p.clientWidth-32)):1036}
+function a403W(id,v,fromIn){const m=S.a403Im.find(x=>x.id==id);if(!m)return;let w=parseInt(v,10);if(!w||w<0)w=0;else w=Math.max(40,Math.min(w,a403Max()));m.w=w;a403Sync();
+ const fg=document.querySelector(`.a403-fig[data-i="${id}"]`);if(fg){fg.style.width=a403FW(m);const l=fg.querySelector('.a403-px');if(l)l.textContent=a403PL(m);const h=fg.querySelector('.a403-rz');if(h)h.setAttribute('aria-valuenow',Math.round(fg.getBoundingClientRect().width))}
+ const ip=document.querySelector(`.a403-wi[data-i="${id}"]`);if(ip&&!fromIn)ip.value=w||''}
+function a403FW(m){return m.w?m.w+'px':(m.ow?m.ow+'px':'auto')}
+function a403PL(m){return m.w?`가로 ${m.w}px`:'자동(본문 폭에 맞춤)'}
+function a403Del(id){const m=S.a403Im.find(x=>x.id==id);if(!m||!confirm(`‘${m.n}’ 이미지를 본문에서 삭제하시겠습니까?`))return;a403Tx();S.a403Tx=S.a403Tx.replace(A403_RE,(all,a,i)=>i==id?'':all).replace(/\n{3,}/g,'\n\n');S.a403Im=S.a403Im.filter(x=>x.id!=id);try{URL.revokeObjectURL(m.u)}catch(_){}render();toast('이미지를 삭제했습니다')}
+function a403Rz(e,id){const h=e.currentTarget,fg=h.closest('.a403-fig');const m=S.a403Im.find(x=>x.id==id);if(!fg||!m)return;e.preventDefault();h.setPointerCapture(e.pointerId);const x0=e.clientX,w0=fg.getBoundingClientRect().width,mx=a403Max();fg.classList.add('rz');
+ const mv=ev=>{const w=Math.max(40,Math.min(mx,Math.round(w0+ev.clientX-x0)));m.w=w;fg.style.width=w+'px';fg.querySelector('.a403-px').textContent=a403PL(m)};
+ const up=()=>{h.removeEventListener('pointermove',mv);h.removeEventListener('pointerup',up);h.removeEventListener('pointercancel',up);fg.classList.remove('rz');a403W(id,m.w)};
+ h.addEventListener('pointermove',mv);h.addEventListener('pointerup',up);h.addEventListener('pointercancel',up)}
+function a403RzKey(e,id){const k={ArrowRight:10,ArrowUp:10,ArrowLeft:-10,ArrowDown:-10}[e.key];if(!k)return;e.preventDefault();const fg=e.currentTarget.closest('.a403-fig');a403W(id,Math.round(fg.getBoundingClientRect().width)+(e.shiftKey?k*5:k))}
+function a403Pv(){const tx=S.a403Tx||'';if(!tx.trim())return '<p class="a403-pv0">미리보기 — 작성한 본문이 공개 화면과 같은 모양으로 보입니다.</p>';
+ const inl=t=>esc(t).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\*([^*]+)\*/g,'<i>$1</i>');let out='',ul=0;
+ tx.split('\n').forEach(l=>{const im=/^\s*!\[([^\]]*)\]\(이미지(\d+)\)(\{width=\d+\})?\s*$/.exec(l);const li=/^\s*[-*] (.*)$/.exec(l);if(!li&&ul){out+='</ul>';ul=0}
+  if(im){const m=S.a403Im.find(x=>x.id==im[2]);if(m)out+=`<figure class="a403-fig" data-i="${m.id}" style="width:${a403FW(m)}"><img src="${m.u}" alt="${esc(m.a)}"><button type="button" class="a403-rz" role="slider" aria-label="${esc(m.a||m.n)} 이미지 크기 — 끌거나 화살표 키로 조절" aria-valuemin="40" aria-valuemax="${a403Max()}" aria-valuenow="${m.w||m.ow||0}" onpointerdown="a403Rz(event,${m.id})" onkeydown="a403RzKey(event,${m.id})"></button><figcaption class="a403-px">${a403PL(m)}</figcaption></figure>`;return}
+  if(li){if(!ul){out+='<ul>';ul=1}out+=`<li>${inl(li[1])}</li>`;return}
+  const h=/^(#{1,3}) (.*)$/.exec(l);if(h){out+=`<h${h[1].length+1}>${inl(h[2])}</h${h[1].length+1}>`;return}
+  if(/^\s*>\s?/.test(l)){out+=`<blockquote>${inl(l.replace(/^\s*>\s?/,''))}</blockquote>`;return}
+  if(l.trim())out+=`<p>${inl(l)}</p>`});
+ if(ul)out+='</ul>';return out}
+function a403ImList(){if(!S.a403Im.length)return '';return `<div class="a403-im" role="group" aria-label="본문 이미지"><p class="a403-imh">본문 이미지 <b>${S.a403Im.length}</b> / ${A403_MAX}장</p><ul>${S.a403Im.map(m=>`<li><img src="${m.u}" alt="" class="a403-th"><div class="a403-imc"><p class="a403-imn"><span>${esc(m.n)}</span>${m.ow?`<em>원본 ${m.ow} × ${m.oh}px</em>`:''}</p><div class="a403-imf"><label class="a403-al"><span>이미지 설명<em class="req" aria-label="필수">*</em></span><input class="inp a403-alt" value="${esc(m.a)}" placeholder="예: 교류회 현장 사진" aria-required="true" oninput="a403Alt(${m.id},this.value)"></label><label class="a403-wl"><span>가로 크기</span><span class="a403-wb"><input class="inp a403-wi" data-i="${m.id}" type="number" inputmode="numeric" min="40" step="10" value="${m.w||''}" placeholder="자동" onchange="a403W(${m.id},this.value,1)"><span aria-hidden="true">px</span></span></label><button type="button" class="btn btn-line btn-xs a403-imd" onclick="a403Del(${m.id})">삭제</button></div></div></li>`).join('')}</ul><p class="a403-imt">가로 크기를 비워 두면 본문 폭에 맞춰 자동으로 줄어듭니다(원본보다 크게 늘리지 않음). 미리보기에서 이미지 오른쪽 아래 모서리를 끌어도 크기가 바뀌며, 가로세로 비율은 유지됩니다.</p></div>`}
+function a403Submit(){a403Tx();const miss=S.a403Im.filter(m=>!m.a.trim());if(miss.length){toast(`이미지 설명을 입력해 주세요 (${miss.length}장)`);const f=document.querySelector(`.a403-im li:nth-child(${S.a403Im.indexOf(miss[0])+1}) .a403-alt`);if(f)f.focus();return}S.a403Im.forEach(m=>{try{URL.revokeObjectURL(m.u)}catch(_){}});S.a403Im=[];S.a403Tx='';toast('등록되었습니다');go('A4-01')}
 PAGES['A4-03']=()=>!canWrite()?err403():pub(kv('공지사항','재단과 예술인의 소식을 전합니다','공지사항 › 글쓰기')+`<section class="sec a403" style="padding-top:31px"><div class="wrap">${canWrite()?`
  <h1 class="sec-t">공지사항 글쓰기</h1><div class="formcard a403-fc">
  ${F('작성자',`<div class="row" style="gap:12px;flex-wrap:nowrap"><div class="a403-lock">${inp('',isAdmin()?'관리자':'극단 물결','text','readonly aria-readonly="true" aria-label="작성자"')}<svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div><span class="help" style="margin:0">작성자는 자동 입력됩니다</span></div>`)}
  ${isAdmin()?F('옵션',`<div class="row">${chk('상단 고정')}${chk('예약 발행')}<div class="a403-dt"><svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>${inp('','2026. 10. 10. 09:00','text','aria-label="예약 발행 일시" inputmode="numeric"')}</div></div>`):''}
  ${F('제목',inp('제목을 입력하세요','','text','id="a403-subj" aria-label="제목"'),{req:1})}
- ${F('본문',`<div class="a403-ed"><div class="a403-tb" role="toolbar" aria-label="본문 편집 도구">${L(MD_TB,(b,i)=>b?`<button type="button" onclick="mdIns(${i})">${b[0]}</button>`:'<i aria-hidden="true"></i>')}<span class="a403-mode"><button type="button" class="${S.mdPv?'':'on'}" aria-pressed="${!S.mdPv}" onclick="S.mdPv=0;render()">작성</button><button type="button" class="${S.mdPv?'on':''}" aria-pressed="${!!S.mdPv}" onclick="S.mdPv=1;render()">미리보기</button><i aria-hidden="true"></i><button type="button" data-md-help onclick="mdHelp()">마크다운</button></span></div>${S.mdPv?'<div class="a403-pv">미리보기 — 작성한 본문이 공개 화면과 같은 모양으로 보입니다.</div>':'<textarea class="inp" placeholder="내용을 입력하세요. 마크다운 문법을 쓸 수 있습니다 (예: ## 소제목, **굵게**, - 목록, [링크](주소))." aria-label="본문" id="a403-body"></textarea>'}</div>`,{req:1})}
+ ${F('본문',`<div class="a403-ed"><div class="a403-tb" role="toolbar" aria-label="본문 편집 도구">${L(MD_TB,(b,i)=>b?(b[0]==='이미지'?`<button type="button" onclick="a403Pick()" aria-label="이미지 올리기">${b[0]}</button>`:`<button type="button" onclick="mdIns(${i})">${b[0]}</button>`):'<i aria-hidden="true"></i>')}<span class="a403-mode"><button type="button" class="${S.mdPv?'':'on'}" aria-pressed="${!S.mdPv}" onclick="a403Tx();S.mdPv=0;render()">작성</button><button type="button" class="${S.mdPv?'on':''}" aria-pressed="${!!S.mdPv}" onclick="a403Tx();S.mdPv=1;render()">미리보기</button><i aria-hidden="true"></i><button type="button" data-md-help onclick="mdHelp()">마크다운</button></span></div>${S.mdPv?`<div class="a403-pv" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="a403Drop(event)">${a403Pv()}</div>`:`<textarea class="inp" placeholder="내용을 입력하세요. 마크다운 문법을 쓸 수 있습니다 (예: ## 소제목, **굵게**, - 목록, [링크](주소)). 이미지는 [이미지] 버튼을 누르거나 이 칸에 끌어다 놓거나 붙여넣어 올립니다." aria-label="본문" id="a403-body" oninput="S.a403Tx=this.value" onpaste="a403Paste(event)" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="a403Drop(event)">${esc(S.a403Tx||'')}</textarea>`}<input type="file" id="a403-file" accept="image/jpeg,image/png,image/gif,image/webp" multiple hidden onchange="a403Add(this.files)"></div><p class="a403-fh">본문 이미지: [이미지] 버튼 · 끌어다 놓기 · 붙여넣기 · 글 1개당 최대 10장 · 장당 10MB · JPG · PNG · GIF · WEBP</p>${a403ImList()}${REF('본문 편집기는 마크다운 기준 — 이미지 크기는 크기 속성 문법(예: {width=600})으로 적은 예시이며, 실제 크기 지정 방식은 개발 협의. 올린 이미지는 저장할 때 긴 변 2000px로 줄이고 압축')}`,{req:1})}
  ${F('첨부파일',`<div class="upl a403-upl">${I('up')}<span>파일 첨부</span></div><p class="a403-fh">이미지 · PDF · 한글 · 워드 · 엑셀 · 파워포인트 (실행 파일 제외) · 개당 10MB · 최대 5개</p>`,{opt:1})}</div>
- <div class="row a403-acts"><a class="btn a403-cancel" href="#/A4-01">취소</a><button type="button" class="btn btn-line" onclick="document.getElementById('a403-dr').scrollIntoView({behavior:'smooth',block:'start'})">불러오기</button><button type="button" class="btn btn-line" onclick="a403Save()">임시저장</button><button type="button" class="btn btn-pri" onclick="toast('등록되었습니다');go('A4-01')">등록</button></div>${a403Drafts()}`:gate('글쓰기 권한이 있는 계정만 작성할 수 있습니다',['org','admin'])}</div></section>`);
+ <div class="row a403-acts"><a class="btn a403-cancel" href="#/A4-01">취소</a><button type="button" class="btn btn-line" onclick="document.getElementById('a403-dr').scrollIntoView({behavior:'smooth',block:'start'})">불러오기</button><button type="button" class="btn btn-line" onclick="a403Save()">임시저장</button><button type="button" class="btn btn-pri" onclick="a403Submit()">등록</button></div>${a403Drafts()}`:gate('글쓰기 권한이 있는 계정만 작성할 수 있습니다',['org','admin'])}</div></section>`);
 
 /* ---------- A5 문화예술진흥 지원사업 ---------- */
 PAGES['A5-01']=()=>{const k5=S.a5k||'전체';const list=WORKS.filter(w=>w.support&&(k5==='전체'||w.kind===k5)&&(!w.priv||isAdmin())&&(!S.q||(w.title+w.line+w.genre).includes(S.q))&&fPass('field',w.field)&&fPass('genre',w.genre)&&fPass('dong',A(w.aid).dong)&&fPass('wcat',w.cat||'')).sort((a,b)=>a.title.localeCompare(b.title,'ko'));if(S.sortNew)list.reverse();return pub(kv('문화예술진흥 지원사업','군산시 문화예술진흥 지원사업 선정 작품·활동','2027 문화예술진흥 지원사업')+subtabs(T5,'A5-01')+`<section class="sec a501" style="padding-top:32px"><div class="wrap">
@@ -6152,7 +6225,7 @@ const ACT=[
  [/^링크 추가/,null,el=>{el.insertAdjacentHTML('beforebegin',`<input class="inp mb16" placeholder="https://www.youtube.com/watch?v=..." aria-label="영상 링크">`)}],
  [/^(www\.example-artist\.kr|instagram\.com\/example)$/,null,()=>toast('예술인 홈페이지·SNS가 새 창으로 열립니다 (예시 주소)')],
  [/(\.pdf|\.jpg)$|^내려받기$/,null,el=>toast(`${lab(el)==='내려받기'?'관련자료':lab(el)} 파일을 내려받습니다`)],
- [/^(B|I|U|H2|• 목록|링크|이미지)$/,/^A4-03/,el=>el.classList.toggle('on')],
+ [/^(B|I|U|H2|• 목록|링크)$/,/^A4-03/,el=>el.classList.toggle('on')],
  [/^삭제$/,/^A4-02/,()=>{if(confirm('이 공지를 삭제하시겠습니까? 삭제하면 목록에서 바로 사라집니다.')){toast('공지를 삭제했습니다');go('A4-01')}}],
  [/^수정$/,/^M-05/,()=>go('A1-04')],
  [/^수정$/,/^M-06/,()=>go('M-08')],
