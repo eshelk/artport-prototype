@@ -1521,6 +1521,39 @@ html[data-hc="1"] .amap-isl{background:#000}
 .pt-list a span:first-child{font-family:ui-monospace,monospace;color:#8F9AB0;min-width:42px}
 .pt-list a em{font-style:normal;color:#8F9AB0;margin-left:auto;font-size:11px}
 .pt-list details{margin-bottom:4px} .pt-list summary{cursor:pointer;font-weight:700;padding:5px 4px;font-size:12px;color:#fff}
+.pt-panel{position:fixed;left:16px;bottom:68px}
+.pt{width:max-content;max-width:calc(100vw - 16px)}
+.pt-btn{white-space:nowrap;touch-action:none;cursor:pointer;user-select:none;-webkit-user-select:none}
+.pt-grip{opacity:.55;font-size:14px;margin-left:-4px;cursor:grab}
+.pt.drag .pt-btn{cursor:grabbing;box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.pt-reset{background:none;color:#9FD3FF;text-decoration:underline;font-size:11px;padding:0;margin-left:4px}
+.pt-fb{margin-top:10px;background:#131C2E;border:1px solid #2A3550;border-radius:var(--r)}
+.pt-fb>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:9px 12px;font-weight:700;font-size:12px;color:#fff}
+.pt-fb>summary::-webkit-details-marker{display:none}
+.pt-fb>summary::after{content:'▾';margin-left:auto;color:#8F9AB0;transition:transform .15s}
+.pt-fb:not([open])>summary::after{transform:rotate(-90deg)}
+.pt-fb-n{background:#FFE14D;color:#000;border-radius:20px;padding:0 8px;font-size:11px}
+.pt-fb-in{padding:0 12px 12px}
+.pt-fb-meta{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0 0 10px;font-size:11.5px;background:#0B1220;border-radius:6px;padding:8px 10px}
+.pt-fb-meta dt{color:#8F9AB0}.pt-fb-meta dd{margin:0;color:#E6E9EF;word-break:keep-all;overflow-wrap:anywhere}
+.pt-fb-l{display:block;font-size:11.5px;color:#C8CFDB;margin:8px 0 4px;font-weight:700}
+.pt-fb-who,.pt-fb textarea{width:100%;box-sizing:border-box;background:#0B1220;color:#fff;border:1px solid #2A3550;border-radius:6px;padding:7px 9px;font:inherit;font-size:12.5px}
+.pt-fb textarea{resize:vertical;min-height:84px;line-height:1.55}
+.pt-fb-who:focus,.pt-fb textarea:focus{outline:2px solid #FFE14D;outline-offset:0;border-color:transparent}
+.pt-fb-act{display:flex;align-items:center;gap:6px;margin-top:8px}
+.pt-fb-act button{background:#1A2336;color:#fff;border-radius:var(--p-radius-sm);padding:6px 11px;font-size:12px}
+.pt-fb-act button.pri{background:#FFE14D;color:#000;font-weight:700}
+.pt-fb-act span{margin-left:auto;color:#8F9AB0;font-size:11px}
+.pt-fb-sv{color:#8F9AB0;font-size:11px;margin:6px 0 0}
+.pt-fb-ed{color:#FFE14D;font-size:11.5px;margin:0 0 6px}
+.pt-fb-list{list-style:none;margin:10px 0 0;padding:0;max-height:220px;overflow:auto;border-top:1px solid #2A3550}
+.pt-fb-list li{padding:7px 2px;border-bottom:1px solid #1F2940}
+.pt-fb-list li.cur .h a{color:#FFE14D}.pt-fb-list li.ed{background:#1A2336}
+.pt-fb-list .h{display:flex;align-items:center;gap:6px;font-size:11px;color:#8F9AB0}
+.pt-fb-list .h a{font-family:ui-monospace,monospace;color:#fff;font-weight:700;text-decoration:underline}
+.pt-fb-list .h span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pt-fb-list .h button{background:none;color:#9FD3FF;font-size:11px;padding:0 2px}
+.pt-fb-list p{margin:3px 0 0;font-size:12px;color:#E6E9EF;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere}
 .toast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);background:var(--c-toast-bg);color:var(--c-toast-fg);padding:12px 22px;border-radius:var(--c-toast-radius);z-index:300;font-size:.778rem;box-shadow:0 10px 30px rgba(0,0,0,.25);animation:pop .2s}
 
 @media screen and (max-width:1100px){
@@ -6936,11 +6969,118 @@ function renderPT(){
   const s=SC(CUR);const i=FLAT.findIndex(x=>x.id===CUR);
   document.getElementById('pt').innerHTML=`${S.ptOpen?`<div class="pt-panel" role="dialog" aria-label="프로토타입 도구">
    <div class="pt-date">최종 수정 <b>2026. 11. 12.</b> · <a href="../">다른 날짜 보기</a></div><h4>현재 화면</h4><div class="pt-cur"><b>${s.id}</b> ${s.name}<br><span style="color:#8F9AB0">${s.g}${s.modal?' · 모달/레이어':''}</span><div class="pt-nav"><button onclick="go('${FLAT[(i-1+FLAT.length)%FLAT.length].id}')">← 이전 화면</button><button onclick="go('${FLAT[(i+1)%FLAT.length].id}')">다음 화면 →</button></div></div>
+   ${fbBox()}
    <h4>보기 권한 (로그인 상태)</h4><div class="pt-seg">${L(Object.keys(ROLES),r=>`<button class="${S.role===r?'on':''}" onclick="setRole('${r}')">${ROLES[r]}</button>`)}</div>
    <h4>시나리오</h4><div class="pt-seg"><button class="${S.maint?'on':''}" onclick="S.maint=!S.maint;render()">점검 띠배너</button><button onclick="popReset()">팝업 다시 보기</button><button onclick="go('C-14')">자동 로그아웃 알림</button><button class="${S.ref?'on':''}" onclick="S.ref=!S.ref;store.set('ref',S.ref);applyA11y();renderPT()">제작참고 메모</button></div>
    <h4>화면 목록 (총 ${FLAT.length}개)</h4><div class="pt-list">${L(SCREENS,([g,list])=>`<details ${list.some(x=>x[0]===CUR)?'open':''}><summary>${g} (${list.length})</summary>${L(list,([id,n,m])=>`<a href="#/${id}" class="${id===CUR?'on':''}"><span>${id}</span><span>${n}</span>${m?'<em>모달</em>':''}</a>`)}</details>`)}</div>
-   <p style="color:#8F9AB0;font-size:11px;margin-top:12px">※ 프로토타입 확인용 도구로, 실제 서비스에는 포함되지 않습니다. 모든 인명·작품·수치는 더미 데이터입니다.</p></div>`:''}
-   <button class="pt-btn" onclick="S.ptOpen=!S.ptOpen;renderPT()" aria-expanded="${S.ptOpen}"><span class="id">${s.id}</span>${s.name.length>16?s.name.slice(0,16)+'…':s.name} · ${ROLES[S.role]} <span class="pt-ver">11.12 수정본</span> ${S.ptOpen?'▼':'▲'}</button>`;
+   <p style="color:#8F9AB0;font-size:11px;margin-top:12px">※ 프로토타입 확인용 도구로, 실제 서비스에는 포함되지 않습니다. 모든 인명·작품·수치는 더미 데이터입니다.${S.ptPos?' <button class="pt-reset" onclick="ptResetPos()">도구 위치 처음으로</button>':''}</p></div>`:''}
+   <button class="pt-btn" onclick="ptTog()" title="누르면 펼치고, 끌어서 옮길 수 있습니다" aria-expanded="${S.ptOpen}"><span class="pt-grip" aria-hidden="true">⠿</span><span class="id">${s.id}</span>${s.name.length>16?s.name.slice(0,16)+'…':s.name} · ${ROLES[S.role]} <span class="pt-ver">11.12 수정본</span> ${S.ptOpen?'▼':'▲'}</button>`;
+  ptPlace();
+}
+/* ---------- 프로토타입 도구: 끌어서 옮기기 ---------- */
+S.ptPos=store.get('ptPos',null);
+function ptTog(){if(S.ptDragT&&Date.now()-S.ptDragT<400){S.ptDragT=0;return}S.ptOpen=!S.ptOpen;renderPT()}
+function ptResetPos(){S.ptPos=null;store.set('ptPos',null);renderPT()}
+function ptPlace(){
+  const pt=document.getElementById('pt'),b=pt&&pt.querySelector('.pt-btn');if(!b)return;
+  if(S.ptPos){const w=b.offsetWidth,h=b.offsetHeight;
+    const x=Math.max(8,Math.min(innerWidth-w-8,S.ptPos.x)),y=Math.max(8,Math.min(innerHeight-h-8,S.ptPos.y));
+    pt.style.left=x+'px';pt.style.top=y+'px';pt.style.bottom='auto'}
+  else{pt.style.left='';pt.style.top='';pt.style.bottom=''}
+  const p=pt.querySelector('.pt-panel');if(!p)return;
+  const r=b.getBoundingClientRect(),pw=p.offsetWidth,gap=10;
+  const up=r.top+r.height/2>innerHeight/2;
+  const room=up?r.top-gap-8:innerHeight-r.bottom-gap-8;
+  p.style.maxHeight=Math.max(200,Math.min(720,room))+'px';
+  let lx=r.left+r.width/2>innerWidth/2?r.right-pw:r.left;lx=Math.max(8,Math.min(innerWidth-pw-8,lx));
+  p.style.left=lx+'px';
+  if(up){p.style.top='auto';p.style.bottom=(innerHeight-r.top+gap)+'px'}else{p.style.bottom='auto';p.style.top=(r.bottom+gap)+'px'}
+}
+(function(){const pt=document.getElementById('pt');let d=null;
+  pt.addEventListener('pointerdown',e=>{const b=e.target.closest('.pt-btn');if(!b||e.button!==0)return;const r=b.getBoundingClientRect();d={sx:e.clientX,sy:e.clientY,ox:r.left,oy:r.top,mv:false,id:e.pointerId,b}});
+  addEventListener('pointermove',e=>{if(!d||e.pointerId!==d.id)return;const dx=e.clientX-d.sx,dy=e.clientY-d.sy;
+    if(!d.mv){if(Math.abs(dx)+Math.abs(dy)<6)return;d.mv=true;pt.classList.add('drag');try{d.b.setPointerCapture(d.id)}catch(_){}}
+    e.preventDefault();S.ptPos={x:d.ox+dx,y:d.oy+dy};ptPlace()});
+  const end=e=>{if(!d||e.pointerId!==d.id)return;if(d.mv){S.ptDragT=Date.now();store.set('ptPos',S.ptPos);pt.classList.remove('drag');ptPlace()}d=null};
+  addEventListener('pointerup',end);addEventListener('pointercancel',end);
+  addEventListener('resize',()=>ptPlace());
+})();
+/* ---------- 프로토타입 도구: 제작 의견함 ---------- */
+S.fbOpen=store.get('fbOpen',true);S.fbDraft=store.get('fbDraft','');S.fbEdit=null;
+const fbList=()=>{const a=store.get('fbList',[]);return Array.isArray(a)?a:[]};
+const fbPut=a=>store.set('fbList',a);
+function fbCopy(){
+  const m=location.pathname.match(/\/(\d{4})(\d{2})(\d{2})(?:-(\d+))?\/(?:index\.html)?$/);
+  if(m)return `${+m[1]}. ${+m[2]}. ${+m[3]}. 수정본`+(m[4]?` (${m[4]}차)`:'');
+  const f=decodeURIComponent(location.pathname.split('/').pop()||'');return f?`로컬 파일 ${f}`:'로컬 파일';
+}
+function fbVw(){const w=innerWidth;return `${w}px (${w>=1101?'PC':w>=768?'태블릿':'모바일'})`}
+function fbOpts(){const o=[];if(S.maint)o.push('점검 띠배너 켬');o.push('제작참고 메모 '+(S.ref?'켬':'끔'));if(S.fs)o.push('글자 크기 '+S.fs);if(S.hc)o.push('고대비 켬');return o.join(' · ')}
+function fbMeta(){const s=SC(CUR);return {copy:fbCopy(),id:s.id,name:s.name,grp:s.g,kind:s.modal?'모달/레이어':'일반 화면',role:ROLES[S.role],url:location.href,hash:location.hash||'#/'+CUR,vw:fbVw(),opt:fbOpts()}}
+function fbNow(){const d=new Date(),p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`}
+function fbBox(){
+  const a=fbList(),ed=S.fbEdit?a.find(x=>x.k===S.fbEdit):null,m=ed||fbMeta();
+  const row=(k,v)=>`<dt>${k}</dt><dd>${esc(v)}</dd>`;
+  return `<details class="pt-fb" ${S.fbOpen?'open':''} ontoggle="S.fbOpen=this.open;store.set('fbOpen',this.open);ptPlace()"><summary>제작 의견함 <span class="pt-fb-n">${a.length}건</span></summary><div class="pt-fb-in">
+   ${ed?`<p class="pt-fb-ed">저장한 의견을 고치는 중입니다 (${esc(ed.id)} · ${esc(ed.t)})</p>`:''}
+   <dl class="pt-fb-meta">${row('사본 버전',m.copy)}${row('화면',m.id+' '+m.name)}${row('보기 권한',m.role)}${row('화면 너비',m.vw)}${row('화면 설정',m.opt)}</dl>
+   <label class="pt-fb-l" for="fb-who">작성자 (선택)</label><input id="fb-who" class="pt-fb-who" value="${esc(store.get('fbWho',''))}" placeholder="이름 또는 소속" oninput="store.set('fbWho',this.value)" onkeydown="if(event.key==='Escape')event.stopPropagation()">
+   <label class="pt-fb-l" for="fb-txt">의견 내용</label><textarea id="fb-txt" rows="4" placeholder="이 화면에 대한 의견을 적어 주세요. 화면 정보는 자동으로 함께 저장됩니다." oninput="S.fbDraft=this.value;store.set('fbDraft',this.value)" onkeydown="if(event.key==='Escape'){event.stopPropagation()}else if(event.key==='Enter'&&(event.metaKey||event.ctrlKey)&&!event.isComposing){event.preventDefault();fbSave()}">${esc(S.fbDraft||'')}</textarea>
+   <div class="pt-fb-act"><button class="pri" onclick="fbSave()">${ed?'고친 내용 저장':'의견 저장'}</button>${ed?'<button onclick="fbCancel()">취소</button>':''}<span>⌘/Ctrl + Enter</span></div>
+   <p class="pt-fb-sv">저장한 의견은 이 브라우저에 자동으로 보관됩니다. 제출할 때 엑셀 파일로 내보내 주세요.</p>
+   ${a.length?`<ol class="pt-fb-list">${a.slice().reverse().map(x=>`<li class="${x.id===CUR?'cur':''}${x.k===S.fbEdit?' ed':''}"><div class="h"><a href="${esc(x.hash)}" title="이 화면으로 이동">${esc(x.id)}</a><span>${esc(x.role)} · ${esc(x.t.slice(5))}</span><button onclick="fbEditGo(${x.k})">고치기</button><button onclick="fbDel(${x.k})">지우기</button></div><p>${esc(x.text)}</p></li>`).join('')}</ol>
+   <div class="pt-fb-act"><button class="pri" onclick="fbXlsx()">엑셀로 내보내기 (${a.length}건)</button><button onclick="fbClear()">모두 지우기</button></div>`:''}
+  </div></details>`;
+}
+function fbSave(){
+  const t=document.getElementById('fb-txt'),v=(t?t.value:'').trim();if(!v){toast('의견 내용을 입력해 주세요');t&&t.focus();return}
+  const a=fbList(),who=(document.getElementById('fb-who')||{}).value||'';
+  if(S.fbEdit){const x=a.find(x=>x.k===S.fbEdit);if(x){x.text=v;x.who=who.trim();x.u=fbNow()}S.fbEdit=null;toast('고친 의견을 저장했습니다')}
+  else{a.push(Object.assign({k:Date.now(),t:fbNow(),who:who.trim(),text:v},fbMeta()));toast('의견을 저장했습니다')}
+  fbPut(a);S.fbDraft='';store.set('fbDraft','');renderPT();
+}
+function fbEditGo(k){const x=fbList().find(x=>x.k===k);if(!x)return;if(!S.fbEdit)S.fbHold=S.fbDraft;S.fbEdit=k;S.fbDraft=x.text;renderPT();const t=document.getElementById('fb-txt');if(t){t.focus();t.setSelectionRange(t.value.length,t.value.length)}}
+function fbCancel(){S.fbEdit=null;S.fbDraft=S.fbHold||'';S.fbHold='';store.set('fbDraft',S.fbDraft);renderPT()}
+function fbDel(k){const a=fbList(),x=a.find(x=>x.k===k);if(!x||!confirm(`${x.id} 화면 의견을 지울까요?\n\n${x.text.slice(0,80)}`))return;if(S.fbEdit===k)fbCancel();fbPut(a.filter(y=>y.k!==k));renderPT();toast('의견을 지웠습니다')}
+function fbClear(){const n=fbList().length;if(!n||!confirm(`저장한 의견 ${n}건을 모두 지울까요?\n지운 의견은 되살릴 수 없습니다. 먼저 엑셀로 내보냈는지 확인해 주세요.`))return;S.fbEdit=null;fbPut([]);renderPT();toast('의견을 모두 지웠습니다')}
+/* 엑셀(.xlsx) 내보내기 — 외부 라이브러리 없이 직접 만듦 */
+function fbXlsx(){
+  const a=fbList();if(!a.length)return;
+  const H=[['번호',6],['작성 일시',17],['사본 버전',20],['화면 번호',10],['화면 이름',24],['화면 구분',18],['화면 유형',12],['보기 권한',16],['화면 너비',16],['화면 설정',22],['작성자',12],['의견 내용',60],['고친 일시',17],['화면 주소',40]];
+  const R=a.map((x,i)=>[i+1,x.t,x.copy,x.id,x.name,x.grp,x.kind,x.role,x.vw,x.opt,x.who,x.text,x.u||'',x.url]);
+  const X=v=>String(v).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const col=n=>{let s='';n++;while(n){const m=(n-1)%26;s=String.fromCharCode(65+m)+s;n=(n-m-1)/26}return s};
+  const cell=(v,r,c,st)=>typeof v==='number'?`<c r="${col(c)}${r}" s="${st}"><v>${v}</v></c>`:`<c r="${col(c)}${r}" s="${st}" t="inlineStr"><is><t xml:space="preserve">${X(v)}</t></is></c>`;
+  const last=col(H.length-1)+(R.length+1);
+  const sheet=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><sheetFormatPr defaultRowHeight="16.5"/><cols>${H.map((h,i)=>`<col min="${i+1}" max="${i+1}" width="${h[1]}" customWidth="1"/>`).join('')}</cols><sheetData><row r="1">${H.map((h,i)=>cell(h[0],1,i,1)).join('')}</row>${R.map((row,ri)=>`<row r="${ri+2}">${row.map((v,ci)=>cell(v,ri+2,ci,ci===0?3:2)).join('')}</row>`).join('')}</sheetData><autoFilter ref="A1:${last}"/><pageSetup orientation="landscape" fitToWidth="1" fitToHeight="0"/></worksheet>`;
+  const bd='<border><left style="thin"><color rgb="FFBFC6D1"/></left><right style="thin"><color rgb="FFBFC6D1"/></right><top style="thin"><color rgb="FFBFC6D1"/></top><bottom style="thin"><color rgb="FFBFC6D1"/></bottom><diagonal/></border>';
+  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="2"><font><sz val="10"/><name val="맑은 고딕"/><family val="2"/></font><font><b/><sz val="10"/><name val="맑은 고딕"/><family val="2"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FFE8ECF2"/><bgColor indexed="64"/></patternFill></fill></fills><borders count="2"><border><left/><right/><top/><bottom/><diagonal/></border>${bd}</borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="4"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="1" xfId="0" applyFont="1" applyFill="1" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyBorder="1" applyAlignment="1"><alignment vertical="top" wrapText="1"/></xf><xf numFmtId="0" fontId="0" fillId="0" borderId="1" xfId="0" applyBorder="1" applyAlignment="1"><alignment horizontal="center" vertical="top"/></xf></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`;
+  const now=new Date().toISOString().replace(/\.\d+Z$/,'Z');
+  const files=[
+   ['[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/></Types>'],
+   ['_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/></Relationships>'],
+   ['docProps/core.xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:title>아트포트군산 프로토타입 제작 의견</dc:title><dc:creator>STUDIO ALL-LIVE</dc:creator><dcterms:created xsi:type="dcterms:W3CDTF">${now}</dcterms:created></cp:coreProperties>`],
+   ['xl/workbook.xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="제작 의견" sheetId="1" r:id="rId1"/></sheets><definedNames><definedName name="_xlnm._FilterDatabase" localSheetId="0" hidden="1">\'제작 의견\'!$A$1:$'+last.replace(/(\D+)(\d+)/,'$1$$$2')+'</definedName></definedNames></workbook>'],
+   ['xl/_rels/workbook.xml.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'],
+   ['xl/worksheets/sheet1.xml',sheet],['xl/styles.xml',styles]];
+  const blob=new Blob([fbZip(files)],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+  const d=new Date(),p=n=>String(n).padStart(2,'0'),cp=(fbCopy().match(/^(\d+)\. (\d+)\. (\d+)\./)||[]);
+  const nm=`아트포트군산_제작의견_${cp[1]?cp[2].padStart(2,'0')+cp[3].padStart(2,'0')+'사본_':''}${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}.xlsx`;
+  const u=URL.createObjectURL(blob),l=document.createElement('a');l.href=u;l.download=nm;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);
+  toast(`엑셀 파일로 내보냈습니다 (${a.length}건)`);
+}
+function fbZip(files){
+  const T=fbZip.t||(fbZip.t=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})());
+  const crc=b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=T[(c^b[i])&255]^(c>>>8);return(c^0xFFFFFFFF)>>>0};
+  const enc=new TextEncoder(),parts=[],cen=[];let off=0;
+  const d=new Date(),dt=((d.getHours()<<11)|(d.getMinutes()<<5)|(d.getSeconds()>>1))&0xFFFF,dd=(((d.getFullYear()-1980)<<9)|((d.getMonth()+1)<<5)|d.getDate())&0xFFFF;
+  for(const[name,txt]of files){const nb=enc.encode(name),db=enc.encode(txt),c=crc(db);
+    const h=new DataView(new ArrayBuffer(30));h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(8,0,true);h.setUint16(10,dt,true);h.setUint16(12,dd,true);h.setUint32(14,c,true);h.setUint32(18,db.length,true);h.setUint32(22,db.length,true);h.setUint16(26,nb.length,true);h.setUint16(28,0,true);
+    parts.push(new Uint8Array(h.buffer),nb,db);
+    const ch=new DataView(new ArrayBuffer(46));ch.setUint32(0,0x02014b50,true);ch.setUint16(4,20,true);ch.setUint16(6,20,true);ch.setUint16(8,0x0800,true);ch.setUint16(10,0,true);ch.setUint16(12,dt,true);ch.setUint16(14,dd,true);ch.setUint32(16,c,true);ch.setUint32(20,db.length,true);ch.setUint32(24,db.length,true);ch.setUint16(28,nb.length,true);ch.setUint32(42,off,true);
+    cen.push(new Uint8Array(ch.buffer),nb);off+=30+nb.length+db.length}
+  const cs=cen.reduce((s,b)=>s+b.length,0),e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cs,true);e.setUint32(16,off,true);
+  return new Blob([...parts,...cen,new Uint8Array(e.buffer)]);
 }
 /* ===== 디자인 1차 의견 반영: 지정 구간만 디자인 협력사 초안 형태 ===== */
 const fgWarn=(t,b,c='')=>`<div class="fg-warn ${c}" role="note">${I('alert')}<div><b>${t}</b><p>${b}</p></div></div>`;
