@@ -6471,20 +6471,25 @@ function b10Mem(id){S.b10Mem=S.b10Mem||{};if(S.b10Mem[id])return S.b10Mem[id];if
  return {id,n:r.n,t:S.mtype[r.n]||r.t,g:i%2?'여':'남',b:`19${80+i*2}-0${1+i%9}-1${i}`,mail:`${id.replace('id_','')}@example.com`,p:r.p,zip:`5410${i}`,a1:r.a,a2:`${101+i}호`,dong:r.dong,news:i%3!==1,rep:r.t==='단체'||r.t==='기관'?['김물결','이소리','박한빛','최누리','정다온','윤가람','장보라','임새벽','한결'][i%9]:'',fd:`20${11+i%9}-0${1+i%9}`,biz:`${401+i}-8${i%10}-${String(10234+i*111).padStart(5,'0')}`,op:`20${11+i%9}-0${1+i%9}-15`,dis:r.dis==='예'?'장애':'비장애',pub:r.dis==='예'?(i%2?'공개하지 않습니다':'공개합니다'):'',d:r.d,st:r.st||'—'}}
 function b10Max14(){const d=new Date();d.setFullYear(d.getFullYear()-14);return d.toISOString().slice(0,10)}
 function b10BirthErr(e){if(!e)return '';if(e.validity&&e.validity.badInput)return '날짜 형식이 올바르지 않습니다. 달력에서 고르거나 연도 · 월 · 일을 모두 입력해 주세요.';const v=e.value;if(!v)return '생년월일을 입력해 주세요.';if(v<'1900-01-01')return '생년월일을 다시 확인해 주세요.';if(v>b10Max14())return '만 14세 미만으로 바꿀 수 없습니다.';return ''}
+const B10_ADDR=[['54031','전북특별자치도 군산시 구영길 12','월명동'],['54096','전북특별자치도 군산시 수송로 45','수송동'],['54151','전북특별자치도 군산시 조촌로 88','조촌동']];
+function b10Addr(){S.b10AddrI=((S.b10AddrI||0)+1)%B10_ADDR.length;const [z,a,d]=B10_ADDR[S.b10AddrI];[['zip',z],['a1',a],['dong',d]].forEach(([k,v])=>{const e=document.getElementById('ed-'+k);if(e)e.value=v});['zip','a1'].forEach(k=>b10VShow(k));const a2=document.getElementById('ed-a2');if(a2)a2.focus();toast('주소를 넣었습니다(개발 시 우편번호 서비스 연결) · 읍면동이 자동으로 판별됩니다 · 상세 주소를 확인해 주세요')}
+function b10Eun(w){const c=w.charCodeAt(w.length-1);return c>=0xAC00&&c<=0xD7A3&&(c-0xAC00)%28?'은':'는'}
 function b10Josa(w){const c=w.charCodeAt(w.length-1);return c>=0xAC00&&c<=0xD7A3&&(c-0xAC00)%28?'을':'를'}
 function b10VMsg(k,e){const v=(e.value||'').trim();const lab=((document.getElementById('lb-'+k)||{}).innerText||'').trim();const bad=e.validity&&e.validity.badInput;
  switch(k){
-  case 'n':case 'rep':case 'a1':return v?'':`${lab}${b10Josa(lab)} 입력해 주세요.`;
+  case 'n':case 'rep':if(!v)return `${lab}${b10Josa(lab)} 입력해 주세요.`;if((k==='rep'||lab==='성명')&&!/^[가-힣A-Za-z]+( [가-힣A-Za-z]+)*$/.test(v))return `${lab}${b10Eun(lab)} 한글 또는 영문으로만 입력해 주세요(숫자 · 기호 제외).`;return '';
+  case 'a1':case 'zip':return v?'':'[주소 검색]으로 주소를 입력해 주세요.';
+  case 'a2':return !v?'':!/^[0-9A-Za-z가-힣\s\-,.()#\/]+$/.test(v)?'상세 주소에는 한글 · 영문 · 숫자와 - , . ( ) # / 만 입력할 수 있습니다.':v.length>50?'상세 주소는 50자까지 입력할 수 있습니다.':'';
   case 'b':return b10BirthErr(e);
   case 'fd':return bad?'설립일 형식이 올바르지 않습니다. 달력에서 고르거나 연도와 월을 모두 입력해 주세요.':!v?'설립일을 선택해 주세요.':'';
   case 'op':return bad?'개업일자 형식이 올바르지 않습니다. 달력에서 고르거나 연도 · 월 · 일을 모두 입력해 주세요.':!v?'개업일자를 입력해 주세요.':'';
   case 'biz':return !v?'사업자등록번호를 입력해 주세요.':!/^\d{3}-?\d{2}-?\d{5}$/.test(v)?'사업자등록번호 10자리를 정확히 입력해 주세요. 예) 123-45-67890':'';
   case 'mail':return !v?'이메일을 입력해 주세요.':!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)?'이메일 형식이 올바르지 않습니다. 예) name@example.com':'';
-  case 'p':return !v?'연락처를 입력해 주세요.':!/^0\d{1,2}-?\d{3,4}-?\d{4}$/.test(v)?'연락처를 숫자로 정확히 입력해 주세요.':'';
+  case 'p':{if(!v)return '연락처를 입력해 주세요.';const d=v.replace(/[-\s]/g,'');if(!/^0\d+$/.test(d))return '연락처를 숫자로 정확히 입력해 주세요.';const n=d.length;const ok=/^010/.test(d)?n===11:/^01[16789]/.test(d)?(n===10||n===11):/^02/.test(d)?(n===9||n===10):/^0[3-7]\d/.test(d)?(n===10||n===11):false;return ok?'':'연락처 자릿수를 확인해 주세요. 예) 010-1234-5678';}
   case 'zip':return !v?'우편번호를 입력해 주세요.':!/^\d{5}$/.test(v)?'우편번호 5자리를 정확히 입력해 주세요.':'';
   case 'pub':return (document.getElementById('ed-dis')||{}).value==='장애'&&(!v||v==='선택해 주세요')?'공개 여부를 선택해 주세요.':'';
  }return ''}
-const B10_VK=['n','rep','b','fd','biz','op','pub','mail','p','zip','a1'];
+const B10_VK=['n','rep','b','fd','biz','op','pub','mail','p','zip','a1','a2'];
 function b10VShow(k){const e=document.getElementById('ed-'+k);if(!e)return true;const m=b10VMsg(k,e);let p=document.getElementById('ed-'+k+'-err');if(!p){p=document.createElement('p');p.className='err';p.id='ed-'+k+'-err';p.hidden=true;e.closest('.f-c').appendChild(p);e.setAttribute('aria-describedby',((e.getAttribute('aria-describedby')||'')+' '+p.id).trim())}p.textContent=m;p.hidden=!m;e.classList.toggle('is-err',!!m);e.setAttribute('aria-invalid',m?'true':'false');return !m}
 ['focusout','change'].forEach(t=>document.addEventListener(t,ev=>{const x=ev.target;if(!x||!x.id||!/^#\/B-10\?edit=/.test(location.hash))return;const k=x.id.slice(3);if(x.id.startsWith('ed-')&&B10_VK.includes(k))b10VShow(k);if(x.id==='ed-dis')b10VShow('pub')}));
 document.addEventListener('input',ev=>{const x=ev.target;if(!x||!x.id||!x.id.startsWith('ed-')||!x.classList.contains('is-err'))return;const k=x.id.slice(3);if(B10_VK.includes(k)&&k!=='b')b10VShow(k)});
@@ -6497,7 +6502,7 @@ function b10EdPage(id){const m=b10Mem(id);const back=`<a class="link" href="#/B-
  const ro=(v,h)=>`${inp('',v,'text','readonly aria-readonly="true" style="background:var(--paper)"')}${h?`<p class="tiny muted mt4">${h}</p>`:''}`;
  const f=(k,lab,ctl,o={})=>F(`<span id="lb-${k}">${lab}</span>`,ctl,Object.assign({cls:'stack'},o));
  return adm('B-10','회원 정보 수정',`<div class="b10-eh mb16">${back}<span class="grow"></span>${badge('인증 완료 · '+esc(S.dlName||'홍길동'),'b2-gray')}</div>
- <div class="b2-warn">${I('alert')}<div><p><b>회원 본인이 요청한 내용만 고쳐 주세요.</b> 저장할 때 변경 사유를 남겨야 하며, 바뀐 항목 · 이전 값 · 새 값 · 처리자 · 일시가 「처리 이력」에 기록됩니다(수정·삭제 불가 · 기간 제한 없이 보관). 아이디는 바꿀 수 없습니다. 회원 유형은 목록의 [회원 유형 변경]에서, 비밀번호는 회원이 비밀번호 찾기(C-08)로 바꿉니다.</p></div></div>
+ <div class="b2-warn">${I('alert')}<div><p><b>회원 본인이 요청한 내용만 고쳐 주세요.</b> 저장할 때 변경 사유를 남겨야 하며, 바뀐 항목 · 이전 값 · 새 값 · 처리자 · 일시가 「처리 이력」에 기록됩니다(수정·삭제 불가 · 기간 제한 없이 보관). 아이디는 바꿀 수 없습니다. 회원 유형은 목록의 [회원 유형 변경]에서, 비밀번호는 회원이 로그인 화면의 비밀번호 찾기로 바꿉니다.</p></div></div>
  <div class="panel mt16"><div class="panel-h"><h2>계정</h2></div><div class="b10-ef">
  ${F('아이디',ro(m.id,'아이디는 변경할 수 없습니다.'),{cls:'stack'})}${F('회원 유형',ro(m.t,'목록의 [회원 유형 변경]에서 바꿉니다.'),{cls:'stack'})}${F('가입일',ro(m.d),{cls:'stack'})}${F('등록 상태',`<div class="b10-stv">${m.st}</div>`,{cls:'stack'})}</div></div>
  <div class="panel mt16"><div class="panel-h"><h2>기본정보</h2></div><div class="b10-ef">
@@ -6509,8 +6514,8 @@ function b10EdPage(id){const m=b10Mem(id);const back=`<a class="link" href="#/B-
  <div class="f-full bizv"><button type="button" class="btn btn-dark btn-sm" id="ed-bizb" onclick="b10BizChk()">사업자 진위확인</button><p class="help" id="ed-bizm">사업자등록번호 · ${grp?'대표자명':'기관장명'} · 개업일자를 바꾸면 저장 전에 국세청 정보와 일치하는지, 휴·폐업 상태인지 다시 확인해야 합니다.</p></div></div>`:''}</div>
  <div class="panel mt16"><div class="panel-h"><h2>연락처 · 주소</h2></div><div class="b10-ef">
  ${f('mail','이메일',inp('',m.mail,'email','id="ed-mail"'),{req:1,help:'관리자가 바꿀 때는 인증번호 확인 없이 바로 바뀝니다. 바꾸면 <b>이전 주소</b>로 「이메일 주소가 변경되었습니다」 메일이 발송됩니다(새 주소는 일부 가림).'})}${f('p','연락처',inp('010-0000-0000',m.p,'tel','id="ed-p"'),{req:1})}
- ${art?`${f('zip','우편번호',`<div class="row" style="gap:8px;flex-wrap:nowrap">${inp('',m.zip,'text','id="ed-zip" style="max-width:140px"')}<button class="btn btn-line btn-sm" type="button" onclick="toast('주소 검색 창이 열립니다(개발 시 우편번호 서비스 연결)')">주소 검색</button></div>`,{req:art})}${f('dong','읍면동',sel(DONG_NAMES,m.dong,'id="ed-dong"'),{req:art})}
- <div class="f-full">${f('a1','기본 주소',inp('',m.a1,'text','id="ed-a1"'),{req:art})}</div><div class="f-full">${f('a2','상세 주소',inp('',m.a2,'text','id="ed-a2"'))}</div>`:''}</div></div>
+ ${art?`${f('zip','우편번호',`<div class="row" style="gap:8px;flex-wrap:nowrap">${inp('',m.zip,'text','id="ed-zip" readonly aria-readonly="true" style="max-width:140px;background:var(--paper)"')}<button class="btn btn-line btn-sm" type="button" onclick="b10Addr()">주소 검색</button></div>`,{req:art,help:'[주소 검색]으로 고르면 우편번호 · 기본 주소 · 읍면동이 자동으로 채워집니다.'})}${f('dong','읍면동',inp('',m.dong,'text','id="ed-dong" readonly aria-readonly="true" style="background:var(--paper)"'),{req:art,help:'주소에서 자동으로 판별합니다.'})}
+ <div class="f-full">${f('a1','기본 주소',inp('',m.a1,'text','id="ed-a1" readonly aria-readonly="true" style="background:var(--paper)"'),{req:art})}</div><div class="f-full">${f('a2','상세 주소',inp('동 · 호수 등',m.a2,'text','id="ed-a2" maxlength="50"'),{help:'한글 · 영문 · 숫자와 - , . ( ) # / 를 50자까지 입력할 수 있습니다.'})}</div>`:''}</div></div>
  <div class="panel mt16"><div class="panel-h"><h2>수신 동의</h2></div>${chk('(선택) 군산문화관광재단 소식 수신 동의',m.news,'id="ed-news"')}<p class="tiny muted mt8">값이 바뀌면 「재단 소식 수신 설정 처리 결과 안내」 메일이 발송됩니다.</p></div>
  <div class="panel mt16"><div class="panel-h"><h2>변경 사유 <em class="req" aria-label="필수">*</em></h2></div><textarea class="inp" id="ed-why" style="min-height:80px" placeholder="예) 2026.11.16 회원 전화 요청 — 개명(주민등록초본 확인)" oninput="document.getElementById('ed-why-err').hidden=true;this.classList.remove('is-err')"></textarea><p class="err" id="ed-why-err" hidden>변경 사유를 입력해 주세요.</p>
  <div class="row mt24" style="gap:8px;justify-content:flex-end"><a class="btn btn-line" href="#/B-10">취소</a><button class="btn btn-pri" onclick="b10EdSave('${id}')">저장</button></div></div>
