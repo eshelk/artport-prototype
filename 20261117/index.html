@@ -5686,6 +5686,14 @@ html[data-page="A3-05"] .amap-w{font-style:normal!important;letter-spacing:0!imp
 @media print,(min-width:1101px){html[data-page="M-03"] .rs2-co{padding-right:24px!important}html[data-page="M-03"] .rs2-cob{flex:0 1 853px!important;width:853px}}
 @media print,(min-width:1101px){html[data-page="M-03"] .rs2-cob{letter-spacing:-0.012em}}
 @media print,(min-width:1101px){html[data-page="M-05"] .box .m1-b36{width:132px;flex:none;min-width:132px}}
+</style>
+<style>/* A3-01 포트폴리오 카드 한 줄 소개(작품 카드와 같은 방식: 마우스를 올리거나 키보드로 고르면 보임) */
+.fg-img{position:relative}
+.fg-img .ov{position:absolute;inset:0;background:rgba(11,42,65,.86);color:var(--color-text-inverse);padding:20px;display:flex;align-items:flex-end;text-align:left;font-size:.889rem;line-height:1.6;opacity:0;transition:opacity 180ms var(--ease-out);pointer-events:none}
+.fg-img:focus-visible .ov{opacity:1}
+@media (hover:hover){.fg-card:hover .fg-img .ov{opacity:1}}
+/* A3-08 · A3-09 작은 사진 누르면 큰 사진 바뀜 */
+.gal .th .ph:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -6307,7 +6315,7 @@ PAGES['A3-07']=()=>{const w=W(Q.id||'w1');const n=w.kind==='작품'?4:3;return `
  <div class="row a37-dots" style="justify-content:center;gap:8px;margin-top:18px">${L(Array.from({length:n}),(_,i)=>`<span style="width:${i===0?22:8}px;height:8px;border-radius:var(--r);background:#fff;opacity:${i===0?1:.4}"></span>`)}</div>
  <div class="row a37-acts" style="justify-content:center;margin-top:18px"><a class="btn btn-pri" href="#/${w.kind==='작품'?'A3-08':'A3-09'}?id=${w.id}">상세 보기</a><a class="btn btn-line" style="background:transparent;color:#fff;border-color:#fff" href="#/A3-02?id=${w.aid}">예술인 소개</a></div></div></div>`};
 function workDetail(w){const a=A(w.aid);const others=WORKS.filter(x=>x.aid===w.aid&&x.id!==w.id&&(!x.priv||isAdmin()));const act=w.kind==='활동';const tabs=['소개','주요내용',act?'활동사진':'작품사진','영상','관련자료'];
- return `<section class="wd-top"><div class="gal"><div class="main">${PH(w.t,'이미지 슬라이드 1/6').replace('class="ph','style="aspect-ratio:16/10;border-radius:var(--r-lg)" class="ph')}${w.support?`<span class="kind">${supYr(wyOf(w.id))}</span>`:''}</div><div class="th">${L([1,2,3,4,5,1],(t,i)=>`<div class="ph t${t} ${i===0?'on':''}"></div>`)}</div></div>
+ return `<section class="wd-top"><div class="gal"><div class="main">${PH(w.t,'이미지 슬라이드 1/6').replace('class="ph','style="aspect-ratio:16/10;border-radius:var(--r-lg)" class="ph')}${w.support?`<span class="kind">${supYr(wyOf(w.id))}</span>`:''}</div><div class="th">${L(((m)=>{const r=[m,...[1,2,3,4,5].filter(x=>x!==m)];return r.concat(r[1]).slice(0,6)})(w.t||1),(t,i)=>`<div class="ph t${t} ${i===0?'on':''}" role="button" tabindex="0" data-t="${t}" data-n="${i+1}" aria-label="이미지 ${i+1}/6 크게 보기" aria-pressed="${i===0}"></div>`)}</div></div>
  <div class="wd-info"><div class="row">${badge(w.kind,act?'b-sec':'b-info')}${act&&w.cat?badge(w.cat,'b-sec'):''}${w.support?supSeal(1,wyOf(w.id)):''}${w.priv?badge('비공개','b-bad'):''}</div><h1 class="pf-name">${w.title}</h1><p class="pf-line">${w.line}</p>
  <dl class="wd-dl">${act?`<dt>기간</dt><dd><b>${w.start.replaceAll('-','.')}${w.end!==w.start?' ~ '+w.end.replaceAll('-','.'):''}</b></dd><dt>장소</dt><dd>${w.place}</dd><dt>분야</dt><dd>${w.field} · ${w.genre}</dd><dt>협력기관</dt><dd>군산문화관광재단</dd><dt>관람대상</dt><dd>${evAud(w.cat).join(' · ')}</dd><dt>관람료</dt><dd>${evFee(w.cat,w.support)}</dd><dt>구분</dt><dd>${w.support?'지원사업 선정':'일반'}</dd>`:`<dt>분야</dt><dd>${w.field} · ${w.genre}</dd><dt>연도</dt><dd>${w.year}</dd><dt>규격·소재</dt><dd>162.2 × 130.3cm, 캔버스에 유채</dd>`}</dl>
  <div class="tags">${L(w.tags,t=>`<a class="tag" href="#/C-10?q=${encodeURIComponent(t)}">${t}</a>`)}</div>
@@ -6507,6 +6515,12 @@ function a305Map(){if(CUR!=='A3-05')return;document.querySelectorAll('.amap .ama
  const m=document.querySelector('#app .amap');if(m&&!m.querySelector('.amap-zb')){const z=document.createElement('div');z.className='amap-zb';z.innerHTML='<button type="button" aria-label="지도 확대" onclick="S.mapZoom=true;render()">+</button><button type="button" aria-label="지도 축소" onclick="S.mapZoom=false;render()">−</button>';m.appendChild(z)}}
 {const _ar2=afterRender;afterRender=function(){_ar2.apply(this,arguments);a305Map()}}
 
+/* 작품 · 활동 상세: 작은 사진 누르면 큰 사진을 그 사진으로 바꿈 */
+(function(){function pick(th){const g=th.closest('.gal');if(!g)return;const m=g.querySelector('.main .ph');if(!m)return;
+ m.className=m.className.replace(/\bt\d+\b/,'t'+th.dataset.t);m.dataset.l='이미지 슬라이드 '+th.dataset.n+'/6';
+ g.querySelectorAll('.th .ph').forEach(x=>{const on=x===th;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on)})}
+ document.addEventListener('click',e=>{const th=e.target.closest&&e.target.closest('.gal .th .ph[data-t]');if(th)pick(th)});
+ document.addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;const th=e.target.closest&&e.target.closest('.gal .th .ph[data-t]');if(th){e.preventDefault();pick(th)}});})();
 /* ---------- A5 문화예술진흥 지원사업 ---------- */
 PAGES['A5-01']=()=>{const k5=S.a5k||'전체';const list=WORKS.filter(w=>w.support&&(k5==='전체'||w.kind===k5)&&(!w.priv||isAdmin())&&(!S.q||(w.title+w.line+w.genre).includes(S.q))&&fPass('field',w.field)&&fPass('genre',w.genre)&&fPass('dong',A(w.aid).dong)&&fPass('wcat',w.cat||'')).sort((a,b)=>a.title.localeCompare(b.title,'ko'));if(S.sortNew)list.reverse();return pub(kv('문화예술진흥 지원사업','군산시 문화예술진흥 지원사업 선정 작품·활동','2027 문화예술진흥 지원사업')+`<section class="sec a501" style="padding-top:32px"><div class="wrap">
 ${REF('본문은 1200 안쪽 전체 폭 · 카드 4열(768 3열 · 360 2열) · 연도는 상단 연도 버튼(B-09)으로 전환')}
@@ -7816,7 +7830,7 @@ const fgStep=(arr,cur,box)=>`<ol class="fg-step ${box?'bx':''}" aria-label="진�
 const fgRegHead=()=>`<div class="fg-sech"><h2>포트폴리오 등록 절차</h2><span class="fg-tb" title="회원가입 시 선택한 유형으로 등록되며 변경할 수 없습니다">가입 유형: ${({개인:'개인 예술인',단체:'예술단체',기관:'기관'})[regType()]||regType()} · 변경 불가</span></div>${fgStep(['기본정보','활동분야','소개정보','활동이력','외부링크·해시태그','미리보기'],0,1)}`;
 const fgTabs=(arr,on)=>`<nav class="fg-tabs" aria-label="예술창고 메뉴">${L(arr,([t,to])=>`<a href="#/${to}" class="${on===to?'on':''}" ${on===to?'aria-current="page"':''}>${t}</a>`)}</nav>`;
 const fgPager=(n=1,cur=1)=>`<nav class="fg-pager" aria-label="페이지"><a aria-label="이전 페이지">‹</a>${L(Array.from({length:n},(_,i)=>i+1),i=>`<a class="${i===cur?'on':''}" ${i===cur?'aria-current="page"':''}>${i}</a>`)}<a aria-label="다음 페이지">›</a></nav>`;
-const fgCard=a=>{if(a.priv&&!isAdmin())return '';const k='a:'+a.id;return `<div class="fg-card"><a class="fg-img" href="#/A3-02?id=${a.id}" aria-label="${a.name} 포트폴리오 보기">${a.t?PH(a.t,'대표 이미지'):'<span>대표 사진 준비 중</span>'}</a><button type="button" class="fg-heart ${S.scrap[k]?'on':''}" aria-pressed="${!!S.scrap[k]}" aria-label="관심 예술인 저장" onclick="toggleScrap('${k}',this);this.setAttribute('aria-pressed',this.classList.contains('on'))">${I('heart')}</button><a class="fg-nm" href="#/A3-02?id=${a.id}">${a.name}</a><p class="fg-fd">${a.field} · ${a.genre}</p><p class="fg-tags">${a.tags.join(' ')}</p>${a.priv?badge('비공개','b-dark'):''}</div>`};
+const fgCard=a=>{if(a.priv&&!isAdmin())return '';const k='a:'+a.id;return `<div class="fg-card"><a class="fg-img" href="#/A3-02?id=${a.id}" aria-label="${a.name} 포트폴리오 보기">${a.t?PH(a.t,'대표 이미지'):'<span>대표 사진 준비 중</span>'}${a.line?`<div class="ov">${a.line}</div>`:''}</a><button type="button" class="fg-heart ${S.scrap[k]?'on':''}" aria-pressed="${!!S.scrap[k]}" aria-label="관심 예술인 저장" onclick="toggleScrap('${k}',this);this.setAttribute('aria-pressed',this.classList.contains('on'))">${I('heart')}</button><a class="fg-nm" href="#/A3-02?id=${a.id}">${a.name}</a><p class="fg-fd">${a.field} · ${a.genre}</p><p class="fg-tags">${a.tags.join(' ')}</p>${a.priv?badge('비공개','b-dark'):''}</div>`};
 function agrSync(){const r=[...document.querySelectorAll('.agr2 input[data-req]')];const b=document.getElementById('agrNext');if(!b)return;const ok=r.length&&r.every(x=>x.checked);b.setAttribute('aria-disabled',!ok);b.classList.toggle('is-off',!ok)}
 /* 확인창 */
 const FG_DLG={
