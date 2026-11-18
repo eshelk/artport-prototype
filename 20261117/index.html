@@ -5694,6 +5694,57 @@ html[data-page="A3-05"] .amap-w{font-style:normal!important;letter-spacing:0!imp
 @media (hover:hover){.fg-card:hover .fg-img .ov{opacity:1}}
 /* A3-08 · A3-09 작은 사진 누르면 큰 사진 바뀜 */
 .gal .th .ph:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+</style>
+<style>/* */
+@media print,(min-width:1101px){
+/* 위치 줄 마지막 항목: 05 PC 화면(개발 나머지) 쪽은 굵게 · 진한 글자(Bold 15 #26292B) */
+html[data-page="A1-01"] .crumb2 b,html[data-page="A1-02"] .crumb2 b,html[data-page="A2-01"] .crumb2 b,html[data-page="A2-02"] .crumb2 b,html[data-page="A3-05"] .crumb2 b,html[data-page="A3-06"] .crumb2 b,html[data-page="A3-08"] .crumb2 b,html[data-page="A3-09"] .crumb2 b,html[data-page="A3-10"] .crumb2 b,html[data-page="A4-01"] .crumb2 b,html[data-page="A4-02"] .crumb2 b,html[data-page="A4-03"] .crumb2 b,html[data-page="A5-01"] .crumb2 b{font-weight:700!important;color:#26292B!important}
+/* A2-01 전체 일정 분류 탭: 고른 탭 남색 */
+html[data-page="A2-01"] .a201-tabs button.on{background:#0B2A41;border-color:#0B2A41;color:#fff}
+html[data-page="A2-01"] .a201-tabs button:not(.on){font-weight:500}
+/* A3-05 예술지도: 지도 칸 672 · 목록 칸 504, 서해 섬 지역 칸 150×146 */
+html[data-page="A3-05"] .mapw{grid-template-columns:minmax(0,672fr) minmax(0,504fr)}
+html[data-page="A3-05"] .amap-isl{width:24.1%;height:35%}
+html[data-page="A3-05"] .amap-isl .isl i:nth-child(1){width:18px;height:11px}
+html[data-page="A3-05"] .amap-isl .isl i:nth-child(2){width:10px;height:7px}
+html[data-page="A3-05"] .amap-isl .isl i:nth-child(3){width:20px;height:12px}
+html[data-page="A3-05"] .amap-isl .isl i:nth-child(4){width:6px;height:5px}
+html[data-page="A3-05"] .amap-isl .isl-n{flex-direction:column;align-items:flex-start;gap:4px}
+/* M-04 보완 입력: 규격 칸 사이 40(× 가운데) · 버튼 112 · 148 */
+html[data-page="M-04"] .formcard .size-x{margin:0 7px}
+html[data-page="M-04"] .formcard .size-u{margin-left:2px}
+html[data-page="M-04"] .formcard+.row>.btn{padding-left:0;padding-right:0;justify-content:center}
+html[data-page="M-04"] .formcard+.row>.btn-line{width:112px}
+html[data-page="M-04"] .formcard+.row>.btn-pri{width:148px}
+/* A3-04 문의하기 창: 아래 여백 40(창 높이 780 · 화면 가운데) */
+html[data-page="A3-04"] #modal .modal-f{padding-bottom:40px}
+}
+/* 마이페이지 왼쪽 프로필 원: 하늘색(#EEF6FC → #B0D6F2, 모든 회원 같음) */
+.my .side .who-img{background-image:linear-gradient(160deg,#EEF6FC,#B0D6F2)!important}
+/* M-01 일반 회원(작품·활동 칸 없음): 문의 띠 위 24 */
+@media print,(min-width:1101px){html[data-page="M-01"] .my-row+.banner-q{margin-top:24px!important}}
+</style>
+<style>/* */
+/* A3-05 지도 글자: 이름 20px 줄 · 강 이름 줄 높이 */
+html[data-page="A3-05"] .amap-t.m{line-height:20px}
+html[data-page="A3-05"] .amap-t.m b{line-height:20px}
+html[data-page="A3-05"] .amap-w{line-height:20px;transform:none}
+/* A3-05 도심 확대: 동 이름 아래 인원 숫자 칸(읍면과 같은 모양, 태블릿 · 모바일 Figma 표시 참고) — 지도 2.05배 확대를 되돌려 실제 크기로 */
+html[data-page="A3-05"] .amap.zoom .amap-t.d{display:block!important;font-size:14px;line-height:20px;transform:translate(-50%,-50%) scale(.4878)}
+html[data-page="A3-05"] .amap.zoom .amap-t.d b{display:block;font-size:14px;line-height:20px}
+html[data-page="A3-05"] .amap.zoom .amap-t.d .amap-c{display:inline-block;font-style:normal;margin-top:1px;min-width:35px;height:24px;padding:0 7px;box-sizing:border-box;border:1.5px solid #1C6BA6;border-radius:12px;background:#fff;color:#1C6BA6;font-size:13px;font-weight:700;line-height:21px;text-align:center}
+/* 도심 확대 때 읍면 표시 숨김(모바일에서 크게 겹쳐 보이던 것) */
+html[data-page="A3-05"] .amap.zoom .amap-t.m{display:none!important}
+@media screen and (max-width:767px){
+ html[data-page="A3-05"] .amap.zoom .amap-t.d b{display:none!important}
+ html[data-page="A3-05"] .amap.zoom .amap-t.d .amap-c{min-width:22px;height:18px;line-height:15px;padding:0 5px;font-size:11px;border-width:1px;border-radius:9px}
+ html[data-page="A3-05"] .amap.zoom .amap-t.d{transform:translate(-50%,-50%) scale(.4878)}
+ /* 「군산시 전체 보기」가 동 숫자를 가리지 않게 왼쪽 아래로 */
+ html[data-page="A3-05"] .amap-zout{top:auto;bottom:10px;left:10px;right:auto}
+}
+/* 상단 배너 제작참고 메모: 배너 안에 다 들어가게(넓이 · 여백 조정) */
+@media print,(min-width:1101px){.kv-slot.ref{top:12px;bottom:12px;width:min(56%,640px);padding:10px 16px;gap:4px;line-height:1.45}}
+@media screen and (max-width:767px){.kv-tag.ref{max-width:calc(100% - 32px);white-space:normal}}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -5762,7 +5813,7 @@ const WORKS=[
  {id:'w3',kind:'활동',title:'들녘의 소리 — 가야금 독주회',aid:'a3',field:'공연',genre:'국악',year:2026,line:'임피 들녘에서 길어 올린 가야금 산조',tags:['#공연','#전통'],t:4,cat:'공연',start:'2026-10-17',end:'2026-10-17',place:'군산예술의전당 소공연장',support:true},
  {id:'w4',kind:'활동',title:'연극 〈선창 1934〉',aid:'a4',field:'공연',genre:'연극',year:2026,line:'근대 항구 노동자들의 하루를 그린 창작극',tags:['#공연','#근대문화'],t:5,cat:'공연',start:'2026-10-22',end:'2026-10-25',place:'원도심 소극장',support:true},
  {id:'w5',kind:'작품',title:'포구 사람들',aid:'a5',field:'시각',genre:'사진',year:2025,line:'새벽 경매장부터 저녁 선착장까지',tags:['#시각','#바다'],t:1,support:false},
- {id:'w6',kind:'활동',title:'우리 동네 그림책 만들기',aid:'a6',field:'문화예술교육',genre:'다원예술',year:2026,line:'초등학생 대상 6주 그림책 창작 교실',tags:['#문화예술교육','#어린이'],t:2,cat:'문화예술교육',start:'2026-10-05',end:'2026-11-09',place:'바닷길예술교육센터',support:true},
+ {id:'w6',calAdm:true,kind:'활동',title:'우리 동네 그림책 만들기',aid:'a6',field:'문화예술교육',genre:'다원예술',year:2026,line:'초등학생 대상 6주 그림책 창작 교실',tags:['#문화예술교육','#어린이'],t:2,cat:'문화예술교육',start:'2026-10-05',end:'2026-11-09',place:'바닷길예술교육센터',support:true},
  {id:'w7',kind:'활동',title:'현대무용 〈물때〉',aid:'a7',field:'공연',genre:'무용',year:2026,line:'조수의 리듬을 몸으로 번역한 솔로 작품',tags:['#공연','#창작'],t:3,cat:'공연',start:'2026-10-30',end:'2026-10-31',place:'군산예술의전당 대공연장',support:false},
  {id:'w8',kind:'작품',title:'빛의 창고',aid:'a8',field:'다원예술',genre:'미디어융합',year:2026,line:'옛 창고 벽면에 투사한 미디어 파사드',tags:['#다원예술','#원도심'],t:4,support:true},
  {id:'w9',kind:'활동',title:'가을 실내악 시리즈 Ⅱ',aid:'a9',field:'공연',genre:'음악',year:2026,line:'현악 사중주로 만나는 가을 레퍼토리',tags:['#공연'],t:5,cat:'공연',start:'2026-10-14',end:'2026-10-14',place:'은파호수공원 야외무대',support:false},
@@ -5796,7 +5847,8 @@ const ADMIN_EVENTS=[
  {title:'2026 예술인 역량강화 워크숍',start:'2026-10-28',end:'2026-10-29',cat:'문화예술교육',link:'공지사항',place:'재단 3층 교육실',own:'재단',ntc:'예술인등록신청 방법 및 증빙자료 안내'},
  {title:'군산 문화예술 네트워킹 데이',start:'2026-10-17',end:'2026-10-17',cat:'기타',link:'공지사항',place:'군산예술의전당 전시실',own:'재단',ntc:'아트포트군산 홈페이지 오픈 안내'},
 ];
-ADMIN_EVENTS.push({title:'가을 실내악 시리즈 Ⅱ',start:'2026-10-14',end:'2026-10-14',cat:'공연',link:'외부 페이지',place:'은파호수공원 야외무대',own:'재단 외 기관',url:'https://www.example.org/chamber-autumn'});['w9'].forEach(id=>{const w=WORKS.find(x=>x.id===id);if(w)w.calAdm=true});
+ADMIN_EVENTS.push({title:'가을 실내악 시리즈 Ⅱ',start:'2026-10-14',end:'2026-10-14',cat:'공연',link:'외부 페이지',place:'은파호수공원 야외무대',own:'재단 외 기관',url:'https://www.example.org/chamber-autumn'});
+ADMIN_EVENTS.push({title:'우리 동네 그림책 만들기',start:'2026-10-05',end:'2026-11-09',cat:'문화예술교육',link:'공지사항',place:'바닷길예술교육센터',own:'재단',ntc:'아트포트군산 홈페이지 오픈 안내'});['w9'].forEach(id=>{const w=WORKS.find(x=>x.id===id);if(w)w.calAdm=true});
 const ORG_BY='(재)군산문화관광재단';
 const NOTICES=[
  {n:'공지',title:'아트포트군산 홈페이지 오픈 안내',by:ORG_BY,d:'2026-10-01',v:1284,pin:true,pinFrom:'2026-10-01',pinTo:'2027-03-31',file:true},
@@ -6207,7 +6259,7 @@ const evFee=(c,sup)=>c==='공연'&&!sup?'유료':'무료';
 const TODAY='2026-10-07';
 const evState=e=>e.end<TODAY?'종료':e.start>TODAY?'예정':'진행중';
 const MAP_OUTLINE="1.00% 43.66%, 8.00% 42.91%, 15.00% 41.79%, 22.50% 41.42%, 29.50% 37.69%, 32.50% 35.07%, 36.00% 37.69%, 40.00% 40.30%, 43.50% 41.04%, 46.00% 35.07%, 47.50% 28.36%, 50.00% 22.01%, 55.00% 19.40%, 60.00% 16.79%, 65.00% 14.55%, 72.50% 9.70%, 78.00% 5.22%, 81.00% 2.24%, 82.25% 4.48%, 83.25% 9.70%, 84.75% 15.67%, 86.50% 21.27%, 90.00% 26.49%, 94.00% 29.48%, 96.25% 31.72%, 95.00% 36.57%, 93.00% 39.55%, 91.25% 44.78%, 89.50% 50.75%, 88.25% 56.72%, 86.25% 61.57%, 85.00% 67.16%, 82.50% 73.13%, 80.00% 77.61%, 76.00% 79.48%, 72.00% 82.46%, 70.00% 85.82%, 62.50% 86.57%, 56.00% 88.81%, 50.00% 89.93%, 42.50% 91.42%, 36.00% 93.28%, 30.00% 93.43%, 23.50% 92.16%, 21.00% 93.66%, 15.00% 96.27%, 10.00% 98.51%, 4.00% 97.76%, 1.50% 94.03%, 1.00% 87.31%, 3.50% 79.10%, 5.50% 71.64%, 3.00% 65.67%, 1.00% 58.96%";
-const MAP_GEO=[["나포면", "65.58% 14.32%, 72.54% 9.82%, 78.05% 5.34%, 80.98% 2.42%, 82.17% 4.54%, 83.16% 9.74%, 84.67% 15.72%, 85.68% 18.97%, 73.04% 32.64%", 76.14, 17.25], ["성산면", "45.66% 36.13%, 46.08% 35.13%, 47.58% 28.41%, 50.06% 22.13%, 55.03% 19.53%, 60.03% 16.92%, 65.03% 14.68%, 65.41% 14.42%, 72.91% 32.86%, 72.07% 37.95%, 67.45% 43.46%, 47.15% 40.57%", 59.7, 30.73], ["서수면", "85.75% 19.22%, 86.43% 21.35%, 89.95% 26.60%, 93.95% 29.59%, 96.14% 31.77%, 94.92% 36.49%, 92.93% 39.47%, 91.17% 44.72%, 89.42% 50.70%, 88.92% 53.06%, 72.25% 37.97%, 73.09% 32.92%", 84.58, 35.81], ["임피면", "88.86% 53.33%, 88.17% 56.66%, 86.17% 61.51%, 84.92% 67.11%, 82.43% 73.06%, 82.06% 73.72%, 68.20% 60.21%, 67.57% 43.66%, 72.16% 38.19%", 77.28, 55.45], ["개정면", "46.12% 51.58%, 47.17% 40.85%, 67.39% 43.72%, 68.02% 60.23%, 59.83% 72.46%, 51.44% 67.91%", 57.31, 54.94], ["대야면", "81.95% 73.93%, 79.95% 77.50%, 75.97% 79.35%, 71.94% 82.35%, 69.96% 85.69%, 63.29% 86.35%, 59.95% 72.65%, 68.12% 60.46%", 69.54, 74.3], ["회현면", "63.10% 86.37%, 62.49% 86.43%, 55.98% 88.67%, 49.99% 89.79%, 42.49% 91.29%, 40.35% 91.90%, 51.41% 68.18%, 59.78% 72.72%", 52.74, 81.19], ["옥산면", "40.10% 91.97%, 38.76% 92.36%, 32.73% 72.42%, 46.01% 51.83%, 51.28% 68.00%", 42.06, 71.99], ["옥구읍", "38.58% 92.41%, 35.99% 93.15%, 30.01% 93.30%, 23.49% 92.03%, 20.97% 93.53%, 18.11% 94.78%, 17.60% 70.28%, 32.56% 72.51%", 26.62, 82.87], ["옥서면", "17.93% 94.86%, 14.97% 96.14%, 9.99% 98.37%, 4.04% 97.63%, 1.59% 93.97%, 1.09% 87.34%, 3.58% 79.16%, 5.60% 71.63%, 3.08% 65.61%, 1.09% 58.93%, 1.09% 48.20%, 17.42% 70.20%", 9.22, 80.5], ["소룡동", "1.06% 43.74%, 8.01% 43.00%, 15.00% 41.88%, 17.31% 41.76%, 17.26% 44.55%, 16.91% 46.28%, 8.84% 58.32%, 1.06% 47.86%", 8.6, 47.2], ["미성동", "23.50% 70.94%, 17.54% 70.05%, 8.93% 58.44%, 16.94% 46.49%", 16.5, 60.06], ["해신동", "21.69% 41.53%, 22.51% 41.51%, 29.53% 37.77%, 29.78% 37.55%, 30.36% 42.83%, 27.90% 45.64%", 26.6, 41.9], ["월명동", "29.89% 37.45%, 32.50% 35.18%, 35.97% 37.77%, 36.59% 38.16%, 32.49% 44.29%, 30.48% 42.81%", 32.6, 39.6], ["중앙동", "36.71% 38.24%, 38.55% 39.45%, 36.88% 46.93%, 33.12% 46.93%, 32.57% 44.43%", 35.6, 43.6], ["삼학동", "28.77% 50.05%, 27.98% 45.78%, 30.44% 42.97%, 32.45% 44.47%, 33.02% 47.01%, 31.74% 51.28%, 31.72% 51.31%", 30.5, 47.4], ["신풍동", "17.43% 41.76%, 21.44% 41.55%, 27.86% 45.81%, 28.65% 50.08%, 26.25% 52.79%, 17.38% 44.52%", 23.0, 46.4], ["흥남동", "31.87% 51.28%, 33.12% 47.10%, 36.88% 47.10%, 38.24% 51.66%, 37.04% 53.35%", 35.2, 50.1], ["경암동", "38.63% 39.64%, 41.61% 48.48%, 38.48% 51.58%, 38.35% 51.58%, 36.98% 47.01%", 39.0, 46.0], ["구암동", "38.77% 39.60%, 39.98% 40.39%, 42.53% 40.93%, 46.36% 47.68%, 46.28% 48.42%, 41.73% 48.42%", 42.5, 45.0], ["개정동", "42.71% 40.97%, 43.53% 41.14%, 45.55% 36.30%, 47.03% 40.72%, 46.38% 47.45%", 45.3, 41.6], ["조촌동", "46.26% 48.60%, 45.97% 51.56%, 42.65% 56.71%, 38.60% 51.68%, 41.71% 48.60%", 42.8, 51.8], ["나운1동", "30.30% 71.95%, 26.31% 71.35%, 26.31% 52.94%, 28.73% 50.22%, 31.67% 51.47%", 28.7, 60.9], ["나운2동", "35.19% 68.27%, 32.60% 72.29%, 30.42% 71.96%, 31.79% 51.45%, 31.80% 51.44%, 36.99% 53.51%", 33.6, 61.5], ["나운3동", "26.19% 71.33%, 23.63% 70.96%, 17.02% 46.32%, 17.35% 44.70%, 26.19% 52.95%", 22.8, 58.5], ["수송동", "42.56% 56.84%, 35.34% 68.04%, 37.12% 53.49%, 38.33% 51.76%, 38.48% 51.76%", 38.4, 58.7]];
+const MAP_GEO=[["나포면", "65.58% 14.32%, 72.54% 9.82%, 78.05% 5.34%, 80.98% 2.42%, 82.17% 4.54%, 83.16% 9.74%, 84.67% 15.72%, 85.68% 18.97%, 73.04% 32.64%", 76.29, 19.06], ["성산면", "45.66% 36.13%, 46.08% 35.13%, 47.58% 28.41%, 50.06% 22.13%, 55.03% 19.53%, 60.03% 16.92%, 65.03% 14.68%, 65.41% 14.42%, 72.91% 32.86%, 72.07% 37.95%, 67.45% 43.46%, 47.15% 40.57%", 59.73, 32.49], ["서수면", "85.75% 19.22%, 86.43% 21.35%, 89.95% 26.60%, 93.95% 29.59%, 96.14% 31.77%, 94.92% 36.49%, 92.93% 39.47%, 91.17% 44.72%, 89.42% 50.70%, 88.92% 53.06%, 72.25% 37.97%, 73.09% 32.92%", 84.65, 37.77], ["임피면", "88.86% 53.33%, 88.17% 56.66%, 86.17% 61.51%, 84.92% 67.11%, 82.43% 73.06%, 82.06% 73.72%, 68.20% 60.21%, 67.57% 43.66%, 72.16% 38.19%", 77.41, 57.19], ["개정면", "46.12% 51.58%, 47.17% 40.85%, 67.39% 43.72%, 68.02% 60.23%, 59.83% 72.46%, 51.44% 67.91%", 57.32, 56.71], ["대야면", "81.95% 73.93%, 79.95% 77.50%, 75.97% 79.35%, 71.94% 82.35%, 69.96% 85.69%, 63.29% 86.35%, 59.95% 72.65%, 68.12% 60.46%", 69.53, 76.14], ["회현면", "63.10% 86.37%, 62.49% 86.43%, 55.98% 88.67%, 49.99% 89.79%, 42.49% 91.29%, 40.35% 91.90%, 51.41% 68.18%, 59.78% 72.72%", 52.81, 83.09], ["옥산면", "40.10% 91.97%, 38.76% 92.36%, 32.73% 72.42%, 46.01% 51.83%, 51.28% 68.00%", 42.20, 73.74], ["옥구읍", "38.58% 92.41%, 35.99% 93.15%, 30.01% 93.30%, 23.49% 92.03%, 20.97% 93.53%, 18.11% 94.78%, 17.60% 70.28%, 32.56% 72.51%", 26.61, 84.77], ["옥서면", "17.93% 94.86%, 14.97% 96.14%, 9.99% 98.37%, 4.04% 97.63%, 1.59% 93.97%, 1.09% 87.34%, 3.58% 79.16%, 5.60% 71.63%, 3.08% 65.61%, 1.09% 58.93%, 1.09% 48.20%, 17.42% 70.20%", 9.24, 82.37], ["소룡동", "1.06% 43.74%, 8.01% 43.00%, 15.00% 41.88%, 17.31% 41.76%, 17.26% 44.55%, 16.91% 46.28%, 8.84% 58.32%, 1.06% 47.86%", 8.6, 47.2], ["미성동", "23.50% 70.94%, 17.54% 70.05%, 8.93% 58.44%, 16.94% 46.49%", 16.5, 60.06], ["해신동", "21.69% 41.53%, 22.51% 41.51%, 29.53% 37.77%, 29.78% 37.55%, 30.36% 42.83%, 27.90% 45.64%", 26.6, 41.9], ["월명동", "29.89% 37.45%, 32.50% 35.18%, 35.97% 37.77%, 36.59% 38.16%, 32.49% 44.29%, 30.48% 42.81%", 32.6, 39.6], ["중앙동", "36.71% 38.24%, 38.55% 39.45%, 36.88% 46.93%, 33.12% 46.93%, 32.57% 44.43%", 35.6, 43.6], ["삼학동", "28.77% 50.05%, 27.98% 45.78%, 30.44% 42.97%, 32.45% 44.47%, 33.02% 47.01%, 31.74% 51.28%, 31.72% 51.31%", 30.5, 47.4], ["신풍동", "17.43% 41.76%, 21.44% 41.55%, 27.86% 45.81%, 28.65% 50.08%, 26.25% 52.79%, 17.38% 44.52%", 23.0, 46.4], ["흥남동", "31.87% 51.28%, 33.12% 47.10%, 36.88% 47.10%, 38.24% 51.66%, 37.04% 53.35%", 35.2, 50.1], ["경암동", "38.63% 39.64%, 41.61% 48.48%, 38.48% 51.58%, 38.35% 51.58%, 36.98% 47.01%", 39.0, 46.0], ["구암동", "38.77% 39.60%, 39.98% 40.39%, 42.53% 40.93%, 46.36% 47.68%, 46.28% 48.42%, 41.73% 48.42%", 42.5, 45.0], ["개정동", "42.71% 40.97%, 43.53% 41.14%, 45.55% 36.30%, 47.03% 40.72%, 46.38% 47.45%", 45.3, 41.6], ["조촌동", "46.26% 48.60%, 45.97% 51.56%, 42.65% 56.71%, 38.60% 51.68%, 41.71% 48.60%", 42.8, 51.8], ["나운1동", "30.30% 71.95%, 26.31% 71.35%, 26.31% 52.94%, 28.73% 50.22%, 31.67% 51.47%", 28.7, 60.9], ["나운2동", "35.19% 68.27%, 32.60% 72.29%, 30.42% 71.96%, 31.79% 51.45%, 31.80% 51.44%, 36.99% 53.51%", 33.6, 61.5], ["나운3동", "26.19% 71.33%, 23.63% 70.96%, 17.02% 46.32%, 17.35% 44.70%, 26.19% 52.95%", 22.8, 58.5], ["수송동", "42.56% 56.84%, 35.34% 68.04%, 37.12% 53.49%, 38.33% 51.76%, 38.48% 51.76%", 38.4, 58.7]];
 const EUP_ORDER=['옥구읍','옥산면','회현면','임피면','서수면','대야면','개정면','성산면','나포면','옥도면','옥서면'];
 const DONG_ORDER=['해신동','월명동','삼학동','신풍동','중앙동','흥남동','조촌동','경암동','구암동','개정동','수송동','나운1동','나운2동','나운3동','소룡동','미성동'];
 function dongTog(n){const i=S.selDongs.indexOf(n);i<0?S.selDongs.push(n):S.selDongs.splice(i,1);S.jumpTo='mapList';render()}
@@ -6217,7 +6269,7 @@ function artMap(sd,dc){const z=!!S.mapZoom;const isD=n=>DONG_ORDER.includes(n);c
   <div class="amap-l"><div class="amap-land" style="clip-path:polygon(${MAP_OUTLINE})"></div>
    ${L(MAP_GEO,([n,p])=>`<button type="button" tabindex="-1" class="amap-r ${sd.includes(n)?'on':mapBin(dc(n))}" style="clip-path:polygon(${p})" title="${n} ${dc(n)}명" onclick="dongTog('${n}')"></button>`)}
    ${L(MAP_GEO,([n,p,x,y])=>`<span class="amap-t ${isD(n)?'d':'m'} ${sd.includes(n)?'on':''}" style="left:${x}%;top:${y}%"><b>${n}</b><i class="amap-c">${dc(n)}명</i></span>`)}</div>
-  <span class="amap-w" style="left:47%;top:9%;transform:rotate(-16deg)">금강</span><span class="amap-w" style="left:63%;top:91%;transform:rotate(-6deg)">만경강</span>
+  <span class="amap-w" style="left:45.98%;top:7.91%">금강</span><span class="amap-w" style="left:61.58%;top:90.17%">만경강</span>
   <button type="button" tabindex="-1" class="amap-isl ${sd.includes('옥도면')?'on':mapBin(iN)}" onclick="dongTog('옥도면')" title="옥도면 ${iN}명"><span class="tiny">서해 섬 지역</span><span class="isl"><i></i><i></i><i></i><i></i></span><span class="isl-n"><b>옥도면</b><i class="amap-c">${iN}명</i></span></button>
   <button type="button" tabindex="-1" class="amap-zin" onclick="S.mapZoom=true;render()">도심 16개 동 · ${urbanN}명 확대</button>
   <button type="button" tabindex="-1" class="amap-zout btn btn-line btn-sm" onclick="S.mapZoom=false;render()">${I('l')} 군산시 전체 보기</button>
@@ -6230,7 +6282,7 @@ const CATC={'문학':'lit','시각':'exhi','공연':'perf','다원예술':'multi
 const evc=x=>x.admin?'org':CATC[x.cat];
 function allEvents(){const cal=CUR==='A2-01'||(SC(CUR)||{}).bg==='A2-01';return allEvents0().filter(e=>(!S.calQ||(e.title+e.place+(e.aid?A(e.aid).name:'')).includes(S.calQ))&&(!cal||(fPass('evcat',e.cat)&&fPass('area',e.aid?dongKind(A(e.aid).dong):'')&&fPass('state',evState(e))&&fPass('aud',evAud(e.cat))&&fPass('fee',e.admin?'무료':evFee(e.cat,e.sec==='지원사업'))&&fPass('sec',e.sec))))}
 function allEvents0(){return [...WORKS.filter(w=>w.kind==='활동'&&w.start&&!w.calAdm).map(w=>({title:w.title,start:w.start,end:w.end,cat:w.cat,place:w.place,aid:w.aid,wid:w.id,sec:w.support?'선정':'일반'})),...ADMIN_EVENTS.map((e,i)=>({...e,admin:true,sec:e.sec||'기타',ai:i}))]}
-function eventsOn(ds){return allEvents().filter(e=>e.start<=ds&&ds<=e.end).sort((a,b)=>(a.wid==='w6')-(b.wid==='w6'))}
+function eventsOn(ds){return allEvents().filter(e=>e.start<=ds&&ds<=e.end).sort((a,b)=>(a.title==='우리 동네 그림책 만들기')-(b.title==='우리 동네 그림책 만들기'))}
 const evLink=e=>e.admin?`onclick="toast('관련 안내 페이지를 새 창에서 엽니다')"`:`href="#/A3-09?id=${e.wid}"`;
 PAGES['A2-01']=()=>{
   const y=2026,m=9+(S.calM||0);const first=new Date(y,m,1);const start=new Date(y,m,1-first.getDay());const days=[];for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);days.push(d)}
