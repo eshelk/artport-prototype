@@ -5555,7 +5555,138 @@ html[data-page="M-19"] .req{margin-left:1px}
 html[data-page="M-19"] .f-l .opt{border:0;padding:0;background:none}
 </style>
 <style>/* 고대비: 공지 본문(A4-02 상세 · A4-03 글쓰기 미리보기)에서 글자색을 바꾼 글도 본문 글자색 #FFFFFF */html[data-hc="1"] :is(.a402-b,.a403-pv) :is(span[style*="color"]:not([data-hcf]),span[style*="color"]:not([data-hcf]) *,font[color],font[color] *){color:#FFFFFF!important}html[data-hc="1"] .a403-pv .a403-pv0{color:#E6E6E6!important}
-/* 고대비: 입력 칸 안내 글자 muted 고대비 값 */html[data-hc="1"] ::placeholder{color:#E6E6E6!important}html.hc-now *,html.hc-now *::before,html.hc-now *::after{transition:none!important}.pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
+/* 고대비: 입력 칸 안내 글자 muted 고대비 값 */html[data-hc="1"] ::placeholder{color:#E6E6E6!important}html.hc-now *,html.hc-now *::before,html.hc-now *::after{transition:none!important}</style>
+<style>/* */
+/* Figma 작업본 변경표 #203 · #221 · #228 · #229 */
+.gnb-item > a{border-bottom-width:4px}
+html:not([data-hc="1"]) .bell-n{color:#FFFFFF}
+html[data-page] .pf-acts > *{background:var(--color-bg-page)}
+@media screen and (max-width:767px){
+ html[data-page="A3-01"] .fg-a301 .sbar{display:grid;grid-template-columns:minmax(0,1fr) 80px;column-gap:8px;row-gap:12px}
+ html[data-page="A3-01"] .fg-a301 .sbar>.btn{width:auto;min-width:0;padding-left:0;padding-right:0}
+ html[data-page="A3-01"] .fg-a301 .sbar>.btn-line{grid-column:1/-1}
+ html[data-page="A3-01"] .fg-a301 .sbar .inp{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+}
+/* A3-05 예술지도 · A4-01 공지사항: 768 · 360도 Figma처럼 표(카드로 바꾸지 않음) */
+@media screen and (max-width:1100px){
+ :is(html[data-page="A3-05"],html[data-page="A4-01"]) .tblw{overflow:visible!important}
+ :is(html[data-page="A3-05"],html[data-page="A4-01"]) #app .tbl{display:table!important;width:100%!important;border-collapse:collapse}
+ :is(html[data-page="A3-05"],html[data-page="A4-01"]) #app .tbl thead{display:table-header-group!important}
+ :is(html[data-page="A3-05"],html[data-page="A4-01"]) #app .tbl tbody{display:table-row-group!important}
+ :is(html[data-page="A3-05"],html[data-page="A4-01"]) #app .tbl tr{display:table-row!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important}
+ :is(html[data-page="A3-05"],html[data-page="A4-01"]) #app .tbl :is(th,td){display:table-cell!important;gap:0!important;margin:0!important;border-left:0!important;border-right:0!important;border-radius:0!important;vertical-align:middle;text-align:left!important;width:auto}
+ :is(html[data-page="A3-05"],html[data-page="A4-01"]) #app .tbl td::before{content:none!important;display:none!important}
+ :is(html[data-page="A3-05"],html[data-page="A4-01"]) #app .tbl th{background:#F8F9F9!important;border-top:2px solid #103E60!important;white-space:nowrap;font-weight:700;color:var(--ink)}
+ html[data-page="A3-05"] #app .tbl th{border-bottom:2px solid #103E60!important;padding:9px 16px!important;font-size:14px;line-height:22px}
+ html[data-page="A3-05"] #app .tbl td{border-top:0!important;border-bottom:1px solid #E4E6E7!important;padding:9px 16px!important;font-size:15px;line-height:26px;font-weight:400;color:var(--ink)}
+ html[data-page="A3-05"] #app .tbl td:first-child{font-weight:700}
+ html[data-page="A4-01"] #app .tbl th{border-bottom:1px solid #C9CCCF!important;padding:12px 16px!important;font-size:14px;line-height:22px}
+ html[data-page="A4-01"] #app .tbl td{border-top:0!important;border-bottom:1px solid #E4E6E7!important;padding:12px 16px!important;font-size:14px;line-height:22px;color:var(--ink)}
+ html[data-page="A4-01"] #app .tbl tr.pin td{background:#EEF6FC!important}
+ html[data-page="A4-01"] #app .tbl td:first-child,html[data-page="A4-01"] #app .tbl th:first-child{padding-left:16px!important;text-align:center!important;width:64px}
+ html[data-page="A4-01"] #app .tbl td:last-child{white-space:nowrap}
+ html[data-page="A3-05"] .pager .pg-prev{display:inline-flex}
+}
+html[data-page="A3-05"] .pager .pg-prev{display:none}
+@media screen and (max-width:1100px){html[data-page="A3-05"] .pager .pg-prev{display:inline-flex}}
+@media screen and (max-width:767px){
+ html[data-page="A3-05"] #app .tbl th{padding:8px 8px!important;font-size:12px;line-height:18px}
+ html[data-page="A3-05"] #app .tbl td{padding:9px 8px!important;font-size:12.5px;line-height:20px}
+ html[data-page="A4-01"] #app .tbl{table-layout:fixed}
+ html[data-page="A4-01"] #app .tbl :is(th,td):nth-child(3){display:none!important}
+ html[data-page="A4-01"] #app .tbl :is(th,td){padding:10px 8px!important;font-size:13px;line-height:20px}
+ html[data-page="A4-01"] #app .tbl :is(th,td):first-child{width:48px;padding-left:4px!important;padding-right:4px!important}
+ html[data-page="A4-01"] #app .tbl :is(th,td):last-child{width:96px}
+ html[data-page="A4-01"] #app .tbl td:nth-child(2){white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ html[data-page="A4-01"] #app .tbl td:nth-child(2) *{white-space:nowrap}
+ /* A3-05 360: 세부 검색 전체 너비 · 지도 범위 버튼 오른쪽 · 지도 칸에 인원 숫자 · 확대 +/- */
+ html[data-page="A3-05"] .map-sbar>.btn{width:100%;justify-content:center}
+ html[data-page="A3-05"] .row.wrapf:has(>.seg){justify-content:flex-end;width:100%}
+ html[data-page="A3-05"] .amap-t.m{display:block!important}
+ html[data-page="A3-05"] .amap-t.m b,html[data-page="A3-05"] .amap-t .amap-u{display:none!important}
+ html[data-page="A3-05"] .amap-t.m .amap-c{min-width:22px;height:18px;line-height:15px;padding:0 5px;font-size:11px;border-width:1px;border-radius:9px}
+ html[data-page="A3-05"] .amap-zb{display:flex}
+}
+html[data-page="A3-05"] .amap-w{font-style:normal!important;letter-spacing:0!important}
+.amap-zb{display:none;position:absolute;right:10px;bottom:10px;flex-direction:column;gap:6px;z-index:3}
+.amap-zb button{width:28px;height:28px;border:1px solid #C9CCCF;border-radius:6px;background:#fff;color:#26292B;font-size:16px;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}
+@media screen and (min-width:768px) and (max-width:1100px){
+ html[data-page="A4-01"] #app .tbl{table-layout:fixed}
+ html[data-page="A4-01"] #app .tbl :is(th,td):nth-child(3){width:170px;white-space:nowrap}
+ html[data-page="A4-01"] #app .tbl :is(th,td):nth-child(4){width:104px;white-space:nowrap}
+ html[data-page="A4-01"] #app .tbl td:nth-child(2) b{display:inline}
+}
+@media screen and (max-width:1100px){
+ html[data-page="A4-01"] .a401-w{height:38px;min-height:38px}
+ html[data-page="A4-01"] #app .sbar .inp,html[data-page="A4-01"] #app input.inp[placeholder="제목 검색"]{height:38px;min-height:38px}
+}
+/* A2-01 768: 다음 달로 넘어간 마지막 줄 낮게 · 「이달의 주요 일정」과 「전체 일정」 사이 간격(Figma 768) */
+@media screen and (min-width:768px) and (max-width:1100px){
+ html[data-page="A2-01"] .cal-g .d.out{min-height:60px}
+ html[data-page="A2-01"] .cal-wrap{row-gap:50px}
+ html[data-page="A2-01"] .cal-wrap+.sec-t{margin-top:76px!important}
+}
+/* A1-01 · A1-02 반응형 글자 크기 · 단계 배치(Figma 768 · 360) */
+@media screen and (min-width:768px) and (max-width:1100px){
+ html[data-page="A1-01"] h2.sec-t{font-size:19.1px!important;line-height:44px!important}
+ html[data-page="A1-01"] h2.sec-t+p{font-size:14.8px!important;line-height:25px!important}
+ html[data-page="A1-01"] .flow5{width:600px;max-width:100%;margin-left:auto;margin-right:auto}
+ html[data-page="A1-01"] .flow5 li{padding:0 1px!important;text-align:center}
+ html[data-page="A1-01"] .flow5 .f5-n{width:31px!important;height:31px!important;font-size:13.9px!important;margin:0 auto}
+ html[data-page="A1-01"] .flow5::before{top:15px!important}
+ html[data-page="A1-01"] .flow5 b{font-size:15.7px!important;line-height:22px!important;margin-top:10px!important}
+ html[data-page="A1-01"] .flow5 p{font-size:11.3px!important;line-height:19px!important;margin-top:5px!important}
+ html[data-page="A1-02"] .a12-steps{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:6px!important}
+ html[data-page="A1-02"] .a12-steps>li{display:flex!important;align-items:center;min-width:0}
+ html[data-page="A1-02"] .a12-steps>li>.box{flex:1 1 auto;justify-content:center;min-width:0}
+ html[data-page="A1-02"] .a12-steps>li:nth-child(4n)>.muted{visibility:hidden}
+}
+@media screen and (max-width:1100px){
+ html[data-page="A1-02"] h2.sec-t{font-size:22px!important;line-height:27.5px!important;font-weight:800}
+ html[data-page="A1-02"] .box p.small{white-space:normal}
+}
+@media screen and (max-width:767px){
+ html[data-page="A1-01"] h2.sec-t{font-size:22px!important;line-height:51px!important;margin-left:8px}
+ html[data-page="A1-01"] h2.sec-t+p{font-size:17px!important;line-height:29px!important;margin-left:8px}
+ html[data-page="A1-01"] .flow5{padding-left:8px!important}
+ html[data-page="A1-01"] .reg-top .reg-top-btn{width:100%;justify-content:center}
+ html[data-page="A1-02"] .a12-steps{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:6px!important}
+ html[data-page="A1-02"] .a12-steps>li{display:flex!important;align-items:center;min-width:0}
+ html[data-page="A1-02"] .a12-steps>li>.box{flex:1 1 auto;justify-content:center;min-width:0}
+ html[data-page="A1-02"] .a12-steps>li:nth-child(2n)>.muted{visibility:hidden}
+}
+@media screen and (max-width:1100px){html[data-page="A1-02"] .a12-steps>li:last-child::after{content:"";flex:0 0 19px;margin-left:5px}}
+@media screen and (max-width:767px){
+ html[data-page="A1-01"] .flow5{gap:20px!important}
+ html[data-page="A1-01"] .flow5 b{margin-top:5px!important;font-size:18px;line-height:25px}
+ html[data-page="A1-01"] .flow5 p{margin-top:2px!important;font-size:13px!important;line-height:22px!important}
+}
+/* PC 마이페이지 Figma 값 — M-01 문의 띠 · 작은 선 버튼 / M-03 상태별 안내 폭 / M-04 증빙 추가 버튼 / M-05 고른 카드 */
+@media print,(min-width:1101px){
+ html[data-page="M-01"] .banner-q{margin-top:100px!important;margin-bottom:150px;padding:0 48px 0 40px!important;gap:0!important}
+ html[data-page="M-01"] .banner-q>svg.waves{width:460px!important;height:140px!important}
+ html[data-page="M-01"] .banner-q>div{flex:0 0 auto!important;margin-left:27px;max-width:212px}
+ html[data-page="M-01"] .banner-q .h3{font-size:20px;line-height:28px}
+ html[data-page="M-01"] .banner-q .small{font-size:16px;line-height:26px;opacity:1!important}
+ html[data-page="M-01"] .banner-q>.btn{width:180px;height:60px;min-height:60px;font-size:18px;margin-left:auto;justify-content:center}
+ html[data-page="M-01"] :is(.pg-h,.ms-h) .btn-line.btn-sm{font-size:14px;border-color:#E4E6E7;height:36px;padding:0 14px;gap:6px}
+ html[data-page="M-03"] .rs2-cob{max-width:853px}
+ html[data-page="M-03"] .rs2-cot{display:inline!important;padding-right:0!important}
+ html[data-page="M-03"] .rs2-cod{display:inline!important}
+ html[data-page="M-04"] .m4-add{display:flex;justify-content:flex-end;margin-top:20px}
+ html[data-page="M-04"] .m4-add .btn{width:272px;height:48px;min-height:48px;font-size:14px;justify-content:center}
+ html[data-page="M-05"] .box:has(.m1-b36){border-color:#93CBF2}
+ html[data-page="M-05"] .box .m1-b36{font-size:14px;border-color:#C9CCCF;margin-right:33px}
+}
+@media screen and (max-width:1100px){html[data-page="M-04"] .m4-add{display:flex;justify-content:flex-end;margin-top:16px}}
+@media print,(min-width:1101px){
+ html[data-page="M-01"] .banner-q{min-height:238px!important}
+ html[data-page="M-03"] .rs2-cod b{font-weight:400}
+}
+@media print,(min-width:1101px){html[data-page="M-03"] .rs2-co{padding-right:24px!important}html[data-page="M-03"] .rs2-cob{flex:0 1 853px!important;width:853px}}
+@media print,(min-width:1101px){html[data-page="M-03"] .rs2-cob{letter-spacing:-0.012em}}
+@media print,(min-width:1101px){html[data-page="M-05"] .box .m1-b36{width:132px;flex:none;min-width:132px}}
+.pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -5758,6 +5889,7 @@ function msSync(){const pf=document.querySelector('.ms-pf'),r=document.querySele
 function calSync(){msSync();const c=document.querySelector('.cal-wrap .cal'),a=document.querySelector('.cal-side');if(!c||!a)return;const f=()=>{a.style.height=matchMedia('(max-width:1099px)').matches?'':c.offsetHeight+'px'};f();if(!window._calRO){window._calRO=new ResizeObserver(()=>{const c2=document.querySelector('.cal-wrap .cal'),a2=document.querySelector('.cal-side');if(c2&&a2)a2.style.height=matchMedia('(max-width:1099px)').matches?'':c2.offsetHeight+'px'})}window._calRO.disconnect();window._calRO.observe(c)}
 function jumpLink(ev,id){const h=ev.currentTarget.getAttribute('href');if(h===location.hash){ev.preventDefault();softJump(id,1)}else S.jumpTo=id+'|1'}
 function softJump(id0,cur){let id=id0;if(typeof id==='string'&&id.includes('|')){[id,cur]=id.split('|')}const el=document.getElementById(id);if(!el)return;const hd=document.querySelector('.hd');const off=(hd&&getComputedStyle(hd).position!=='static'?hd.offsetHeight:0)+16;const y0=scrollY,y1=Math.max(0,el.getBoundingClientRect().top+scrollY-off),d=y1-y0;const f=cur?el.querySelector('input:not([type=checkbox]):not([type=radio]):not([type=hidden]),textarea'):el.querySelector('h2[tabindex],h3[tabindex]');if(f)f.focus({preventScroll:true});if(Math.abs(d)<4)return;if(matchMedia('(prefers-reduced-motion: reduce)').matches){scrollTo(0,y1);return}const T=Math.min(450,200+Math.abs(d)*.25),t0=performance.now();const st=t=>{const k=Math.min(1,(t-t0)/T),e=1-Math.pow(1-k,3);scrollTo(0,y0+d*e);if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
+function calMax(){return matchMedia('(min-width:768px) and (max-width:1100px)').matches?2:3}
 function tblLabels(){document.querySelectorAll('.tbl').forEach(t=>{const hs=[...t.querySelectorAll('thead th')].map(h=>(h.textContent||'').trim());t.querySelectorAll('tbody tr').forEach(r=>[...r.cells].forEach((c,i)=>{if(!c.hasAttribute('data-label'))c.setAttribute('data-label',hs[i]||'')}))})}
 function afterRender(){setHdr();tblLabels();kbdPrep();setTimeout(topSync,0);if(S.jumpTo){const j=S.jumpTo;S.jumpTo=null;setTimeout(()=>softJump(j),30)}calSync();if(FOCUS_K&&FOCUS_K.fld){const f=FOCUS_K;FOCUS_K=null;const m=(f.id&&document.getElementById(f.id))||document.querySelectorAll('#app '+f.tag)[f.idx];if(m)m.focus({preventScroll:true})}if(FOCUS_K){const f=FOCUS_K;FOCUS_K=null;const m=[...document.querySelectorAll(f.tag)].find(x=>(x.textContent||'').trim()===f.txt&&((x.closest('[aria-label]')||{getAttribute:()=>''}).getAttribute('aria-label')||'')===f.grp);if(m)m.focus()}
   clearInterval(clockT);const tick=()=>{document.querySelectorAll('[data-clock]').forEach(el=>{const d=new Date();const w='일월화수목금토'[d.getDay()];const p=n=>String(n).padStart(2,'0');el.textContent=`${d.getFullYear()}.${p(d.getMonth()+1)}.${p(d.getDate())} (${w}) ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`})};tick();clockT=setInterval(tick,1000);
@@ -5892,7 +6024,7 @@ PAGES['A1-02']=()=>pub(kv('예술인등록','군산 예술의 기록과 연결',
    <p class="small muted mt16">반려 시 기존 신청 내용은 유지되며, 반려된 항목과 사유를 확인한 뒤 필요한 항목만 수정해 재신청할 수 있습니다.</p></div>
   <div><h2 class="sec-t">정보 갱신 · 회원탈퇴</h2>
    <div class="box mt16"><b>2년 주기 정보 갱신</b><p class="small mt8" style="color:var(--ink-2)"><span class="a12-s">갱신일 30일 전부터 홈페이지 알림과 이메일로 안내합니다.</span> <span class="a12-s">갱신하지 않아도 공개는 유지되며 “갱신 필요”가 표시됩니다.</span> <span class="a12-s">마이페이지 정보 갱신 화면에서 확인해주세요.</span></p></div>
-   <div class="box mt16"><b>회원탈퇴</b><p class="small mt8" style="color:var(--ink-2)">별도의 등록 취소 기능 없이 마이페이지에서 회원탈퇴로 운영합니다. 탈퇴 시 공개 정보는 즉시 비공개 처리됩니다.</p></div>
+   <div class="box mt16"><b>회원탈퇴</b><p class="small mt8" style="color:var(--ink-2)">별도의 등록 취소 기능 없이 마이페이지에서 회원탈퇴로 운영합니다.<br>탈퇴 시 공개 정보는 즉시 비공개 처리됩니다.</p></div>
   </div></div>
  <div class="reg-cta mt48"><p class="h4" style="margin:0">신청 자격을 확인하셨나요?</p><a class="btn btn-pri reg-cta-btn" href="#/A1-03">예술인등록 신청하기 ${I('r')}</a></div>
  ${REF('신청 버튼은 위·아래 2곳 — 위: 작은 크기·색 대비 강조(스크롤 없이 보임) · 아래: 큰 버튼(높이 64px 이상)')}
@@ -6090,7 +6222,7 @@ const CATC={'문학':'lit','시각':'exhi','공연':'perf','다원예술':'multi
 const evc=x=>x.admin?'org':CATC[x.cat];
 function allEvents(){const cal=CUR==='A2-01'||(SC(CUR)||{}).bg==='A2-01';return allEvents0().filter(e=>(!S.calQ||(e.title+e.place+(e.aid?A(e.aid).name:'')).includes(S.calQ))&&(!cal||(fPass('evcat',e.cat)&&fPass('area',e.aid?dongKind(A(e.aid).dong):'')&&fPass('state',evState(e))&&fPass('aud',evAud(e.cat))&&fPass('fee',e.admin?'무료':evFee(e.cat,e.sec==='지원사업'))&&fPass('sec',e.sec))))}
 function allEvents0(){return [...WORKS.filter(w=>w.kind==='활동'&&w.start&&!w.calAdm).map(w=>({title:w.title,start:w.start,end:w.end,cat:w.cat,place:w.place,aid:w.aid,wid:w.id,sec:w.support?'선정':'일반'})),...ADMIN_EVENTS.map((e,i)=>({...e,admin:true,sec:e.sec||'기타',ai:i}))]}
-function eventsOn(ds){return allEvents().filter(e=>e.start<=ds&&ds<=e.end)}
+function eventsOn(ds){return allEvents().filter(e=>e.start<=ds&&ds<=e.end).sort((a,b)=>(a.wid==='w6')-(b.wid==='w6'))}
 const evLink=e=>e.admin?`onclick="toast('관련 안내 페이지를 새 창에서 엽니다')"`:`href="#/A3-09?id=${e.wid}"`;
 PAGES['A2-01']=()=>{
   const y=2026,m=9+(S.calM||0);const first=new Date(y,m,1);const start=new Date(y,m,1-first.getDay());const days=[];for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);days.push(d)}
@@ -6102,7 +6234,7 @@ PAGES['A2-01']=()=>{
   <div class="legend cal-lg" role="list" aria-label="분야 색 범례">${L([['문학','--c-lit'],['시각','--c-exhi'],['공연','--c-perf'],['다원예술','--c-multi'],['문화예술교육','--c-edu'],['기타','--c-etc'],['◆ 재단·기관 일정','--c-org']],([t,c])=>`<span role="listitem"><i style="background:var(${c})"></i>${t}</span>`)}</div><div class="cal-wrap"><div>
    <div class="cal"><div class="cal-h"><button class="icon-btn" aria-label="이전 달" onclick="S.calM=Math.max(-1,(S.calM||0)-1);render()" ${(S.calM||0)<=-1?'disabled style="opacity:.3"':''}>${I('l')}</button><h2>${y}. ${String(m+1).padStart(2,'0')}</h2><button class="icon-btn" aria-label="다음 달" onclick="S.calM=Math.min(1,(S.calM||0)+1);render()" ${(S.calM||0)>=1?'disabled style="opacity:.3"':''}>${I('r')}</button></div>
    <div class="cal-g">${L(['일','월','화','수','목','금','토'],(d,i)=>`<div class="dw ${i===0?'sun':i===6?'sat':''}">${d}</div>`)}
-   ${L(days,d=>{const k=ds(d);const e=eventsOn(k);const out=d.getMonth()!==m;const today=k==='2026-10-07';return `<div class="d ${out?'out':''} ${today?'today':''} ${e.length>3?'click':''}" ${e.length>3?`onclick="if(!event.target.closest('a'))go('A2-02?d=${k}')"`:''}><span class="dn">${d.getDate()}</span>${out?'':L(e.slice(0,3),x=>`<a class="ev ${evc(x)}" ${evLink(x)} title="${esc(x.title)}">${x.admin?'◆ ':''}${x.title}</a>`)}${!out&&e.length>3?`<a class="more" href="#/A2-02?d=${k}">+${e.length-3}<span class="more-t">개 더보기</span></a>`:''}</div>`})}
+   ${L(days,d=>{const k=ds(d);const e=eventsOn(k);const out=d.getMonth()!==m;const today=k==='2026-10-07';return `<div class="d ${out?'out':''} ${today?'today':''} ${e.length>calMax()?'click':''}" ${e.length>calMax()?`onclick="if(!event.target.closest('a'))go('A2-02?d=${k}')"`:''}><span class="dn">${d.getDate()}</span>${out?'':L(e.slice(0,calMax()),x=>`<a class="ev ${evc(x)}" ${evLink(x)} title="${esc(x.title)}">${x.admin?'◆ ':''}${x.title}</a>`)}${!out&&e.length>calMax()?`<a class="more" href="#/A2-02?d=${k}">+${e.length-calMax()}<span class="more-t">개 더보기</span></a>`:''}</div>`})}
    </div></div>
    <div class="row between mt16 wrapf">${REF('필터 6종 — 분야(문학 · 시각 · 공연 · 다원예술 · 문화예술교육 · 기타) · 지역 · 상태 · 관람대상 · 비용 · 지원사업 선정 여부 · 기본 접힘, [세부 검색]으로 펼침 · 조건을 고르면 달력 · 주요 일정 · 전체 일정에 바로 적용')}${REF('이달의 주요 일정은 지난 일정을 빼고 오늘(진행 중 포함)부터 말일까지 날짜별로 묶어 표시 — 여러 날 일정은 일정 시작 · 일정 중간 · 마지막 날로 구분하고 하루 일정을 먼저 · 목록 높이는 달력과 같고 넘치면 목록 안에서 스크롤')}</div>
   </div>
@@ -6158,7 +6290,7 @@ PAGES['A3-05']=()=>{if(Q.dong){S.selDongs=[Q.dong];S.flt={};history.replaceState
   <p class="tiny muted mt16">지도에서 지역을 누르거나 아래 [읍면동으로 선택]에서 고르세요. 여러 지역을 함께 선택할 수 있습니다. 인원은 예술인이 등록한 거주지·소재지 기준입니다.</p>${REF('읍면동 경계는 도식 — 시 경계·읍면 위치는 군산시 도로명 안내도, 도심 동 배치는 군산시 한눈에 시스템, 27개 구성은 군산시청 읍면동 안내 참고. 개발 시 행정구역 경계 데이터(SHP→SVG)로 교체, 지도 API 미사용')}</div>
  <aside class="box map-list" id="mapList" style="padding:24px"><div class="row between"><h3 class="h4" tabindex="-1">${sd.length?sd.join(', '):'전체'} <span class="a35-n">${list.length}명</span></h3><div class="seg"><button class="${S.sortNew?'':'on'}" onclick="S.sortNew=false;render()">가나다순</button><button class="${S.sortNew?'on':''}" onclick="S.sortNew=true;render()">최신등록순</button></div></div>
   ${list.length?`<div class="mt16">${tbl(['예술인명','활동분야','세부장르','지역'],list.slice(0,10).map(p=>tr([`<b>${p.name}</b>`,p.field,p.genre,p.dong],{href:'A3-02?id='+(p.id||'a1')})))}</div>
-  <nav class="pager" style="margin-top:20px">${L(Array.from({length:Math.min(pg,5)},(_,i)=>i+1),i=>`<a class="${i===1?'on':''}">${i}</a>`)}${pg>1?`<a aria-label="다음">${I('r')}</a>`:''}</nav>`:fEmpty('조건에 맞는 예술인이 없습니다')}</aside>
+  <nav class="pager" style="margin-top:20px"><a class="pg-prev" aria-label="이전">${I('l')}</a>${L(Array.from({length:Math.min(pg,5)},(_,i)=>i+1),i=>`<a class="${i===1?'on':''}">${i}</a>`)}${pg>1?`<a aria-label="다음">${I('r')}</a>`:''}</nav>`:fEmpty('조건에 맞는 예술인이 없습니다')}</aside>
  </div>
  <section class="pickbox mt24" aria-labelledby="pick-h"><h3 id="pick-h" class="h4">읍면동으로 선택</h3>${pickRows(sd,dc)}</section>
  ${REF('세부 검색 줄 → 지도(왼쪽 약 56%) · 예술인 목록(오른쪽, 10행 · 쪽 번호) 나란히 → 읍면동 선택 순서(768 · 360은 지도 → 목록 → 읍면동 세로로 쌓음) · 쪽 번호는 목록 아래 · 지도나 읍면동 버튼으로 지역을 고르면 목록이 바뀌고, 화면이 목록 위치로 부드럽게 이동(최대 0.45초, 동작 줄이기 설정 시 바로 이동) · 키보드 초점도 목록 제목으로 옮김')}
@@ -6370,6 +6502,10 @@ function hcFix(){
 }
 {const _a=applyA11y;applyA11y=function(){_a.apply(this,arguments);setTimeout(hcFix,0)}}
 function refOut(){document.querySelectorAll('#modal .dim').forEach(d=>{const m=d.querySelector('.modal');if(!m)return;const rs=[...m.querySelectorAll('.ref')];if(!rs.length)return;let b=d.querySelector(':scope>.ref-out');if(!b){b=document.createElement('div');b.className='ref-out';m.after(b)}rs.forEach(r=>b.appendChild(r))})}
+/* */
+function a305Map(){if(CUR!=='A3-05')return;document.querySelectorAll('.amap .amap-c').forEach(c=>{if(c.dataset.u)return;c.dataset.u='1';c.innerHTML=c.textContent.replace(/명$/,'<span class="amap-u">명</span>')});
+ const m=document.querySelector('#app .amap');if(m&&!m.querySelector('.amap-zb')){const z=document.createElement('div');z.className='amap-zb';z.innerHTML='<button type="button" aria-label="지도 확대" onclick="S.mapZoom=true;render()">+</button><button type="button" aria-label="지도 축소" onclick="S.mapZoom=false;render()">−</button>';m.appendChild(z)}}
+{const _ar2=afterRender;afterRender=function(){_ar2.apply(this,arguments);a305Map()}}
 
 /* ---------- A5 문화예술진흥 지원사업 ---------- */
 PAGES['A5-01']=()=>{const k5=S.a5k||'전체';const list=WORKS.filter(w=>w.support&&(k5==='전체'||w.kind===k5)&&(!w.priv||isAdmin())&&(!S.q||(w.title+w.line+w.genre).includes(S.q))&&fPass('field',w.field)&&fPass('genre',w.genre)&&fPass('dong',A(w.aid).dong)&&fPass('wcat',w.cat||'')).sort((a,b)=>a.title.localeCompare(b.title,'ko'));if(S.sortNew)list.reverse();return pub(kv('문화예술진흥 지원사업','군산시 문화예술진흥 지원사업 선정 작품·활동','2027 문화예술진흥 지원사업')+`<section class="sec a501" style="padding-top:32px"><div class="wrap">
@@ -6476,7 +6612,7 @@ const msPg=n=>{const a=Math.ceil(n/6),b=Math.ceil(n/4);if(b<2)return '';return `
 function msPgGo(b,k,abs){const nv=b.closest('.ms-pg'),g=nv.previousElementSibling;const max=Math.ceil(g.children.length/(matchMedia('(max-width:767px)').matches?4:6));let p=abs?k:(+g.dataset.pg||1)+k;p=Math.max(1,Math.min(max,p));g.dataset.pg=p;nv.querySelectorAll('button:not(.ms-pa)').forEach(x=>{const on=+x.textContent===p;x.classList.toggle('on',on);if(on)x.setAttribute('aria-current','page');else x.removeAttribute('aria-current')})}
 function msTabSc(t){if(t.children.length<=3)return;t.previousElementSibling.disabled=t.scrollLeft<=1;t.nextElementSibling.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-1}
 const myShow=(ini)=>{const nm=myName();if(ini)return `<section class="my-show" aria-labelledby="show-h"><div class="ms-h"><div><h2 id="show-h">나의 예술 기록</h2><p class="ms-d">${nm} 님이 등록한 포트폴리오와 작품·활동입니다.</p></div></div><div class="ms-empty ms-init" role="status"><p>아직 등록한 포트폴리오가 없습니다. 포트폴리오를 등록하고 관리자 승인을 받으면 예술창고에 공개되고, 이곳에서 포트폴리오와 작품·활동을 한눈에 볼 수 있습니다.</p><a class="btn btn-pri btn-sm m1-b36" href="#/A1-03">포트폴리오 등록하기</a></div></section>`;const pf=MYPF.find(x=>x.id===S.msPf)||MYPF[0];const ws=pfWorks(pf);const nw=ws.filter(w=>w.kind==='작품').length,na=ws.filter(w=>w.kind==='활동').length,ns=ws.filter(w=>w.support).length;const open=pf.st==='등록완료';
- return `<section class="my-show" aria-labelledby="show-h"><div class="ms-h"><div><h2 id="show-h">나의 예술 기록</h2><p class="ms-d">${nm} 님이 등록한 포트폴리오와 작품·<wbr>활동입니다.</p></div>${open?`<a class="btn btn-line btn-sm" href="#/A3-02?id=${pf.aid}">공개 포트폴리오 보기</a>`:''}</div>
+ return `<section class="my-show" aria-labelledby="show-h"><div class="ms-h"><div><h2 id="show-h">나의 예술 기록</h2><p class="ms-d">${nm} 님이 등록한 포트폴리오와 작품·<wbr>활동입니다.</p></div>${open?`<a class="btn btn-line btn-sm" href="#/A3-02?id=${pf.aid}">${I('ext')}공개 포트폴리오 보기</a>`:''}</div>
  ${MYPF.length>1?`<div class="ms-tabbar"><button type="button" class="ms-sc" aria-label="이전 포트폴리오 탭 보기" disabled onclick="this.nextElementSibling.scrollBy({left:-240,behavior:'smooth'})">${I('l')}</button><div class="ms-tabs" role="tablist" aria-label="내 포트폴리오" onscroll="msTabSc(this)">${L(MYPF,(x,i)=>`<button type="button" role="tab" aria-selected="${x.id===pf.id}" class="${x.id===pf.id?'on':''}" onclick="const s=this.parentNode.scrollLeft;S.msPf='${x.id}';render();setTimeout(()=>{const t=document.querySelector('.ms-tabs');if(t){t.scrollLeft=s;msTabSc(t)}})">포트폴리오 ${i+1} · ${x.sub}<span>${pfWorks(x).length}</span></button>`)}</div><button type="button" class="ms-sc" aria-label="다음 포트폴리오 탭 보기" ${MYPF.length<=3?'disabled':''} onclick="this.previousElementSibling.scrollBy({left:240,behavior:'smooth'})">${I('r')}</button></div>${msDd(pf)}`:''}
  <div class="ms-body"><div class="ms-pf">${PH(pf.t,'')}<div class="ms-pf-t"><div class="row" style="gap:6px;flex-wrap:wrap"><b>${nm}</b>${pfStBadge(pf.st)}</div><span>${pf.field} · ${pf.genre}</span><span class="ms-line">${pf.line}</span>${open?'':`<span class="tiny ms-note">${pf.st==='심사대기'?'심사 전이라 아직 공개되지 않았습니다':'심사중이라 아직 공개되지 않았습니다'}</span>`}</div></div>
  <div class="ms-r"><p class="ms-sum">작품 <b>${nw}</b>점 · 활동 <b>${na}</b>건${ns?` · 그중 <b>${ns}</b>건이 <span class="nw">지원사업에</span> 선정되었습니다`:''}</p>
@@ -6546,10 +6682,10 @@ PAGES['M-04']=()=>m1Ini(Q.empty,my('M-04',pgh('보완요청·증빙자료')+`${Q
  ${tbl(['항목','사유','상세 사유'],[tr(['<b>작품 규격</b>',badge('필수 입력정보 누락 또는 오류','b-bad'),'규격 단위(cm)가 빠져 있습니다.']),tr(['<b>증빙자료</b>',badge('제출정보와 증빙자료 불일치','b-bad'),'전시 연도가 리플릿과 다릅니다. 2026년 리플릿을 첨부해 주세요.'])])}
  <div class="formcard mt24" style="border-color:var(--accent)"><h3>보완 입력</h3>${F('작품 규격',sizeInp('162.2','130.3'),{req:1})}${F('추가 증빙',`<div class="upl">${I('up')}<p class="mt8">파일을 끌어 놓거나 클릭해 업로드</p><p class="tiny">이미지 · PDF · 한글 · 워드 · 엑셀 · 파워포인트 등 / 개당 10MB 이하 · 최대 20개 · 한 번에 50MB 이하</p></div>`,{req:1})}</div>
  <div class="row mt24" style="justify-content:flex-end"><button class="btn btn-line" onclick="toast('임시저장되었습니다')">임시저장</button><button class="btn btn-pri" onclick="toast('보완 내용을 제출했습니다');go('M-03')">보완제출하기</button></div></div>`}
- <div class="pg-h mt48" id="evi"><h2 class="h3">증빙자료</h2><button class="btn btn-pri btn-sm" onclick="toast('파일 선택 창이 열립니다')">${I('up')} 증빙자료 추가 제출</button></div>
+ <div class="pg-h mt48" id="evi"><h2 class="h3">증빙자료</h2></div>
  ${Q.empty?'':callout('<b>추가 증빙자료를 제출해 주세요.</b> 상세 사유를 확인하고 해당 자료를 제출해 주세요.','warn')}
  <div class="${Q.empty?'':'mt16 '}m1-evi"></div>${tbl(['파일명','구분','제출일','상태'],[tr(['2026_개인전_리플릿.pdf','관리자 요청','2026.09.25',sbadge('승인')]),tr(['2025_단체전_참여확인서.jpg','관리자 요청','2026.09.25',sbadge('승인')]),tr(['보완_증빙.pdf','보완제출','2026.09.28',sbadge('승인')])])}
- <p class="tiny muted mt8">제출한 증빙자료는 공개되지 않으며 심사에만 사용됩니다. 정보 갱신 때에는 최근 2년 이내 활동을 확인할 수 있는 자료를 제출해 주세요.</p>
+ <p class="tiny muted mt8">제출한 증빙자료는 공개되지 않으며 심사에만 사용됩니다. 정보 갱신 때에는 최근 2년 이내 활동을 확인할 수 있는 자료를 제출해 주세요.</p><div class="m4-add"><button class="btn btn-pri" onclick="toast('파일 선택 창이 열립니다')">${I('up')} 증빙자료 추가 제출</button></div>
  ${REF('증빙자료는 이 화면 아래쪽에서 제출 · 등록 신청 단계에는 증빙 제출 없음 · 관리자 요청 · 보완제출 · 정보 갱신 때 제출 · 증빙자료 3년 보관 후 파기 · '+(Q.empty?'<a class="link" href="#/M-04">기본 화면</a>':'<a class="link" href="#/M-04?empty=1">보완요청 없음 예시</a>'))}`),{only:'M-04'});
 PAGES['M-05']=()=>Q.empty?m1Ini(1,my('M-05',pgh('포트폴리오 관리')+'<div class="fempty es m1-es" role="status"><h3>등록한 포트폴리오가 없습니다.</h3><p>포트폴리오를 등록하고 관리자 승인을 받으면 예술창고에 공개됩니다. 활동 분야가 다르면 포트폴리오를 여러 개 만들 수 있습니다.</p><a class="btn btn-pri" href="#/A1-03">포트폴리오 등록하기</a></div>'+REF('등록 전 상태 예시 — <a class="link" href="#/M-05">기본 화면</a>'))):my('M-05',pgh('포트폴리오 관리',`<p class="small m05-hint">새로운 활동·수상 이력, 사진, 영상은 [추가등록]으로 언제든 제출할 수 있습니다.</p><a class="btn btn-pri btn-sm" href="#/M-22">${I('plus')} 추가등록</a>`)+`<div class="pf-count"><p style="margin:0">내 포트폴리오 <b>${MYPF.length}</b>개 <span class="muted small">· 공개 중 ${MYPF.filter(x=>x.st==='등록완료').length} · 심사대기·심사중 ${MYPF.filter(x=>x.st!=='등록완료').length}</span></p></div>
  <div class="m05-t">${tbl(['구분','분야','장르','작품·활동 연결','공개 상태','심사 상태','수정일시',''],MYPF.map((x,i)=>tr([`<b>포트폴리오 ${i+1}</b>`,x.field,x.genre,`${pfWorks(x).length}건`,x.st==='등록완료'?badge(S.pfPriv?'비공개':'공개중','b-ok'):badge('공개전',''),sbadge(i===0?'심사대기':x.st),['2026.10.06 11:02','2026.10.08 09:40','2026.10.15 16:05'][i]||'2026.10.15 16:05',i===0?'<span class="tiny muted">아래에서 관리</span>':`<a class="btn btn-line btn-xs" href="#/M-03">확인하기</a>`])))}</div>
