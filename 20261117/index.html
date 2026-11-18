@@ -5553,7 +5553,8 @@ html[data-page="M-20"] td .btn-ghost.btn-xs{border:1px solid #788187;background:
 /* M-19 문의 작성: 별표 붙임 · 「선택」 회색 글자 */
 html[data-page="M-19"] .req{margin-left:1px}
 html[data-page="M-19"] .f-l .opt{border:0;padding:0;background:none}
-.pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
+</style>
+<style>/* 고대비: 입력 칸 안내 글자 muted 고대비 값 */html[data-hc="1"] ::placeholder{color:#E6E6E6!important}html.hc-now *,html.hc-now *::before,html.hc-now *::after{transition:none!important}.pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -6333,7 +6334,36 @@ const a403CalF=()=>{const d=S.a403CalD||{};return `<label class="chk"><input typ
 /* */
 function dtFix(){document.querySelectorAll('#app input[type=date]:not([data-dt]),#modal input[type=date]:not([data-dt])').forEach(i=>{if(i.closest('.a403-cal'))return;i.dataset.dt='1';i.type='text';i.classList.add('dt-tx');if(!i.placeholder)i.placeholder='';i.inputMode='none';
  const on=()=>{if(i.type!=='date'){i.type='date';try{i.showPicker&&i.showPicker()}catch(_){}}};i.addEventListener('mousedown',on);i.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '||e.key==='ArrowDown'){e.preventDefault();on()}});i.addEventListener('blur',()=>{i.type='text'});i.addEventListener('change',()=>{setTimeout(()=>{if(document.activeElement!==i)i.type='text'},0)})})}
-{const _ar=afterRender;afterRender=function(){_ar.apply(this,arguments);dtFix();refOut()}}
+{const _ar=afterRender;afterRender=function(){_ar.apply(this,arguments);dtFix();refOut();hcFix()}}
+
+/* 고대비: 화면 맞춤으로 직접 적은 색(의미 토큰 밖)을 Figma semantic 「고대비」 값으로 바꿈
+   글자 — heading·body·on-tint·neutral 계열 → #FFFFFF, muted → #E6E6E6, link·tag·brand → #FFE14D, success → #7CFF9B, error·caution → #FF8A80, info → #9FD3FF
+   바탕 — 밝은 바탕(bg·tint·status bg·emphasis bg) · 남색(inverse) → #000000, brand primary 파랑 · accent 주황 → #FFE14D, error solid 빨강 → #FF8A80(위 글자 #000000) */
+const HC_TX={'114,113,113':'#E6E6E6','28,107,166':'#FFE14D','22,85,131':'#FFE14D','33,127,196':'#FFE14D','11,117,53':'#FFE14D','237,109,71':'#FFE14D','147,99,6':'#FFE14D','138,83,0':'#FFE14D','10,102,47':'#7CFF9B','180,35,24':'#FF8A80','217,45,32':'#FF8A80'};
+const HC_PAL=['255,225,77','124,255,155','255,138,128','159,211,255','224,179,255','127,232,224','255,158,128'];
+const HC_BLUE=['28,107,166','22,85,131','16,62,96','33,127,196','237,109,71','196,72,38'];
+const hcWM=new WeakMap();
+function hcRGB(s){const m=s&&s.match(/rgba?\(([^)]+)\)/);if(!m)return null;const a=m[1].split(/[ ,\/]+/).filter(Boolean).map(Number);return{r:a[0],g:a[1],b:a[2],a:a[3]===undefined?1:a[3],k:a[0]+','+a[1]+','+a[2]}}
+function hcLum(c){const f=v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)};return .2126*f(c.r)+.7152*f(c.g)+.0722*f(c.b)}
+function hcSet(e,p,v){let o=hcWM.get(e);if(!o){o={};hcWM.set(e,o)}if(!(p in o))o[p]=[e.style.getPropertyValue(p),e.style.getPropertyPriority(p)];e.style.setProperty(p,v,'important');e.dataset.hcf='1'}
+function hcBg(e){for(;e;e=e.parentElement){const c=hcRGB(getComputedStyle(e).backgroundColor);if(c&&c.a>.5)return c}return{r:0,g:0,b:0,a:1,k:'0,0,0'}}
+function hcClear(){document.querySelectorAll('[data-hcf]').forEach(e=>{const o=hcWM.get(e)||{};for(const p in o){o[p][0]?e.style.setProperty(p,o[p][0],o[p][1]):e.style.removeProperty(p)}hcWM.delete(e);delete e.dataset.hcf})}
+let hcMO=null,hcQ=0;
+function hcFix(){
+ const on=document.documentElement.dataset.hc==='1';if(hcMO)hcMO.disconnect();hcClear();if(!on)return;const R=document.documentElement;R.classList.add('hc-now');void R.offsetHeight;
+ const els=[...document.querySelectorAll('#app *,#modal *')].filter(e=>!e.closest('.ref,.ref-out,.pt,svg'));
+ for(const e of els){const c=hcRGB(getComputedStyle(e).backgroundColor);if(!c||c.a<=.5||c.k==='0,0,0'||HC_PAL.includes(c.k))continue;
+  if(!(e.textContent||'').trim()&&!e.matches('input,select,textarea'))continue;
+  if(HC_BLUE.includes(c.k))hcSet(e,'background-color','#FFE14D');else if(c.k==='217,45,32'||c.k==='180,35,24')hcSet(e,'background-color','#FF8A80');else if(hcLum(c)>.3||c.k==='11,42,65')hcSet(e,'background-color','#000000')}
+ for(const e of els){const own=[...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim());if(!own&&!e.matches('input,select,textarea'))continue;
+  const cs=getComputedStyle(e),f=hcRGB(cs.color);if(!f)continue;const b=hcBg(e),lf=hcLum(f),lb=hcLum(b);
+  if((Math.max(lf,lb)+.05)/(Math.min(lf,lb)+.05)>=7)continue;
+  hcSet(e,'color',lb>.4?'#000000':(HC_TX[f.k]||'#FFFFFF'))}
+ void R.offsetHeight;requestAnimationFrame(()=>R.classList.remove('hc-now'));
+ if(!hcMO)hcMO=new MutationObserver(()=>{if(hcQ)return;hcQ=requestAnimationFrame(()=>{hcQ=0;hcFix()})});
+ hcMO.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
+}
+{const _a=applyA11y;applyA11y=function(){_a.apply(this,arguments);setTimeout(hcFix,0)}}
 function refOut(){document.querySelectorAll('#modal .dim').forEach(d=>{const m=d.querySelector('.modal');if(!m)return;const rs=[...m.querySelectorAll('.ref')];if(!rs.length)return;let b=d.querySelector(':scope>.ref-out');if(!b){b=document.createElement('div');b.className='ref-out';m.after(b)}rs.forEach(r=>b.appendChild(r))})}
 
 /* ---------- A5 문화예술진흥 지원사업 ---------- */
@@ -7556,14 +7586,30 @@ function fbCopy(){
 }
 function fbVw(){const w=innerWidth;return `${w}px (${w>=1101?'PC':w>=768?'태블릿':'모바일'})`}
 function fbOpts(){const o=[];if(S.maint)o.push('점검 띠배너 켬');o.push('제작참고 메모 '+(S.ref?'켬':'끔'));if(S.fs)o.push('글자 크기 '+S.fs);if(S.hc)o.push('고대비 켬');return o.join(' · ')}
-function fbMeta(){const s=SC(CUR);return {copy:fbCopy(),id:s.id,name:s.name,grp:s.g,kind:s.modal?'모달/레이어':'일반 화면',role:ROLES[S.role],url:location.href,hash:location.hash||'#/'+CUR,vw:fbVw(),opt:fbOpts()}}
+/* 확인 환경: 운영체제 · 브라우저(userAgent로 판별, 지원 브라우저는 실제 OS 버전으로 보강) */
+let FB_HI=null;
+try{navigator.userAgentData&&navigator.userAgentData.getHighEntropyValues(['platformVersion','fullVersionList']).then(v=>{FB_HI=v;if(document.querySelector('.pt-fb'))renderPT()}).catch(()=>{})}catch(_){}
+function fbEnv(){
+  const u=navigator.userAgent,m=(r,i=1)=>{const x=u.match(r);return x?x[i]:''},touchMac=/Macintosh/.test(u)&&navigator.maxTouchPoints>1;
+  let os='기타';
+  if(/iPhone/.test(u))os='iOS '+m(/OS (\d+(?:_\d+)?)/).replace('_','.');
+  else if(/iPad/.test(u)||touchMac)os='iPadOS'+(m(/OS (\d+(?:_\d+)?)/)?' '+m(/OS (\d+(?:_\d+)?)/).replace('_','.'):(m(/Version\/(\d+(?:\.\d+)?)/)?' '+m(/Version\/(\d+(?:\.\d+)?)/):''));
+  else if(/Android/.test(u))os='Android '+m(/Android (\d+(?:\.\d+)?)/);
+  else if(/Windows/.test(u)){os='Windows';const pv=FB_HI&&FB_HI.platform==='Windows'&&FB_HI.platformVersion;if(pv)os+=(+pv.split('.')[0]>=13?' 11':' 10');else if(/Windows NT 10/.test(u))os+=' 10 이상';}
+  else if(/Mac OS X/.test(u)){os='macOS';const pv=FB_HI&&FB_HI.platform==='macOS'&&FB_HI.platformVersion;if(pv)os+=' '+pv.split('.').slice(0,2).join('.');}
+  else if(/CrOS/.test(u))os='ChromeOS';else if(/Linux/.test(u))os='Linux';
+  const B=[[/Edg(?:A|iOS)?\/(\d+)/,'Edge'],[/Whale\/(\d+)/,'네이버 웨일'],[/SamsungBrowser\/(\d+)/,'삼성 인터넷'],[/OPR\/(\d+)/,'Opera'],[/(?:Firefox|FxiOS)\/(\d+)/,'Firefox'],[/NAVER\(inapp/,'네이버 앱'],[/KAKAOTALK/,'카카오톡 앱'],[/CriOS\/(\d+)/,'Chrome'],[/Chrome\/(\d+)/,'Chrome'],[/Version\/(\d+(?:\.\d+)?).*Safari/,'Safari']];
+  let br='기타';for(const [r,n] of B){const x=u.match(r);if(x){br=n+(x[1]?' '+x[1]:'');break}}
+  return {os,br};
+}
+function fbMeta(){const s=SC(CUR);return {copy:fbCopy(),id:s.id,name:s.name,grp:s.g,kind:s.modal?'모달/레이어':'일반 화면',role:ROLES[S.role],url:location.href,hash:location.hash||'#/'+CUR,vw:fbVw(),opt:fbOpts(),...fbEnv()}}
 function fbNow(){const d=new Date(),p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`}
 function fbBox(){
   const a=fbList(),ed=S.fbEdit?a.find(x=>x.k===S.fbEdit):null,m=ed||fbMeta();
   const row=(k,v)=>`<dt>${k}</dt><dd>${esc(v)}</dd>`;
   return `<details class="pt-fb" ${S.fbOpen?'open':''} ontoggle="S.fbOpen=this.open;store.set('fbOpen',this.open);ptPlace()"><summary>제작 의견함 <span class="pt-fb-n">${a.length}건</span></summary><div class="pt-fb-in">
    ${ed?`<p class="pt-fb-ed">저장한 의견을 고치는 중입니다 (${esc(ed.id)} · ${esc(ed.t)})</p>`:''}
-   <dl class="pt-fb-meta">${row('사본 버전',m.copy)}${row('화면',m.id+' '+m.name)}${row('보기 권한',m.role)}${row('화면 너비',m.vw)}${row('화면 설정',m.opt)}</dl>
+   <dl class="pt-fb-meta">${row('사본 버전',m.copy)}${row('화면',m.id+' '+m.name)}${row('보기 권한',m.role)}${row('화면 너비',m.vw)}${row('운영체제',m.os||'-')}${row('브라우저',m.br||'-')}${row('화면 설정',m.opt)}</dl>
    <label class="pt-fb-l" for="fb-who">작성자 (선택)</label><input id="fb-who" class="pt-fb-who" value="${esc(store.get('fbWho',''))}" placeholder="이름 또는 소속" oninput="store.set('fbWho',this.value)" onkeydown="if(event.key==='Escape')event.stopPropagation()">
    <label class="pt-fb-l" for="fb-txt">의견 내용</label><textarea id="fb-txt" rows="4" placeholder="이 화면에 대한 의견을 적어 주세요. 화면 정보는 자동으로 함께 저장됩니다." oninput="S.fbDraft=this.value;store.set('fbDraft',this.value)" onkeydown="if(event.key==='Escape'){event.stopPropagation()}else if(event.key==='Enter'&&(event.metaKey||event.ctrlKey)&&!event.isComposing){event.preventDefault();fbSave()}">${esc(S.fbDraft||'')}</textarea>
    <div class="pt-fb-act"><button class="pri" onclick="fbSave()">${ed?'고친 내용 저장':'의견 저장'}</button>${ed?'<button onclick="fbCancel()">취소</button>':''}<span>⌘/Ctrl + Enter</span></div>
@@ -7586,8 +7632,8 @@ function fbClear(){const n=fbList().length;if(!n||!confirm(`저장한 의견 ${n
 /* 엑셀(.xlsx) 내보내기 — 외부 라이브러리 없이 직접 만듦 */
 function fbXlsx(){
   const a=fbList();if(!a.length)return;
-  const H=[['번호',6],['작성 일시',17],['사본 버전',20],['화면 번호',10],['화면 이름',24],['화면 구분',18],['화면 유형',12],['보기 권한',16],['화면 너비',16],['화면 설정',22],['작성자',12],['의견 내용',60],['고친 일시',17],['화면 주소',40]];
-  const R=a.map((x,i)=>[i+1,x.t,x.copy,x.id,x.name,x.grp,x.kind,x.role,x.vw,x.opt,x.who,x.text,x.u||'',x.url]);
+  const H=[['번호',6],['작성 일시',17],['사본 버전',20],['화면 번호',10],['화면 이름',24],['화면 구분',18],['화면 유형',12],['보기 권한',16],['화면 너비',16],['운영체제',14],['브라우저',14],['화면 설정',22],['작성자',12],['의견 내용',60],['고친 일시',17],['화면 주소',40]];
+  const R=a.map((x,i)=>[i+1,x.t,x.copy,x.id,x.name,x.grp,x.kind,x.role,x.vw,x.os||'',x.br||'',x.opt,x.who,x.text,x.u||'',x.url]);
   const X=v=>String(v).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const col=n=>{let s='';n++;while(n){const m=(n-1)%26;s=String.fromCharCode(65+m)+s;n=(n-m-1)/26}return s};
   const cell=(v,r,c,st)=>typeof v==='number'?`<c r="${col(c)}${r}" s="${st}"><v>${v}</v></c>`:`<c r="${col(c)}${r}" s="${st}" t="inlineStr"><is><t xml:space="preserve">${X(v)}</t></is></c>`;
