@@ -5786,6 +5786,16 @@ html[data-page="A3-05"] .amap.zoom .amap-t.d .amap-c{min-width:min(35px,5.627cqw
 @media screen and (max-width:767px){
  html[data-page="A3-05"] .amap.zoom .amap-t.d .amap-c{min-width:22px;height:18px;line-height:15px;padding:0 5px;font-size:11px;border-width:1px;border-radius:9px}
 }
+</style>
+<style>/* */
+:is(html[data-page="A3-06"],html[data-page="A5-01"]) .utabs{gap:0!important;border-bottom:0}
+:is(html[data-page="A3-06"],html[data-page="A5-01"]) .utabs button,html[data-page="A5-01"] .a501 .utabs>button{min-width:86px;height:36px;padding:0 15px;border:1px solid #C9CCCF;border-radius:0;font-weight:500;color:#26292B}
+:is(html[data-page="A3-06"],html[data-page="A5-01"]) .utabs button+button,html[data-page="A5-01"] .a501 .utabs>button+button{margin-left:-1px}
+:is(html[data-page="A3-06"],html[data-page="A5-01"]) .utabs button:first-child,html[data-page="A5-01"] .a501 .utabs>button:first-child{border-radius:8px 0 0 8px}
+:is(html[data-page="A3-06"],html[data-page="A5-01"]) .utabs button:last-child,html[data-page="A5-01"] .a501 .utabs>button:last-child{border-radius:0 8px 8px 0}
+:is(html[data-page="A3-06"],html[data-page="A5-01"]) .utabs button.on,html[data-page="A5-01"] .a501 .utabs>button.on{position:relative;z-index:1;background:#0B2A41;border-color:#0B2A41;color:#fff;font-weight:700}
+:is(html[data-page="A3-06"],html[data-page="A5-01"]) .utabs button:not(.on):hover{position:relative;z-index:2}
+:is(html[data-page="A3-06"],html[data-page="A5-01"]) .utabs button:focus-visible{position:relative;z-index:3}
 .pt-date{font-size:12px;color:#C9D2E3;padding:8px 10px;margin:-4px 0 10px;border-radius:8px;background:rgba(255,255,255,.08)}.pt-date b{color:#fff}.pt-date a{color:#9FD3FF;text-decoration:underline}.pt-ver{margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(255,255,255,.14);font-size:11px;white-space:nowrap}
 </style>
 </head>
@@ -6927,7 +6937,7 @@ const ALOG={
   ['2026.10.06 09:40:37','admin',A_IP,A_DV,'글쓰기 권한 부여 · 바닷길예술교육센터(기관)','홍길동'],
   ['2026.10.01 09:00:22','admin',A_IP,A_DV,'공지 등록 · 「아트포트군산 홈페이지 오픈 안내」 — 상단 고정 2026.10.01 ~ 2027.03.31','홍길동'],
   ['2026.09.30 17:45:03','admin',A_IP,A_DV,'글쓰기 권한 회수 · 군산청년예술협동조합(단체)','홍길동']]},
- 'B-11':{k:'문의 내용 열람(이름 · 연락처 포함) · 첨부 파일 내려받기 · 답변 등록 · 수정 · 처리 상태 변경',r:[
+ 'B-11':{k:'문의 내용 열람(이름 · 연락처 포함) · 첨부 파일 내려받기 · 답변 등록 · 수정 · 처리 상태 변경 · 목록 다운로드',r:[
   ['2026.10.07 15:39:51','admin',A_IP,A_DV,'답변 등록 · 홍시민 「스크랩 목록을 엑셀로 받을 수 있나요?」','홍길동'],
   ['2026.10.07 15:31:20','admin',A_IP,A_DV,'문의 내용 열람 · 홍시민 「스크랩 목록을 엑셀로 받을 수 있나요?」','홍길동'],
   ['2026.10.06 10:12:48','admin',A_IP,A_DV,'첨부 파일 내려받기 · 한바다 「증빙자료 형식 문의」 — 공연포스터.pdf','홍길동'],
@@ -6937,10 +6947,11 @@ const ALOG={
   ['2026.10.07 09:52:33','admin',A_IP,A_DV,'테스트 발송 · 「2027 문화예술진흥 지원사업 공모 안내」 — ad***@gunsancf.or.kr','홍길동'],
   ['2026.10.07 09:40:08','admin',A_IP,A_DV,'수신자 목록 열람 · 예술인 전체 212명','홍길동'],
   ['2026.10.06 18:10:44','admin',A_IP,A_DV,'임시저장 · 「10월 예술캘린더 주요 일정」','홍길동']]},
- 'B-14':{k:'갱신 완료 처리 · 완료 처리 취소 · 갱신 안내 메일 발송',r:[
+ 'B-14':{k:'갱신 완료 처리 · 완료 처리 취소 · 갱신 안내 메일 발송 · 갱신 대상 목록 다운로드',r:[
   ['2026.10.07 14:22:19','admin',A_IP,A_DV,'갱신 완료 처리 · 한바다','홍길동'],
   ['2026.10.07 14:20:02','admin',A_IP,A_DV,'완료 처리 취소 · 정하람 → 갱신 필요(D-12)','홍길동'],
   ['2026.10.01 09:05:37','admin',A_IP,A_DV,'갱신 안내 메일 발송 · 이번 달 갱신 대상 12명','홍길동'],
+  ['2026.10.01 09:03:10','admin',A_IP2,A_DV2,'갱신 대상 목록 다운로드(Excel) · 12건','홍길동'],
   ['2026.09.30 17:40:12','admin',A_IP,A_DV,'갱신 완료 처리 · 류태오','홍길동']]},
  'B-16':{k:'팝업 등록 · 수정 · 삭제 · 노출 켜기 · 끄기 · 노출 순서 변경',r:[
   ['2026.10.06 11:30:26','admin',A_IP,A_DV,'팝업 등록 · 「2027 문화예술진흥 지원사업 공모」 — 홈 · 2026.10.07 ~ 10.31','홍길동'],
@@ -6950,11 +6961,11 @@ const ALOG={
   ['2026.10.05 15:12:09','admin',A_IP,A_DV,'추천 검색어 변경 · 문학 · 시각 · 공연 · 문화예술교육','홍길동'],
   ['2026.10.02 10:44:51','admin',A_IP,A_DV,'푸터 정보 수정 · 대표 전화 063-443-4820','홍길동'],
   ['2026.09.30 16:20:33','admin',A_IP,A_DV,'SNS 링크 수정 · 네이버 블로그 주소','홍길동']]},
- 'B-18':{k:'활동분야 · 세부장르 추가 · 이름 변경 · 순서 변경 · 삭제 · 기본 해시태그 추가 · 삭제',r:[
+ 'B-18':{k:'활동분야 · 세부장르 추가 · 이름 변경 · 숨김 · 순서 변경 · 기본 해시태그 추가 · 삭제',r:[
   ['2026.10.06 14:02:27','admin',A_IP,A_DV,'세부장르 추가 · 공연 > 국악','홍길동'],
   ['2026.10.06 13:58:12','admin',A_IP,A_DV,'기본 해시태그 추가 · #원도심','홍길동'],
   ['2026.10.03 11:15:40','admin',A_IP,A_DV,'세부장르 이름 변경 · 시각 > 미디어 → 미디어아트','홍길동']]},
- 'B-19':{k:'자동 로그아웃 시간 변경 · 로그아웃 전 안내 시간 변경 · 연장 시간 변경',r:[
+ 'B-19':{k:'자동 로그아웃 시간 변경 · 로그아웃 전 안내 시간 변경',r:[
   ['2026.10.02 09:20:15','admin',A_IP,A_DV,'자동 로그아웃 시간 변경 · 1시간 → 2시간','홍길동'],
   ['2026.09.25 10:05:42','admin',A_IP,A_DV,'안내 시간 변경 · 로그아웃 3분 전 → 5분 전','홍길동']]},
  'B-21':{k:'기술관리자 임시 계정 발급 · 비밀번호 변경 · 삭제 · 시스템 점검 예약 · 연장 · 종료',r:[
@@ -7354,7 +7365,7 @@ function b10EdPage(id){const m=b10Mem(id);const back=`<a class="link" href="#/B-
  const ro=(v,h)=>`${inp('',v,'text','readonly aria-readonly="true" style="background:var(--paper)"')}${h?`<p class="tiny muted mt4">${h}</p>`:''}`;
  const f=(k,lab,ctl,o={})=>F(`<span id="lb-${k}">${lab}</span>`,ctl,Object.assign({cls:'b10-h'},o));
  return adm('B-10','회원 정보 수정',`<div class="b10-eh mb16">${back}<span class="grow"></span></div>
- <div class="b2-warn">${I('alert')}<div><p><b>회원 본인이 요청한 내용만 고쳐 주세요.</b> 저장할 때 변경 사유를 남겨야 하며, 바뀐 항목 · 이전 값 · 새 값 · 처리자 · 일시가 「열람·다운로드 이력」에 기록됩니다. 이력은 수정 · 삭제할 수 없습니다. 아이디는 바꿀 수 없습니다. 회원 유형은 목록의 [회원 유형 변경]에서, 비밀번호는 회원이 비밀번호 찾기로 바꿉니다.</p></div></div>
+ <div class="b2-warn">${I('alert')}<div><p><b>회원 본인이 요청한 내용만 고쳐 주세요.</b> 저장할 때 변경 사유를 남겨야 하며, 바뀐 항목 · 이전 값 · 새 값 · 처리자 · 일시가 「처리 이력」에 기록됩니다(수정·삭제 불가 · 기간 제한 없이 보관). 아이디는 바꿀 수 없습니다. 회원 유형은 목록의 [회원 유형 변경]에서, 비밀번호는 회원이 로그인 화면의 비밀번호 찾기로 바꿉니다.</p></div></div>
  <div class="panel mt16"><div class="panel-h"><h2>계정</h2></div><div class="b10-ef">
  ${F('아이디',ro(m.id,'아이디는 변경할 수 없습니다.'),{cls:'b10-h'})}${F('회원 유형',ro(m.t,'목록의 [회원 유형 변경]에서 바꿉니다.'),{cls:'b10-h'})}${F('가입일',ro(m.d),{cls:'b10-h'})}${F('등록 상태',`<div class="b10-stv">${m.st}</div>`,{cls:'b10-h'})}</div></div>
  <div class="panel mt16"><div class="panel-h"><h2>기본정보</h2></div><div class="b10-ef">
@@ -7365,12 +7376,13 @@ function b10EdPage(id){const m=b10Mem(id);const back=`<a class="link" href="#/B-
  ${org?`<div class="b10-ef">${f('biz','사업자등록번호',inp('000-00-00000',m.biz,'text','id="ed-biz" oninput="b10BizReset()"'),{req:1})}${f('op','개업일자',inp('',m.op,'date','id="ed-op" oninput="b10BizReset()" style="max-width:240px"'),{req:1})}
  <div class="f-full bizv"><button type="button" class="btn btn-dark btn-sm" id="ed-bizb" onclick="b10BizChk()">사업자 진위확인</button><p class="help" id="ed-bizm">사업자등록번호 · ${grp?'대표자명':'기관장명'} · 개업일자를 바꾸면 저장 전에 국세청 정보와 일치하는지, 휴·폐업 상태인지 다시 확인해야 합니다.</p></div></div>`:''}</div>
  <div class="panel mt16"><div class="panel-h"><h2>연락처 · 주소</h2></div><div class="b10-ef">
- ${f('mail','이메일',inp('',m.mail,'email','id="ed-mail"'),{req:1,help:'바꾸면 새 주소로 「이메일 주소가 변경되었습니다」 메일이 발송됩니다.'})}${f('p','연락처',inp('010-0000-0000',m.p,'tel','id="ed-p"'),{req:1})}
- ${art?`${f('zip','우편번호',`<div class="row" style="gap:8px;flex-wrap:nowrap">${inp('',m.zip,'text','id="ed-zip" readonly aria-readonly="true" style="max-width:140px;background:var(--paper)"')}<button class="btn btn-line btn-sm" type="button" onclick="b10Addr()">주소 검색</button></div>`,{req:art})}${f('dong','읍면동',sel([...new Set([m.dong,'월명동','수송동','조촌동','나운1동','나운2동','해신동','소룡동','임피면'])],m.dong,'id="ed-dong"'),{req:art})}
+ ${f('mail','이메일',inp('',m.mail,'email','id="ed-mail"'),{req:1,help:'관리자가 바꿀 때는 인증번호 확인 없이 바로 바뀝니다. 바꾸면 <b>이전 주소</b>로 「이메일 주소가 변경되었습니다」 메일이 발송됩니다(새 주소는 일부 가림).'})}${f('p','연락처',inp('010-0000-0000',m.p,'tel','id="ed-p"'),{req:1})}
+ ${art?`${f('zip','우편번호',`<div class="row" style="gap:8px;flex-wrap:nowrap">${inp('',m.zip,'text','id="ed-zip" readonly aria-readonly="true" style="max-width:140px;background:var(--paper)"')}<button class="btn btn-line btn-sm" type="button" onclick="b10Addr()">주소 검색</button></div>`,{req:art,help:'[주소 검색]으로 고르면 우편번호 · 기본 주소 · 읍면동이 자동으로 채워집니다.'})}${f('dong','읍면동',inp('',m.dong,'text','id="ed-dong" readonly aria-readonly="true" style="background:var(--paper)"'),{req:art,help:'주소에서 자동으로 판별합니다.'})}
  <div class="f-full">${f('a1','기본 주소',inp('',m.a1,'text','id="ed-a1" readonly aria-readonly="true" style="background:var(--paper)"'),{req:art})}</div><div class="f-full">${f('a2','상세 주소',inp('동 · 호수 등',m.a2,'text','id="ed-a2" maxlength="50"'),{})}</div>`:''}</div></div>
  <div class="panel mt16"><div class="panel-h"><h2>선택 동의</h2></div><div class="b10-cs"><span class="b10-csk">소식 수신 동의서</span>${chk('(선택) 군산문화관광재단 소식 수신 동의',m.news,'id="ed-news"')}</div></div>
  <div class="panel mt16"><div class="panel-h"><h2>변경 사유 <em class="req" aria-label="필수">*</em></h2></div><textarea class="inp" id="ed-why" style="min-height:80px" placeholder="예) 2026.11.16 회원 전화 요청 — 개명(주민등록초본 확인)" oninput="document.getElementById('ed-why-err').hidden=true;this.classList.remove('is-err')"></textarea><p class="err" id="ed-why-err" hidden>변경 사유를 입력해 주세요.</p>
  <div class="row mt24" style="gap:8px;justify-content:flex-end"><a class="btn btn-line" href="#/B-10">취소</a><button class="btn btn-pri" onclick="b10EdSave('${id}')">저장</button></div></div>
+ ${b10EdLog(id,m)}
  ${REF('[회원 정보 수정] → ① 관리자 실명 확인(로그인 성명과 같아야 함) → ② 2단계 인증(이메일 인증번호 6자리) → 이 화면 · 인증은 누를 때마다, 화면을 벗어나면 다시 인증 · 아이디를 뺀 회원 정보 전체를 보고 수정(연락처 · 주소 가림 없이 표시, 열람으로 이력 기록) · 회원 유형은 [회원 유형 변경], 비밀번호는 회원 본인이 C-08에서 · 저장 = 변경 사유 필수, 바뀐 항목별 이전 값 → 새 값을 이력에 기록 · 회원 유형별 칸 = 개인: 성명 · 성별(남 · 여 · 선택 안 함) · 생년월일 · 장애예술인 여부 + 공개 여부 / 단체: 단체명 · 대표자명 · 설립일(연 · 월) · 사업자등록번호 · 개업일자 · 장애예술단체 여부 + 공개 여부 / 기관: 기관명 · 기관장명 · 설립일(연 · 월) · 사업자등록번호 · 개업일자 / 일반: 성명 · 이메일 · 연락처 · 수신 동의(주소 없음) · 사업자등록번호 · 대표자명(기관장명) · 개업일자를 바꾸면 [사업자 진위확인]을 다시 통과해야 저장 · 이메일은 인증번호 없이 바로 변경, 이전 주소로 「이메일 주소가 변경되었습니다」 발송(새 주소 일부 가림) · 재단 소식 수신이 바뀌면 「재단 소식 수신 설정 처리 결과 안내」 발송 · 수정 기록은 처리 이력에(화면을 연 기록은 열람·다운로드 이력에) 수정 · 삭제 불가, 기간 제한 없이 보관 · 기본정보는 공개 포트폴리오와 통계에 바로 반영')}`)}
 function b10BizReset(){S.b10BizOk=false;const b=document.getElementById('ed-bizb'),m=document.getElementById('ed-bizm');if(b){b.className='btn btn-dark btn-sm';b.textContent='사업자 진위확인'}if(m){m.className='help'}}
 function b10BizChk(){const v=k=>(document.getElementById('ed-'+k)||{}).value||'';if(!v('biz').trim()||!v('op')||!v('rep').trim()){toast('사업자등록번호 · 대표자명(기관장명) · 개업일자를 모두 입력해 주세요');return}S.b10BizOk=true;const b=document.getElementById('ed-bizb'),m=document.getElementById('ed-bizm');b.className='btn btn-line btn-sm';b.innerHTML=I('check')+' 진위확인 완료';m.className='okmsg';m.textContent='국세청 정보와 일치합니다. 사업 상태: 계속사업자'}
@@ -7415,7 +7427,7 @@ PAGES['B-10']=()=>{if(Q.edit)return b10EdPage(Q.edit);const vw=!!S.b10V;const so
  const flt=`<div class="toolbar b2-flt">${sel(['유형 전체','개인','단체','기관','일반'],'','aria-label="유형"')}${sel(['읍면동 전체',...DONG_NAMES],Q.dong||'읍면동 전체','aria-label="읍면동" onchange="go(this.value===\'읍면동 전체\'?\'B-10\':\'B-10?dong=\'+encodeURIComponent(this.value))"')}${sel(['장애 여부 전체','장애예술인','비장애예술인'],'','aria-label="장애 여부"')}${sel(['등록연도 전체','2026','2025','2024'],'','aria-label="등록연도"')}${sel(['등록상태 전체','유효','갱신 필요','탈퇴'],'','aria-label="등록상태"')}${sel(['활동분야 전체',...Object.keys(FIELDS)],'','aria-label="활동분야"')}${sel(['세부장르 전체',...GENRES],'','aria-label="세부장르"')}</div>`;
  return adm('B-10','회원 관리·개인정보 열람·다운로드',`<div class="b2-warn">${I('alert')}<div><p><b>개인정보 취급에 주의해 주세요.</b> 연락처·주소는 일부를 가린 값으로 표시됩니다. 열람은 관리자 실명 입력 후 가능하며 페이지를 벗어난 경우 다시 가림 상태가 되므로 재입력해야 합니다. 다운로드 · 회원 정보 수정 · 회원 유형 변경 · 탈퇴 대행 처리는 관리자 실명 입력 후 2단계 인증을 마쳐야 처리되며, 할 때마다 인증해야 합니다.</p></div></div><div class="panel mt16">${tb(`<div class="inpw b2-srch b2-srch-s">${I('search')}<input class="inp" placeholder="이름·아이디 검색" aria-label="이름·아이디 검색"></div><button class="btn btn-pri btn-sm">조회</button><button class="btn btn-line btn-sm" type="button" aria-expanded="${fo}" onclick="S.b10F=!S.b10F;render()">세부 검색 <span aria-hidden="true">${fo?'−':'+'}</span></button><span class="sel-n small b10-seln" aria-live="polite">선택 0건</span><span class="grow"></span><button class="btn btn-pri btn-sm b2-vw" aria-pressed="${vw}" onclick="b10View()">${I('eye')} ${vw?'가리기':'열람'}</button>${dl('CSV')}${dl('Excel')}${dl('PDF')}<div class="seg b2-sort" role="group" aria-label="정렬">${sb('d','최신순')}${sb('n','가나다순')}</div>`)}${fo?flt:''}
  ${Q.dong?`<p class="small mb16"><b>${Q.dong}</b> 회원 ${POP.filter(p=>p.dong===Q.dong).length}명 · <a class="link" href="#/B-15">← 통계로 돌아가기</a></p>`:''}${Q.dong?tbl([CKH,'아이디','이름','유형','연락처','주소','읍면동','장애','가입일','등록상태'],POP.filter(p=>p.dong===Q.dong).slice(0,10).map((a,i)=>tr([ck(a.name),`id_${1000+i}`,`<b>${a.name}</b>`,a.type,ph(i,'010-'+(3100+i*137)+'-'+(4200+i*211)),ad('군산시 ○○로 '+(12+i*7)),a.dong,a.dis?'예':'아니오',a.regDate.replaceAll('-','.'),`<span class="b10-st">${a.status==='유효'?sbadge('등록완료'):badge(a.status,a.status==='탈퇴'?'b2-gray':'b-warn')}</span>`]))):''}${Q.dong?'':tbl([CKH,'번호','아이디','이름','유형','연락처','주소','읍면동','장애','가입일','등록상태','관리'],rows.map((r,i)=>{const wd=(S.wdDone||{})[r.n];return tr([ck(r.n),rows.length-i,r.id,`<b>${r.n}</b>`,r.t,ph(i,r.p),ad(r.a),r.dong,r.dis,r.d,`<span class="b10-st">${wd?badge('탈퇴','b2-gray'):r.st}</span>`,wd?`<span class="tiny muted">${wd} 탈퇴 대행 처리</span>`:`<div class="row b10-mg"><button class="btn btn-line btn-xs b10-ed" type="button" onclick="b10EdAsk('${r.id}','${r.n}')">정보 수정</button>${typeBtn(r.n,r.t0,r.posts)}<button class="btn btn-line btn-xs b10-wd" type="button" onclick="wdAsk('${r.n}','${r.id}')">탈퇴 대행</button></div>`])}))}
- ${pager(Q.dong?Math.max(1,Math.ceil(POP.filter(p=>p.dong===Q.dong).length/10)):22)}<div class="panel-h b2-logh"><h2>열람·다운로드 이력</h2><span class="b2-lockb">${I('lock')}수정·삭제 불가 · 기간 제한 없이 보관</span></div><div class="b2-scroll alog-sc" tabindex="0" aria-label="열람·다운로드 이력 목록">${aTbl(ALOG['B-10'].r.slice(0,Math.max(0,ALOG['B-10'].r.length-ALOG_B10_N0)).map(r=>aTr(r)).concat(B10_LOG.map(r=>aTr([r[0],r[1],r[5],r[6],`<b>${esc(r[3])}</b> · ${esc(r[4])}`,r[2]==='—'?'홍길동':r[2]]))))}</div>${REF('맨 왼쪽 체크박스로 회원을 고르면 [CSV] · [Excel] · [PDF]는 고른 회원만, 고르지 않으면 지금 조건의 전체를 내려받음(머리 칸 체크 = 이 쪽 전체 선택) · 선택 건수는 도구 줄에 표시 · 다운로드 순서 = ① 다운로드 설정 창(연락처 · 주소 표시 방식 「부분 표시(가림)」 기본 / 「전체 표시」 — 고르면 경고, 파일에 넣을 항목 9개 중 선택, 1개 이상 필수, 고른 값은 다음에도 유지) → ② 관리자 실명 확인 → ③ 2단계 인증 → 내려받기, 이력에 대상 건수 · 표시 방식 · 항목 기록')}${REF('관리 열 [정보 수정] · [유형 변경] · [탈퇴 대행] — 누를 때마다 ① 관리자 실명 입력(로그인 성명과 같아야 함) → ② 2단계 인증(이메일 인증번호 6자리, 5분) → ③ 처리, 실명은 이력 「성명」에 기록 · 탈퇴 대행 처리 = 요청 경로 · 처리 사유 필수, 되돌릴 수 없음, 처리 뒤 회원 본인 탈퇴와 같음(글 비공개 · 보관 기간 뒤 파기 · 「회원 탈퇴 완료」 메일 자동 발송), 처리자 · 일시 · 사유를 이력에 기록(수정 · 삭제 불가)')}${REF('회원 유형 변경 — 등록한 글이 있는 회원은 바꿀 수 없음(인증 전에 바로 안내) · 바꾸면 바로 「회원 유형 변경 · 추가 정보 입력 요청」 메일 발송(B-12) · 회원이 다음에 내 정보 관리(M-02)에 들어오면 새 유형의 필수 정보·동의를 필수 입력으로 받음')}${REF('연락처 · 주소는 가린 값으로 표시 · [열람] = 관리자 실명 입력 후 전체 표시(열람 이력 기록, 페이지를 벗어나면 다시 가림) · 통계 다운로드(B-15)도 같은 실명 확인 + 2단계 인증 창')}</div>`)};
+ ${pager(Q.dong?Math.max(1,Math.ceil(POP.filter(p=>p.dong===Q.dong).length/10)):22)}<div class="panel-h b2-logh"><h2>열람·다운로드 이력</h2><span class="b2-lockb">${I('lock')}수정·삭제 불가 · 기간 제한 없이 보관</span></div><div class="b2-scroll alog-sc" tabindex="0" aria-label="열람·다운로드 이력 목록">${aTbl(B10_LOG.map(r=>aTr([r[0],r[1],r[5],r[6],`<b>${esc(r[3])}</b> · ${esc(r[4])}`,r[2]==='—'?'홍길동':r[2]])))}</div>${Q.dong?'':`<div class="panel-h b2-logh mt24"><h2>처리 이력</h2><span class="b2-lockb">${I('lock')}수정·삭제 불가 · 기간 제한 없이 보관</span></div><div class="b2-scroll alog-sc" tabindex="0" aria-label="처리 이력 목록">${aTbl(ALOG['B-10'].r.map(r=>aTr(r)))}</div>${REF('처리 이력 = 회원 정보 수정 · 회원 유형 변경 · 탈퇴 대행 처리를 할 때마다 자동 기록(최신순) — 일시 · 식별자 · IP · 브라우저 / 접속기기 · 수행업무([항목] 대상 — 세부) · 성명 · 결과 · 수정·삭제 불가, 기간 제한 없이 보관 · 열람 · 다운로드 · 수정 화면을 연 기록은 위 열람·다운로드 이력에')}`}${REF('맨 왼쪽 체크박스로 회원을 고르면 [CSV] · [Excel] · [PDF]는 고른 회원만, 고르지 않으면 지금 조건의 전체를 내려받음(머리 칸 체크 = 이 쪽 전체 선택) · 선택 건수는 도구 줄에 표시 · 다운로드 순서 = ① 다운로드 설정 창(연락처 · 주소 표시 방식 「부분 표시(가림)」 기본 / 「전체 표시」 — 고르면 경고, 파일에 넣을 항목 9개 중 선택, 1개 이상 필수, 고른 값은 다음에도 유지) → ② 관리자 실명 확인 → ③ 2단계 인증 → 내려받기, 이력에 대상 건수 · 표시 방식 · 항목 기록')}${REF('관리 열 [정보 수정] · [유형 변경] · [탈퇴 대행] — 누를 때마다 ① 관리자 실명 입력(로그인 성명과 같아야 함) → ② 2단계 인증(이메일 인증번호 6자리, 5분) → ③ 처리, 실명은 이력 「성명」에 기록 · 탈퇴 대행 처리 = 요청 경로 · 처리 사유 필수, 되돌릴 수 없음, 처리 뒤 회원 본인 탈퇴와 같음(글 비공개 · 보관 기간 뒤 파기 · 「회원 탈퇴 완료」 메일 자동 발송), 처리자 · 일시 · 사유를 이력에 기록(수정 · 삭제 불가)')}${REF('회원 유형 변경 — 등록한 글이 있는 회원은 바꿀 수 없음(인증 전에 바로 안내) · 바꾸면 바로 「회원 유형 변경 · 추가 정보 입력 요청」 메일 발송(B-12) · 회원이 다음에 내 정보 관리(M-02)에 들어오면 새 유형의 필수 정보·동의를 필수 입력으로 받음')}${REF('연락처 · 주소는 가린 값으로 표시 · [열람] = 관리자 실명 입력 후 전체 표시(열람 이력 기록, 페이지를 벗어나면 다시 가림) · 통계 다운로드(B-15)도 같은 실명 확인 + 2단계 인증 창')}</div>`)};
 const B11L=()=>INQ;
 PAGES['B-11']=()=>{const LS=B11L();let si=S.inqSel!=null?S.inqSel:0;if(Q.hl!=null){const h=LS.findIndex(r=>r[2]===Q.hl||String(LS.indexOf(r))===Q.hl);if(h>=0)si=h}if(!LS[si])si=0;S.inqSel=si;const r=LS[si],x=r[5],u=x.u||{};const done=r[4]==='답변완료';const fo=!!S.b11F;
  const stb=t=>t==='접수'?badge('접수','b2-rcv'):sbadge(t);const dt=q=>q[2]==='스크랩 목록을 엑셀로 받을 수 있나요?'?'10.02':q[3];
